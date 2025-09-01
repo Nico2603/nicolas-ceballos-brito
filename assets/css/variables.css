@@ -1,0 +1,38 @@
+/* ========================================
+   VARIABLES Y CONFIGURACIÓN GLOBAL
+======================================== */
+
+/* Importar fuentes web necesarias */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Raleway:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Colores principales */
+  --primary-color: #2a5c82;
+  --secondary-color: #5da399;
+  --accent-color: #8bd8bd;
+  --tertiary-color: #eafdfc;
+  --text-color: #333;
+  --bg-color: #f8f9fa;
+
+  /* Gradientes */
+  --bg-gradient-section1: linear-gradient(135deg, var(--secondary-color) 0%, var(--tertiary-color) 100%);
+  --bg-gradient-general: linear-gradient(135deg, #f0f8ff 0%, #e6f7f5 50%, #f0f8ff 100%);
+  --footer-gradient: linear-gradient(135deg, 
+    var(--secondary-color) 0%,
+    rgba(93, 163, 153, 0.9) 50%,
+    var(--primary-color) 100%);
+
+  /* Tipografía */
+  --font-primary: 'Raleway', sans-serif;
+  --font-heading: 'Montserrat', sans-serif;
+  --text-shadow-default: 2px 2px 8px rgba(0, 0, 0, 0.1);
+
+  /* Efectos de vidrio (glassmorphism) */
+  --glass-background: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --shadow-light: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  --backdrop-filter: blur(4px);
+
+  /* Transiciones y animaciones */
+  --transition-speed: 0.4s;
+}

@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="keywords" content="Nicolás Ceballos Brito, Repositorios GitHub, Proyectos, Desarrollo Web, Programación" />
+    <meta name="description" content="Explora todos los repositorios y proyectos de Nicolás Ceballos Brito en GitHub - Desarrollo web, IA, análisis de datos y más." />
+    <meta name="theme-color" content="#2a5c82" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Repositorios GitHub - Nicolás Ceballos Brito" />
+    <meta property="og:description" content="Explora mi colección completa de proyectos y repositorios en GitHub" />
+    <title>Repositorios GitHub - Nicolás Ceballos Brito</title>
+    <link rel="stylesheet" href="../assets/css/repositories-full.css" media="screen" />
+    <!-- Íconos de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Fuente Poppins moderna -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Script principal -->
+    <script defer src="../assets/js/repositories-app.js"></script>
+    <style>
+      /* Estilos específicos para la página de repositorios */
+      .repositories-header {
+        background: var(--bg-gradient-section1);
+        background-attachment: fixed;
+        padding: 140px 0 80px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .repositories-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 20% 80%, rgba(120, 190, 180, 0.3) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 20%, rgba(42, 92, 130, 0.3) 0%, transparent 50%);
+        z-index: -1;
+      }
+      
+      .repositories-content {
+        background: var(--bg-gradient-general);
+        padding: 80px 0;
+        min-height: 70vh;
+      }
+      
+      .repo-header-stats {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin: 40px 0;
+        flex-wrap: wrap;
+      }
+      
+      .repo-stat {
+        background: var(--glass-background);
+        backdrop-filter: var(--backdrop-filter);
+        -webkit-backdrop-filter: var(--backdrop-filter);
+        border: 1px solid var(--glass-border);
+        border-radius: 15px;
+        padding: 15px 25px;
+        text-align: center;
+        box-shadow: var(--shadow-light);
+        transition: all 0.3s ease;
+      }
+      
+      .repo-stat:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+      
+      .repo-stat-number {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        display: block;
+      }
+      
+      .repo-stat-label {
+        font-size: 0.9rem;
+        color: #666;
+        margin-top: 5px;
+      }
+      
+      /* Sección de filtros */
+      .filters-section {
+        background: var(--glass-background);
+        backdrop-filter: var(--backdrop-filter);
+        -webkit-backdrop-filter: var(--backdrop-filter);
+        border: 1px solid var(--glass-border);
+        border-radius: 20px;
+        padding: 30px;
+        margin: 40px auto;
+        max-width: 1200px;
+        box-shadow: var(--shadow-light);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .filters-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, 
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0.05) 50%,
+          rgba(255, 255, 255, 0.1) 100%);
+        pointer-events: none;
+      }
+      
+      .filters-title {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        position: relative;
+        z-index: 1;
+      }
+      
+      .filters-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        position: relative;
+        z-index: 1;
+      }
+      
+      .filter-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .filter-label {
+        font-weight: 600;
+        color: var(--text-color);
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      
+      .filter-input, .filter-select {
+        padding: 12px 15px;
+        border: 2px solid var(--glass-border);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.8);
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        outline: none;
+      }
+      
+      .filter-input:focus, .filter-select:focus {
+        border-color: var(--secondary-color);
+        box-shadow: 0 0 0 3px rgba(93, 163, 153, 0.1);
+      }
+      
+      .filter-buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 20px;
+        position: relative;
+        z-index: 1;
+      }
+      
+      .filter-btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 25px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      
+      .filter-btn.apply {
+        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        box-shadow: 0 4px 15px rgba(42, 92, 130, 0.3);
+      }
+      
+      .filter-btn.apply:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(42, 92, 130, 0.4);
+      }
+      
+      .filter-btn.clear {
+        background: transparent;
+        color: var(--text-color);
+        border: 2px solid var(--glass-border);
+      }
+      
+      .filter-btn.clear:hover {
+        background: var(--glass-border);
+      }
+      
+      /* Sección de repositorios */
+      .repositories-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 25px;
+        max-width: 1400px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+      
+      .repo-card {
+        background: var(--glass-background);
+        backdrop-filter: var(--backdrop-filter);
+        -webkit-backdrop-filter: var(--backdrop-filter);
+        border: 1px solid var(--glass-border);
+        border-radius: 16px;
+        padding: 25px;
+        box-shadow: var(--shadow-light);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      
+      .repo-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, 
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 50%,
+          rgba(255, 255, 255, 0.1) 100%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+      }
+      
+      .repo-card:hover::before {
+        opacity: 1;
+      }
+      
+      .repo-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      }
+      
+      .repo-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 15px;
+        gap: 15px;
+      }
+      
+      .repo-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin: 0;
+        flex: 1;
+        line-height: 1.3;
+        position: relative;
+        z-index: 1;
+      }
+      
+      .repo-visibility {
+        background: var(--accent-color);
+        color: white;
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        position: relative;
+        z-index: 1;
+      }
+      
+      .repo-visibility.private {
+        background: #ff6b6b;
+      }
+      
+      .repo-description {
+        margin: 0 0 20px;
+        color: #555;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        flex: 1;
+        position: relative;
+        z-index: 1;
+      }
+      
+      .repo-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin: 15px 0;
+        font-size: 0.85rem;
+        color: #666;
+        position: relative;
+        z-index: 1;
+      }
+      
+      .repo-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      
+      .repo-language {
+        background: var(--secondary-color);
+        color: white;
+        padding: 3px 8px;
+        border-radius: 10px;
+        font-weight: 600;
+      }
+      
+      .repo-stars, .repo-forks {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      
+      .repo-stars i {
+        color: #ffd700;
+      }
+      
+      .repo-forks i {
+        color: var(--secondary-color);
+      }
+      
+      .repo-updated {
+        color: #888;
+        font-size: 0.8rem;
+      }
+      
+      .repo-topics {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 15px 0;
+        position: relative;
+        z-index: 1;
+      }
+      
+      .repo-topic {
+        background: rgba(93, 163, 153, 0.1);
+        color: var(--primary-color);
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        border: 1px solid rgba(93, 163, 153, 0.2);
+      }
+      
+      .repo-footer {
+        display: flex;
+        gap: 10px;
+        margin-top: auto;
+        position: relative;
+        z-index: 1;
+      }
+      
+      .repo-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        flex: 1;
+        justify-content: center;
+      }
+      
+      .repo-link.primary {
+        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        box-shadow: 0 4px 15px rgba(42, 92, 130, 0.3);
+      }
+      
+      .repo-link.primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(42, 92, 130, 0.4);
+      }
+      
+      /* Estados de carga */
+      .loading-state {
+        text-align: center;
+        padding: 60px 20px;
+        color: #666;
+      }
+      
+      .loading-spinner {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border: 4px solid rgba(93, 163, 153, 0.2);
+        border-radius: 50%;
+        border-top-color: var(--secondary-color);
+        animation: spin 1s ease-in-out infinite;
+        margin-bottom: 20px;
+      }
+      
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      
+      .error-state {
+        text-align: center;
+        padding: 60px 20px;
+        background: var(--glass-background);
+        border-radius: 16px;
+        margin: 40px auto;
+        max-width: 600px;
+      }
+      
+      .error-icon {
+        font-size: 3rem;
+        color: #ff6b6b;
+        margin-bottom: 20px;
+      }
+      
+      .no-results {
+        text-align: center;
+        padding: 60px 20px;
+        color: #666;
+      }
+      
+      .no-results-icon {
+        font-size: 3rem;
+        color: var(--accent-color);
+        margin-bottom: 20px;
+      }
+      
+      .back-home {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        padding: 12px 28px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        letter-spacing: 0.8px;
+        transition: all 0.4s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        margin: 30px auto;
+        position: relative;
+        z-index: 1;
+      }
+      
+      .back-home:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+      
+      .back-home i {
+        font-size: 1rem;
+      }
+      
+      /* Responsive */
+      @media (max-width: 768px) {
+        .repositories-header {
+          padding: 120px 0 60px;
+        }
+        
+        .repo-header-stats {
+          gap: 15px;
+        }
+        
+        .repo-stat {
+          padding: 10px 15px;
+        }
+        
+        .filters-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .filter-buttons {
+          flex-direction: column;
+        }
+        
+        .repositories-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+          padding: 0 15px;
+        }
+        
+        .repo-card {
+          padding: 20px;
+        }
+        
+        .repo-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+        }
+        
+        .repo-meta {
+          flex-direction: column;
+          gap: 10px;
+        }
+        
+        .repo-footer {
+          flex-direction: column;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .filters-section {
+          padding: 20px 15px;
+          margin: 20px 10px;
+        }
+        
+        .repo-topics {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER: Navbar simplificado -->
+    <header class="header" id="main-header">
+      <div class="container">
+        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="navbar">
+          <ul class="nav-menu" id="navMenu">
+            <li class="nav-item">
+              <a href="../index.html" class="nav-link">
+                <i class="fas fa-home"></i> Inicio
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="../index.html#portafolio" class="nav-link">Portafolio</a>
+            </li>
+            <li class="nav-item">
+              <a href="../index.html#labores" class="nav-link">Labores</a>
+            </li>
+            <li class="nav-item">
+              <a href="../index.html#contacto" class="nav-link">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a href="aboutme.html" class="nav-link">Acerca de mí</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main id="app">
+      <!-- Header de repositorios -->
+      <section class="repositories-header">
+        <div class="container">
+          <h1 class="section-title">
+            <i class="fab fa-github"></i> Mis Repositorios de GitHub
+          </h1>
+          <p class="section-text">
+            Explora mi colección completa de proyectos, desde desarrollo web hasta inteligencia artificial. 
+            Utiliza los filtros para encontrar exactamente lo que buscas.
+          </p>
+          <div class="repo-header-stats">
+            <div class="repo-stat">
+              <span class="repo-stat-number" id="totalRepos">-</span>
+              <span class="repo-stat-label">Repositorios</span>
+            </div>
+            <div class="repo-stat">
+              <span class="repo-stat-number" id="totalStars">-</span>
+              <span class="repo-stat-label">Estrellas</span>
+            </div>
+            <div class="repo-stat">
+              <span class="repo-stat-number" id="totalForks">-</span>
+              <span class="repo-stat-label">Forks</span>
+            </div>
+            <div class="repo-stat">
+              <span class="repo-stat-number" id="totalLanguages">-</span>
+              <span class="repo-stat-label">Lenguajes</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contenido principal -->
+      <section class="repositories-content">
+        <div class="container">
+          <!-- Sección de filtros -->
+          <div class="filters-section">
+            <h3 class="filters-title">
+              <i class="fas fa-filter"></i> Filtros de Búsqueda
+            </h3>
+            <div class="filters-grid">
+              <div class="filter-group">
+                <label class="filter-label">
+                  <i class="fas fa-search"></i> Buscar por nombre
+                </label>
+                <input type="text" id="searchInput" class="filter-input" placeholder="Nombre del repositorio...">
+              </div>
+              <div class="filter-group">
+                <label class="filter-label">
+                  <i class="fas fa-code"></i> Lenguaje de programación
+                </label>
+                <select id="languageFilter" class="filter-select">
+                  <option value="">Todos los lenguajes</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <label class="filter-label">
+                  <i class="fas fa-sort"></i> Ordenar por
+                </label>
+                <select id="sortFilter" class="filter-select">
+                  <option value="updated">Última actualización</option>
+                  <option value="created">Fecha de creación</option>
+                  <option value="name">Nombre (A-Z)</option>
+                  <option value="stars">Estrellas</option>
+                  <option value="forks">Forks</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <label class="filter-label">
+                  <i class="fas fa-star"></i> Mínimo de estrellas
+                </label>
+                <input type="number" id="starsFilter" class="filter-input" placeholder="0" min="0">
+              </div>
+            </div>
+            <div class="filter-buttons">
+              <button class="filter-btn apply" id="applyFilters">
+                <i class="fas fa-filter"></i> Aplicar Filtros
+              </button>
+              <button class="filter-btn clear" id="clearFilters">
+                <i class="fas fa-times"></i> Limpiar
+              </button>
+            </div>
+          </div>
+
+          <!-- Estados de carga y error -->
+          <div id="loadingState" class="loading-state">
+            <div class="loading-spinner"></div>
+            <p>Cargando repositorios desde GitHub...</p>
+          </div>
+
+          <div id="errorState" class="error-state" style="display: none;">
+            <div class="error-icon">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h3>Error al cargar repositorios</h3>
+            <p>Hubo un problema al conectar con la API de GitHub. Por favor, inténtalo de nuevo más tarde.</p>
+            <button class="filter-btn apply" onclick="loadRepositories()">
+              <i class="fas fa-redo"></i> Reintentar
+            </button>
+          </div>
+
+          <div id="noResultsState" class="no-results" style="display: none;">
+            <div class="no-results-icon">
+              <i class="fas fa-search"></i>
+            </div>
+            <h3>No se encontraron repositorios</h3>
+            <p>Intenta ajustar los filtros de búsqueda para encontrar lo que buscas.</p>
+          </div>
+
+          <!-- Grid de repositorios -->
+          <div id="repositoriesGrid" class="repositories-grid" style="display: none;">
+            <!-- Los repositorios se cargarán dinámicamente aquí -->
+          </div>
+
+          <!-- Botón para volver -->
+          <div style="text-align: center; margin-top: 60px;">
+            <a href="../index.html" class="back-home">
+              <i class="fas fa-arrow-left"></i>
+              Volver al Portafolio
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <p class="copyright">© 2025 Nicolás Ceballos Brito. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+  </body>
+</html>

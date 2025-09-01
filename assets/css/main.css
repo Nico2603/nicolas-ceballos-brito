@@ -1,0 +1,24 @@
+/* ========================================
+   ARCHIVO CSS PRINCIPAL - IMPORTA TODOS LOS MÓDULOS
+======================================== */
+
+/* Variables y configuración global */
+@import 'variables.css';
+
+/* Estilos base y tipografía */
+@import 'base.css';
+
+/* Layout y contenedores */
+@import 'layout.css';
+
+/* Componentes reutilizables */
+@import 'components.css';
+
+/* Navegación */
+@import 'navigation.css';
+
+/* Animaciones */
+@import 'animations.css';
+
+/* Responsive design */
+@import 'responsive.css';

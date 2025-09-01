@@ -1,0 +1,409 @@
+/* ========================================
+   MEDIA QUERIES - RESPONSIVE DESIGN
+======================================== */
+
+/* Dispositivos medianos (tabletas, 768px y menos) */
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+  
+  /* Header y navegación móvil */
+  .header .container {
+    justify-content: flex-start;
+    padding: 0 15px;
+    height: 50px;
+  }
+  
+  .mobile-menu-toggle {
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .header::before {
+    content: 'Nicolás Ceballos Brito';
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: transparent;
+    background-image: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    background-clip: text;
+    -webkit-background-clip: text;
+    letter-spacing: 1px;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .nav-menu {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: height 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 999;
+    gap: 0;
+  }
+  
+  .nav-menu.active {
+    height: calc(100vh - 50px);
+    padding: 20px 0;
+  }
+  
+  .nav-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition-delay: calc(var(--item-index, 0) * 0.1s);
+    text-align: center;
+    width: 85%;
+    max-width: 300px;
+    margin: 5px auto;
+  }
+  
+  .nav-menu.active .nav-item {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .nav-link {
+    display: block;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .dropdown-content {
+    position: static;
+    background-color: rgba(245, 245, 245, 0.9);
+    border-radius: 8px;
+    margin: 5px auto;
+    width: 90%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.19, 1, 0.22, 1),
+                padding 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    padding: 0;
+    box-shadow: none;
+  }
+  
+  .nav-item.dropdown.active .dropdown-content {
+    max-height: 300px;
+    padding: 10px 0;
+    display: block;
+  }
+  
+  .dropdown-content a {
+    transform: translateY(10px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition-delay: calc(var(--link-index, 0) * 0.05s);
+    text-align: center;
+    padding: 10px 0;
+    margin: 5px 0;
+  }
+  
+  .nav-item.dropdown.active .dropdown-content a {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  /* Ajustes de sección y contenido */
+  .section {
+    padding: 40px 0;
+  }
+  
+  .section-intro {
+    padding-top: 90px;
+  }
+  
+  .profile-image {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .section-text {
+    font-size: 1rem;
+  }
+  
+  /* Carrusel */
+  .carousel {
+    min-height: 480px;
+  }
+  
+  .carousel-img {
+    height: 250px;
+  }
+  
+  .carousel-content {
+    min-height: 230px;
+    max-height: 230px;
+  }
+  
+  .carousel-nav {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .carousel-nav.prev {
+    left: 10px;
+  }
+  
+  .carousel-nav.next {
+    right: 10px;
+  }
+  
+  /* Proyectos y repositorios */
+  .projects-grid,
+  .repositories-container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  /* Iconos sociales */
+  .social-icons {
+    gap: 15px;
+  }
+  
+  .social-icon {
+    width: 45px;
+    height: 45px;
+  }
+  
+  /* Footer */
+  .footer {
+    padding: 30px 0 15px;
+    margin-top: 60px;
+  }
+  
+  .copyright {
+    font-size: 0.75rem;
+  }
+}
+
+/* Dispositivos pequeños (móviles, 576px y menos) */
+@media (max-width: 576px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .container {
+    padding: 0 15px;
+  }
+  
+  /* Header y navegación móvil */
+  .header {
+    height: 50px;
+  }
+  
+  /* Secciones */
+  .section {
+    padding: 30px 0;
+  }
+  
+  .section-intro {
+    padding-top: 80px;
+    min-height: auto;
+  }
+  
+  .profile-image {
+    width: 180px;
+    height: 180px;
+    margin: 15px auto;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .section-text {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Botones */
+  .btn-primary,
+  .btn-secondary {
+    padding: 8px 20px;
+    font-size: 0.85rem;
+  }
+  
+  /* Carrusel */
+  .carousel {
+    min-height: 420px;
+    margin: 15px auto;
+  }
+  
+  .carousel-img {
+    height: 200px;
+  }
+  
+  .carousel-content {
+    min-height: 220px;
+    max-height: 220px;
+    padding: 12px 15px;
+  }
+  
+  .carousel-title {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+  
+  .carousel-description {
+    font-size: 0.85rem;
+    line-height: 1.2;
+  }
+  
+  .carousel-nav {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .carousel-nav i {
+    font-size: 0.8rem;
+  }
+  
+  /* Proyectos y repositorios */
+  .projects-grid {
+    gap: 15px;
+    margin: 20px auto;
+  }
+  
+  .project-img {
+    height: 160px;
+  }
+  
+  .project-content {
+    padding: 15px;
+  }
+  
+  .project-title {
+    font-size: 1.1rem;
+  }
+  
+  .project-description {
+    font-size: 0.85rem;
+  }
+  
+  .project-link {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+  
+  .repositories-container {
+    gap: 15px;
+    grid-template-columns: 1fr;
+  }
+  
+  /* Contacto */
+  .contacto-wrapper {
+    padding: 20px;
+  }
+  
+  /* Iconos sociales */
+  .social-icons {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .social-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .social-icon i {
+    font-size: 1.1rem;
+  }
+  
+  /* Footer */
+  .footer {
+    padding: 25px 0 15px;
+    margin-top: 40px;
+  }
+  
+  .copyright {
+    font-size: 0.75rem;
+  }
+}
+
+/* Dispositivos muy pequeños (320px y menos) */
+@media (max-width: 320px) {
+  .section-title {
+    font-size: 1.3rem;
+  }
+  
+  .profile-image {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .carousel {
+    min-height: 380px;
+  }
+  
+  .carousel-img {
+    height: 180px;
+  }
+  
+  .carousel-content {
+    min-height: 200px;
+    max-height: 200px;
+    padding: 10px 12px;
+  }
+  
+  .carousel-title {
+    font-size: 1rem;
+  }
+  
+  .carousel-description {
+    font-size: 0.8rem;
+  }
+  
+  .social-icon {
+    width: 35px;
+    height: 35px;
+  }
+  
+  /* Footer */
+  .footer {
+    padding: 20px 0 15px;
+    margin-top: 30px;
+  }
+  
+  .carousel-nav {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Prevenir desplazamiento cuando el menú está abierto */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* Overlay para menú abierto en móvil */
+body.menu-open::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+}

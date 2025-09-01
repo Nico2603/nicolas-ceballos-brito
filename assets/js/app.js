@@ -8,10 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Inicializar componentes
   initMobileMenu();
   initCarousel();
-  initViewMoreRepos();
   initScrollAnimations();
   initDropdownMenu();
   initEmailHandling();
+  initParallaxEffect();
 });
 
 /**
@@ -115,28 +115,43 @@ function initCarousel() {
     });
   }
   
-  // Cambio automático cada 5 segundos
+  // Cambio automático cada 8 segundos (tiempo extendido para transiciones más largas)
   setInterval(() => {
     changeSlide(1);
-  }, 5000);
+  }, 8000);
 }
 
 /**
- * Cambia el slide actual del carrusel
+ * Cambia el slide actual del carrusel con transiciones suaves
  * @param {number} direction - Dirección del cambio (1: siguiente, -1: anterior)
  */
 function changeSlide(direction) {
   const slides = document.querySelectorAll('.carousel-slide');
   if (slides.length === 0) return;
   
-  // Eliminar clase active del slide actual
-  slides[currentSlide].classList.remove('active');
+  // Eliminar clases del slide actual
+  slides[currentSlide].classList.remove('active', 'prev', 'next');
+  
+  // Agregar clase de dirección al slide saliente
+  if (direction === 1) {
+    slides[currentSlide].classList.add('prev');
+  } else {
+    slides[currentSlide].classList.add('next');
+  }
   
   // Calcular el nuevo índice
   currentSlide = (currentSlide + direction + slides.length) % slides.length;
   
-  // Añadir clase active al nuevo slide
-  slides[currentSlide].classList.add('active');
+  // Pequeño delay para suavizar la transición
+  setTimeout(() => {
+    // Limpiar todas las clases de transición
+    slides.forEach(slide => {
+      slide.classList.remove('prev', 'next');
+    });
+    
+    // Añadir clase active al nuevo slide
+    slides[currentSlide].classList.add('active');
+  }, 50);
 }
 
 /**
@@ -246,10 +261,11 @@ function displayRepos(repos, container) {
     return;
   }
   
-  // Añadir cada repositorio
-  repos.forEach(repo => {
+  // Añadir cada repositorio con animación
+  repos.forEach((repo, index) => {
     const repoEl = document.createElement('div');
     repoEl.className = 'repo';
+    repoEl.style.setProperty('--repo-index', index);
     
     // Crear el HTML para el repositorio
     repoEl.innerHTML = `
@@ -343,4 +359,38 @@ function initEmailHandling() {
       // En móvil, deja que el enlace mailto funcione normalmente
     });
   });
+}
+
+/**
+ * Inicializa un efecto parallax sutil para mejorar la experiencia visual
+ */
+function initParallaxEffect() {
+  let ticking = false;
+  
+  function updateParallax() {
+    const scrolled = window.pageYOffset;
+    const parallaxElements = document.querySelectorAll('.section-intro, .profile-image');
+    
+    parallaxElements.forEach(element => {
+      const speed = element.classList.contains('profile-image') ? 0.3 : 0.1;
+      const yPos = -(scrolled * speed);
+      element.style.transform = `translate3d(0, ${yPos}px, 0)`;
+    });
+    
+    ticking = false;
+  }
+  
+  function requestTick() {
+    if (!ticking) {
+      requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  }
+  
+  // Solo aplicar parallax en dispositivos no móviles para mejor rendimiento
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  
+  if (!isMobile) {
+    window.addEventListener('scroll', requestTick);
+  }
 }
