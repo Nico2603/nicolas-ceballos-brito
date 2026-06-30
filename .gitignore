@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 .vercel
+
+# Graphify knowledge graph outputs (regenerable)
+graphify-out/

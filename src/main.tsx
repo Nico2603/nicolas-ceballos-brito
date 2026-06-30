@@ -8,7 +8,7 @@ import './index.css'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <HelmetProvider>
-      <BrowserRouter basename="/nicolas-ceballos-brito">
+      <BrowserRouter>
         <App />
       </BrowserRouter>
     </HelmetProvider>

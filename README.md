@@ -30,8 +30,16 @@ npm run preview
 
 ## Despliegue
 
-- **GitHub Pages:** https://nico2603.github.io/nicolas-ceballos-brito/
-- Build estático con `npm run build` → carpeta `dist/`
+- **Producción:** https://nicolas-ceballos-brito.vercel.app
+- **Plataforma:** Vercel (deploy automático desde `master` vía GitHub)
+- Build: `npm run build` → carpeta `dist/`
+
+## Graphify
+
+```bash
+npx graphify update .    # Actualizar grafo de conocimiento (AST, sin costo API)
+npx graphify query "..." # Consultar el grafo en graphify-out/
+```
 
 ## Licencia
 
