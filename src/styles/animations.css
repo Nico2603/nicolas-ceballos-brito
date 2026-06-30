@@ -34,6 +34,50 @@
 .hero-entrance-delay-3 { animation-delay: 0.37s; }
 .hero-entrance-delay-4 { animation-delay: 0.48s; }
 
+.hero-lcp-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.hero-cta-entrance {
+  animation: hero-fade-up 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.55s;
+}
+
+.hero-social-entrance {
+  animation: hero-fade-up 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.66s;
+}
+
+.hero-stat-entrance {
+  animation: hero-stat-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.hero-stat-entrance-delay-0 { animation-delay: 0.8s; }
+.hero-stat-entrance-delay-1 { animation-delay: 0.9s; }
+.hero-stat-entrance-delay-2 { animation-delay: 1s; }
+
+.hero-scroll-hint-entrance {
+  animation: hero-scroll-hint-fade 0.6s ease both;
+  animation-delay: 1.4s;
+}
+
+@keyframes hero-stat-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes hero-scroll-hint-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 .hero-profile-float {
   animation: hero-profile-float 5.5s ease-in-out infinite;
 }
@@ -155,6 +199,11 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero-aurora,
+  .hero-profile-float {
+    animation: none !important;
+  }
+
   *,
   *::before,
   *::after {

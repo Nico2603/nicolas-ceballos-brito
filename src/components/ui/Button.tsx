@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import type { ButtonHTMLAttributes, ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -9,6 +9,7 @@ interface ButtonBaseProps {
   children: ReactNode
   trailingIcon?: ReactNode
   className?: string
+  animated?: boolean
 }
 
 type ButtonAsButton = ButtonBaseProps &
@@ -50,8 +51,22 @@ const motionProps = {
   whileTap: { scale: 0.97 },
 } as const
 
+function MotionWrap({
+  animated,
+  children,
+}: {
+  animated: boolean
+  children: ReactNode
+}) {
+  if (!animated) {
+    return <>{children}</>
+  }
+
+  return <m.div {...motionProps}>{children}</m.div>
+}
+
 export default function Button(props: ButtonProps) {
-  const { variant = 'primary', children, trailingIcon, className = '' } = props
+  const { variant = 'primary', children, trailingIcon, className = '', animated = false } = props
   const classes = getClasses(variant, className)
 
   const inner = (
@@ -67,18 +82,18 @@ export default function Button(props: ButtonProps) {
 
   if ('to' in props && props.to) {
     return (
-      <motion.div {...motionProps}>
+      <MotionWrap animated={animated}>
         <Link to={props.to} className={classes}>
           {inner}
         </Link>
-      </motion.div>
+      </MotionWrap>
     )
   }
 
   if ('href' in props && props.href) {
     const { href, external, onClick, ...rest } = props as ButtonAsLink
     return (
-      <motion.div {...motionProps}>
+      <MotionWrap animated={animated}>
         <a
           href={href}
           className={classes}
@@ -89,16 +104,16 @@ export default function Button(props: ButtonProps) {
         >
           {inner}
         </a>
-      </motion.div>
+      </MotionWrap>
     )
   }
 
   const { onClick, disabled, type = 'button', ...rest } = props as ButtonAsButton
   return (
-    <motion.div {...motionProps}>
+    <MotionWrap animated={animated}>
       <button type={type} onClick={onClick} disabled={disabled} className={classes} {...rest}>
         {inner}
       </button>
-    </motion.div>
+    </MotionWrap>
   )
 }

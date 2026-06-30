@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Briefcase, ExternalLink, GraduationCap, MapPin } from 'lucide-react'
 import { currentRoles, graduation, PROFESSIONAL_LOCATION } from '../data/profile'
 import SectionWrapper from './SectionWrapper'
@@ -31,14 +31,14 @@ export default function CurrentExperience() {
           description={`Extraída de mi perfil en LinkedIn · ${PROFESSIONAL_LOCATION}`}
         />
 
-        <motion.div
+        <m.div
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: '-60px' }}
           className="space-y-8"
         >
-          <motion.div variants={itemVariants}>
+          <m.div variants={itemVariants}>
             <Card hover={false} className="overflow-hidden border-[var(--color-accent-primary)]/30">
               <div className="p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-6 bg-gradient-to-r from-[var(--color-accent-primary)]/10 to-transparent">
                 <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-[var(--color-accent-primary)]/20 shrink-0">
@@ -61,11 +61,11 @@ export default function CurrentExperience() {
                 </div>
               </div>
             </Card>
-          </motion.div>
+          </m.div>
 
           <div className="grid md:grid-cols-2 gap-6">
             {currentRoles.map((role) => (
-              <motion.div
+              <m.div
                 key={role.id}
                 variants={itemVariants}
                 className={role.featured ? 'md:col-span-2' : ''}
@@ -125,10 +125,10 @@ export default function CurrentExperience() {
                     </Button>
                   </article>
                 </Card>
-              </motion.div>
+              </m.div>
             ))}
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </SectionWrapper>
   )

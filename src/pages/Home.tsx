@@ -18,11 +18,7 @@ const LaboresCarousel = lazy(() => import('../components/LaboresCarousel'))
 const FaqSection = lazy(() => import('../components/FaqSection'))
 const Contact = lazy(() => import('../components/Contact'))
 
-const LCP_IMAGE_PRELOAD = {
-  href: '/images/pic-288.webp',
-  srcSet: '/images/pic-288.webp 288w, /images/pic-576.webp 576w',
-  sizes: '(max-width: 768px) 224px, 288px',
-}
+import { PROFILE_IMAGE_PRELOAD } from '../constants/lcp-image'
 
 export default function Home() {
   return (
@@ -37,11 +33,11 @@ export default function Home() {
         <link
           rel="preload"
           as="image"
-          href={LCP_IMAGE_PRELOAD.href}
+          href={PROFILE_IMAGE_PRELOAD.href}
           type="image/webp"
           // @ts-expect-error — atributos HTML de preload de imagen LCP
-          imagesrcset={LCP_IMAGE_PRELOAD.srcSet}
-          imagesizes={LCP_IMAGE_PRELOAD.sizes}
+          imagesrcset={PROFILE_IMAGE_PRELOAD.srcSet}
+          imagesizes={PROFILE_IMAGE_PRELOAD.sizes}
           fetchpriority="high"
         />
       </Helmet>

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Clock, ExternalLink, GitFork, Star } from 'lucide-react'
 import { GitHubIcon } from './icons/SocialIcons'
 import { getTimeSince } from '../lib/github'
@@ -14,7 +14,7 @@ interface RepositoryCardProps {
 
 export default function RepositoryCard({ repo, index }: RepositoryCardProps) {
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.05, duration: 0.4 }}
@@ -80,6 +80,6 @@ export default function RepositoryCard({ repo, index }: RepositoryCardProps) {
           </div>
         </article>
       </Card>
-    </motion.div>
+    </m.div>
   )
 }

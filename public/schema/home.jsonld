@@ -1,16 +1,3 @@
-<!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="google-site-verification" content="PENDIENTE_VERIFICACION_GSC" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#F0F7FF" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#0B1220" media="(prefers-color-scheme: dark)" />
-    <meta name="author" content="Nicolás Ceballos Brito" />
-    <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
@@ -98,6 +85,46 @@
           "recognizedBy": {
             "@type": "Organization",
             "name": "Universidad Tecnológica de Pereira"
+          }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Desarrollo de Habilidades para el Trabajo Colaborativo",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Universidad Católica de Pereira"
+          }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Fundamentos UX/UI",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Universidad Católica de Pereira"
+          }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Introducción a las Metodologías Ágiles",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Universidad Católica de Pereira"
+          }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Desarrollo de habilidades de autogestión para el siglo XXI",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Universidad Católica de Pereira"
+          }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "SQL",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "TestDome"
           }
         }
       ],
@@ -260,10 +287,3 @@
     }
   ]
 }
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>

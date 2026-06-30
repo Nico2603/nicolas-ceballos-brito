@@ -58,13 +58,40 @@ async function initGa(measurementId: string): Promise<void> {
   ready = true
 }
 
-function scheduleDeferredInit(callback: () => void): void {
-  if (typeof window.requestIdleCallback === 'function') {
-    window.requestIdleCallback(() => callback(), { timeout: 4000 })
-    return
+function scheduleDeferredInit(callback: () => void): () => void {
+  let started = false
+
+  const run = () => {
+    if (started) return
+    started = true
+    cleanup()
+    callback()
   }
 
-  globalThis.setTimeout(callback, 2000)
+  const interactionEvents = ['scroll', 'pointerdown', 'keydown'] as const
+  const cleanup = () => {
+    for (const eventName of interactionEvents) {
+      window.removeEventListener(eventName, run, true)
+    }
+  }
+
+  for (const eventName of interactionEvents) {
+    window.addEventListener(eventName, run, { once: true, passive: true, capture: true })
+  }
+
+  if (typeof window.requestIdleCallback === 'function') {
+    const idleId = window.requestIdleCallback(run, { timeout: 8000 })
+    return () => {
+      cleanup()
+      window.cancelIdleCallback(idleId)
+    }
+  }
+
+  const timeoutId = globalThis.setTimeout(run, 8000)
+  return () => {
+    cleanup()
+    globalThis.clearTimeout(timeoutId)
+  }
 }
 
 export async function initGoogleAnalytics(): Promise<void> {

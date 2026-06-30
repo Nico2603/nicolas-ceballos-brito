@@ -29,8 +29,10 @@ El pipeline `prebuild` genera automáticamente:
 - `public/llms.txt` — archivo AEO para motores de respuesta (incluye datos de LinkedIn)
 - `public/images/og-image.webp` — tarjeta Open Graph de marca (1200×630, sin foto; ver abajo)
 - `public/apple-touch-icon.png` — derivado de la tarjeta OG (180×180)
-- `public/images/pic-288.webp` y `pic-576.webp` — variantes responsive de la foto de perfil (LCP)
-- `scripts/inject-home-schema.ts` — inyecta JSON-LD de home en `index.html` vía placeholder `<!-- INJECT_HOME_JSON_LD -->` (el HTML base queda liviano; el schema se genera desde `src/lib/structured-data.ts` en cada build)
+- `public/images/pic-224.webp`, `pic-288.webp` y `pic-576.webp` — variantes responsive de la foto de perfil (LCP)
+- `public/images/p*-640.webp` — variantes responsive del carrusel Labores/LinkedIn
+- `public/schema/home.jsonld` — schema completo (credenciales íntegras) para referencia SEO
+- `scripts/inject-home-schema.ts` — inyecta JSON-LD lite en `index.html` vía placeholder `<!-- INJECT_HOME_JSON_LD -->` (máx. 5 credenciales inline; schema completo en `public/schema/home.jsonld`)
 
 El paso `prerender` (Puppeteer + Chromium) genera HTML estático por ruta en `dist/`. Tras capturar cada página, `scripts/prerender.ts` aplica post-proceso:
 
@@ -197,6 +199,20 @@ VITE_GA_MEASUREMENT_ID=G-QFQFLD69P3
 **Vercel** → Settings → Environment Variables → `VITE_GA_MEASUREMENT_ID` = `G-QFQFLD69P3` (Production).
 
 GA4 también permite verificar el dominio en Search Console como alternativa al meta tag.
+
+## Rendimiento
+
+Baseline de junio 2026 (Lighthouse lab): móvil Performance 32 · LCP 6.2 s · desktop Performance 58. Objetivos en `lighthouserc.json` y `reports/performance-baseline.json`.
+
+```bash
+npm run audit:perf          # Lighthouse móvil → reports/lighthouse/
+npm run audit:perf:full     # Móvil + desktop
+npm run audit:perf:ci       # Build + Lighthouse CI local (preview en :4173)
+```
+
+Optimizaciones aplicadas: H1 visible sin animación de opacidad, fuentes críticas + subset latino, imágenes responsive (perfil y carrusel), GA diferido post-interacción/LCP, Hero sin Framer Motion, Lenis solo en desktop (import dinámico), `m` de LazyMotion en componentes animados, JSON-LD lite inline + schema completo en `/schema/home.jsonld`, prerender ligero sin GA.
+
+CI: `.github/workflows/lighthouse.yml` ejecuta Lighthouse CI en cada PR.
 
 ## Graphify
 

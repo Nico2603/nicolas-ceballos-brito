@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from 'framer-motion'
+import { m, useReducedMotion } from 'framer-motion'
 import { Heart, RotateCcw } from 'lucide-react'
 import {
   FORM_SUCCESS_ANOTHER,
@@ -43,7 +43,7 @@ export default function ContactFormSuccess({ submittedName, onReset }: ContactFo
   const shouldReduceMotion = useReducedMotion()
 
   return (
-    <motion.div
+    <m.div
       role="status"
       aria-live="polite"
       className="relative flex flex-col items-center text-center py-4 md:py-6"
@@ -53,7 +53,7 @@ export default function ContactFormSuccess({ submittedName, onReset }: ContactFo
       exit="exit"
     >
       <div className="relative mb-8" aria-hidden="true">
-        <motion.div
+        <m.div
           className="absolute inset-0 -m-6 rounded-full blur-2xl"
           style={{
             background:
@@ -69,7 +69,7 @@ export default function ContactFormSuccess({ submittedName, onReset }: ContactFo
         />
 
         {RAY_ANGLES.map((angle, index) => (
-          <motion.span
+          <m.span
             key={angle}
             className="absolute left-1/2 top-1/2 h-10 w-0.5 origin-bottom rounded-full"
             style={{
@@ -93,7 +93,7 @@ export default function ContactFormSuccess({ submittedName, onReset }: ContactFo
           />
         ))}
 
-        <motion.div
+        <m.div
           className="relative flex h-20 w-20 items-center justify-center rounded-full border-2 shadow-lg"
           style={{
             borderColor: 'color-mix(in srgb, var(--color-accent-primary) 45%, transparent)',
@@ -110,7 +110,7 @@ export default function ContactFormSuccess({ submittedName, onReset }: ContactFo
           }
         >
           <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-            <motion.path
+            <m.path
               d="M9 18.5L15.5 25L27 12"
               stroke="var(--color-accent-primary)"
               strokeWidth="3"
@@ -125,34 +125,34 @@ export default function ContactFormSuccess({ submittedName, onReset }: ContactFo
               }
             />
           </svg>
-        </motion.div>
+        </m.div>
       </div>
 
-      <motion.p
+      <m.p
         variants={itemVariants}
         className="font-semibold text-xs uppercase tracking-[0.2em] mb-3"
         style={{ color: 'var(--color-accent-primary)' }}
       >
         {FORM_SUCCESS_GREETING(submittedName)}
-      </motion.p>
+      </m.p>
 
-      <motion.h3
+      <m.h3
         variants={itemVariants}
         className="font-display text-2xl md:text-3xl font-semibold mb-4 tracking-tight leading-tight"
         style={{ color: 'var(--color-text-primary)' }}
       >
         {FORM_SUCCESS_TITLE}
-      </motion.h3>
+      </m.h3>
 
-      <motion.p
+      <m.p
         variants={itemVariants}
         className="text-base leading-relaxed max-w-sm mb-2"
         style={{ color: 'var(--color-text-secondary)' }}
       >
         {FORM_SUCCESS_TRUST}
-      </motion.p>
+      </m.p>
 
-      <motion.div
+      <m.div
         variants={itemVariants}
         className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-8"
         style={{
@@ -162,9 +162,9 @@ export default function ContactFormSuccess({ submittedName, onReset }: ContactFo
       >
         <Heart className="w-4 h-4 shrink-0" strokeWidth={2} aria-hidden="true" />
         <p className="text-sm font-medium">{FORM_SUCCESS_RESPONSE}</p>
-      </motion.div>
+      </m.div>
 
-      <motion.button
+      <m.button
         variants={itemVariants}
         type="button"
         onClick={onReset}
@@ -177,7 +177,7 @@ export default function ContactFormSuccess({ submittedName, onReset }: ContactFo
           aria-hidden="true"
         />
         {FORM_SUCCESS_ANOTHER}
-      </motion.button>
-    </motion.div>
+      </m.button>
+    </m.div>
   )
 }

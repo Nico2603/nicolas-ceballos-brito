@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Calendar, ExternalLink } from 'lucide-react'
 import { SOCIAL_LINKS } from '../constants/social'
 import {
@@ -12,18 +12,25 @@ import SectionWrapper from './SectionWrapper'
 import Badge from './ui/Badge'
 import Button from './ui/Button'
 import Card from './ui/Card'
+import { carouselImageSources } from '../constants/lcp-image'
 import OptimizedImage from './ui/OptimizedImage'
 import SectionHeader from './ui/SectionHeader'
 
-function PostImage({ imageUrl, title, priority = false }: { imageUrl?: string; title: string; priority?: boolean }) {
+function PostImage({ imageUrl, title }: { imageUrl?: string; title: string }) {
   if (imageUrl) {
+    const responsive =
+      imageUrl.startsWith('/images/') && imageUrl.endsWith('.webp')
+        ? carouselImageSources(imageUrl)
+        : { src: imageUrl, srcSet: undefined, sizes: undefined }
+
     return (
       <OptimizedImage
-        src={imageUrl}
+        src={responsive.src}
+        srcSet={responsive.srcSet}
+        sizes={responsive.sizes}
         alt={title}
         width={640}
         height={360}
-        priority={priority}
         wrapperClassName="w-full h-full"
         className="w-full h-full object-cover"
       />
@@ -55,7 +62,7 @@ export default function LinkedInFeed() {
         />
 
         {featured && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
@@ -65,7 +72,7 @@ export default function LinkedInFeed() {
             <Card className="overflow-hidden">
               <article className="grid md:grid-cols-5 gap-0">
                 <div className="md:col-span-2 h-56 md:h-auto md:min-h-[280px] overflow-hidden">
-                  <PostImage imageUrl={featured.imageUrl} title={featured.title} priority />
+                  <PostImage imageUrl={featured.imageUrl} title={featured.title} />
                 </div>
                 <div className="md:col-span-3 p-6 md:p-8 flex flex-col justify-center">
                   <div className="flex flex-wrap items-center gap-3 mb-3">
@@ -103,13 +110,13 @@ export default function LinkedInFeed() {
                 </div>
               </article>
             </Card>
-          </motion.div>
+          </m.div>
         )}
 
         {secondary.length > 0 && (
           <div className="grid md:grid-cols-2 gap-6 mb-10">
             {secondary.map((post, index) => (
-              <motion.div
+              <m.div
                 key={post.id}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -147,7 +154,7 @@ export default function LinkedInFeed() {
                     </div>
                   </article>
                 </Card>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         )}

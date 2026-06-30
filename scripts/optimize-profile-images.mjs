@@ -1,4 +1,5 @@
-import { access, rename, writeFile } from 'node:fs/promises'
+import { access } from 'node:fs/promises'
+import { rename, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import sharp from 'sharp'
@@ -26,6 +27,11 @@ async function optimizeProfileImage() {
   const input = await sharp(picPath).toBuffer()
 
   await sharp(input)
+    .resize(224, 224, { fit: 'cover', position: 'centre' })
+    .webp({ quality: 82, effort: 4 })
+    .toFile(join(imagesDir, 'pic-224.webp'))
+
+  await sharp(input)
     .resize(288, 288, { fit: 'cover', position: 'centre' })
     .webp({ quality: 82, effort: 4 })
     .toFile(join(imagesDir, 'pic-288.webp'))
@@ -35,7 +41,20 @@ async function optimizeProfileImage() {
     .webp({ quality: 82, effort: 4 })
     .toFile(join(imagesDir, 'pic-576.webp'))
 
-  console.log('Variantes pic-288.webp y pic-576.webp generadas')
+  console.log('Variantes pic-224.webp, pic-288.webp y pic-576.webp generadas')
+}
+
+async function generateCarouselVariant(imagePath, filename) {
+  const meta = await sharp(imagePath).metadata()
+  const baseName = filename.replace('.webp', '')
+  const width640 = Math.min(meta.width ?? 640, 640)
+
+  await sharp(imagePath)
+    .resize(width640, undefined, { withoutEnlargement: true })
+    .webp({ quality: 78, effort: 4 })
+    .toFile(join(imagesDir, `${baseName}-640.webp`))
+
+  console.log(`${baseName}-640.webp generado`)
 }
 
 async function compressCarouselImages() {
@@ -46,6 +65,8 @@ async function compressCarouselImages() {
     if (!(await fileExists(imagePath))) continue
 
     try {
+      await generateCarouselVariant(imagePath, filename)
+
       const meta = await sharp(imagePath).metadata()
       const maxWidth = 960
       const needsResize = meta.width && meta.width > maxWidth
@@ -61,7 +82,7 @@ async function compressCarouselImages() {
       await rename(tempPath, imagePath)
       console.log(`${filename} comprimido${needsResize ? ` (max ${maxWidth}px)` : ''}`)
     } catch (error) {
-      console.warn(`${filename}: no se pudo comprimir`, error instanceof Error ? error.message : error)
+      console.warn(`${filename}: no se pudo optimizar`, error instanceof Error ? error.message : error)
     }
   }
 }

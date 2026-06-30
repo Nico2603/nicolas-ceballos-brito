@@ -1,5 +1,5 @@
 import { useId, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, m } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import type { TopicFaqItem } from '../lib/structured-data'
 
@@ -38,7 +38,7 @@ function FaqAccordionItem({ item, index }: FaqAccordionItemProps) {
 
       <AnimatePresence initial={false}>
         {isOpen && (
-          <motion.div
+          <m.div
             id={panelId}
             role="region"
             aria-labelledby={triggerId}
@@ -51,7 +51,7 @@ function FaqAccordionItem({ item, index }: FaqAccordionItemProps) {
             <p className="faq-answer px-5 pb-5 text-center text-justify leading-relaxed text-[var(--color-text-secondary)]">
               {item.answer}
             </p>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </article>

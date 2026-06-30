@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 
 interface SectionHeaderProps {
   eyebrow?: string
@@ -20,7 +20,7 @@ export default function SectionHeader({
   const alignClass = align === 'center' ? 'text-center mx-auto' : 'text-left'
 
   return (
-    <motion.div
+    <m.div
       className={`max-w-3xl mb-12 ${alignClass} ${className}`}
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -52,6 +52,6 @@ export default function SectionHeader({
           {description}
         </p>
       )}
-    </motion.div>
+    </m.div>
   )
 }

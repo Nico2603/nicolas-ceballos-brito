@@ -28,7 +28,12 @@ export interface BreadcrumbItem {
   path: string
 }
 
-function personNode() {
+function personNode(options?: { maxCredentials?: number }) {
+  const credentials =
+    options?.maxCredentials !== undefined
+      ? PROFESSIONAL_CREDENTIALS.slice(0, options.maxCredentials)
+      : PROFESSIONAL_CREDENTIALS
+
   return {
     '@type': 'Person',
     '@id': `${SITE_URL}/#person`,
@@ -54,7 +59,7 @@ function personNode() {
       name: PROFESSIONAL_ALUMNI.name,
       url: PROFESSIONAL_ALUMNI.url,
     },
-    hasCredential: PROFESSIONAL_CREDENTIALS.map((credential) => ({
+    hasCredential: credentials.map((credential) => ({
       '@type': 'EducationalOccupationalCredential',
       credentialCategory: credential.category,
       recognizedBy: {
@@ -131,6 +136,46 @@ function speakableNode(pageUrl: string, cssSelectors: string[]) {
 }
 
 export function buildHomeStructuredData() {
+  const featuredPost = getFeaturedLinkedInPost()
+  const graph: Record<string, unknown>[] = [
+    websiteNode(),
+    personNode({ maxCredentials: 5 }),
+    organizationNode(),
+    {
+      '@type': 'ProfilePage',
+      '@id': `${SITE_URL}/#webpage`,
+      url: SITE_URL,
+      name: SEO_SITE_NAME,
+      description: PROFESSIONAL_DESCRIPTION,
+      inLanguage: 'es-CO',
+      isPartOf: { '@id': `${SITE_URL}/#website` },
+      about: { '@id': `${SITE_URL}/#person` },
+      mainEntity: { '@id': `${SITE_URL}/#person` },
+    },
+    faqPageNode(`${SITE_URL}/#faq`, faqItems),
+    speakableNode(`${SITE_URL}/`, ['#inicio h1', '#inicio .direct-answer', '#faq h2', '.faq-answer']),
+  ]
+
+  if (featuredPost) {
+    graph.push({
+      '@type': 'SocialMediaPosting',
+      '@id': `${SITE_URL}/#featured-linkedin-post`,
+      headline: featuredPost.title,
+      articleBody: featuredPost.excerpt,
+      datePublished: featuredPost.publishedAt,
+      url: featuredPost.postUrl,
+      author: { '@id': `${SITE_URL}/#person` },
+      image: featuredPost.imageUrl ? `${SITE_URL}${featuredPost.imageUrl}` : SEO_OG_IMAGE,
+    })
+  }
+
+  return {
+    '@context': 'https://schema.org',
+    '@graph': graph,
+  }
+}
+
+export function buildFullHomeStructuredData() {
   const featuredPost = getFeaturedLinkedInPost()
   const graph: Record<string, unknown>[] = [
     websiteNode(),
@@ -427,4 +472,8 @@ export function getRepositoriesSnapshot() {
 
 export function buildHomeStructuredDataJson(): string {
   return JSON.stringify(buildHomeStructuredData(), null, 2)
+}
+
+export function buildFullHomeStructuredDataJson(): string {
+  return JSON.stringify(buildFullHomeStructuredData(), null, 2)
 }

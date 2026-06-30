@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion'
 import { ArrowRight, ChevronDown, Sparkles } from 'lucide-react'
+import { PROFILE_IMAGE } from '../constants/lcp-image'
 import { graduation } from '../data/profile'
 import { FULL_NAME } from '../constants/social'
 import { heroBio } from '../data/content'
@@ -41,7 +41,7 @@ export default function Hero() {
               Full-Stack Developer · Ing. Sistemas
             </p>
 
-            <h1 className="hero-entrance hero-entrance-delay-2 font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-[var(--hero-text)] mb-4 leading-[1.05] hero-headline-glow">
+            <h1 className="hero-lcp-visible font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-[var(--hero-text)] mb-4 leading-[1.05] hero-headline-glow">
               {nameWords.map((word, i) => (
                 <span key={word}>
                   {i === 1 ? (
@@ -62,12 +62,7 @@ export default function Hero() {
               {heroBio}
             </p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 36 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-wrap gap-3 mb-8"
-            >
+            <div className="hero-cta-entrance flex flex-wrap gap-3 mb-8">
               <Button
                 variant="primary"
                 href="#portafolio"
@@ -87,15 +82,11 @@ export default function Hero() {
               >
                 Sobre mí
               </Button>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 36 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.66, ease: [0.22, 1, 0.36, 1] }}
-            >
+            <div className="hero-social-entrance">
               <SocialLinks variant={isDarkHero ? 'onDark' : 'default'} />
-            </motion.div>
+            </div>
           </div>
 
           <div className="hero-entrance hero-entrance-delay-3 flex flex-col items-center gap-6">
@@ -103,11 +94,11 @@ export default function Hero() {
               <div className="hero-profile-ring" aria-hidden />
               <div className="relative rounded-2xl p-[3px] bg-white/10 backdrop-blur-sm hero-profile-glow">
                 <img
-                  src="/images/pic.webp"
-                  srcSet="/images/pic-288.webp 288w, /images/pic-576.webp 576w"
-                  sizes="(max-width: 768px) 224px, 288px"
-                  width={288}
-                  height={288}
+                  src={PROFILE_IMAGE.src}
+                  srcSet={PROFILE_IMAGE.srcSet}
+                  sizes={PROFILE_IMAGE.sizes}
+                  width={PROFILE_IMAGE.width}
+                  height={PROFILE_IMAGE.height}
                   alt={`Foto de perfil de ${FULL_NAME}`}
                   fetchPriority="high"
                   loading="eager"
@@ -119,13 +110,9 @@ export default function Hero() {
 
             <div className="grid grid-cols-3 gap-3 w-full max-w-md">
               {miniStats.map((stat, i) => (
-                <motion.div
+                <div
                   key={stat.label}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.8 + i * 0.1, duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
-                  whileHover={{ scale: 1.05, y: -4 }}
-                  className="rounded-xl backdrop-blur-md border px-3 py-3 text-center shadow-[var(--shadow-glow-cyan)] bg-[var(--hero-stat-surface)] border-[var(--hero-stat-border)]"
+                  className={`hero-stat-entrance hero-stat-entrance-delay-${i} rounded-xl backdrop-blur-md border px-3 py-3 text-center shadow-[var(--shadow-glow-cyan)] bg-[var(--hero-stat-surface)] border-[var(--hero-stat-border)] transition-transform duration-300 hover:scale-105 hover:-translate-y-1`}
                 >
                   <div className="font-display text-xl font-bold text-[var(--color-accent-primary)]">
                     {stat.value}
@@ -133,24 +120,21 @@ export default function Hero() {
                   <div className="text-[10px] text-[var(--hero-text-muted)] leading-tight mt-0.5 font-medium">
                     {stat.label}
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
         </div>
       </div>
 
-      <motion.a
+      <a
         href="#portafolio"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4, duration: 0.6 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 text-[var(--hero-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors"
+        className="hero-scroll-hint-entrance absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 text-[var(--hero-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors"
         aria-label="Desplazarse a proyectos"
       >
         <span className="text-[10px] uppercase tracking-[0.2em] font-semibold">Explorar</span>
         <ChevronDown size={22} className="animate-[scroll-hint_2s_ease-in-out_infinite]" />
-      </motion.a>
+      </a>
     </section>
   )
 }

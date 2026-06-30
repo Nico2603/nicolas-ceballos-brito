@@ -8,6 +8,8 @@ interface OptimizedImageProps {
   width?: number
   height?: number
   priority?: boolean
+  srcSet?: string
+  sizes?: string
 }
 
 export default function OptimizedImage({
@@ -18,6 +20,8 @@ export default function OptimizedImage({
   width,
   height,
   priority = false,
+  srcSet,
+  sizes,
 }: OptimizedImageProps) {
   const [loaded, setLoaded] = useState(false)
   const [failed, setFailed] = useState(false)
@@ -41,6 +45,8 @@ export default function OptimizedImage({
       ) : (
         <img
           src={src}
+          srcSet={srcSet}
+          sizes={sizes}
           alt={alt}
           width={width}
           height={height}

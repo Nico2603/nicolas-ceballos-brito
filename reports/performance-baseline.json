@@ -1,0 +1,32 @@
+{
+  "capturedAt": "2026-06-29",
+  "url": "https://nicolasceballosbrito.com",
+  "source": "Lighthouse lab (mobile CPU 4x throttle, desktop default)",
+  "mobile": {
+    "performance": 32,
+    "seo": 100,
+    "lcp": "6.2 s",
+    "fcp": "3.5 s",
+    "tbt": "12080 ms",
+    "cls": 0.022,
+    "speedIndex": "9.5 s",
+    "tti": "17.2 s"
+  },
+  "desktop": {
+    "performance": 58,
+    "lcp": "2.7 s",
+    "fcp": "2.3 s",
+    "tbt": "240 ms",
+    "cls": 0.031,
+    "speedIndex": "6.9 s",
+    "tti": "4.8 s"
+  },
+  "targets": {
+    "performanceMobile": 85,
+    "performanceDesktop": 90,
+    "lcpMs": 2500,
+    "fcpMs": 1800,
+    "tbtMs": 800,
+    "clsMax": 0.1
+  }
+}

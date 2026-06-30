@@ -1,6 +1,7 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, m } from 'framer-motion'
 import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { carouselImageSources } from '../constants/lcp-image'
 import { laboresSlides } from '../data/content'
 import SectionWrapper from './SectionWrapper'
 import Button from './ui/Button'
@@ -28,7 +29,10 @@ export default function LaboresCarousel() {
 
     preloadIndices.forEach((index) => {
       const img = new Image()
-      img.src = laboresSlides[index].image
+      const sources = carouselImageSources(laboresSlides[index].image)
+      img.srcset = sources.srcSet
+      img.sizes = sources.sizes
+      img.src = sources.src
     })
   }, [current])
 
@@ -52,6 +56,7 @@ export default function LaboresCarousel() {
   }, [current])
 
   const slide = laboresSlides[current]
+  const slideImage = carouselImageSources(slide.image)
 
   return (
     <SectionWrapper id="labores" className="py-20 px-4 bg-[var(--color-bg-primary)] section-mesh-bg relative">
@@ -65,7 +70,7 @@ export default function LaboresCarousel() {
 
         <Card hover={false} className="relative overflow-visible">
           <AnimatePresence mode="wait">
-            <motion.article
+            <m.article
               key={slide.id}
               id={slide.id}
               initial={{ opacity: 0, x: 40 }}
@@ -76,11 +81,12 @@ export default function LaboresCarousel() {
             >
               <div className="h-64 md:h-auto md:min-h-[320px] overflow-hidden rounded-t-[15px] md:rounded-tr-none md:rounded-l-[15px]">
                 <OptimizedImage
-                  src={slide.image}
+                  src={slideImage.src}
+                  srcSet={slideImage.srcSet}
+                  sizes={slideImage.sizes}
                   alt={slide.alt}
                   width={640}
                   height={400}
-                  priority
                   wrapperClassName="w-full h-full min-h-[256px] md:min-h-[320px]"
                   className="w-full h-full object-cover"
                 />
@@ -96,13 +102,14 @@ export default function LaboresCarousel() {
                   variant="primary"
                   href={slide.detailUrl}
                   external
+                  animated
                   className="self-start !text-sm"
                   trailingIcon={<ExternalLink size={14} />}
                 >
                   Ver detalles
                 </Button>
               </div>
-            </motion.article>
+            </m.article>
           </AnimatePresence>
 
           <button
@@ -122,7 +129,7 @@ export default function LaboresCarousel() {
 
           <div className="px-6 pb-4 pt-2">
             <div className="h-1 rounded-full bg-[var(--color-bg-secondary)] overflow-hidden">
-              <motion.div
+              <m.div
                 className="h-full bg-[var(--color-accent-primary)] rounded-full"
                 style={{ width: `${progress * 100}%` }}
               />

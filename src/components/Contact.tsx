@@ -1,5 +1,5 @@
 import { MapPin, Mail, ArrowRight, Loader2 } from 'lucide-react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, m } from 'framer-motion'
 import SectionWrapper from './SectionWrapper'
 import ContactFormSuccess from './ContactFormSuccess'
 import PhoneInput from './PhoneInput'
@@ -153,7 +153,7 @@ export default function Contact() {
             </a>
           </div>
 
-          <motion.div
+          <m.div
             layout
             className="rounded-2xl p-8 border shadow-sm overflow-hidden"
             style={{
@@ -170,7 +170,7 @@ export default function Contact() {
                   onReset={resetForm}
                 />
               ) : (
-                <motion.div
+                <m.div
                   key="form"
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -297,7 +297,7 @@ export default function Contact() {
                         {errorMessage}
                       </p>
                     ) : null}
-                    <motion.button
+                    <m.button
                       type="submit"
                       disabled={isSubmitting}
                       whileTap={isSubmitting ? undefined : { scale: 0.985 }}
@@ -315,12 +315,12 @@ export default function Contact() {
                       ) : (
                         FORM_SUBMIT_TEXT
                       )}
-                    </motion.button>
+                    </m.button>
                   </form>
-                </motion.div>
+                </m.div>
               )}
             </AnimatePresence>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </SectionWrapper>

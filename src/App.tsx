@@ -1,8 +1,8 @@
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { LazyMotion, domAnimation } from 'framer-motion'
-import Lenis from 'lenis'
 import { lazy, Suspense, useEffect } from 'react'
 import BottomNav from './components/BottomNav'
+import DeferredFonts from './components/DeferredFonts'
 import DeferredVercelMetrics from './components/DeferredVercelMetrics'
 import FloatingWhatsAppButton from './components/FloatingWhatsAppButton'
 import GoogleAnalytics from './components/GoogleAnalytics'
@@ -38,14 +38,15 @@ export default function App() {
     const isMobile = window.matchMedia('(max-width: 767px)').matches
     if (prefersReduced || isMobile) return
 
-    let lenis: Lenis | null = null
+    let lenis: { destroy: () => void; raf: (time: number) => void } | null = null
     let rafId = 0
     let started = false
 
-    const startLenis = () => {
+    const startLenis = async () => {
       if (started) return
       started = true
 
+      const { default: Lenis } = await import('lenis')
       document.documentElement.classList.add('lenis', 'lenis-smooth')
 
       lenis = new Lenis({
@@ -65,12 +66,14 @@ export default function App() {
     }
 
     const onInteraction = () => {
-      startLenis()
+      void startLenis()
       window.removeEventListener('wheel', onInteraction)
       window.removeEventListener('touchstart', onInteraction)
     }
 
-    const cancelIdle = scheduleIdle(startLenis)
+    const cancelIdle = scheduleIdle(() => {
+      void startLenis()
+    })
 
     window.addEventListener('wheel', onInteraction, { passive: true })
     window.addEventListener('touchstart', onInteraction, { passive: true })
@@ -108,6 +111,7 @@ export default function App() {
   return (
     <LazyMotion features={domAnimation} strict>
       <ThemeProvider>
+        <DeferredFonts />
         <Navbar />
         <main className="pb-24 md:pb-0">
           <Suspense fallback={null}>

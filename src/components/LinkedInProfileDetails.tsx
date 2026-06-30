@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Award, BookOpen, ExternalLink, Globe, Languages } from 'lucide-react'
 import {
   linkedInCertifications,
@@ -32,7 +32,7 @@ export default function LinkedInProfileDetails() {
         />
         <div className="grid gap-6">
           {linkedInEducation.map((edu, index) => (
-            <motion.div
+            <m.div
               key={edu.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -72,7 +72,7 @@ export default function LinkedInProfileDetails() {
                   )}
                 </div>
               </Card>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>
@@ -87,7 +87,7 @@ export default function LinkedInProfileDetails() {
         />
         <div className="grid sm:grid-cols-2 gap-4">
           {linkedInCertifications.map((cert, index) => (
-            <motion.div
+            <m.div
               key={cert.id}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -119,7 +119,7 @@ export default function LinkedInProfileDetails() {
                   )}
                 </div>
               </Card>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>

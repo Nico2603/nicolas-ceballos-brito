@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Brain, Code, Database, GitBranch } from 'lucide-react'
 import { skillCategories } from '../data/content'
 import Badge from './ui/Badge'
@@ -27,7 +27,7 @@ export default function SkillsSection() {
           const Icon = categoryIcons[category.icon] ?? Code
 
           return (
-            <motion.div
+            <m.div
               key={category.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -57,7 +57,7 @@ export default function SkillsSection() {
                   </div>
                 </div>
               </Card>
-            </motion.div>
+            </m.div>
           )
         })}
       </div>

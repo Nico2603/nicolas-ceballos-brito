@@ -1,9 +1,4 @@
-@import '@fontsource/plus-jakarta-sans/400.css';
-@import '@fontsource/plus-jakarta-sans/500.css';
-@import '@fontsource/plus-jakarta-sans/600.css';
-@import '@fontsource/plus-jakarta-sans/700.css';
-@import '@fontsource/fraunces/600.css';
-@import '@fontsource/fraunces/700.css';
+@import './styles/fonts-critical.css';
 @import './styles/tokens.css';
 @import './styles/animations.css';
 @import './styles/base.css';

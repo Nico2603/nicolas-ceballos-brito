@@ -17,8 +17,7 @@ const ROUTE_TITLES: Record<string, string> = {
   '/analisis-datos': `Análisis de Datos — ${FULL_NAME}`,
 }
 
-const LCP_IMAGE_PRELOAD =
-  '<link rel="preload" as="image" href="/images/pic-288.webp" type="image/webp" fetchpriority="high" imagesrcset="/images/pic-288.webp 288w, /images/pic-576.webp 576w" imagesizes="(max-width: 768px) 224px, 288px" />'
+import { PROFILE_IMAGE_PRELOAD } from '../src/constants/lcp-image.ts'
 
 const isVercelBuild = process.env.VERCEL === '1'
 
@@ -175,10 +174,11 @@ function stripHomeJsonLd(html: string): string {
 }
 
 function injectLcpPreload(html: string): string {
-  if (html.includes('rel="preload" as="image"') && html.includes('/images/pic-288.webp')) {
+  const snippet = `<link rel="preload" as="image" href="${PROFILE_IMAGE_PRELOAD.href}" type="image/webp" fetchpriority="high" imagesrcset="${PROFILE_IMAGE_PRELOAD.srcSet}" imagesizes="${PROFILE_IMAGE_PRELOAD.sizes}" />`
+  if (html.includes('rel="preload" as="image"') && html.includes(PROFILE_IMAGE_PRELOAD.href)) {
     return html
   }
-  return injectBeforeHeadClose(html, LCP_IMAGE_PRELOAD)
+  return injectBeforeHeadClose(html, snippet)
 }
 
 function postProcessHtml(html: string, routePath: string, port: number): string {
@@ -196,11 +196,21 @@ function postProcessHtml(html: string, routePath: string, port: number): string 
 
 async function prerenderRoute(browser: Browser, previewUrl: string, routePath: string, port: number): Promise<void> {
   const page = await browser.newPage()
+  await page.setRequestInterception(true)
+  page.on('request', (request) => {
+    const url = request.url()
+    if (url.includes('googletagmanager.com') || url.includes('google-analytics.com')) {
+      request.abort()
+      return
+    }
+    request.continue()
+  })
+
   const url = `${previewUrl}${routePath === '/' ? '/' : routePath}`
   const routeSelector = waitSelectorForRoute(routePath)
   const expectedTitle = ROUTE_TITLES[routePath]
 
-  await page.goto(url, { waitUntil: 'networkidle0', timeout: 90_000 })
+  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 90_000 })
   await page.waitForSelector('#root', { timeout: 30_000 })
   await page.waitForSelector(routeSelector, { timeout: 45_000 })
 

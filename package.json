@@ -10,7 +10,10 @@
     "lint": "eslint .",
     "sync:linkedin": "tsx scripts/sync-linkedin.ts",
     "preview": "vite preview",
-    "audit:contrast": "npm run build && tsx scripts/audit-contrast.ts"
+    "audit:contrast": "npm run build && tsx scripts/audit-contrast.ts",
+    "audit:perf": "node scripts/audit-performance.mjs",
+    "audit:perf:full": "node scripts/audit-performance.mjs --full",
+    "audit:perf:ci": "npm run build && npm run preview -- --port 4173 --strictPort --host 127.0.0.1 & npx wait-on http://127.0.0.1:4173 && npx @lhci/cli autorun"
   },
   "dependencies": {
     "@fontsource/fraunces": "^5.2.9",
@@ -46,6 +49,9 @@
     "tsx": "^4.22.4",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.59.2",
-    "vite": "^8.0.12"
+    "vite": "^8.0.12",
+    "@lhci/cli": "^0.15.1",
+    "lighthouse": "^13.4.0",
+    "wait-on": "^8.0.3"
   }
 }
