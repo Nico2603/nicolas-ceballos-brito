@@ -40,7 +40,7 @@ nicolas-ceballos-brito/
 
 ## Despliegue
 
-- **Producción:** https://nicolas-ceballos-brito.vercel.app
+- **Producción:** https://nicolasceballosbrito.com
 - **Plataforma:** Vercel (deploy automático desde `master`)
 
 ## Convenciones

@@ -30,7 +30,8 @@ npm run preview
 
 ## Despliegue
 
-- **Producción:** https://nicolas-ceballos-brito.vercel.app
+- **Producción:** https://nicolasceballosbrito.com
+- **Vercel (preview):** https://nicolas-ceballos-brito.vercel.app
 - **Plataforma:** Vercel (deploy automático desde `master` vía GitHub)
 - Build: `npm run build` → carpeta `dist/`
 

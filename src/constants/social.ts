@@ -1,6 +1,6 @@
 export const GITHUB_USERNAME = 'Nico2603'
 
-export const SITE_URL = 'https://nicolas-ceballos-brito.vercel.app'
+export const SITE_URL = 'https://nicolasceballosbrito.com'
 
 export const FULL_NAME = 'Nicolás Ceballos Brito'
 
