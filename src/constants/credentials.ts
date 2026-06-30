@@ -1,18 +1,38 @@
 import { SOCIAL_LINKS } from './social'
+import {
+  PROFESSIONAL_DESCRIPTION as PROFILE_DESCRIPTION,
+  PROFESSIONAL_JOB_TITLE as PROFILE_JOB_TITLE,
+  PROFESSIONAL_WORKS_FOR as PROFILE_WORKS_FOR,
+  graduation,
+} from '../data/profile'
 
 export const PROFESSIONAL_FULL_NAME = 'Nicolás Ceballos Brito'
 
 export const PROFESSIONAL_SHORT_NAME = 'Nicolás'
 
-export const PROFESSIONAL_JOB_TITLE = 'Desarrollador Full-Stack & Ingeniero de Sistemas'
+export const PROFESSIONAL_JOB_TITLE = PROFILE_JOB_TITLE
 
-export const PROFESSIONAL_DESCRIPTION =
-  'Estudiante de Ingeniería de Sistemas y Telecomunicaciones en la Universidad Católica de Pereira. Desarrollador web, analista de datos e investigador en IA con experiencia en React, TypeScript, Python y machine learning aplicado a proyectos reales.'
+export const PROFESSIONAL_DESCRIPTION = PROFILE_DESCRIPTION
 
 export const PROFESSIONAL_ALUMNI = {
-  name: 'Universidad Católica de Pereira',
-  url: 'https://www.ucp.edu.co/',
+  name: graduation.institution,
+  url: graduation.institutionUrl,
 } as const
+
+export const PROFESSIONAL_WORKS_FOR = PROFILE_WORKS_FOR
+
+export const PROFESSIONAL_EXPERIENCE = [
+  {
+    title: 'App Lead Developer',
+    company: 'Prosavis',
+    startDate: '2025-07',
+  },
+  {
+    title: 'Cross-Platform Mobile Application Developer',
+    company: 'Neacsu Horizont Ventures',
+    startDate: '2025-07',
+  },
+] as const
 
 export const PROFESSIONAL_CREDENTIALS = [
   { category: 'SQL', issuer: 'Certificación profesional' },
@@ -33,6 +53,7 @@ export const PROFESSIONAL_KNOWS_ABOUT = [
   'Power BI',
   'Node.js',
   'Docker',
+  'Flutter',
   'Industria 4.0',
   'Mantenimiento predictivo',
   'Programación competitiva',

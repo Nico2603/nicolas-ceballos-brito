@@ -1,9 +1,12 @@
 import Footer from '../components/Footer'
 import Contact from '../components/Contact'
+import CurrentExperience from '../components/CurrentExperience'
 import FaqSection from '../components/FaqSection'
 import Hero from '../components/Hero'
 import LaboresCarousel from '../components/LaboresCarousel'
+import LinkedInFeed from '../components/LinkedInFeed'
 import Portfolio from '../components/Portfolio'
+import RecursosSection from '../components/RecursosSection'
 import SeoHelmet from '../components/SeoHelmet'
 import {
   SEO_HOME_DESCRIPTION,
@@ -23,8 +26,11 @@ export default function Home() {
         structuredData={buildHomeStructuredData()}
       />
       <Hero />
+      <CurrentExperience />
+      <LinkedInFeed />
       <Portfolio />
       <LaboresCarousel />
+      <RecursosSection />
       <FaqSection />
       <Contact />
       <Footer />

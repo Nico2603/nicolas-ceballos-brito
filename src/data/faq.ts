@@ -4,22 +4,22 @@ export const faqItems: TopicFaqItem[] = [
   {
     question: '¿Quién es Nicolás Ceballos Brito?',
     answer:
-      'Nicolás Ceballos Brito es un desarrollador full-stack e ingeniero de sistemas en formación en la Universidad Católica de Pereira. Trabaja en desarrollo web, análisis de datos e inteligencia artificial con proyectos reales en GitHub.',
+      'Nicolás Ceballos Brito es Ingeniero en Sistemas y Telecomunicaciones graduado de la Universidad Católica de Pereira. Es App Lead Developer en Prosavis y desarrollador cross-platform en Neacsu Horizont Ventures, con experiencia en desarrollo web, análisis de datos e inteligencia artificial.',
   },
   {
     question: '¿Qué tecnologías domina Nicolás Ceballos Brito?',
     answer:
-      'Su stack principal incluye React, TypeScript, JavaScript, Python, Node.js, TensorFlow, Power BI, Docker y bases de datos SQL/NoSQL. También tiene experiencia con Angular, Flask, FastAPI y herramientas de DevOps.',
+      'Su stack principal incluye React, TypeScript, JavaScript, Python, Flutter, Node.js, TensorFlow, Power BI, Docker y bases de datos SQL/NoSQL. También tiene experiencia con Angular, Flask, FastAPI, Firebase y herramientas de DevOps.',
   },
   {
-    question: '¿Dónde estudia y qué formación tiene?',
+    question: '¿Dónde estudió y qué formación tiene?',
     answer:
-      'Estudia décimo semestre de Ingeniería de Sistemas y Telecomunicaciones en la Universidad Católica de Pereira. Cuenta con certificaciones en SQL, Power BI, UX/UI y metodologías ágiles, además de experiencia en semilleros de investigación.',
+      'Se graduó como Ingeniero en Sistemas y Telecomunicaciones de la Universidad Católica de Pereira (2025). Cuenta con certificaciones en SQL, Power BI, UX/UI y metodologías ágiles, además de experiencia en semilleros de investigación y programación competitiva.',
   },
   {
     question: '¿Cuáles son sus proyectos destacados?',
     answer:
-      'Entre sus proyectos destacados están ChatBot-MentalHealth (IA y salud mental con Python/Flask), PdM-Manager (mantenimiento predictivo con React y ML), FastQA-HomePage y magiacafetera-ui (Angular/TypeScript).',
+      'Entre sus proyectos destacados están Prosavis (plataforma móvil de servicios), ChatBot-MentalHealth (IA y salud mental con Python/Flask), PdM-Manager (mantenimiento predictivo con React y ML), FastQA-HomePage y magiacafetera-ui (Angular/TypeScript).',
   },
   {
     question: '¿Cómo contactar a Nicolás Ceballos Brito?',
@@ -29,7 +29,7 @@ export const faqItems: TopicFaqItem[] = [
   {
     question: '¿Tiene experiencia en machine learning e Industria 4.0?',
     answer:
-      'Sí. Ha desarrollado proyectos de mantenimiento predictivo con machine learning (PdM-Manager), chatbots con IA y participa como investigador en Industria 4.0 en su formación universitaria.',
+      'Sí. Ha desarrollado proyectos de mantenimiento predictivo con machine learning (PdM-Manager), chatbots con IA, participó en el programa AI Engineer Training de Teilur.ai y tiene experiencia en Industria 4.0 desde sus semilleros de investigación.',
   },
   {
     question: '¿Participa en open source?',
@@ -39,6 +39,6 @@ export const faqItems: TopicFaqItem[] = [
   {
     question: '¿Dónde está ubicado?',
     answer:
-      'Está basado en Pereira, Colombia, y estudia en la Universidad Católica de Pereira. Su portafolio y proyectos están disponibles online en nicolasceballosbrito.com.',
+      'Está basado en Pereira, Colombia. Lidera el desarrollo de Prosavis y trabaja en proyectos de software e IA con alcance nacional. Su portafolio está disponible en nicolasceballosbrito.com.',
   },
 ]

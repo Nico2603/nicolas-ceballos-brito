@@ -34,6 +34,8 @@ export default function ProjectPage() {
         description={project.pageDescription}
         canonicalPath={project.path}
         keywords={project.techStack.join(', ')}
+        ogImage={project.imageUrl}
+        ogImageAlt={`${project.title} — proyecto de ${project.techStack.slice(0, 3).join(', ')}`}
         structuredData={structuredData}
       />
 

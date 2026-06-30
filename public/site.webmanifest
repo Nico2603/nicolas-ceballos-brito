@@ -1,0 +1,24 @@
+{
+  "name": "Nicolás Ceballos Brito",
+  "short_name": "NCB",
+  "description": "Portafolio profesional — desarrollo web, IA y análisis de datos",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B1220",
+  "theme_color": "#2a5c82",
+  "lang": "es-CO",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/og-image.webp",
+      "sizes": "1200x630",
+      "type": "image/webp",
+      "purpose": "any"
+    }
+  ]
+}

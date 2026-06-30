@@ -27,3 +27,9 @@ dist-ssr
 
 # Graphify knowledge graph outputs (regenerable)
 graphify-out/
+
+# Contrast audit artifacts (regenerable)
+audit-output/
+
+# LinkedIn sync raw snapshot (regenerable via npm run sync:linkedin)
+src/data/linkedin-sync.raw.json

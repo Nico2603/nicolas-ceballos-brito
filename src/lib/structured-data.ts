@@ -2,15 +2,20 @@ import {
   PROFESSIONAL_ALUMNI,
   PROFESSIONAL_CREDENTIALS,
   PROFESSIONAL_DESCRIPTION,
+  PROFESSIONAL_EXPERIENCE,
   PROFESSIONAL_FULL_NAME,
   PROFESSIONAL_JOB_TITLE,
   PROFESSIONAL_KNOWS_ABOUT,
   PROFESSIONAL_SAME_AS,
   PROFESSIONAL_SHORT_NAME,
+  PROFESSIONAL_WORKS_FOR,
 } from '../constants/credentials'
 import { SEO_OG_IMAGE, SEO_SITE_NAME } from '../constants/seo'
 import { EMAIL, FULL_NAME, SITE_URL } from '../constants/social'
 import { faqItems } from '../data/faq'
+import type { GuiaContent } from '../data/guias/content'
+import { getAllGuias } from '../data/guias/content'
+import { getFeaturedLinkedInPost } from '../data/linkedin-posts'
 import type { ProjectSeo } from '../data/projects'
 
 export interface TopicFaqItem {
@@ -34,7 +39,16 @@ function personNode() {
     url: `${SITE_URL}/about`,
     image: SEO_OG_IMAGE,
     email: EMAIL,
-    worksFor: { '@id': `${SITE_URL}/#organization` },
+    worksFor: {
+      '@type': 'Organization',
+      name: PROFESSIONAL_WORKS_FOR.name,
+      url: PROFESSIONAL_WORKS_FOR.url,
+    },
+    hasOccupation: PROFESSIONAL_EXPERIENCE.map((role) => ({
+      '@type': 'Occupation',
+      name: role.title,
+      occupationalCategory: role.company,
+    })),
     alumniOf: {
       '@type': 'CollegeOrUniversity',
       name: PROFESSIONAL_ALUMNI.name,
@@ -117,26 +131,42 @@ function speakableNode(pageUrl: string, cssSelectors: string[]) {
 }
 
 export function buildHomeStructuredData() {
+  const featuredPost = getFeaturedLinkedInPost()
+  const graph: Record<string, unknown>[] = [
+    websiteNode(),
+    personNode(),
+    organizationNode(),
+    {
+      '@type': 'ProfilePage',
+      '@id': `${SITE_URL}/#webpage`,
+      url: SITE_URL,
+      name: SEO_SITE_NAME,
+      description: PROFESSIONAL_DESCRIPTION,
+      inLanguage: 'es-CO',
+      isPartOf: { '@id': `${SITE_URL}/#website` },
+      about: { '@id': `${SITE_URL}/#person` },
+      mainEntity: { '@id': `${SITE_URL}/#person` },
+    },
+    faqPageNode(`${SITE_URL}/#faq`, faqItems),
+    speakableNode(`${SITE_URL}/`, ['#inicio h1', '#inicio .direct-answer', '#faq h2', '.faq-answer']),
+  ]
+
+  if (featuredPost) {
+    graph.push({
+      '@type': 'SocialMediaPosting',
+      '@id': `${SITE_URL}/#featured-linkedin-post`,
+      headline: featuredPost.title,
+      articleBody: featuredPost.excerpt,
+      datePublished: featuredPost.publishedAt,
+      url: featuredPost.postUrl,
+      author: { '@id': `${SITE_URL}/#person` },
+      image: featuredPost.imageUrl ? `${SITE_URL}${featuredPost.imageUrl}` : SEO_OG_IMAGE,
+    })
+  }
+
   return {
     '@context': 'https://schema.org',
-    '@graph': [
-      websiteNode(),
-      personNode(),
-      organizationNode(),
-      {
-        '@type': 'ProfilePage',
-        '@id': `${SITE_URL}/#webpage`,
-        url: SITE_URL,
-        name: SEO_SITE_NAME,
-        description: PROFESSIONAL_DESCRIPTION,
-        inLanguage: 'es-CO',
-        isPartOf: { '@id': `${SITE_URL}/#website` },
-        about: { '@id': `${SITE_URL}/#person` },
-        mainEntity: { '@id': `${SITE_URL}/#person` },
-      },
-      faqPageNode(`${SITE_URL}/#faq`, faqItems),
-      speakableNode(`${SITE_URL}/`, ['#inicio h1', '#inicio .direct-answer', '#faq h2', '.faq-answer']),
-    ],
+    '@graph': graph,
   }
 }
 
@@ -329,6 +359,41 @@ export function buildArticleStructuredData(
       faqPageNode(`${pageUrl}#faq`, faq),
       breadcrumbNode(slug, breadcrumbs),
       speakableNode(pageUrl, ['main h1', 'main .direct-answer', 'main .guia-section h2']),
+    ],
+  }
+}
+
+export function buildGuiasIndexStructuredData(breadcrumbs: BreadcrumbItem[]) {
+  const pageUrl = `${SITE_URL}/guias`
+  const guias: GuiaContent[] = getAllGuias()
+
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      websiteNode(),
+      personNode(),
+      {
+        '@type': 'CollectionPage',
+        '@id': `${pageUrl}#webpage`,
+        url: pageUrl,
+        name: 'Guías técnicas',
+        description:
+          'Guías prácticas sobre portafolio de desarrollador, machine learning y React con TypeScript.',
+        inLanguage: 'es-CO',
+        isPartOf: { '@id': `${SITE_URL}/#website` },
+        about: { '@id': `${SITE_URL}/#person` },
+        author: { '@id': `${SITE_URL}/#person` },
+        mainEntity: {
+          '@type': 'ItemList',
+          itemListElement: guias.map((guia, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            url: `${SITE_URL}${guia.path}`,
+            name: guia.title.split('|')[0]?.trim() ?? guia.title,
+          })),
+        },
+      },
+      breadcrumbNode('/guias', breadcrumbs),
     ],
   }
 }

@@ -1,10 +1,7 @@
 import type { Project, LaboresSlide, PortfolioStat, SkillCategory } from '../types'
+import { aboutIntro, heroBio } from './profile'
 
-export const heroBio =
-  'Estudiante de décimo semestre de Ingeniería de Sistemas y Telecomunicaciones con experiencia en desarrollo web, software, análisis de datos e inteligencia artificial. Mi enfoque combina innovación, tecnología y soluciones de alto impacto para problemas reales, respaldado por un amplio conocimiento en diferentes tecnologías modernas y actuales.'
-
-export const aboutIntro =
-  'Soy estudiante de décimo semestre de Ingeniería de Sistemas y Telecomunicaciones en la Universidad Católica de Pereira. Con amplia experiencia en desarrollo de software, análisis de datos e inteligencia artificial, he participado en diversos proyectos que abarcan desde machine learning para mantenimiento predictivo hasta el desarrollo de aplicaciones web interactivas. Mi participación como representante estudiantil y en semilleros de investigación me ha permitido obtener certificaciones en SQL, Power BI, UX/UI y metodologías ágiles, fortaleciendo mi perfil técnico y de liderazgo.'
+export { heroBio, aboutIntro }
 
 export const typingLines = [
   'Ingeniero de Sistemas y Telecomunicaciones',
@@ -73,30 +70,6 @@ export const featuredProjects: Project[] = [
       'https://repository-images.githubusercontent.com/943666070/5a151c83-1485-49b9-875f-14e528fd4ed1',
     repoUrl: 'https://github.com/Nico2603/magiacafetera-ui',
     status: 'active',
-  },
-  {
-    id: 'futuro-1',
-    title: 'Proyecto Futuro #1',
-    description:
-      'Estoy trabajando en nuevos proyectos innovadores que pronto estarán disponibles. ¡Mantente atento a las actualizaciones!',
-    stars: 0,
-    language: '',
-    techTags: ['Próximamente'],
-    imageUrl: '',
-    repoUrl: '',
-    status: 'coming-soon',
-  },
-  {
-    id: 'futuro-2',
-    title: 'Proyecto Futuro #2',
-    description:
-      'Como estudiante de décimo semestre, tengo grandes ideas en mente para mi proyecto de grado y futuros desarrollos.',
-    stars: 0,
-    language: '',
-    techTags: ['En ideación'],
-    imageUrl: '',
-    repoUrl: '',
-    status: 'ideation',
   },
 ]
 

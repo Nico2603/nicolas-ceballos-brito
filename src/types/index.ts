@@ -56,6 +56,17 @@ export interface GitHubRepo {
   topics?: string[]
 }
 
+export interface LinkedInPost {
+  id: string
+  title: string
+  excerpt: string
+  publishedAt: string
+  imageUrl?: string
+  postUrl: string
+  featured?: boolean
+  tags?: string[]
+}
+
 export type RepoSortOption = 'updated' | 'created' | 'name' | 'stars' | 'forks'
 
 export interface RepoFilters {

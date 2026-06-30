@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "tsx scripts/generate-sitemap.ts && tsx scripts/generate-llms-txt.ts && tsx scripts/inject-home-schema.ts",
+    "prebuild": "node scripts/normalize-seo-images.mjs && tsx scripts/generate-sitemap.ts && tsx scripts/generate-llms-txt.ts && tsx scripts/inject-home-schema.ts",
     "build": "tsc -b && vite build && tsx scripts/prerender.ts",
     "lint": "eslint .",
-    "images:webp": "node scripts/convert-to-webp.mjs",
-    "preview": "vite preview"
+    "sync:linkedin": "tsx scripts/sync-linkedin.ts",
+    "preview": "vite preview",
+    "audit:contrast": "npm run build && tsx scripts/audit-contrast.ts"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.0",
@@ -26,6 +27,7 @@
     "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
+    "@axe-core/puppeteer": "^4.10.2",
     "@eslint/js": "^10.0.1",
     "@sparticuz/chromium": "^149.0.0",
     "@types/node": "^24.12.3",

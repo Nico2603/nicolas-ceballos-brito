@@ -7,16 +7,21 @@ import {
   SEO_OG_IMAGE_WIDTH,
   SEO_SITE_NAME,
 } from '../constants/seo'
-import { SITE_URL, TWITTER_HANDLE } from '../constants/social'
+import { FULL_NAME, SITE_URL, TWITTER_HANDLE } from '../constants/social'
 
 interface SeoHelmetProps {
   title: string
   description: string
   canonicalPath: string
   ogType?: 'website' | 'article'
+  ogImage?: string
+  ogImageAlt?: string
   keywords?: string
   structuredData?: Record<string, unknown> | Record<string, unknown>[]
   noindex?: boolean
+  articlePublishedTime?: string
+  articleModifiedTime?: string
+  articleAuthor?: string
 }
 
 function normalizePath(path: string): string {
@@ -29,9 +34,14 @@ export default function SeoHelmet({
   description,
   canonicalPath,
   ogType = 'website',
+  ogImage = SEO_OG_IMAGE,
+  ogImageAlt = SEO_OG_IMAGE_ALT,
   keywords = SEO_KEYWORDS,
   structuredData,
   noindex = false,
+  articlePublishedTime,
+  articleModifiedTime,
+  articleAuthor = FULL_NAME,
 }: SeoHelmetProps) {
   const path = normalizePath(canonicalPath)
   const canonicalUrl = `${SITE_URL}${path === '/' ? '/' : path}`
@@ -58,17 +68,26 @@ export default function SeoHelmet({
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={canonicalUrl} />
-      <meta property="og:image" content={SEO_OG_IMAGE} />
+      <meta property="og:image" content={ogImage} />
       <meta property="og:image:width" content={String(SEO_OG_IMAGE_WIDTH)} />
       <meta property="og:image:height" content={String(SEO_OG_IMAGE_HEIGHT)} />
-      <meta property="og:image:alt" content={SEO_OG_IMAGE_ALT} />
+      <meta property="og:image:alt" content={ogImageAlt} />
+      {ogType === 'article' && articlePublishedTime && (
+        <meta property="article:published_time" content={articlePublishedTime} />
+      )}
+      {ogType === 'article' && articleModifiedTime && (
+        <meta property="article:modified_time" content={articleModifiedTime} />
+      )}
+      {ogType === 'article' && (
+        <meta property="article:author" content={articleAuthor} />
+      )}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content={TWITTER_HANDLE} />
       <meta name="twitter:creator" content={TWITTER_HANDLE} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={SEO_OG_IMAGE} />
-      <meta name="twitter:image:alt" content={SEO_OG_IMAGE_ALT} />
+      <meta name="twitter:image" content={ogImage} />
+      <meta name="twitter:image:alt" content={ogImageAlt} />
       {jsonLdBlocks.map((block, index) => (
         <script key={index} type="application/ld+json">
           {JSON.stringify(block)}

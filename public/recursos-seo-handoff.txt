@@ -1,0 +1,44 @@
+NICOLÁS CEBALLOS BRITO — CHECKLIST SEO POST-DEPLOY
+Actualizar tras cada deploy significativo de contenido SEO.
+
+=== DOMINIO Y ARTEFACTOS ===
+[ ] https://nicolasceballosbrito.com/ responde con HTML prerenderizado (title único, no solo shell SPA)
+[ ] https://nicolasceballosbrito.com/about contiene meta og:url → /about
+[ ] https://nicolasceballosbrito.com/guias/como-estructurar-portafolio-desarrollador con article meta
+[ ] https://nicolasceballosbrito.com/proyectos/chatbot-mental-health con og:image de proyecto
+[ ] https://nicolasceballosbrito.com/robots.txt accesible
+[ ] https://nicolasceballosbrito.com/sitemap.xml con 15 URLs (13 indexables + /guias + /politica-privacidad)
+[ ] https://nicolasceballosbrito.com/llms.txt con contenido actualizado (no fallback SPA)
+
+=== GOOGLE SEARCH CONSOLE ===
+[ ] Verificar dominio en https://search.google.com/search-console
+[ ] Reemplazar PENDIENTE_VERIFICACION_GSC en index.html con código real de GSC
+[ ] Enviar sitemap: https://nicolasceballosbrito.com/sitemap.xml
+[ ] Inspección de URL → / → Solicitar indexación
+[ ] Inspección de URL → /about → Solicitar indexación
+[ ] Inspección de URL → una guía → Solicitar indexación
+[ ] Inspección de URL → un proyecto → Solicitar indexación
+
+=== VALIDACIÓN EXTERNA ===
+[ ] Rich Results Test (home): Person + WebSite + FAQPage sin errores críticos
+[ ] opengraph.xyz: home, about, una guía — previews correctos
+[ ] og-image.webp dimensiones 1200×630 (npm run prebuild normaliza automáticamente)
+
+=== BING (OPCIONAL) ===
+[ ] Registrar en Bing Webmaster Tools
+[ ] Enviar mismo sitemap
+
+=== DESCUBRIMIENTO INTERNO ===
+[ ] Footer enlaza expertise, guías, política de privacidad y llms.txt
+[ ] Home sección Recursos enlaza guías y expertise
+[ ] /guias índice lista las 3 guías
+
+=== PERFILES EXTERNOS ===
+[ ] GitHub bio → nicolasceballosbrito.com
+[ ] LinkedIn → URL del sitio
+[ ] Hugging Face → enlace al portafolio si aplica
+
+=== MONITOREO MENSUAL ===
+[ ] Revisar cobertura e impresiones en GSC
+[ ] Revisar Vercel Analytics (tráfico por ruta)
+[ ] Publicar 1 guía nueva por trimestre si aplica (actualizar guias/content.ts + build)

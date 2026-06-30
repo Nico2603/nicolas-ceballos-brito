@@ -20,7 +20,7 @@ export default function GuiaPage() {
 
   const breadcrumbs = [
     { name: 'Inicio', path: '/' },
-    { name: 'Guías', path: '/guias/como-estructurar-portafolio-desarrollador' },
+    { name: 'Guías', path: '/guias' },
     { name: guia.title.split('|')[0]?.trim() ?? guia.title, path: guia.path },
   ]
 
@@ -43,6 +43,8 @@ export default function GuiaPage() {
         ogType="article"
         keywords={guia.keywords}
         structuredData={structuredData}
+        articlePublishedTime={guia.datePublished}
+        articleModifiedTime={guia.dateModified}
       />
 
       <main className="pt-28">
@@ -100,6 +102,9 @@ export default function GuiaPage() {
             </div>
 
             <nav className="mt-10 flex flex-wrap gap-4 text-sm">
+              <Link to="/guias" className="text-[var(--color-accent-primary)] hover:underline">
+                Todas las guías
+              </Link>
               <Link to="/desarrollo-web" className="text-[var(--color-accent-primary)] hover:underline">
                 Desarrollo web
               </Link>

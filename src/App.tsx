@@ -11,8 +11,10 @@ import About from './pages/About'
 import AnalisisDatos from './pages/AnalisisDatos'
 import DesarrolloWeb from './pages/DesarrolloWeb'
 import GuiaPage from './pages/GuiaPage'
+import GuiasIndex from './pages/GuiasIndex'
 import Home from './pages/Home'
 import InteligenciaArtificial from './pages/InteligenciaArtificial'
+import PoliticaPrivacidad from './pages/PoliticaPrivacidad'
 import ProjectPage from './pages/ProjectPage'
 import Repositories from './pages/Repositories'
 
@@ -75,7 +77,9 @@ export default function App() {
           <Route path="/desarrollo-web" element={<DesarrolloWeb />} />
           <Route path="/inteligencia-artificial" element={<InteligenciaArtificial />} />
           <Route path="/analisis-datos" element={<AnalisisDatos />} />
+          <Route path="/guias" element={<GuiasIndex />} />
           <Route path="/guias/:slug" element={<GuiaPage />} />
+          <Route path="/politica-privacidad" element={<PoliticaPrivacidad />} />
         </Routes>
       </main>
       <BottomNav />

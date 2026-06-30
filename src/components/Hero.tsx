@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, ChevronDown, Sparkles } from 'lucide-react'
+import { graduation } from '../data/profile'
 import { FULL_NAME } from '../constants/social'
 import { heroBio } from '../data/content'
 import Button from './ui/Button'
@@ -9,7 +10,7 @@ import SocialLinks from './SocialLinks'
 import TypingAnimation from './TypingAnimation'
 
 const miniStats = [
-  { value: '10º', label: 'Semestre Ing. Sistemas' },
+  { value: String(graduation.year), label: 'Graduado UCP' },
   { value: '5+', label: 'Años programando' },
   { value: 'IA', label: 'ML & Data Science' },
 ]
@@ -61,7 +62,7 @@ export default function Hero() {
               className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-bold text-[var(--color-amber-bright)] mb-5 hero-eyebrow-glow"
             >
               <Sparkles size={14} className="text-[var(--color-cyan-bright)]" />
-              Full-Stack Developer
+              Full-Stack Developer · Ing. Sistemas
             </motion.p>
 
             <motion.h1

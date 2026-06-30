@@ -38,7 +38,9 @@ export const PRERENDER_ROUTES: SeoRoute[] = [
   { path: '/desarrollo-web', changefreq: 'monthly', priority: 0.85 },
   { path: '/inteligencia-artificial', changefreq: 'monthly', priority: 0.85 },
   { path: '/analisis-datos', changefreq: 'monthly', priority: 0.85 },
+  { path: '/guias', changefreq: 'monthly', priority: 0.8 },
   { path: '/guias/como-estructurar-portafolio-desarrollador', changefreq: 'monthly', priority: 0.75 },
   { path: '/guias/machine-learning-proyectos-estudiantes', changefreq: 'monthly', priority: 0.75 },
   { path: '/guias/react-typescript-proyectos-reales', changefreq: 'monthly', priority: 0.75 },
+  { path: '/politica-privacidad', changefreq: 'yearly', priority: 0.3 },
 ]
