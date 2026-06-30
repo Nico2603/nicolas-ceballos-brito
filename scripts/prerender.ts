@@ -6,6 +6,7 @@ import chromium from '@sparticuz/chromium'
 import puppeteer, { type Browser } from 'puppeteer'
 import puppeteerCore from 'puppeteer-core'
 import { PRERENDER_ROUTES } from '../src/constants/seo-routes.ts'
+import { SITE_URL } from '../src/constants/social.ts'
 
 const isVercelBuild = process.env.VERCEL === '1'
 
@@ -102,15 +103,36 @@ function outputPathForRoute(routePath: string): string {
   return resolve(DIST_DIR, normalized, 'index.html')
 }
 
+function waitSelectorForRoute(routePath: string): string {
+  switch (routePath) {
+    case '/':
+      return '#inicio'
+    case '/about':
+      return '#about-pro'
+    case '/repositories':
+      return 'main h1'
+    default:
+      return 'main h1'
+  }
+}
+
 async function prerenderRoute(browser: Browser, previewUrl: string, routePath: string): Promise<void> {
   const page = await browser.newPage()
   const url = `${previewUrl}${routePath === '/' ? '/' : routePath}`
+  const expectedCanonical =
+    routePath === '/' ? `${SITE_URL}/` : `${SITE_URL}${routePath}`
+  const routeSelector = waitSelectorForRoute(routePath)
 
   await page.goto(url, { waitUntil: 'networkidle0', timeout: 90_000 })
   await page.waitForSelector('#root', { timeout: 30_000 })
+  await page.waitForSelector(routeSelector, { timeout: 45_000 })
   await page.waitForFunction(
-    () => document.title && document.title.length > 0,
-    { timeout: 30_000 },
+    (canonical) => {
+      const link = document.querySelector('link[rel="canonical"]')
+      return link?.getAttribute('href') === canonical
+    },
+    { timeout: 45_000 },
+    expectedCanonical,
   )
 
   const html = await page.content()

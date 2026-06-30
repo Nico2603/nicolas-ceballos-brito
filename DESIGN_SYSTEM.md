@@ -196,7 +196,7 @@ ThemeProvider
 - Scrollbar themed (thin, `border-light`)
 - `::selection` con tinte cyan
 - `.hero-grid-bg` — grid mesh reutilizable
-- `.profile-image` — foto de perfil (`/images/pic.jpg`)
+- `.profile-image` — foto de perfil (`/images/pic.webp`)
 
 ---
 

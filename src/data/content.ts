@@ -106,7 +106,7 @@ export const laboresSlides: LaboresSlide[] = [
     title: 'Maratón Nacional de Programación ACIS/REDIS',
     description:
       'Representé a mi universidad en la prestigiosa Maratón Nacional de Programación ACIS/REDIS, fase clasificatoria para la Maratón Regional Latinoamericana ICPC 2022. Esta competencia de élite desafía las habilidades de resolución algorítmica y programación competitiva, desarrollando capacidades técnicas avanzadas bajo presión temporal.',
-    image: '/images/p1.jpg',
+    image: '/images/p1.webp',
     detailUrl:
       'https://www.linkedin.com/in/nicolas-ceballos-brito/overlay/1710808532744/single-media-viewer/?profileId=ACoAADm8YQABLNW25Vw1bl3FRj4BVItbsOYwHg4',
     alt: 'Maratón Nacional de Programación UAM',
@@ -116,7 +116,7 @@ export const laboresSlides: LaboresSlide[] = [
     title: 'Liderazgo Estudiantil Universitario',
     description:
       'Elegido como representante oficial ante el Consejo Estudiantil de la Universidad Católica de Pereira, ejerciendo un rol de liderazgo estratégico en la toma de decisiones académicas e institucionales. Mi participación activa en procesos deliberativos fortalece la voz estudiantil y promueve una cultura de participación ciudadana responsable.',
-    image: '/images/p2.jpg',
+    image: '/images/p2.webp',
     detailUrl:
       'https://www.linkedin.com/in/nicolas-ceballos-brito/overlay/1635553816822/single-media-viewer/?profileId=ACoAADm8YQABLNW25Vw1bl3FRj4BVItbsOYwHg4',
     alt: 'Representante Estudiantil UCP',
@@ -126,7 +126,7 @@ export const laboresSlides: LaboresSlide[] = [
     title: 'XXXVII Maratón Nacional ACIS/REDIS 2023',
     description:
       'Seleccionado para representar a la Universidad Católica de Pereira en la XXXVII Maratón Nacional de Programación ACIS/REDIS 2023, celebrada en Manizales. Compitiendo junto a 108 equipos de las universidades más prestigiosas de Colombia, esta experiencia consolidó mis competencias en algoritmos avanzados y trabajo colaborativo de alto rendimiento.',
-    image: '/images/p3.jpg',
+    image: '/images/p3.webp',
     detailUrl:
       'https://www.linkedin.com/in/nicolas-ceballos-brito/overlay/1635553820719/single-media-viewer/?type=LINK&profileId=ACoAADm8YQABLNW25Vw1bl3FRj4BVItbsOYwHg4',
     alt: 'Maratón ACIS/REDIS 2023',
@@ -136,7 +136,7 @@ export const laboresSlides: LaboresSlide[] = [
     title: 'Proyecto de Responsabilidad Social Universitaria',
     description:
       'Lideré una iniciativa de impacto social para asistir a más de 500 familias afectadas por una emergencia en el barrio Futuro Bajo. A través de gestión estratégica y coordinación interinstitucional, logramos movilizar recursos para entregar 170 kits educativos, demostrando el compromiso universitario con el desarrollo comunitario sostenible.',
-    image: '/images/p4.jpg',
+    image: '/images/p4.webp',
     detailUrl:
       'https://www.linkedin.com/posts/nicolas-ceballos-brito_compromisocomunitario-solidaridad-liderazgoestudiantil-activity-7193365777515773953-7wOj',
     alt: 'Iniciativa de Apoyo Comunitario',
@@ -146,7 +146,7 @@ export const laboresSlides: LaboresSlide[] = [
     title: 'Encuentro Institucional de Alto Nivel',
     description:
       'Participé en la visita protocolar de Monseñor Nelson Jair Cardona Ramírez al campus universitario, representando la voz estudiantil en este encuentro de liderazgo institucional. Este evento fortaleció los vínculos estratégicos entre la academia, la comunidad religiosa y el estudiantado, consolidando nuestra identidad universitaria católica.',
-    image: '/images/p5.jpg',
+    image: '/images/p5.webp',
     detailUrl:
       'https://www.linkedin.com/in/nicolas-ceballos-brito/overlay/1738888949947/single-media-viewer/?profileId=ACoAADm8YQABLNW25Vw1bl3FRj4BVItbsOYwHg4',
     alt: 'Visita del Obispo a la UCP',

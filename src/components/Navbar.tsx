@@ -128,6 +128,9 @@ export default function Navbar() {
             className="fixed inset-0 z-40 md:hidden backdrop-blur-3xl bg-[var(--color-bg-primary)]/95"
           >
             <nav className="flex flex-col items-center justify-center min-h-screen gap-2 px-6">
+              <div className="absolute top-8 right-6">
+                <ThemeToggle scrolled={scrolled || !isHome} onHero={onHero} />
+              </div>
               {navLinks.map((link, index) => (
                 <motion.button
                   key={link.label}

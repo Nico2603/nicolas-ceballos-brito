@@ -9,7 +9,7 @@ import {
   PROFESSIONAL_SHORT_NAME,
 } from '../constants/credentials'
 import { SEO_OG_IMAGE, SEO_SITE_NAME } from '../constants/seo'
-import { EMAIL, FULL_NAME, GITHUB_USERNAME, SITE_URL } from '../constants/social'
+import { EMAIL, FULL_NAME, SITE_URL } from '../constants/social'
 import { faqItems } from '../data/faq'
 import type { ProjectSeo } from '../data/projects'
 
@@ -363,5 +363,3 @@ export function getRepositoriesSnapshot() {
 export function buildHomeStructuredDataJson(): string {
   return JSON.stringify(buildHomeStructuredData(), null, 2)
 }
-
-export { GITHUB_USERNAME }
