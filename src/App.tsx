@@ -1,47 +1,84 @@
 import { Route, Routes, useLocation } from 'react-router-dom'
-import { Analytics } from '@vercel/analytics/react'
-import { SpeedInsights } from '@vercel/speed-insights/react'
 import Lenis from 'lenis'
-import { useEffect } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import BottomNav from './components/BottomNav'
+import DeferredVercelMetrics from './components/DeferredVercelMetrics'
 import FloatingWhatsAppButton from './components/FloatingWhatsAppButton'
 import GoogleAnalytics from './components/GoogleAnalytics'
 import Navbar from './components/Navbar'
 import { ThemeProvider } from './context/ThemeContext'
-import About from './pages/About'
-import AnalisisDatos from './pages/AnalisisDatos'
-import DesarrolloWeb from './pages/DesarrolloWeb'
-import GuiaPage from './pages/GuiaPage'
-import GuiasIndex from './pages/GuiasIndex'
 import Home from './pages/Home'
-import InteligenciaArtificial from './pages/InteligenciaArtificial'
-import PoliticaPrivacidad from './pages/PoliticaPrivacidad'
-import ProjectPage from './pages/ProjectPage'
-import Repositories from './pages/Repositories'
+
+const About = lazy(() => import('./pages/About'))
+const AnalisisDatos = lazy(() => import('./pages/AnalisisDatos'))
+const DesarrolloWeb = lazy(() => import('./pages/DesarrolloWeb'))
+const GuiaPage = lazy(() => import('./pages/GuiaPage'))
+const GuiasIndex = lazy(() => import('./pages/GuiasIndex'))
+const InteligenciaArtificial = lazy(() => import('./pages/InteligenciaArtificial'))
+const PoliticaPrivacidad = lazy(() => import('./pages/PoliticaPrivacidad'))
+const ProjectPage = lazy(() => import('./pages/ProjectPage'))
+const Repositories = lazy(() => import('./pages/Repositories'))
+
+function scheduleIdle(callback: () => void, timeout = 3000): () => void {
+  if ('requestIdleCallback' in window) {
+    const id = window.requestIdleCallback(callback, { timeout })
+    return () => window.cancelIdleCallback(id)
+  }
+
+  const id = window.setTimeout(callback, Math.min(timeout, 2000))
+  return () => window.clearTimeout(id)
+}
 
 export default function App() {
   const location = useLocation()
 
   useEffect(() => {
-    document.documentElement.classList.add('lenis', 'lenis-smooth')
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReduced) return
 
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 1,
-    })
+    let lenis: Lenis | null = null
+    let rafId = 0
+    let started = false
 
-    function raf(time: number) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
+    const startLenis = () => {
+      if (started) return
+      started = true
+
+      document.documentElement.classList.add('lenis', 'lenis-smooth')
+
+      lenis = new Lenis({
+        duration: 1.2,
+        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'vertical',
+        smoothWheel: true,
+        wheelMultiplier: 1,
+      })
+
+      const raf = (time: number) => {
+        lenis?.raf(time)
+        rafId = requestAnimationFrame(raf)
+      }
+
+      rafId = requestAnimationFrame(raf)
     }
 
-    requestAnimationFrame(raf)
+    const onInteraction = () => {
+      startLenis()
+      window.removeEventListener('wheel', onInteraction)
+      window.removeEventListener('touchstart', onInteraction)
+    }
+
+    const cancelIdle = scheduleIdle(startLenis)
+
+    window.addEventListener('wheel', onInteraction, { passive: true })
+    window.addEventListener('touchstart', onInteraction, { passive: true })
 
     return () => {
-      lenis.destroy()
+      cancelIdle()
+      window.removeEventListener('wheel', onInteraction)
+      window.removeEventListener('touchstart', onInteraction)
+      cancelAnimationFrame(rafId)
+      lenis?.destroy()
       document.documentElement.classList.remove('lenis', 'lenis-smooth')
     }
   }, [])
@@ -70,24 +107,25 @@ export default function App() {
     <ThemeProvider>
       <Navbar />
       <main className="pb-24 md:pb-0">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/repositories" element={<Repositories />} />
-          <Route path="/proyectos/:slug" element={<ProjectPage />} />
-          <Route path="/desarrollo-web" element={<DesarrolloWeb />} />
-          <Route path="/inteligencia-artificial" element={<InteligenciaArtificial />} />
-          <Route path="/analisis-datos" element={<AnalisisDatos />} />
-          <Route path="/guias" element={<GuiasIndex />} />
-          <Route path="/guias/:slug" element={<GuiaPage />} />
-          <Route path="/politica-privacidad" element={<PoliticaPrivacidad />} />
-        </Routes>
+        <Suspense fallback={null}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/repositories" element={<Repositories />} />
+            <Route path="/proyectos/:slug" element={<ProjectPage />} />
+            <Route path="/desarrollo-web" element={<DesarrolloWeb />} />
+            <Route path="/inteligencia-artificial" element={<InteligenciaArtificial />} />
+            <Route path="/analisis-datos" element={<AnalisisDatos />} />
+            <Route path="/guias" element={<GuiasIndex />} />
+            <Route path="/guias/:slug" element={<GuiaPage />} />
+            <Route path="/politica-privacidad" element={<PoliticaPrivacidad />} />
+          </Routes>
+        </Suspense>
       </main>
       <BottomNav />
       <FloatingWhatsAppButton />
       <GoogleAnalytics />
-      <Analytics />
-      <SpeedInsights />
+      <DeferredVercelMetrics />
     </ThemeProvider>
   )
 }

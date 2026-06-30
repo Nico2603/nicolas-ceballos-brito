@@ -53,10 +53,17 @@ nicolas-ceballos-brito/
 ## Scripts
 
 - `npm run dev` — Servidor de desarrollo
-- `npm run build` — Build de producción
+- `npm run build` — Build de producción (`prebuild` genera sitemap, llms.txt, tarjeta OG y apple-touch-icon; luego Vite + prerender)
 - `npm run lint` — ESLint
 - `npm run preview` — Preview del build
 - `npm run sync:linkedin` — Snapshot del perfil LinkedIn (`linkedin-sync.raw.json`)
+
+### SEO / previews sociales
+
+- `scripts/generate-og-image.mjs` — Tarjeta Open Graph 1200×630 (marca, sin foto)
+- `scripts/normalize-seo-images.mjs` — Valida dimensiones OG y regenera `apple-touch-icon.png`
+- `scripts/prerender.ts` — HTML estático por ruta (meta OG visibles para WhatsApp/LinkedIn)
+- Editar textos de la tarjeta OG: constantes al inicio de `generate-og-image.mjs`
 
 ## Datos del perfil
 

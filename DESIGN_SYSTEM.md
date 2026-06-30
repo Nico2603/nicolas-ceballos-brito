@@ -71,6 +71,19 @@
 
 Carga en `index.html` vía Google Fonts.
 
+### 3.1 Activos de marca y previews sociales
+
+| Activo | Archivo | Dimensiones | Notas |
+|---|---|---|---|
+| Favicon | `public/favicon.svg` | 32×32 | Monograma **NC**, fondo `#2a5c82` — pestaña del navegador |
+| Tarjeta Open Graph | `public/images/og-image.webp` | 1200×630 | Generada en `prebuild` por `scripts/generate-og-image.mjs`; paleta navy/cyan/ámbar, **sin foto** |
+| Foto de perfil | `public/images/pic.webp` | — | Solo UI (Hero, About); no es `og:image` |
+| Apple touch icon | `public/apple-touch-icon.png` | 180×180 | Recorte de la tarjeta OG (`normalize-seo-images.mjs`) |
+
+La tarjeta OG replica el eyebrow del hero (*Full-Stack Developer · Ing. Sistemas*), el nombre y un stack resumido. Los meta tags (`og:title`, `og:description`, `og:image`) los inyecta `SeoHelmet.tsx` y el prerender los deja en HTML estático para crawlers de WhatsApp/LinkedIn.
+
+Para cambiar copy o colores de la tarjeta: editar `scripts/generate-og-image.mjs` → `npm run build`.
+
 **Patrones:**
 - Eyebrow: `text-xs uppercase tracking-[0.2em] font-semibold text-[var(--color-accent-label)]`
 - H1 hero: `font-display text-4xl md:text-5xl lg:text-6xl font-bold`
@@ -248,3 +261,4 @@ Checklist manual:
 - [ ] Toggle tema persiste tras refresh
 - [ ] Anchor cross-route (`/about` → `/#portafolio`)
 - [ ] `prefers-reduced-motion` — sin canvas hero
+- [ ] Tras `npm run build`, `public/images/og-image.webp` muestra tarjeta de marca (no foto)

@@ -58,31 +58,47 @@ async function initGa(measurementId: string): Promise<void> {
   ready = true
 }
 
+function scheduleDeferredInit(callback: () => void): void {
+  if ('requestIdleCallback' in window) {
+    window.requestIdleCallback(() => callback(), { timeout: 4000 })
+    return
+  }
+
+  window.setTimeout(callback, 2000)
+}
+
 export async function initGoogleAnalytics(): Promise<void> {
   if (initPromise) return initPromise
   if (initialized) return
 
-  initPromise = (async () => {
-    if (isValidGaMeasurementId(GA_MEASUREMENT_ID)) {
-      await initGa(GA_MEASUREMENT_ID)
-      initialized = true
-      flushPendingEvents()
-      return
-    }
+  initPromise = new Promise<void>((resolve) => {
+    scheduleDeferredInit(() => {
+      void (async () => {
+        try {
+          if (isValidGaMeasurementId(GA_MEASUREMENT_ID)) {
+            await initGa(GA_MEASUREMENT_ID)
+            initialized = true
+            flushPendingEvents()
+            resolve()
+            return
+          }
 
-    initialized = true
-    console.warn(
-      `[analytics] No se inicializó GA4: ID inválido (${GA_MEASUREMENT_ID ?? 'vacío'})`,
-    )
-  })()
-    .catch((error: unknown) => {
-      ready = false
-      initialized = true
-      console.warn('[analytics] Falló la inicialización de GA4', error)
+          initialized = true
+          console.warn(
+            `[analytics] No se inicializó GA4: ID inválido (${GA_MEASUREMENT_ID ?? 'vacío'})`,
+          )
+          resolve()
+        } catch (error: unknown) {
+          ready = false
+          initialized = true
+          console.warn('[analytics] Falló la inicialización de GA4', error)
+          resolve()
+        } finally {
+          initPromise = null
+        }
+      })()
     })
-    .finally(() => {
-      initPromise = null
-    })
+  })
 
   return initPromise
 }

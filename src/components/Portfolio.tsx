@@ -9,9 +9,14 @@ import Button from './ui/Button'
 import Card from './ui/Card'
 import SectionHeader from './ui/SectionHeader'
 
-export default function Portfolio() {
-  const { stats, loading } = useGitHubRepos()
+type RepoStats = ReturnType<typeof useGitHubRepos>['stats']
 
+interface PortfolioViewProps {
+  stats: RepoStats
+  loading: boolean
+}
+
+function PortfolioView({ stats, loading }: PortfolioViewProps) {
   const statsLine = loading
     ? 'Cargando estadísticas de GitHub…'
     : `${stats.totalRepos} repositorios · ${stats.totalStars} estrellas · ${stats.totalLanguages} lenguajes`
@@ -61,3 +66,22 @@ export default function Portfolio() {
     </SectionWrapper>
   )
 }
+
+function PortfolioWithFetch() {
+  const { stats, loading } = useGitHubRepos()
+  return <PortfolioView stats={stats} loading={loading} />
+}
+
+interface PortfolioProps {
+  staticStats?: RepoStats
+}
+
+export default function Portfolio({ staticStats }: PortfolioProps) {
+  if (staticStats) {
+    return <PortfolioView stats={staticStats} loading={false} />
+  }
+
+  return <PortfolioWithFetch />
+}
+
+export type { RepoStats as PortfolioRepoStats }

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "node scripts/generate-og-image.mjs && node scripts/normalize-seo-images.mjs && tsx scripts/generate-sitemap.ts && tsx scripts/generate-llms-txt.ts && tsx scripts/inject-home-schema.ts",
+    "prebuild": "node scripts/generate-og-image.mjs && node scripts/normalize-seo-images.mjs && node scripts/optimize-profile-images.mjs && tsx scripts/generate-sitemap.ts && tsx scripts/generate-llms-txt.ts && tsx scripts/inject-home-schema.ts",
     "build": "tsc -b && vite build && tsx scripts/prerender.ts",
     "lint": "eslint .",
     "sync:linkedin": "tsx scripts/sync-linkedin.ts",
@@ -13,6 +13,8 @@
     "audit:contrast": "npm run build && tsx scripts/audit-contrast.ts"
   },
   "dependencies": {
+    "@fontsource/fraunces": "^5.2.9",
+    "@fontsource/plus-jakarta-sans": "^5.2.8",
     "@tailwindcss/vite": "^4.3.0",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",

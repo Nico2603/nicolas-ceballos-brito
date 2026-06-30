@@ -20,7 +20,6 @@ npm run dev
 ```bash
 npm run build         # prebuild (sitemap, llms.txt, OG images) + vite + prerender
 npm run preview
-npm run images:webp   # convertir raster en public/images/ a WebP
 npm run sync:linkedin # snapshot del perfil LinkedIn (opcional, ver abajo)
 ```
 
@@ -28,7 +27,8 @@ El pipeline `prebuild` genera automáticamente:
 
 - `public/sitemap.xml` — desde `PRERENDER_ROUTES`
 - `public/llms.txt` — archivo AEO para motores de respuesta (incluye datos de LinkedIn)
-- Normalización de `og-image.webp` a 1200×630 y `apple-touch-icon.png`
+- `public/images/og-image.webp` — tarjeta Open Graph de marca (1200×630, sin foto; ver abajo)
+- `public/apple-touch-icon.png` — derivado de la tarjeta OG (180×180)
 - Inyección de JSON-LD en `index.html` (home)
 
 El paso `prerender` (Puppeteer + Chromium) genera HTML estático por ruta en `dist/`.
@@ -86,13 +86,30 @@ Rutas definidas en [`src/constants/seo-routes.ts`](./src/constants/seo-routes.ts
 | Capa | Ubicación |
 |------|-----------|
 | Meta tags + OG/Twitter | `src/components/SeoHelmet.tsx` |
+| Constantes OG (URL imagen, alt) | `src/constants/seo.ts` |
 | JSON-LD `@graph` | `src/lib/structured-data.ts` (`worksFor`, `hasOccupation`, `SocialMediaPosting` del post destacado) |
 | Rutas prerender | `src/constants/seo-routes.ts` |
 | Sitemap / llms.txt | `scripts/generate-sitemap.ts`, `scripts/generate-llms-txt.ts` |
 | Prerender Puppeteer | `scripts/prerender.ts` |
 | Sync LinkedIn | `scripts/sync-linkedin.ts` |
-| OG images | `scripts/normalize-seo-images.mjs` |
+| Tarjeta OG (generación) | `scripts/generate-og-image.mjs` |
+| OG / apple-touch (normalización) | `scripts/normalize-seo-images.mjs` |
 | AEO | `public/llms.txt` (regenerado en build) |
+
+### Previews al compartir (WhatsApp, LinkedIn, X)
+
+WhatsApp y otras redes **no ejecutan JavaScript**: leen el HTML estático que entrega el prerender. Cada ruta indexable incluye meta Open Graph y Twitter Card vía `SeoHelmet`.
+
+| Activo | Archivo | Uso |
+|--------|---------|-----|
+| **Favicon** (pestaña) | `public/favicon.svg` | Monograma **NC** en azul `#2a5c82` |
+| **Tarjeta OG** (preview del link) | `public/images/og-image.webp` | Generada en build: navy + cyan + ámbar, nombre, eyebrow y stack — **sin foto** |
+| **Foto de perfil** (sitio) | `public/images/pic.webp` | Hero y About; no se usa en previews sociales |
+| **Apple touch icon** | `public/apple-touch-icon.png` | Acceso directo en iOS; recorte de la tarjeta OG |
+
+Para editar textos o colores de la tarjeta OG, modificar las constantes en `scripts/generate-og-image.mjs` y ejecutar `npm run build` (o solo `node scripts/generate-og-image.mjs` en desarrollo).
+
+Tras un deploy, si WhatsApp muestra una preview antigua, refrescar caché en [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/) → **Volver a extraer**.
 
 ## Arquitectura UI
 
@@ -123,8 +140,9 @@ Pasos tras el deploy (checklist completo en [`public/recursos-seo-handoff.txt`](
 2. **Enviar sitemap:** `https://nicolasceballosbrito.com/sitemap.xml`
 3. **Inspección de URLs** → solicitar indexación de `/`, `/about`, una guía y un proyecto.
 4. **Validar rich results:** [Rich Results Test](https://search.google.com/test/rich-results) — home debe mostrar `Person`, `WebSite` y `FAQPage`.
-5. **Previews sociales:** [opengraph.xyz](https://www.opengraph.xyz/) en home, about y una guía.
-6. **Bing Webmaster Tools** (opcional): mismo sitemap.
+5. **Previews sociales:** [opengraph.xyz](https://www.opengraph.xyz/) en home, about y una guía — debe mostrar la tarjeta de marca (no la foto de perfil).
+6. **WhatsApp / Meta:** [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/) → pegar URL → **Volver a extraer** si la preview está desactualizada.
+7. **Bing Webmaster Tools** (opcional): mismo sitemap.
 
 ## Google Analytics 4
 

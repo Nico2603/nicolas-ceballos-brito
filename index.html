@@ -2,17 +2,6 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <!-- Google tag (gtag.js) — flujo GA4 «Start»; pageviews SPA en src/lib/analytics.ts -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QFQFLD69P3"></script>
-    <script>
-      window.dataLayer = window.dataLayer || []
-      function gtag() {
-        dataLayer.push(arguments)
-      }
-      window.gtag = window.gtag || gtag
-      gtag('js', new Date())
-      gtag('config', 'G-QFQFLD69P3', { send_page_view: false })
-    </script>
     <meta name="google-site-verification" content="PENDIENTE_VERIFICACION_GSC" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -20,16 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#F0F7FF" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0B1220" media="(prefers-color-scheme: dark)" />
-    <link rel="preload" as="image" href="/images/pic.webp" type="image/webp" />
-    <link rel="preload" as="image" href="/images/p1.webp" type="image/webp" />
+    <link rel="preload" as="image" href="/images/pic.webp" type="image/webp" fetchpriority="high" />
     <meta name="author" content="Nicolás Ceballos Brito" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://www.googletagmanager.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",

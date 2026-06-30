@@ -12,7 +12,8 @@ export default function HeroGrid() {
 
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReduced) return
+    const isMobile = window.matchMedia('(max-width: 768px)').matches
+    if (prefersReduced || isMobile) return
 
     const canvas = canvasRef.current
     if (!canvas) return

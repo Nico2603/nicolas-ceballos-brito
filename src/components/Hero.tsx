@@ -56,7 +56,7 @@ export default function Hero() {
       <motion.div
         className="relative z-10 max-w-6xl mx-auto px-4 w-full"
         variants={staggerContainer}
-        initial="hidden"
+        initial={false}
         animate="show"
       >
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -127,7 +127,18 @@ export default function Hero() {
             <motion.div animate={floatProfile} className="relative">
               <div className="hero-profile-ring" aria-hidden />
               <div className="relative rounded-2xl p-[3px] bg-white/10 backdrop-blur-sm hero-profile-glow">
-                <div className="profile-image w-56 h-56 md:w-72 md:h-72 rounded-[14px]" />
+                <img
+                  src="/images/pic.webp"
+                  srcSet="/images/pic-288.webp 288w, /images/pic-576.webp 576w"
+                  sizes="(max-width: 768px) 224px, 288px"
+                  width={288}
+                  height={288}
+                  alt={`Foto de perfil de ${FULL_NAME}`}
+                  fetchPriority="high"
+                  loading="eager"
+                  decoding="async"
+                  className="w-56 h-56 md:w-72 md:h-72 rounded-[14px] object-cover"
+                />
               </div>
             </motion.div>
 

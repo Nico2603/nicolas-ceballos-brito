@@ -1,10 +1,7 @@
+import { lazy, Suspense } from 'react'
 import Footer from '../components/Footer'
-import Contact from '../components/Contact'
 import CurrentExperience from '../components/CurrentExperience'
-import FaqSection from '../components/FaqSection'
 import Hero from '../components/Hero'
-import LaboresCarousel from '../components/LaboresCarousel'
-import LinkedInFeed from '../components/LinkedInFeed'
 import Portfolio from '../components/Portfolio'
 import RecursosSection from '../components/RecursosSection'
 import SeoHelmet from '../components/SeoHelmet'
@@ -13,7 +10,12 @@ import {
   SEO_HOME_KEYWORDS,
   SEO_HOME_TITLE,
 } from '../constants/seo-pages'
-import { buildHomeStructuredData } from '../lib/structured-data'
+import { FALLBACK_GITHUB_STATS } from '../data/github-repos-fallback'
+
+const LinkedInFeed = lazy(() => import('../components/LinkedInFeed'))
+const LaboresCarousel = lazy(() => import('../components/LaboresCarousel'))
+const FaqSection = lazy(() => import('../components/FaqSection'))
+const Contact = lazy(() => import('../components/Contact'))
 
 export default function Home() {
   return (
@@ -23,16 +25,21 @@ export default function Home() {
         description={SEO_HOME_DESCRIPTION}
         canonicalPath="/"
         keywords={SEO_HOME_KEYWORDS}
-        structuredData={buildHomeStructuredData()}
       />
       <Hero />
       <CurrentExperience />
-      <LinkedInFeed />
-      <Portfolio />
-      <LaboresCarousel />
+      <Suspense fallback={null}>
+        <LinkedInFeed />
+      </Suspense>
+      <Portfolio staticStats={FALLBACK_GITHUB_STATS} />
+      <Suspense fallback={null}>
+        <LaboresCarousel />
+      </Suspense>
       <RecursosSection />
-      <FaqSection />
-      <Contact />
+      <Suspense fallback={null}>
+        <FaqSection />
+        <Contact />
+      </Suspense>
       <Footer />
     </>
   )

@@ -51,3 +51,14 @@ export const FALLBACK_GITHUB_REPOS: GitHubRepo[] = [
     'TypeScript',
   ),
 ]
+
+const fallbackLanguages = new Set(
+  FALLBACK_GITHUB_REPOS.filter((repo) => repo.language).map((repo) => repo.language),
+)
+
+export const FALLBACK_GITHUB_STATS = {
+  totalRepos: FALLBACK_GITHUB_REPOS.length,
+  totalStars: FALLBACK_GITHUB_REPOS.reduce((sum, repo) => sum + repo.stargazers_count, 0),
+  totalForks: FALLBACK_GITHUB_REPOS.reduce((sum, repo) => sum + repo.forks_count, 0),
+  totalLanguages: fallbackLanguages.size,
+}

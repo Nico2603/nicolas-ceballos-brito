@@ -26,8 +26,10 @@ Actualizar tras cada deploy significativo de contenido SEO.
 
 === VALIDACIÓN EXTERNA ===
 [ ] Rich Results Test (home): Person + WebSite + FAQPage sin errores críticos
-[ ] opengraph.xyz: home, about, una guía — previews correctos
-[ ] og-image.webp dimensiones 1200×630 (npm run prebuild normaliza automáticamente)
+[ ] opengraph.xyz: home, about, una guía — tarjeta de marca (navy, NC, sin foto de perfil)
+[ ] og-image.webp 1200×630 generado por scripts/generate-og-image.mjs (prebuild)
+[ ] Facebook Sharing Debugger: home → Volver a extraer (refresca caché WhatsApp/Meta)
+[ ] Compartir https://nicolasceballosbrito.com en WhatsApp muestra título, descripción e imagen OG
 
 === BING (OPCIONAL) ===
 [ ] Registrar en Bing Webmaster Tools
