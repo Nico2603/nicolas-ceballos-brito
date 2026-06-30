@@ -60,7 +60,7 @@ export const PROFESSIONAL_KNOWS_ABOUT = [
 export const PROFESSIONAL_SAME_AS = [
   SOCIAL_LINKS.github,
   SOCIAL_LINKS.linkedin,
-  SOCIAL_LINKS.twitter,
+  SOCIAL_LINKS.x,
   SOCIAL_LINKS.instagram,
   SOCIAL_LINKS.facebook,
   SOCIAL_LINKS.huggingface,

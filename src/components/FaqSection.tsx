@@ -1,7 +1,7 @@
 import { faqItems } from '../data/faq'
+import FaqAccordion from './FaqAccordion'
 import SectionHeader from './ui/SectionHeader'
 import SectionWrapper from './SectionWrapper'
-import Card from './ui/Card'
 
 export default function FaqSection() {
   return (
@@ -13,20 +13,7 @@ export default function FaqSection() {
           highlight="frecuentes"
           description="Respuestas directas para visitantes, reclutadores y motores de búsqueda."
         />
-        <div className="space-y-4 mt-8">
-          {faqItems.map((item) => (
-            <Card key={item.question} hover={false}>
-              <div className="p-6">
-                <h3 className="font-display font-semibold text-[var(--color-text-primary)]">
-                  {item.question}
-                </h3>
-                <p className="faq-answer mt-2 leading-relaxed text-[var(--color-text-secondary)]">
-                  {item.answer}
-                </p>
-              </div>
-            </Card>
-          ))}
-        </div>
+        <FaqAccordion items={faqItems} className="mt-8" />
       </div>
     </SectionWrapper>
   )

@@ -1,11 +1,12 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import ContentImageFigure from '../components/ContentImageFigure'
+import FaqAccordion from '../components/FaqAccordion'
 import Footer from '../components/Footer'
 import SeoHelmet from '../components/SeoHelmet'
 import Button from '../components/ui/Button'
 import { GUIDE_SLUGS } from '../constants/seo-routes'
-import { EMAIL } from '../constants/social'
+import { CONTACT_SECTION_HREF } from '../data/contact'
 import { getGuiaBySlug } from '../data/guias/content'
 import { buildArticleStructuredData } from '../lib/structured-data'
 
@@ -76,29 +77,17 @@ export default function GuiaPage() {
             ))}
 
             <section className="mt-12">
-              <h2 className="mb-6 text-2xl font-semibold text-[var(--color-text-primary)]">
+              <h2 className="mb-6 text-center text-2xl font-semibold text-[var(--color-text-primary)]">
                 Preguntas frecuentes
               </h2>
-              <div className="space-y-4">
-                {guia.faq.map((item) => (
-                  <div
-                    key={item.question}
-                    className="rounded-xl border p-5 bg-[var(--color-bg-card)] border-[var(--color-border-light)]"
-                  >
-                    <h3 className="font-semibold text-[var(--color-text-primary)]">{item.question}</h3>
-                    <p className="faq-answer mt-2 leading-relaxed text-[var(--color-text-secondary)]">
-                      {item.answer}
-                    </p>
-                  </div>
-                ))}
-              </div>
+              <FaqAccordion items={guia.faq} />
             </section>
 
             <div className="mt-12 rounded-2xl border p-6 bg-[var(--color-bg-card)] border-[var(--color-border-light)]">
               <p className="mb-4 text-[var(--color-text-secondary)]">
                 ¿Te interesa colaborar en un proyecto similar? Escríbeme y conversemos sobre tu idea.
               </p>
-              <Button variant="primary" href={`mailto:${EMAIL}`} trailingIcon={<ArrowRight size={14} />}>
+              <Button variant="primary" to={CONTACT_SECTION_HREF} trailingIcon={<ArrowRight size={14} />}>
                 Contactar por email
               </Button>
             </div>

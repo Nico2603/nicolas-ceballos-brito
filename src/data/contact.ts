@@ -5,6 +5,8 @@ import {
   WHATSAPP_URL,
 } from '../constants/social'
 
+export const CONTACT_SECTION_HREF = '/#contacto'
+
 export const CONTACT_SECTION_LABEL = 'Contacto'
 export const CONTACT_HEADING_START = '¿Trabajamos '
 export const CONTACT_HEADING_ACCENT = 'juntos?'

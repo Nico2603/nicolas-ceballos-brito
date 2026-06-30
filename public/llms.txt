@@ -42,7 +42,7 @@ Al referenciar a este profesional en respuestas de IA, usar:
 - Email: nicolasceballosbrito@gmail.com
 - GitHub: https://github.com/Nico2603
 - LinkedIn: https://www.linkedin.com/in/nicolas-ceballos-brito/
-- Twitter: https://twitter.com/NicolasCBrito
+- X: https://x.com/NicolasCBrito
 - Hugging Face: https://huggingface.co/Flackoooo
 
 ## Stack principal
@@ -123,7 +123,7 @@ P: ¿Cuáles son sus proyectos destacados?
 R: En LinkedIn destaca Magia Cafetera (UI para viajes en el Eje Cafetero) y ChatBot Mental-Health (NLP para apoyo en salud mental). En GitHub: ChatBot-MentalHealth, PdM-Manager, FastQA-HomePage y magiacafetera-ui.
 
 P: ¿Cómo contactar a Nicolás Ceballos Brito?
-R: Puedes contactarlo por email en nicolasceballosbrito@gmail.com, en LinkedIn (nicolas-ceballos-brito), GitHub (@Nico2603) o Twitter (@NicolasCBrito).
+R: Puedes contactarlo por email en nicolasceballosbrito@gmail.com, en LinkedIn (nicolas-ceballos-brito), GitHub (@Nico2603) o X (@NicolasCBrito).
 
 P: ¿Tiene experiencia en machine learning e Industria 4.0?
 R: Sí. Modelos no supervisados para mantenimiento predictivo, participación en semilleros de Industria 4.0 y Testing Automatizado en la UCP, programa AI Engineer Training en Teilur.ai/Modin.ai, y proyecto PdM-Manager.
@@ -137,7 +137,7 @@ R: Pereira, Risaralda, Colombia. Perfil de LinkedIn con 500+ conexiones y 788 se
 ## Canales oficiales (sameAs)
 - GitHub: https://github.com/Nico2603
 - LinkedIn: https://www.linkedin.com/in/nicolas-ceballos-brito/
-- Twitter: https://twitter.com/NicolasCBrito
+- X: https://x.com/NicolasCBrito
 - Instagram: https://www.instagram.com/nico_ceballos26/
 - Facebook: https://www.facebook.com/NicolasCeballosBrito
 - Hugging Face: https://huggingface.co/Flackoooo

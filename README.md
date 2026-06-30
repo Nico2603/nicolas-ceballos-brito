@@ -87,7 +87,7 @@ Rutas definidas en [`src/constants/seo-routes.ts`](./src/constants/seo-routes.ts
 
 | Capa | Ubicación |
 |------|-----------|
-| Meta tags + OG/Twitter | `src/components/SeoHelmet.tsx` |
+| Meta tags + OG / X Cards | `src/components/SeoHelmet.tsx` |
 | Constantes OG (URL imagen, alt) | `src/constants/seo.ts` |
 | JSON-LD `@graph` | `src/lib/structured-data.ts` (`worksFor`, `hasOccupation`, `SocialMediaPosting` del post destacado) |
 | Rutas prerender | `src/constants/seo-routes.ts` |
@@ -101,7 +101,7 @@ Rutas definidas en [`src/constants/seo-routes.ts`](./src/constants/seo-routes.ts
 
 ### Previews al compartir (WhatsApp, LinkedIn, X)
 
-WhatsApp y otras redes **no ejecutan JavaScript**: leen el HTML estático que entrega el prerender. Cada ruta indexable incluye meta Open Graph y Twitter Card vía `SeoHelmet`.
+WhatsApp y otras redes **no ejecutan JavaScript**: leen el HTML estático que entrega el prerender. Cada ruta indexable incluye meta Open Graph y X Cards (`twitter:*`, estándar vigente de X) vía `SeoHelmet`.
 
 | Activo | Archivo | Uso |
 |--------|---------|-----|

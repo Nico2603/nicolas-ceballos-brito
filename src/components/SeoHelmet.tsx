@@ -7,7 +7,7 @@ import {
   SEO_OG_IMAGE_WIDTH,
   SEO_SITE_NAME,
 } from '../constants/seo'
-import { FULL_NAME, SITE_URL, TWITTER_HANDLE } from '../constants/social'
+import { FULL_NAME, SITE_URL, X_HANDLE } from '../constants/social'
 
 interface SeoHelmetProps {
   title: string
@@ -82,8 +82,8 @@ export default function SeoHelmet({
         <meta property="article:author" content={articleAuthor} />
       )}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content={TWITTER_HANDLE} />
-      <meta name="twitter:creator" content={TWITTER_HANDLE} />
+      <meta name="twitter:site" content={X_HANDLE} />
+      <meta name="twitter:creator" content={X_HANDLE} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />

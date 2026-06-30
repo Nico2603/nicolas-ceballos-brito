@@ -1,4 +1,5 @@
 import type { TopicFaqItem } from '../lib/structured-data'
+import { X_HANDLE } from '../constants/social'
 import { linkedInAbout, linkedInExperience, linkedInHeadline } from './linkedin-profile'
 
 const currentJobs = linkedInExperience
@@ -29,7 +30,7 @@ export const faqItems: TopicFaqItem[] = [
   {
     question: '¿Cómo contactar a Nicolás Ceballos Brito?',
     answer:
-      'Puedes contactarlo por email en nicolasceballosbrito@gmail.com, en LinkedIn (nicolas-ceballos-brito), GitHub (@Nico2603) o Twitter (@NicolasCBrito).',
+      `Puedes contactarlo por email en nicolasceballosbrito@gmail.com, en LinkedIn (nicolas-ceballos-brito), GitHub (@Nico2603) o X (${X_HANDLE}).`,
   },
   {
     question: '¿Tiene experiencia en machine learning e Industria 4.0?',

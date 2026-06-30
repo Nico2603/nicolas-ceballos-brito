@@ -19,11 +19,11 @@ export function buildWhatsappBookingUrl(source: string): string {
 }
 export const WHATSAPP_BOOKING_URL = buildWhatsappBookingUrl('sitio web')
 
-export const TWITTER_HANDLE = '@NicolasCBrito'
+export const X_HANDLE = '@NicolasCBrito'
 
 export const SOCIAL_LINKS = {
   facebook: 'https://www.facebook.com/NicolasCeballosBrito',
-  twitter: 'https://twitter.com/NicolasCBrito',
+  x: 'https://x.com/NicolasCBrito',
   instagram: 'https://www.instagram.com/nico_ceballos26/',
   linkedin: 'https://www.linkedin.com/in/nicolas-ceballos-brito/',
   github: 'https://github.com/Nico2603',

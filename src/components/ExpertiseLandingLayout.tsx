@@ -1,8 +1,10 @@
 import type { NarrativeSection } from '../types/content'
 import type { TopicFaqItem, BreadcrumbItem } from '../lib/structured-data'
 import ContentImageFigure from './ContentImageFigure'
+import FaqAccordion from './FaqAccordion'
 import { ArrowRight, CheckCircle2, Mail } from 'lucide-react'
-import { EMAIL, SOCIAL_LINKS } from '../constants/social'
+import { SOCIAL_LINKS } from '../constants/social'
+import { CONTACT_SECTION_HREF } from '../data/contact'
 import Footer from './Footer'
 import SeoHelmet from './SeoHelmet'
 import { buildExpertiseStructuredData } from '../lib/structured-data'
@@ -75,7 +77,7 @@ export default function ExpertiseLandingLayout({
               {lead}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button variant="primary" href={`mailto:${EMAIL}`}>
+              <Button variant="primary" to={CONTACT_SECTION_HREF}>
                 <Mail size={18} />
                 Contactar
               </Button>
@@ -149,22 +151,10 @@ export default function ExpertiseLandingLayout({
 
         <section id="faq" className="bg-[var(--color-bg-primary)] py-16 md:py-20">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-            <h2 className="mb-6 font-display text-3xl font-semibold tracking-tight md:text-4xl text-[var(--color-text-primary)]">
+            <h2 className="mb-6 text-center font-display text-3xl font-semibold tracking-tight md:text-4xl text-[var(--color-text-primary)]">
               {faqTitle}
             </h2>
-            <div className="space-y-4">
-              {faq.map((item) => (
-                <article
-                  key={item.question}
-                  className="rounded-xl border p-5 bg-[var(--color-bg-card)] border-[var(--color-border-light)]"
-                >
-                  <h3 className="font-semibold text-[var(--color-text-primary)]">{item.question}</h3>
-                  <p className="faq-answer mt-2 leading-relaxed text-[var(--color-text-secondary)]">
-                    {item.answer}
-                  </p>
-                </article>
-              ))}
-            </div>
+            <FaqAccordion items={faq} />
           </div>
         </section>
       </main>

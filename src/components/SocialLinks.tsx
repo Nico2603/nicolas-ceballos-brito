@@ -1,4 +1,4 @@
-import { FacebookIcon, GitHubIcon, InstagramIcon, LinkedInIcon, TwitterIcon } from './icons/SocialIcons'
+import { FacebookIcon, GitHubIcon, InstagramIcon, LinkedInIcon, XIcon } from './icons/SocialIcons'
 import { SOCIAL_LINKS } from '../constants/social'
 
 interface SocialLinksProps {
@@ -9,7 +9,7 @@ interface SocialLinksProps {
 
 const socialItems = [
   { href: SOCIAL_LINKS.facebook, label: 'Facebook', Icon: FacebookIcon, color: '#1877F2' },
-  { href: SOCIAL_LINKS.twitter, label: 'Twitter', Icon: TwitterIcon, color: '#1DA1F2' },
+  { href: SOCIAL_LINKS.x, label: 'X', Icon: XIcon, color: '#000000' },
   { href: SOCIAL_LINKS.instagram, label: 'Instagram', Icon: InstagramIcon, color: '#E4405F' },
   { href: SOCIAL_LINKS.linkedin, label: 'LinkedIn', Icon: LinkedInIcon, color: '#0A66C2' },
   { href: SOCIAL_LINKS.github, label: 'GitHub', Icon: GitHubIcon, color: '#333333' },

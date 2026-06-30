@@ -102,7 +102,7 @@ ${linkedInSection}
 - Email: ${EMAIL}
 - GitHub: ${SOCIAL_LINKS.github}
 - LinkedIn: ${SOCIAL_LINKS.linkedin}
-- Twitter: ${SOCIAL_LINKS.twitter}
+- X: ${SOCIAL_LINKS.x}
 - Hugging Face: ${SOCIAL_LINKS.huggingface}
 
 ## Stack principal
@@ -129,7 +129,7 @@ ${faqSection}
 ## Canales oficiales (sameAs)
 - GitHub: ${SOCIAL_LINKS.github}
 - LinkedIn: ${SOCIAL_LINKS.linkedin}
-- Twitter: ${SOCIAL_LINKS.twitter}
+- X: ${SOCIAL_LINKS.x}
 - Instagram: ${SOCIAL_LINKS.instagram}
 - Facebook: ${SOCIAL_LINKS.facebook}
 - Hugging Face: ${SOCIAL_LINKS.huggingface}
