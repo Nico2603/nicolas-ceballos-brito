@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "node scripts/normalize-seo-images.mjs && tsx scripts/generate-sitemap.ts && tsx scripts/generate-llms-txt.ts && tsx scripts/inject-home-schema.ts",
+    "prebuild": "node scripts/generate-og-image.mjs && node scripts/normalize-seo-images.mjs && tsx scripts/generate-sitemap.ts && tsx scripts/generate-llms-txt.ts && tsx scripts/inject-home-schema.ts",
     "build": "tsc -b && vite build && tsx scripts/prerender.ts",
     "lint": "eslint .",
     "sync:linkedin": "tsx scripts/sync-linkedin.ts",

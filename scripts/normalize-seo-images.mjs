@@ -1,4 +1,4 @@
-import { readFile, stat, writeFile } from 'node:fs/promises'
+import { readFile, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import sharp from 'sharp'
@@ -28,17 +28,8 @@ if (ogMeta.width !== OG_WIDTH || ogMeta.height !== OG_HEIGHT) {
 
 const ogForApple = await readFile(ogPath)
 
-const appleStat = await stat(applePath).catch(() => null)
-const needsApple =
-  !appleStat ||
-  (await sharp(applePath).metadata()).width !== APPLE_SIZE
-
-if (needsApple) {
-  await sharp(ogForApple)
-    .resize(APPLE_SIZE, APPLE_SIZE, { fit: 'cover', position: 'centre' })
-    .png()
-    .toFile(applePath)
-  console.log(`apple-touch-icon.png generado (${APPLE_SIZE}×${APPLE_SIZE})`)
-} else {
-  console.log('apple-touch-icon.png ya existe con dimensiones correctas')
-}
+await sharp(ogForApple)
+  .resize(APPLE_SIZE, APPLE_SIZE, { fit: 'cover', position: 'left' })
+  .png()
+  .toFile(applePath)
+console.log(`apple-touch-icon.png generado (${APPLE_SIZE}×${APPLE_SIZE})`)

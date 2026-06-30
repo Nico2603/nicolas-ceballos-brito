@@ -10,7 +10,7 @@ export const SEO_DEFAULT_DESCRIPTION =
 
 export const SEO_OG_IMAGE = `${SITE_URL}/images/og-image.webp`
 
-export const SEO_OG_IMAGE_ALT = `${FULL_NAME} — Portafolio profesional`
+export const SEO_OG_IMAGE_ALT = `${FULL_NAME} — Full-Stack Developer · Ing. Sistemas`
 
 export const SEO_OG_IMAGE_WIDTH = 1200
 
