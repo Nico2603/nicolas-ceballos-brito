@@ -1,62 +1,65 @@
 import { ArrowLeft } from 'lucide-react'
-import { Link } from 'react-router-dom'
 import Footer from '../components/Footer'
 import GitHubStats from '../components/GitHubStats'
-import { SimpleNavbar } from '../components/Navbar'
 import SeoHelmet from '../components/SeoHelmet'
 import SkillsSection from '../components/SkillsSection'
 import SocialLinks from '../components/SocialLinks'
-import TypingAnimation from '../components/TypingAnimation'
+import Button from '../components/ui/Button'
+import Card from '../components/ui/Card'
+import SectionHeader from '../components/ui/SectionHeader'
 import { aboutIntro } from '../data/content'
-import { FULL_NAME, SOCIAL_LINKS } from '../constants/social'
-
-const connectBadges = [
-  { href: SOCIAL_LINKS.github, src: 'https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white', alt: 'GitHub' },
-  { href: SOCIAL_LINKS.linkedin, src: 'https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white', alt: 'LinkedIn' },
-  { href: SOCIAL_LINKS.twitter, src: 'https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white', alt: 'Twitter' },
-  { href: SOCIAL_LINKS.facebook, src: 'https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white', alt: 'Facebook' },
-  { href: SOCIAL_LINKS.instagram, src: 'https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white', alt: 'Instagram' },
-  { href: SOCIAL_LINKS.huggingface, src: 'https://img.shields.io/badge/Hugging%20Face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black', alt: 'Hugging Face' },
-]
+import {
+  SEO_ABOUT_DESCRIPTION,
+  SEO_ABOUT_KEYWORDS,
+  SEO_ABOUT_TITLE,
+} from '../constants/seo-pages'
+import { buildAboutStructuredData } from '../lib/structured-data'
 
 export default function About() {
+  const breadcrumbs = [
+    { name: 'Inicio', path: '/' },
+    { name: 'Acerca de mí', path: '/about' },
+  ]
+
   return (
     <>
       <SeoHelmet
-        title={`Acerca de mí — ${FULL_NAME}`}
-        description="Conoce más sobre mis habilidades, experiencia y pasión por la tecnología."
+        title={SEO_ABOUT_TITLE}
+        description={SEO_ABOUT_DESCRIPTION}
         canonicalPath="/about"
+        keywords={SEO_ABOUT_KEYWORDS}
+        structuredData={buildAboutStructuredData(
+          SEO_ABOUT_TITLE,
+          SEO_ABOUT_DESCRIPTION,
+          breadcrumbs,
+        )}
       />
-      <SimpleNavbar />
 
-      <section className="pt-28 pb-16 text-center" style={{ background: 'var(--gradient-hero)' }}>
-        <div className="max-w-4xl mx-auto px-4">
-          <h1 className="font-display text-4xl font-bold text-white mb-4">{FULL_NAME}</h1>
-          <TypingAnimation />
+      <section
+        id="about-pro"
+        className="pt-32 pb-16 px-4"
+        style={{ background: 'var(--gradient-hero)' }}
+      >
+        <div className="max-w-4xl mx-auto">
+          <SectionHeader
+            eyebrow="Sobre mí"
+            title="Nicolás Ceballos Brito"
+            align="left"
+            className="!mb-0 [&_h2]:text-white [&_p]:text-white/80"
+          />
         </div>
       </section>
 
-      <section className="py-16 px-4">
+      <section className="py-16 px-4 bg-[var(--color-bg-primary)]">
         <div className="max-w-4xl mx-auto">
-          <div className="glass-card rounded-2xl p-8 mb-12">
-            <div className="grid md:grid-cols-[120px_1fr_120px] gap-6 items-center">
-              <img
-                src="https://raw.githubusercontent.com/iCharlesZ/FigureBed/master/img/octocat.gif"
-                alt="Octocat"
-                className="w-24 mx-auto rounded-lg hidden md:block"
-                loading="lazy"
-              />
-              <p className="text-center leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
+          <Card className="mb-12">
+            <div className="p-8 grid md:grid-cols-[200px_1fr] gap-8 items-center">
+              <div className="profile-image w-40 h-40 md:w-48 md:h-48 rounded-xl mx-auto" />
+              <p className="direct-answer leading-relaxed text-[var(--color-text-secondary)]">
                 {aboutIntro}
               </p>
-              <img
-                src="https://raw.githubusercontent.com/deut-erium/deut-erium/refs/heads/master/assets/computer.gif"
-                alt="Computer"
-                className="w-24 mx-auto rounded-lg hidden md:block"
-                loading="lazy"
-              />
             </div>
-          </div>
+          </Card>
 
           <SkillsSection />
 
@@ -65,28 +68,16 @@ export default function About() {
           </div>
 
           <div className="mt-12 text-center">
-            <h3 className="font-display text-xl font-semibold mb-6" style={{ color: 'var(--color-primary)' }}>
+            <h3 className="font-display text-xl font-semibold mb-6 text-[var(--color-text-primary)]">
               Conecta conmigo
             </h3>
-            <div className="flex flex-wrap justify-center gap-3 mb-8">
-              {connectBadges.map((badge) => (
-                <a key={badge.alt} href={badge.href} target="_blank" rel="noopener noreferrer">
-                  <img src={badge.src} alt={badge.alt} loading="lazy" />
-                </a>
-              ))}
-            </div>
             <SocialLinks />
           </div>
 
           <div className="text-center mt-12">
-            <Link
-              to="/"
-              className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-white transition-all hover:-translate-y-1"
-              style={{ background: 'linear-gradient(45deg, var(--color-primary), var(--color-secondary))' }}
-            >
-              <ArrowLeft size={18} />
-              Volver al Inicio
-            </Link>
+            <Button variant="secondary" to="/" trailingIcon={<ArrowLeft size={14} />}>
+              Volver al inicio
+            </Button>
           </div>
         </div>
       </section>

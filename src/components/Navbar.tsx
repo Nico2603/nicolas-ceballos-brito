@@ -1,87 +1,76 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { ChevronDown, Menu, X } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { FULL_NAME } from '../constants/social'
+import Logo from './Logo'
+import Button from './ui/Button'
+import ThemeToggle from './ui/ThemeToggle'
 import { navLinks } from '../data/navigation'
 import { useMobileMenu } from '../hooks/useMobileMenu'
+import { useSmartNavigation } from '../hooks/useSmartNavigation'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const { menuOpen, toggleMenu, closeMenu } = useMobileMenu()
-  const navigate = useNavigate()
-  const location = useLocation()
+  const { handleNavClick, location } = useSmartNavigation()
+  const isHome = location.pathname === '/'
+  const onHero = isHome && !scrolled
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
+    const onScroll = () => setScrolled(window.scrollY > 60)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const handleNavClick = (href: string, external?: boolean) => {
+  const onNavClick = (href: string, external?: boolean) => {
     closeMenu()
-    setOpenDropdown(null)
-
-    if (external || href.startsWith('http') || href.startsWith('mailto:')) {
-      window.open(href, href.startsWith('mailto:') ? '_self' : '_blank', 'noopener,noreferrer')
-      return
-    }
-
-    if (href.startsWith('#')) {
-      if (location.pathname !== '/') {
-        navigate(`/${href}`)
-        return
-      }
-      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
-      return
-    }
-
-    navigate(href)
+    handleNavClick(href, external)
   }
 
-  const navBg = scrolled ? 'var(--color-nav-bg)' : 'transparent'
-  const textCol = scrolled ? 'var(--color-text-primary)' : 'var(--color-text-on-hero)'
+  const textCol = onHero ? 'var(--color-text-on-hero)' : 'var(--color-text-primary)'
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500${scrolled ? ' backdrop-blur-md shadow-sm' : ''}`}
-      style={{ backgroundColor: navBg }}
-    >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <>
+      <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none pt-4 md:pt-6 px-4">
+        <div
+          className={`pointer-events-auto mx-auto max-w-fit flex items-center gap-2 md:gap-4 rounded-full border backdrop-blur-xl px-3 md:px-5 py-2 transition-all duration-500 ${
+            scrolled || !isHome
+              ? 'bg-[var(--color-nav-bg)] border-[var(--color-border-light)] shadow-[var(--shadow-nav)]'
+              : 'bg-white/10 border-white/20'
+          }`}
+        >
           <button
-            onClick={() => handleNavClick('#inicio')}
-            className="font-display font-bold text-lg tracking-tight"
-            style={{ color: textCol }}
-            aria-label={`${FULL_NAME} — inicio`}
+            onClick={() => onNavClick('#inicio')}
+            className="flex items-center shrink-0"
+            aria-label="Nicolás Ceballos — inicio"
           >
-            {FULL_NAME.split(' ')[0]}
+            <Logo variant={onHero ? 'onDark' : 'default'} />
           </button>
 
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <div key={link.label} className="relative group">
                 <button
-                  onClick={() => handleNavClick(link.href)}
-                  className="flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors hover:opacity-80"
+                  onClick={() => onNavClick(link.href)}
+                  className="flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-medium transition-colors hover:text-[var(--color-accent-primary)]"
                   style={{ color: textCol }}
                 >
                   {link.label}
                   {link.dropdown && <ChevronDown size={14} />}
                 </button>
                 {link.dropdown && (
-                  <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                    <div className="glass-card rounded-xl py-2 min-w-[200px]">
-                      {link.dropdown.map((item) => (
-                        <button
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <div className="rounded-xl border border-[var(--color-border-light)] bg-[var(--color-bg-card)] shadow-[var(--shadow-card)] py-2 min-w-[200px]">
+                      {link.dropdown.map((item, i) => (
+                        <motion.button
                           key={item.label}
-                          onClick={() => handleNavClick(item.href, item.external)}
-                          className="block w-full text-left px-4 py-2 text-sm hover:bg-white/20 transition-colors"
-                          style={{ color: 'var(--color-text-primary)' }}
+                          initial={{ opacity: 0, y: 4 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ delay: i * 0.04 }}
+                          onClick={() => onNavClick(item.href, item.external)}
+                          className="block w-full text-left px-4 py-2 text-sm text-[var(--color-text-primary)] hover:bg-[var(--color-bg-secondary)] transition-colors"
                         >
                           {item.label}
-                        </button>
+                        </motion.button>
                       ))}
                     </div>
                   </div>
@@ -90,134 +79,72 @@ export default function Navbar() {
             ))}
           </nav>
 
-          <button
-            className="lg:hidden p-2"
-            onClick={toggleMenu}
-            aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
-            style={{ color: textCol }}
-          >
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex items-center gap-2 ml-auto md:ml-0">
+            <div className="hidden md:block">
+              <Button
+                variant="primary"
+                className="!px-4 !py-1.5 !text-xs"
+                onClick={() => onNavClick('#contacto')}
+              >
+                Contacto
+              </Button>
+            </div>
+            <ThemeToggle scrolled={scrolled || !isHome} onHero={onHero} />
+
+            <button
+              className="md:hidden w-9 h-9 flex items-center justify-center"
+              onClick={toggleMenu}
+              aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+              aria-expanded={menuOpen}
+            >
+              <div className="w-5 h-4 relative flex flex-col justify-between">
+                <motion.span
+                  animate={menuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
+                  className="block h-0.5 w-full origin-center rounded-full"
+                  style={{ backgroundColor: textCol }}
+                />
+                <motion.span
+                  animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
+                  className="block h-0.5 w-full rounded-full"
+                  style={{ backgroundColor: textCol }}
+                />
+                <motion.span
+                  animate={menuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
+                  className="block h-0.5 w-full origin-center rounded-full"
+                  style={{ backgroundColor: textCol }}
+                />
+              </div>
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
 
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden glass-card border-t overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-40 md:hidden backdrop-blur-3xl bg-[var(--color-bg-primary)]/95"
           >
-            <nav className="px-4 py-4 space-y-1">
+            <nav className="flex flex-col items-center justify-center min-h-screen gap-2 px-6">
               {navLinks.map((link, index) => (
-                <motion.div
+                <motion.button
                   key={link.label}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05 }}
+                  initial={{ opacity: 0, y: 48 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 24 }}
+                  transition={{ delay: index * 0.06, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  onClick={() => onNavClick(link.href)}
+                  className="font-display text-2xl font-semibold text-[var(--color-text-primary)] py-3"
                 >
-                  <button
-                    onClick={() => {
-                      if (link.dropdown) {
-                        setOpenDropdown(openDropdown === link.label ? null : link.label)
-                      } else {
-                        handleNavClick(link.href)
-                      }
-                    }}
-                    className="flex items-center justify-between w-full px-4 py-3 rounded-lg text-left font-medium"
-                    style={{ color: 'var(--color-text-primary)' }}
-                  >
-                    {link.label}
-                    {link.dropdown && (
-                      <ChevronDown
-                        size={16}
-                        className={`transition-transform ${openDropdown === link.label ? 'rotate-180' : ''}`}
-                      />
-                    )}
-                  </button>
-                  {link.dropdown && openDropdown === link.label && (
-                    <div className="pl-4 space-y-1">
-                      {link.dropdown.map((item) => (
-                        <button
-                          key={item.label}
-                          onClick={() => handleNavClick(item.href, item.external)}
-                          className="block w-full text-left px-4 py-2 text-sm rounded-lg hover:bg-white/20"
-                          style={{ color: 'var(--color-text-secondary)' }}
-                        >
-                          {item.label}
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </motion.div>
+                  {link.label}
+                </motion.button>
               ))}
             </nav>
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
-  )
-}
-
-export function SimpleNavbar() {
-  const { menuOpen, toggleMenu, closeMenu } = useMobileMenu()
-
-  const links = [
-    { label: 'Inicio', href: '/' },
-    { label: 'Portafolio', href: '/#portafolio' },
-    { label: 'Labores', href: '/#labores' },
-    { label: 'Contacto', href: '/#contacto' },
-    { label: 'Sobre mí', href: '/about' },
-    { label: 'Repositorios', href: '/repositories' },
-  ]
-
-  return (
-    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md shadow-sm" style={{ backgroundColor: 'var(--color-nav-bg)' }}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <Link to="/" className="font-display font-bold text-lg" style={{ color: 'var(--color-primary)' }}>
-            {FULL_NAME.split(' ')[0]}
-          </Link>
-          <nav className="hidden md:flex items-center gap-4">
-            {links.map((link) => (
-              <Link
-                key={link.label}
-                to={link.href}
-                className="text-sm font-medium hover:opacity-80 transition-opacity"
-                style={{ color: 'var(--color-text-primary)' }}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-          <button className="md:hidden p-2" onClick={toggleMenu} aria-label="Menú">
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </div>
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.nav
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden px-4 py-4 space-y-2 glass-card border-t"
-          >
-            {links.map((link) => (
-              <Link
-                key={link.label}
-                to={link.href}
-                onClick={closeMenu}
-                className="block px-4 py-3 rounded-lg font-medium"
-                style={{ color: 'var(--color-text-primary)' }}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </motion.nav>
-        )}
-      </AnimatePresence>
-    </header>
+    </>
   )
 }

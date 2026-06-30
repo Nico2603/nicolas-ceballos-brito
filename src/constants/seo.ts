@@ -1,4 +1,4 @@
-import { FULL_NAME } from './social'
+import { FULL_NAME, SITE_URL } from './social'
 
 export const SEO_SITE_NAME = FULL_NAME
 
@@ -8,7 +8,7 @@ export const SEO_KEYWORDS =
 export const SEO_DEFAULT_DESCRIPTION =
   'Perfil profesional de Nicolás Ceballos Brito, desarrollador web y entusiasta de la innovación tecnológica.'
 
-export const SEO_OG_IMAGE = '/images/pic.jpg'
+export const SEO_OG_IMAGE = `${SITE_URL}/images/og-image.jpg`
 
 export const SEO_OG_IMAGE_ALT = `${FULL_NAME} — Portafolio profesional`
 

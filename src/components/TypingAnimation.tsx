@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react'
 import { typingLines } from '../data/content'
 
-export default function TypingAnimation() {
+interface TypingAnimationProps {
+  className?: string
+}
+
+export default function TypingAnimation({ className = '' }: TypingAnimationProps) {
   const [lineIndex, setLineIndex] = useState(0)
   const [displayText, setDisplayText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
@@ -31,8 +35,8 @@ export default function TypingAnimation() {
 
   return (
     <p
-      className="text-lg md:text-xl font-medium h-8"
-      style={{ color: 'var(--color-secondary)' }}
+      className={`text-lg md:text-xl font-medium h-8 ${className}`}
+      style={{ color: className ? undefined : 'var(--color-accent-primary)' }}
       aria-live="polite"
     >
       {displayText}

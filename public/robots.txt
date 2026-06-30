@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Archivo para motores de respuesta / LLMs
+# https://nicolasceballosbrito.com/llms.txt
+
+Host: https://nicolasceballosbrito.com
+Sitemap: https://nicolasceballosbrito.com/sitemap.xml

@@ -6,6 +6,8 @@ export const FULL_NAME = 'Nicolás Ceballos Brito'
 
 export const EMAIL = 'nicolasceballosbrito@gmail.com'
 
+export const TWITTER_HANDLE = '@NicolasCBrito'
+
 export const SOCIAL_LINKS = {
   facebook: 'https://www.facebook.com/NicolasCeballosBrito',
   twitter: 'https://twitter.com/NicolasCBrito',

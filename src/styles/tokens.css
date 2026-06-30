@@ -1,13 +1,18 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
 @theme {
-  --color-primary: #2a5c82;
-  --color-secondary: #5da399;
-  --color-accent: #8bd8bd;
-  --color-tertiary: #eafdfc;
-  --font-sans: 'Raleway', sans-serif;
-  --font-display: 'Montserrat', sans-serif;
+  --color-navy-deep: #1E293B;
+  --color-navy-mid: #0F172A;
+  --color-cyan: #0891B2;
+  --color-cyan-bright: #22D3EE;
+  --color-amber: #F59E0B;
+  --color-amber-bright: #FBBF24;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-display: 'Fraunces', Georgia, serif;
   --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
@@ -15,20 +20,63 @@
 }
 
 :root {
-  --color-bg-primary: #f8f9fa;
-  --color-bg-secondary: #eafdfc;
-  --color-bg-card: rgba(255, 255, 255, 0.25);
-  --color-text-primary: #333333;
-  --color-text-secondary: #555555;
+  --color-bg-primary: #F7F9FC;
+  --color-bg-secondary: #E8EEF7;
+  --color-bg-card: #FFFFFF;
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #475569;
+  --color-text-placeholder: rgba(15, 23, 42, 0.45);
+  --color-text-on-hero: rgba(255, 255, 255, 0.92);
+  --color-border-light: #E2E8F0;
+  --color-nav-bg: rgba(255, 255, 255, 0.85);
+  --color-accent-primary: #0891B2;
+  --color-accent-cta: #F59E0B;
+  --color-accent-label: #0891B2;
+  --color-accent-highlight: #0F172A;
+  --color-accent-icon: #0891B2;
+  --color-accent-badge-bg: rgba(8, 145, 178, 0.1);
+  --color-accent-badge-text: #0891B2;
+  --color-btn-secondary-bg: #1E293B;
+  --color-btn-secondary-text: #FFFFFF;
+  --color-navy-deep: #1E293B;
+  --shadow-card: 0 4px 24px rgb(15 23 42 / 0.08);
+  --shadow-card-hover: 0 12px 40px rgb(8 145 178 / 0.15);
+  --shadow-cta: 0 4px 20px rgb(245 158 11 / 0.35);
+  --shadow-nav: 0 8px 32px rgb(15 23 42 / 0.12);
+  --gradient-hero: linear-gradient(135deg, #0B1220 0%, #1E293B 40%, #0891B2 100%);
+  --gradient-hero-scrim: radial-gradient(ellipse 80% 60% at 50% 0%, rgb(34 211 238 / 0.12) 0%, transparent 70%);
+  --gradient-hero-grid: linear-gradient(rgb(34 211 238 / 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(34 211 238 / 0.03) 1px, transparent 1px);
+  --gradient-page: var(--color-bg-primary);
+}
+
+.dark {
+  --color-bg-primary: #0B1220;
+  --color-bg-secondary: #111827;
+  --color-bg-card: #1A2332;
+  --color-text-primary: #F1F5F9;
+  --color-text-secondary: #94A3B8;
+  --color-text-placeholder: rgba(241, 245, 249, 0.4);
   --color-text-on-hero: rgba(255, 255, 255, 0.95);
-  --color-border-light: rgba(255, 255, 255, 0.18);
-  --color-nav-bg: rgba(255, 255, 255, 0.9);
-  --color-accent-label: #2a5c82;
-  --color-accent-highlight: #5da399;
-  --color-glass-bg: rgba(255, 255, 255, 0.25);
-  --color-glass-border: rgba(255, 255, 255, 0.18);
-  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  --gradient-hero: linear-gradient(135deg, #5da399 0%, #eafdfc 100%);
-  --gradient-page: linear-gradient(135deg, #f0f8ff 0%, #e6f7f5 50%, #f0f8ff 100%);
-  --gradient-footer: linear-gradient(135deg, #5da399 0%, rgba(93, 163, 153, 0.9) 50%, #2a5c82 100%);
+  --color-border-light: #1E293B;
+  --color-nav-bg: rgba(11, 18, 32, 0.9);
+  --color-accent-primary: #22D3EE;
+  --color-accent-cta: #FBBF24;
+  --color-accent-label: #22D3EE;
+  --color-accent-highlight: #FBBF24;
+  --color-accent-icon: #22D3EE;
+  --color-accent-badge-bg: rgba(34, 211, 238, 0.12);
+  --color-accent-badge-text: #22D3EE;
+  --color-btn-secondary-bg: #1E293B;
+  --color-btn-secondary-text: #F1F5F9;
+  --color-navy-deep: #0F172A;
+  --shadow-card: 0 4px 24px rgb(0 0 0 / 0.3);
+  --shadow-card-hover: 0 12px 40px rgb(34 211 238 / 0.12);
+  --shadow-cta: 0 4px 20px rgb(251 191 36 / 0.25);
+  --shadow-nav: 0 8px 32px rgb(0 0 0 / 0.4);
+  --gradient-hero: linear-gradient(135deg, #070D17 0%, #0B1220 35%, #111827 70%, #0891B2 100%);
+  --gradient-hero-scrim: radial-gradient(ellipse 80% 60% at 50% 0%, rgb(34 211 238 / 0.08) 0%, transparent 70%);
+  --gradient-hero-grid: linear-gradient(rgb(34 211 238 / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(34 211 238 / 0.05) 1px, transparent 1px);
+  --gradient-page: var(--color-bg-primary);
 }

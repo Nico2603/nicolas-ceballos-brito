@@ -1,39 +1,59 @@
 import { AlertCircle, Loader2, SearchX } from 'lucide-react'
-import { GitHubIcon } from '../components/icons/SocialIcons'
 import Footer from '../components/Footer'
-import { SimpleNavbar } from '../components/Navbar'
 import RepositoryCard from '../components/RepositoryCard'
 import RepositoryFilters from '../components/RepositoryFilters'
 import SeoHelmet from '../components/SeoHelmet'
-import { FULL_NAME } from '../constants/social'
+import Card from '../components/ui/Card'
+import SectionHeader from '../components/ui/SectionHeader'
+import {
+  SEO_REPOSITORIES_DESCRIPTION,
+  SEO_REPOSITORIES_KEYWORDS,
+  SEO_REPOSITORIES_TITLE,
+} from '../constants/seo-pages'
 import { useGitHubRepos } from '../hooks/useGitHubRepos'
+import { buildRepositoriesStructuredData, getRepositoriesSnapshot } from '../lib/structured-data'
 
 export default function Repositories() {
   const { repos, filters, updateFilters, clearFilters, languages, stats, loading, error } =
     useGitHubRepos()
 
+  const breadcrumbs = [
+    { name: 'Inicio', path: '/' },
+    { name: 'Repositorios', path: '/repositories' },
+  ]
+
   return (
     <>
       <SeoHelmet
-        title={`Repositorios — ${FULL_NAME}`}
-        description="Explora todos mis repositorios de GitHub con filtros avanzados."
+        title={SEO_REPOSITORIES_TITLE}
+        description={SEO_REPOSITORIES_DESCRIPTION}
         canonicalPath="/repositories"
+        keywords={SEO_REPOSITORIES_KEYWORDS}
+        structuredData={buildRepositoriesStructuredData(
+          SEO_REPOSITORIES_TITLE,
+          SEO_REPOSITORIES_DESCRIPTION,
+          getRepositoriesSnapshot(),
+          breadcrumbs,
+        )}
       />
-      <SimpleNavbar />
 
-      <section className="pt-28 pb-8 px-4 text-center" style={{ background: 'var(--gradient-hero)' }}>
+      <section className="pt-32 pb-8 px-4" style={{ background: 'var(--gradient-hero)' }}>
         <div className="max-w-4xl mx-auto">
-          <h1 className="font-display text-3xl md:text-4xl font-bold text-white mb-4 flex items-center justify-center gap-3">
-            <GitHubIcon size={36} />
-            Mis Repositorios
-          </h1>
-          <p className="text-white/90 max-w-2xl mx-auto">
-            Explora mi colección completa de proyectos con filtros avanzados por lenguaje, estrellas y más.
+          <SectionHeader
+            eyebrow="GitHub"
+            title="Mis"
+            highlight="repositorios"
+            description="Colección completa de proyectos con filtros avanzados por lenguaje, estrellas y más."
+            align="left"
+            className="[&_h2]:text-white [&_p]:text-white/80 [&_p:first-of-type]:text-[var(--color-accent-cta)]"
+          />
+          <p className="direct-answer mt-4 text-white/80 max-w-2xl leading-relaxed">
+            {SEO_REPOSITORIES_DESCRIPTION}
           </p>
         </div>
       </section>
 
-      <section className="py-12 px-4">
+      <section className="py-12 px-4 bg-[var(--color-bg-primary)]">
         <div className="max-w-6xl mx-auto">
           {!loading && !error && (
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
@@ -43,14 +63,14 @@ export default function Repositories() {
                 { label: 'Forks', value: stats.totalForks },
                 { label: 'Lenguajes', value: stats.totalLanguages },
               ].map((stat) => (
-                <div key={stat.label} className="glass-card rounded-xl p-4 text-center">
-                  <div className="font-display text-2xl font-bold" style={{ color: 'var(--color-primary)' }}>
-                    {stat.value}
+                <Card key={stat.label} hover={false}>
+                  <div className="p-4 text-center">
+                    <div className="font-display text-2xl font-bold text-[var(--color-text-primary)]">
+                      {stat.value}
+                    </div>
+                    <div className="text-sm text-[var(--color-text-secondary)]">{stat.label}</div>
                   </div>
-                  <div className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
-                    {stat.label}
-                  </div>
-                </div>
+                </Card>
               ))}
             </div>
           )}
@@ -64,25 +84,29 @@ export default function Repositories() {
 
           {loading && (
             <div className="flex flex-col items-center justify-center py-20 gap-4">
-              <Loader2 size={40} className="animate-spin" style={{ color: 'var(--color-secondary)' }} />
-              <p style={{ color: 'var(--color-text-secondary)' }}>Cargando repositorios...</p>
+              <Loader2 size={40} className="animate-spin text-[var(--color-accent-primary)]" />
+              <p className="text-[var(--color-text-secondary)]">Cargando repositorios...</p>
             </div>
           )}
 
           {error && (
-            <div className="glass-card rounded-2xl p-12 text-center">
-              <AlertCircle size={48} className="mx-auto mb-4 text-red-500" />
-              <p style={{ color: 'var(--color-text-secondary)' }}>{error}</p>
-            </div>
+            <Card>
+              <div className="p-12 text-center">
+                <AlertCircle size={48} className="mx-auto mb-4 text-red-500" />
+                <p className="text-[var(--color-text-secondary)]">{error}</p>
+              </div>
+            </Card>
           )}
 
           {!loading && !error && repos.length === 0 && (
-            <div className="glass-card rounded-2xl p-12 text-center">
-              <SearchX size={48} className="mx-auto mb-4" style={{ color: 'var(--color-secondary)' }} />
-              <p style={{ color: 'var(--color-text-secondary)' }}>
-                No se encontraron repositorios con los filtros seleccionados.
-              </p>
-            </div>
+            <Card>
+              <div className="p-12 text-center">
+                <SearchX size={48} className="mx-auto mb-4 text-[var(--color-accent-primary)]" />
+                <p className="text-[var(--color-text-secondary)]">
+                  No se encontraron repositorios con los filtros seleccionados.
+                </p>
+              </div>
+            </Card>
           )}
 
           {!loading && !error && repos.length > 0 && (

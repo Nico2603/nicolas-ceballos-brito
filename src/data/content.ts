@@ -159,40 +159,12 @@ export const skillCategories: SkillCategory[] = [
     icon: 'code',
     subcategories: [
       {
-        title: 'Frontend',
-        tags: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'Angular', 'React', 'jQuery', 'Bootstrap', 'Tailwind', 'htmx', 'SVG'],
-        iconsUrl: 'https://skillicons.dev/icons?i=html,css,js,ts,angular,react,jquery,bootstrap,tailwind,htmx,svg',
+        title: 'Frontend & Backend',
+        tags: ['React', 'TypeScript', 'Angular', 'Node.js', 'FastAPI', 'Django', 'Flask', 'Tailwind'],
       },
       {
-        title: 'Backend',
-        tags: ['Node.js', 'FastAPI', 'Django', 'Flask', 'PHP', 'Ruby'],
-        iconsUrl: 'https://skillicons.dev/icons?i=nodejs,fastapi,django,flask,php,ruby',
-      },
-      {
-        title: 'CMS & Hosting',
-        tags: ['WordPress', 'Netlify', 'Heroku', 'Azure'],
-        iconsUrl: 'https://skillicons.dev/icons?i=wordpress,netlify,heroku,azure',
-      },
-      {
-        title: 'Diseño & Testing',
-        tags: ['Figma', 'Cypress', 'Selenium', 'Flutter'],
-        iconsUrl: 'https://skillicons.dev/icons?i=figma,cypress,selenium,flutter',
-      },
-    ],
-  },
-  {
-    title: 'Desarrollo de Software & Lenguajes',
-    icon: 'laptop',
-    subcategories: [
-      {
-        title: 'Lenguajes de Programación',
-        tags: ['C', 'C#', 'C++', 'Java', 'Python', 'JavaScript', 'Kotlin', 'Ruby', 'PHP'],
-        iconsUrl: 'https://skillicons.dev/icons?i=c,cs,cpp,java,py,js,kotlin,ruby,php',
-      },
-      {
-        title: 'IDEs & Herramientas',
-        tags: ['Eclipse', 'IntelliJ IDEA', 'PyCharm', 'Visual Studio', 'VS Code', 'Android Studio'],
-        iconsUrl: 'https://skillicons.dev/icons?i=eclipse,idea,pycharm,visualstudio,vscode,androidstudio',
+        title: 'Herramientas',
+        tags: ['Vite', 'Figma', 'Cypress', 'Flutter', 'WordPress'],
       },
     ],
   },
@@ -201,25 +173,26 @@ export const skillCategories: SkillCategory[] = [
     icon: 'brain',
     subcategories: [
       {
-        title: 'Machine Learning & IA',
-        tags: ['TensorFlow', 'PyTorch', 'Scikit-learn', 'Pandas', 'NumPy', 'OpenCV', 'Hugging Face'],
-        iconsUrl: 'https://skillicons.dev/icons?i=tensorflow,pytorch,sklearn,pandas,numpy,opencv,huggingface',
+        title: 'Machine Learning',
+        tags: ['Python', 'TensorFlow', 'PyTorch', 'Scikit-learn', 'Pandas', 'OpenCV', 'Hugging Face'],
       },
       {
         title: 'Visualización & BI',
-        tags: ['Power BI', 'Matplotlib', 'Seaborn', 'Tableau'],
-        iconsUrl: 'https://skillicons.dev/icons?i=powerbi,matplotlib,seaborn,tableau',
+        tags: ['Power BI', 'Matplotlib', 'Seaborn', 'SQL'],
       },
     ],
   },
   {
-    title: 'Bases de Datos',
+    title: 'Bases de Datos & Cloud',
     icon: 'database',
     subcategories: [
       {
-        title: 'SQL & NoSQL',
-        tags: ['MySQL', 'PostgreSQL', 'MongoDB', 'SQLite', 'Firebase', 'Redis'],
-        iconsUrl: 'https://skillicons.dev/icons?i=mysql,postgresql,mongodb,sqlite,firebase,redis',
+        title: 'Almacenamiento',
+        tags: ['PostgreSQL', 'MySQL', 'MongoDB', 'Firebase', 'Redis'],
+      },
+      {
+        title: 'Plataformas',
+        tags: ['AWS', 'Google Cloud', 'Azure', 'Docker', 'Linux'],
       },
     ],
   },
@@ -228,31 +201,8 @@ export const skillCategories: SkillCategory[] = [
     icon: 'git-branch',
     subcategories: [
       {
-        title: 'Herramientas DevOps',
-        tags: ['Git', 'GitHub', 'GitLab', 'Docker', 'Jenkins', 'CI/CD'],
-        iconsUrl: 'https://skillicons.dev/icons?i=git,github,gitlab,docker,jenkins',
-      },
-    ],
-  },
-  {
-    title: 'Sistemas Operativos & Cloud',
-    icon: 'cloud',
-    subcategories: [
-      {
-        title: 'Plataformas',
-        tags: ['Linux', 'Windows', 'macOS', 'AWS', 'Google Cloud', 'Azure'],
-        iconsUrl: 'https://skillicons.dev/icons?i=linux,windows,apple,aws,gcp,azure',
-      },
-    ],
-  },
-  {
-    title: 'Otras Herramientas',
-    icon: 'wrench',
-    subcategories: [
-      {
-        title: 'Productividad & Colaboración',
-        tags: ['Jira', 'Trello', 'Notion', 'Slack', 'Postman', 'Swagger'],
-        iconsUrl: 'https://skillicons.dev/icons?i=jira,trello,notion,slack,postman,swagger',
+        title: 'Flujo de trabajo',
+        tags: ['Git', 'GitHub', 'GitLab', 'CI/CD', 'Jenkins', 'Jira', 'Postman'],
       },
     ],
   },

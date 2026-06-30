@@ -2,6 +2,8 @@
 
 Portafolio profesional de **Nicolás Ceballos Brito**, Ingeniero de Sistemas y Telecomunicaciones.
 
+Identidad visual **Dev Premium**: navy + cyan eléctrico + ámbar CTA, modo claro/oscuro, navbar isla flotante y bottom dock móvil. Ver [`DESIGN_SYSTEM.md`](./DESIGN_SYSTEM.md) para tokens, componentes y patrones.
+
 ## Stack
 
 React 19 · Vite 8 · TypeScript · Tailwind CSS 4 · Framer Motion · Lenis · react-router-dom
@@ -27,6 +29,15 @@ npm run preview
 | `/` | Inicio (Hero, Portafolio, Labores, Contacto) |
 | `/about` | Sobre mí y habilidades |
 | `/repositories` | Explorador GitHub con filtros |
+
+## Arquitectura UI
+
+| Capa | Ubicación |
+|------|-----------|
+| Tokens & tema | `src/styles/tokens.css`, `src/context/ThemeContext.tsx` |
+| Primitivos UI | `src/components/ui/` (Button, Card, Badge, …) |
+| Navegación | `Navbar`, `BottomNav`, `FloatingContactButton` |
+| Hooks nav | `useSmartNavigation`, `useActiveSection` |
 
 ## Despliegue
 
