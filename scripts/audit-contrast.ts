@@ -259,6 +259,9 @@ async function main(): Promise<void> {
   mkdirSync(OUTPUT_DIR, { recursive: true })
   mkdirSync(SCREENSHOTS_DIR, { recursive: true })
 
+  // Tras `npm run build`, prerender puede retener Puppeteer unos segundos en Windows
+  await new Promise((r) => setTimeout(r, 2_000))
+
   const port = await getAvailablePort()
   const previewUrl = `http://127.0.0.1:${port}`
   const preview = startPreview(port)
