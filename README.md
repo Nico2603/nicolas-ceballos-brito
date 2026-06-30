@@ -1,6 +1,6 @@
 # Nicolás Ceballos Brito — Portafolio Personal
 
-Portafolio profesional de **Nicolás Ceballos Brito**, Ingeniero de Sistemas y Telecomunicaciones.
+Portafolio profesional de **Nicolás Ceballos Brito**, Ingeniero en Sistemas y Telecomunicaciones (UCP 2025). App Lead Developer en Prosavis.
 
 Identidad visual **Dev Premium**: navy + cyan eléctrico + ámbar CTA, modo claro/oscuro, navbar isla flotante y bottom dock móvil. Ver [`DESIGN_SYSTEM.md`](./DESIGN_SYSTEM.md) para tokens, componentes y patrones.
 
@@ -18,26 +18,53 @@ npm run dev
 ## Producción
 
 ```bash
-npm run build    # prebuild (sitemap, llms.txt, OG images) + vite + prerender
+npm run build         # prebuild (sitemap, llms.txt, OG images) + vite + prerender
 npm run preview
 npm run images:webp   # convertir raster en public/images/ a WebP
+npm run sync:linkedin # snapshot del perfil LinkedIn (opcional, ver abajo)
 ```
 
 El pipeline `prebuild` genera automáticamente:
 
 - `public/sitemap.xml` — desde `PRERENDER_ROUTES`
-- `public/llms.txt` — archivo AEO para motores de respuesta
+- `public/llms.txt` — archivo AEO para motores de respuesta (incluye datos de LinkedIn)
 - Normalización de `og-image.webp` a 1200×630 y `apple-touch-icon.png`
 - Inyección de JSON-LD en `index.html` (home)
 
 El paso `prerender` (Puppeteer + Chromium) genera HTML estático por ruta en `dist/`.
 
+## Datos del perfil (LinkedIn + GitHub)
+
+El sitio es un SPA estático. Los datos profesionales provienen de dos fuentes:
+
+| Fuente | Archivo | Contenido |
+|--------|---------|-----------|
+| **LinkedIn** (fuente principal) | [`src/data/linkedin-profile.ts`](./src/data/linkedin-profile.ts) | Headline, about, experiencia, educación, certificaciones, skills, idiomas, proyectos, actividad |
+| Derivados | [`src/data/profile.ts`](./src/data/profile.ts) | Bio hero/about, graduación, roles actuales — consume `linkedin-profile.ts` |
+| Posts / feed | [`src/data/linkedin-posts.ts`](./src/data/linkedin-posts.ts) | Mapeo de `linkedInActivity` para el feed en Home |
+| **GitHub API** | [`src/hooks/useGitHubRepos.ts`](./src/hooks/useGitHubRepos.ts) | Repos, stars y stats en `/repositories` y línea compacta en Portafolio |
+| Proyectos destacados | [`src/data/content.ts`](./src/data/content.ts) | Grid 2×2 en Home (4 repos reales) |
+| SEO / JSON-LD | [`src/constants/credentials.ts`](./src/constants/credentials.ts) | Credenciales y experiencia derivadas de LinkedIn |
+
+### Sincronizar LinkedIn
+
+```bash
+npm run sync:linkedin
+```
+
+- Navega al perfil público definido en [`src/constants/social.ts`](./src/constants/social.ts) (`SOCIAL_LINKS.linkedin`)
+- Guarda snapshot en `src/data/linkedin-sync.raw.json` (gitignored)
+- Imprime en consola posts/experiencia detectados para comparar con `linkedin-profile.ts`
+- **No sobrescribe** automáticamente el TypeScript curado (evita romper copy editorial si LinkedIn bloquea el scrape)
+
+Tras actualizar manualmente `linkedin-profile.ts`, ejecutar `npm run build` para regenerar `llms.txt` y JSON-LD.
+
 ## Rutas indexables (15 URLs prerenderizadas)
 
 | Ruta | Página |
 |------|--------|
-| `/` | Inicio (Hero, Portafolio, Labores, Recursos, FAQ, Contacto) |
-| `/about` | Sobre mí y habilidades |
+| `/` | Inicio (Hero → Experiencia → LinkedIn → Portafolio → Labores → Recursos → FAQ → Contacto) |
+| `/about` | Sobre mí, skills técnicos y perfil LinkedIn completo (formación, certificaciones, proyectos) |
 | `/repositories` | Explorador GitHub con filtros |
 | `/proyectos/chatbot-mental-health` | Proyecto ChatBot salud mental |
 | `/proyectos/pdm-manager` | Proyecto mantenimiento predictivo |
@@ -59,10 +86,11 @@ Rutas definidas en [`src/constants/seo-routes.ts`](./src/constants/seo-routes.ts
 | Capa | Ubicación |
 |------|-----------|
 | Meta tags + OG/Twitter | `src/components/SeoHelmet.tsx` |
-| JSON-LD `@graph` | `src/lib/structured-data.ts` |
+| JSON-LD `@graph` | `src/lib/structured-data.ts` (`worksFor`, `hasOccupation`, `SocialMediaPosting` del post destacado) |
 | Rutas prerender | `src/constants/seo-routes.ts` |
 | Sitemap / llms.txt | `scripts/generate-sitemap.ts`, `scripts/generate-llms-txt.ts` |
 | Prerender Puppeteer | `scripts/prerender.ts` |
+| Sync LinkedIn | `scripts/sync-linkedin.ts` |
 | OG images | `scripts/normalize-seo-images.mjs` |
 | AEO | `public/llms.txt` (regenerado en build) |
 
@@ -72,8 +100,10 @@ Rutas definidas en [`src/constants/seo-routes.ts`](./src/constants/seo-routes.ts
 |------|-----------|
 | Tokens & tema | `src/styles/tokens.css`, `src/context/ThemeContext.tsx` |
 | Primitivos UI | `src/components/ui/` (Button, Card, Badge, …) |
+| Perfil LinkedIn | `CurrentExperience.tsx`, `LinkedInFeed.tsx`, `LinkedInProfileDetails.tsx` |
 | Navegación | `Navbar`, `BottomNav`, `FloatingContactButton` |
 | Hooks nav | `useSmartNavigation`, `useActiveSection` |
+| Hooks datos | `useGitHubRepos` (GitHub REST API) |
 
 ## Despliegue
 

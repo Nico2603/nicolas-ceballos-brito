@@ -1,4 +1,5 @@
 import { GITHUB_USERNAME } from '../constants/social'
+import { FALLBACK_GITHUB_REPOS } from '../data/github-repos-fallback'
 import type { GitHubRepo, RepoFilters, RepoSortOption } from '../types'
 
 export async function fetchAllGitHubRepos(): Promise<GitHubRepo[]> {
@@ -10,6 +11,11 @@ export async function fetchAllGitHubRepos(): Promise<GitHubRepo[]> {
     const response = await fetch(
       `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&page=${page}&sort=updated&direction=desc`,
     )
+
+    if (response.status === 403 || response.status === 401) {
+      console.warn('GitHub API rate limit alcanzado; usando snapshot estático.')
+      return [...FALLBACK_GITHUB_REPOS]
+    }
 
     if (!response.ok) {
       throw new Error(`Error HTTP: ${response.status}`)

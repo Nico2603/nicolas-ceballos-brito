@@ -3,6 +3,7 @@ import { ArrowRight, ChevronDown, Sparkles } from 'lucide-react'
 import { graduation } from '../data/profile'
 import { FULL_NAME } from '../constants/social'
 import { heroBio } from '../data/content'
+import { useTheme } from '../context/ThemeContext'
 import Button from './ui/Button'
 import HeroAurora from './HeroAurora'
 import HeroGrid from './HeroGrid'
@@ -38,6 +39,9 @@ const floatProfile = {
 }
 
 export default function Hero() {
+  const { theme } = useTheme()
+  const isDarkHero = theme === 'dark'
+
   return (
     <section
       id="inicio"
@@ -59,15 +63,15 @@ export default function Hero() {
           <div className="text-left">
             <motion.p
               variants={staggerItem}
-              className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-bold text-[var(--color-amber-bright)] mb-5 hero-eyebrow-glow"
+              className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-bold text-[var(--hero-eyebrow)] mb-5 hero-eyebrow-glow"
             >
-              <Sparkles size={14} className="text-[var(--color-cyan-bright)]" />
+              <Sparkles size={14} className="text-[var(--color-accent-primary)]" />
               Full-Stack Developer · Ing. Sistemas
             </motion.p>
 
             <motion.h1
               variants={staggerItem}
-              className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 leading-[1.05] hero-headline-glow"
+              className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-[var(--hero-text)] mb-4 leading-[1.05] hero-headline-glow"
             >
               {FULL_NAME.split(' ').map((word, i) => (
                 <span key={word}>
@@ -82,12 +86,12 @@ export default function Hero() {
             </motion.h1>
 
             <motion.div variants={staggerItem} className="mb-6">
-              <TypingAnimation className="text-[var(--color-cyan-glow)] font-semibold hero-subcopy-glow" />
+              <TypingAnimation className="text-[var(--hero-subtitle)] font-semibold hero-subcopy-glow" />
             </motion.div>
 
             <motion.p
               variants={staggerItem}
-              className="direct-answer text-base md:text-lg leading-relaxed text-white/95 mb-8 max-w-xl hero-subcopy-glow"
+              className="direct-answer text-base md:text-lg leading-relaxed text-[var(--hero-text-muted)] mb-8 max-w-xl hero-subcopy-glow"
             >
               {heroBio}
             </motion.p>
@@ -97,21 +101,25 @@ export default function Hero() {
                 variant="primary"
                 href="#portafolio"
                 trailingIcon={<ArrowRight size={14} />}
-                className="!text-[var(--color-navy-deep)] !shadow-[var(--shadow-cta)] hover:!shadow-[var(--shadow-glow-amber)]"
+                className="!bg-[var(--color-amber-bright)] !text-[#0A0F1A] !font-bold !shadow-[var(--shadow-cta)] hover:!brightness-110 hover:!shadow-[var(--shadow-glow-amber)]"
               >
                 Ver proyectos
               </Button>
               <Button
                 variant="ghost"
                 to="/about"
-                className="!text-white !border-white/40 !bg-white/10 hover:!bg-white/20 hover:!border-[var(--color-cyan-bright)] backdrop-blur-sm"
+                className={
+                  isDarkHero
+                    ? '!text-white !border-white/60 !bg-white/10 hover:!bg-white/20 hover:!border-[var(--color-cyan-bright)] backdrop-blur-sm'
+                    : '!text-[var(--hero-text)] !border-[var(--color-accent-primary)]/35 !bg-white/70 hover:!bg-white/90 hover:!border-[var(--color-accent-primary)] backdrop-blur-sm'
+                }
               >
                 Sobre mí
               </Button>
             </motion.div>
 
             <motion.div variants={staggerItem}>
-              <SocialLinks variant="onDark" />
+              <SocialLinks variant={isDarkHero ? 'onDark' : 'default'} />
             </motion.div>
           </div>
 
@@ -131,12 +139,12 @@ export default function Hero() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.8 + i * 0.1, duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
                   whileHover={{ scale: 1.05, y: -4 }}
-                  className="rounded-xl bg-[rgba(3,7,18,0.55)] backdrop-blur-md border border-white/20 px-3 py-3 text-center shadow-[var(--shadow-glow-cyan)]"
+                  className="rounded-xl backdrop-blur-md border px-3 py-3 text-center shadow-[var(--shadow-glow-cyan)] bg-[var(--hero-stat-surface)] border-[var(--hero-stat-border)]"
                 >
-                  <div className="font-display text-xl font-bold text-[var(--color-cyan-glow)]">
+                  <div className="font-display text-xl font-bold text-[var(--color-accent-primary)]">
                     {stat.value}
                   </div>
-                  <div className="text-[10px] text-white/85 leading-tight mt-0.5 font-medium">
+                  <div className="text-[10px] text-[var(--hero-text-muted)] leading-tight mt-0.5 font-medium">
                     {stat.label}
                   </div>
                 </motion.div>
@@ -151,7 +159,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4, duration: 0.6 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 text-white/70 hover:text-[var(--color-cyan-bright)] transition-colors"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 text-[var(--hero-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors"
         aria-label="Desplazarse a proyectos"
       >
         <span className="text-[10px] uppercase tracking-[0.2em] font-semibold">Explorar</span>

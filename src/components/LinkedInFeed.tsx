@@ -12,16 +12,20 @@ import SectionWrapper from './SectionWrapper'
 import Badge from './ui/Badge'
 import Button from './ui/Button'
 import Card from './ui/Card'
+import OptimizedImage from './ui/OptimizedImage'
 import SectionHeader from './ui/SectionHeader'
 
-function PostImage({ imageUrl, title }: { imageUrl?: string; title: string }) {
+function PostImage({ imageUrl, title, priority = false }: { imageUrl?: string; title: string; priority?: boolean }) {
   if (imageUrl) {
     return (
-      <img
+      <OptimizedImage
         src={imageUrl}
-        alt=""
+        alt={title}
+        width={640}
+        height={360}
+        priority={priority}
+        wrapperClassName="w-full h-full"
         className="w-full h-full object-cover"
-        loading="lazy"
       />
     )
   }
@@ -61,7 +65,7 @@ export default function LinkedInFeed() {
             <Card className="overflow-hidden">
               <article className="grid md:grid-cols-5 gap-0">
                 <div className="md:col-span-2 h-56 md:h-auto md:min-h-[280px] overflow-hidden">
-                  <PostImage imageUrl={featured.imageUrl} title={featured.title} />
+                  <PostImage imageUrl={featured.imageUrl} title={featured.title} priority />
                 </div>
                 <div className="md:col-span-3 p-6 md:p-8 flex flex-col justify-center">
                   <div className="flex flex-wrap items-center gap-3 mb-3">

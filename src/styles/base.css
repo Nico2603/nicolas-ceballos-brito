@@ -101,12 +101,20 @@ textarea::placeholder {
 }
 
 .hero-headline-glow {
+  text-shadow: 0 2px 16px rgb(34 211 238 / 0.22);
+}
+
+.dark .hero-headline-glow {
   text-shadow:
     0 2px 24px rgb(34 211 238 / 0.35),
     0 4px 48px rgb(3 7 18 / 0.8);
 }
 
 .hero-subcopy-glow {
+  text-shadow: 0 1px 8px rgb(255 255 255 / 0.6);
+}
+
+.dark .hero-subcopy-glow {
   text-shadow: 0 2px 16px rgb(3 7 18 / 0.75);
 }
 
@@ -138,6 +146,7 @@ textarea::placeholder {
 }
 
 .text-gradient-accent {
+  color: var(--color-accent-primary);
   background: var(--gradient-text-accent);
   background-size: 200% auto;
   -webkit-background-clip: text;

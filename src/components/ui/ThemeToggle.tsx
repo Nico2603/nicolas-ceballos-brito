@@ -15,17 +15,26 @@ export default function ThemeToggle({
   const { theme, toggleTheme } = useTheme()
   const isDark = theme === 'dark'
   const onHeroSurface = onHero && !scrolled
+  const isLightHero = onHeroSurface && !isDark
 
   const iconColor = onHeroSurface
-    ? 'var(--color-accent-cta)'
+    ? isLightHero
+      ? 'var(--color-accent-primary)'
+      : 'var(--color-accent-cta)'
     : 'var(--color-accent-primary)'
 
   const surfaceStyle = onHeroSurface
-    ? {
-        backgroundColor: 'rgba(11, 18, 32, 0.55)',
-        borderColor: 'var(--color-accent-cta)',
-        boxShadow: '0 0 0 1px rgb(245 158 11 / 0.25), var(--shadow-card)',
-      }
+    ? isLightHero
+      ? {
+          backgroundColor: 'rgba(255, 255, 255, 0.92)',
+          borderColor: 'var(--color-accent-primary)',
+          boxShadow: 'var(--shadow-card)',
+        }
+      : {
+          backgroundColor: 'rgba(11, 18, 32, 0.6)',
+          borderColor: 'var(--color-accent-cta)',
+          boxShadow: '0 0 0 1px rgb(245 158 11 / 0.25), var(--shadow-card)',
+        }
     : {
         backgroundColor: 'var(--color-bg-card)',
         borderColor: 'var(--color-accent-primary)',

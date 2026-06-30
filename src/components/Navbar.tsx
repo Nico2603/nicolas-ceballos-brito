@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { useTheme } from '../context/ThemeContext'
 import Logo from './Logo'
 import Button from './ui/Button'
 import ThemeToggle from './ui/ThemeToggle'
@@ -10,10 +11,12 @@ import { useSmartNavigation } from '../hooks/useSmartNavigation'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const { theme } = useTheme()
   const { menuOpen, toggleMenu, closeMenu } = useMobileMenu()
   const { handleNavClick, location } = useSmartNavigation()
   const isHome = location.pathname === '/'
   const onHero = isHome && !scrolled
+  const isDarkHero = theme === 'dark'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -26,7 +29,10 @@ export default function Navbar() {
     handleNavClick(href, external)
   }
 
-  const textCol = onHero ? 'var(--color-text-on-hero)' : 'var(--color-text-primary)'
+  const textCol = onHero ? 'var(--hero-text)' : 'var(--color-text-primary)'
+  const logoVariant = onHero && isDarkHero ? 'onDark' : 'default'
+  const heroCtaClasses =
+    '!px-4 !py-1.5 !text-xs !font-bold !bg-[var(--color-amber-bright)] !text-[#0A0F1A] !shadow-[var(--shadow-cta)] hover:!brightness-110'
 
   return (
     <>
@@ -35,7 +41,7 @@ export default function Navbar() {
           className={`pointer-events-auto mx-auto max-w-fit flex items-center gap-2 md:gap-4 rounded-full border backdrop-blur-xl px-3 md:px-5 py-2.5 transition-all duration-500 ${
             scrolled || !isHome
               ? 'bg-[var(--color-nav-bg)] border-[var(--color-border-light)] shadow-[var(--shadow-nav)]'
-              : 'bg-[rgba(3,7,18,0.72)] border-white/25 shadow-[0_8px_32px_rgb(0_0_0/0.35)]'
+              : 'bg-[var(--hero-nav-surface)] border-[var(--hero-nav-border)] shadow-[var(--shadow-nav)]'
           }`}
         >
           <button
@@ -43,7 +49,7 @@ export default function Navbar() {
             className="flex items-center shrink-0"
             aria-label="Nicolás Ceballos — inicio"
           >
-            <Logo variant={onHero ? 'onDark' : 'default'} />
+            <Logo variant={logoVariant} />
           </button>
 
           <nav className="hidden md:flex items-center gap-1">
@@ -83,7 +89,7 @@ export default function Navbar() {
             <div className="hidden md:block">
               <Button
                 variant="primary"
-                className="!px-4 !py-1.5 !text-xs"
+                className={onHero ? heroCtaClasses : '!px-4 !py-1.5 !text-xs'}
                 onClick={() => onNavClick('#contacto')}
               >
                 Contacto

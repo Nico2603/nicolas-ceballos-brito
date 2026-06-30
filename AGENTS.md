@@ -17,10 +17,12 @@ Rules:
 
 ## Visión General
 
-Portafolio profesional de Nicolás Ceballos Brito — Ingeniero de Sistemas y Telecomunicaciones.
+Portafolio profesional de Nicolás Ceballos Brito — Ingeniero en Sistemas y Telecomunicaciones (UCP 2025), App Lead Developer en Prosavis.
 
 ```
 nicolas-ceballos-brito/
+├── src/data/linkedin-profile.ts   # Fuente principal: perfil LinkedIn
+├── src/data/profile.ts            # Bios y roles derivados
 └── React 19 / Vite / TypeScript / Tailwind / Framer Motion
 ```
 
@@ -54,6 +56,14 @@ nicolas-ceballos-brito/
 - `npm run build` — Build de producción
 - `npm run lint` — ESLint
 - `npm run preview` — Preview del build
+- `npm run sync:linkedin` — Snapshot del perfil LinkedIn (`linkedin-sync.raw.json`)
+
+## Datos del perfil
+
+- **LinkedIn:** editar `src/data/linkedin-profile.ts` (experiencia, educación, certificaciones, skills, actividad). URL en `src/constants/social.ts`.
+- **Derivados:** `profile.ts`, `linkedin-posts.ts`, `credentials.ts` consumen o mapean desde ahí.
+- **GitHub:** dinámico vía `useGitHubRepos` (API pública, sin token).
+- Tras cambios en datos de perfil: `npm run build` regenera `llms.txt` y JSON-LD.
 
 ## Skills — ubicación e instalación
 

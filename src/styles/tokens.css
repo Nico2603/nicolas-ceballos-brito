@@ -23,18 +23,18 @@
 }
 
 :root {
-  --color-bg-primary: #F4F7FC;
-  --color-bg-secondary: #E2EAF5;
+  --color-bg-primary: #F8FAFD;
+  --color-bg-secondary: #EEF4FB;
   --color-bg-card: #FFFFFF;
   --color-bg-elevated: #FFFFFF;
   --color-text-primary: #0A0F1A;
   --color-text-secondary: #334155;
   --color-text-placeholder: rgba(10, 15, 26, 0.5);
-  --color-text-on-hero: #FFFFFF;
+  --color-text-on-hero: #0A0F1A;
   --color-border-light: #CBD5E1;
-  --color-nav-bg: rgba(255, 255, 255, 0.92);
+  --color-nav-bg: rgba(255, 255, 255, 0.94);
   --color-accent-primary: #0E7490;
-  --color-accent-cta: #D97706;
+  --color-accent-cta: #EA580C;
   --color-accent-label: #0E7490;
   --color-accent-highlight: #0A0F1A;
   --color-accent-icon: #0891B2;
@@ -49,20 +49,28 @@
   --shadow-glow-cyan: 0 0 40px rgb(34 211 238 / 0.35);
   --shadow-glow-amber: 0 0 36px rgb(251 191 36 / 0.4);
   --shadow-nav: 0 12px 40px rgb(15 23 42 / 0.18);
+  --hero-text: #0A0F1A;
+  --hero-text-muted: rgba(10, 15, 26, 0.88);
+  --hero-subtitle: #0E7490;
+  --hero-eyebrow: #B45309;
+  --hero-stat-surface: rgba(255, 255, 255, 0.88);
+  --hero-stat-border: rgba(14, 116, 144, 0.22);
+  --hero-nav-surface: rgba(255, 255, 255, 0.9);
+  --hero-nav-border: rgba(14, 116, 144, 0.22);
   --gradient-hero: linear-gradient(
     155deg,
-    #030712 0%,
-    #0B1220 28%,
-    #0F172A 52%,
-    #0C4A6E 78%,
-    #0891B2 100%
+    #F0F7FF 0%,
+    #E2F0FA 24%,
+    #C8E8F6 50%,
+    #7DD3EC 76%,
+    #22D3EE 100%
   );
   --gradient-hero-scrim:
-    radial-gradient(ellipse 55% 45% at 85% 15%, rgb(245 158 11 / 0.22) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 50% at 10% 85%, rgb(34 211 238 / 0.28) 0%, transparent 58%),
-    radial-gradient(ellipse 90% 70% at 50% 100%, rgb(3 7 18 / 0.85) 0%, transparent 70%);
-  --gradient-hero-grid: linear-gradient(rgb(34 211 238 / 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(34 211 238 / 0.06) 1px, transparent 1px);
+    radial-gradient(ellipse 55% 45% at 85% 15%, rgb(245 158 11 / 0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 50% at 10% 85%, rgb(34 211 238 / 0.18) 0%, transparent 58%),
+    radial-gradient(ellipse 90% 70% at 50% 100%, rgb(255 255 255 / 0.55) 0%, transparent 70%);
+  --gradient-hero-grid: linear-gradient(rgb(14 116 144 / 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(14 116 144 / 0.09) 1px, transparent 1px);
   --gradient-text-accent: linear-gradient(135deg, #22D3EE 0%, #FBBF24 100%);
   --gradient-page: var(--color-bg-primary);
 }
@@ -76,6 +84,14 @@
   --color-text-secondary: #CBD5E1;
   --color-text-placeholder: rgba(248, 250, 252, 0.45);
   --color-text-on-hero: #FFFFFF;
+  --hero-text: #FFFFFF;
+  --hero-text-muted: rgba(255, 255, 255, 0.95);
+  --hero-subtitle: #67E8F9;
+  --hero-eyebrow: #FBBF24;
+  --hero-stat-surface: rgba(3, 7, 18, 0.55);
+  --hero-stat-border: rgba(255, 255, 255, 0.22);
+  --hero-nav-surface: rgba(3, 7, 18, 0.78);
+  --hero-nav-border: rgba(255, 255, 255, 0.28);
   --color-border-light: #1E293B;
   --color-nav-bg: rgba(3, 7, 18, 0.92);
   --color-accent-primary: #22D3EE;

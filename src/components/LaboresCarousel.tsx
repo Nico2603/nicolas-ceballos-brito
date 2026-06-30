@@ -5,6 +5,7 @@ import { laboresSlides } from '../data/content'
 import SectionWrapper from './SectionWrapper'
 import Button from './ui/Button'
 import Card from './ui/Card'
+import OptimizedImage from './ui/OptimizedImage'
 import SectionHeader from './ui/SectionHeader'
 
 const SLIDE_DURATION = 8000
@@ -17,6 +18,19 @@ export default function LaboresCarousel() {
     setCurrent((index + laboresSlides.length) % laboresSlides.length)
     setProgress(0)
   }
+
+  useEffect(() => {
+    const preloadIndices = [
+      current,
+      (current + 1) % laboresSlides.length,
+      (current - 1 + laboresSlides.length) % laboresSlides.length,
+    ]
+
+    preloadIndices.forEach((index) => {
+      const img = new Image()
+      img.src = laboresSlides[index].image
+    })
+  }, [current])
 
   useEffect(() => {
     const start = Date.now()
@@ -61,7 +75,15 @@ export default function LaboresCarousel() {
               className="grid md:grid-cols-2 gap-0"
             >
               <div className="h-64 md:h-auto md:min-h-[320px] overflow-hidden rounded-t-[15px] md:rounded-tr-none md:rounded-l-[15px]">
-                <img src={slide.image} alt={slide.alt} className="w-full h-full object-cover" loading="lazy" />
+                <OptimizedImage
+                  src={slide.image}
+                  alt={slide.alt}
+                  width={640}
+                  height={400}
+                  priority
+                  wrapperClassName="w-full h-full min-h-[256px] md:min-h-[320px]"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="p-8 flex flex-col justify-center">
                 <h3 className="font-display text-xl md:text-2xl font-semibold mb-4 text-[var(--color-text-primary)]">

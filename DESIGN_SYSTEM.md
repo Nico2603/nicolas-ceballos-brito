@@ -155,13 +155,30 @@ ThemeProvider
 
 | Sección | Patrón | Archivo |
 |---|---|---|
-| Hero | Split `md:grid-cols-2`, mesh + `HeroGrid` canvas | `Hero.tsx` |
-| Portafolio | Bento grid, stats GitHub API | `Portfolio.tsx` |
+| Hero | Split `md:grid-cols-2`, mesh + `HeroGrid` canvas, mini-stats desde graduación UCP | `Hero.tsx` |
+| Experiencia actual | Banner graduación + grid 2 cols de roles LinkedIn | `CurrentExperience.tsx` |
+| Feed LinkedIn | Post destacado ancho + grid 2 cols de actividad | `LinkedInFeed.tsx` |
+| Portafolio | Grid 2×2 uniforme, stats GitHub en una línea | `Portfolio.tsx` |
 | Labores | Carousel spring + barra de progreso | `LaboresCarousel.tsx` |
 | Contacto | Split 2 cols, icon containers | `Contact.tsx` |
 | Footer | Navy sólido, 3 columnas | `Footer.tsx` |
-| About | Foto + bio en Card, 4 skill categories | `pages/About.tsx` |
+| About | Foto + bio, `SkillsSection`, perfil LinkedIn completo | `About.tsx`, `LinkedInProfileDetails.tsx` |
 | Repositories | SectionHeader + filtros + Card grid | `pages/Repositories.tsx` |
+
+### Orden Home (`pages/Home.tsx`)
+
+```
+Hero → CurrentExperience → LinkedInFeed → Portfolio → LaboresCarousel → RecursosSection → FaqSection → Contact → Footer
+```
+
+### Fuente de datos LinkedIn
+
+| Dato | Archivo |
+|---|---|
+| Perfil completo (experiencia, educación, certs, skills) | `src/data/linkedin-profile.ts` |
+| Bios y roles derivados | `src/data/profile.ts` |
+| Feed de posts/actividad | `src/data/linkedin-posts.ts` |
+| Sync opcional | `npm run sync:linkedin` → `linkedin-sync.raw.json` |
 
 ---
 
@@ -209,6 +226,8 @@ ThemeProvider
 | shields.io badges | `SocialLinks` |
 | skillicons.dev | `Badge` locales en `SkillsSection` |
 | stats hardcoded portafolio | `useGitHubRepos` API |
+| bento grid portafolio (primer card 2×2) | grid 2×2 uniforme, 4 proyectos reales |
+| bio/roles manuales en `content.ts` | `linkedin-profile.ts` + `profile.ts` |
 | gradient footer | `--color-navy-deep` sólido |
 | Montserrat / Raleway | Plus Jakarta Sans + Fraunces |
 
