@@ -1,25 +1,30 @@
 import type { TopicFaqItem } from '../lib/structured-data'
+import { linkedInAbout, linkedInExperience, linkedInHeadline } from './linkedin-profile'
+
+const currentJobs = linkedInExperience
+  .filter((r) => r.current)
+  .map((r) => `${r.title} en ${r.company}`)
+  .join(' y ')
 
 export const faqItems: TopicFaqItem[] = [
   {
     question: '¿Quién es Nicolás Ceballos Brito?',
-    answer:
-      'Nicolás Ceballos Brito es Ingeniero en Sistemas y Telecomunicaciones graduado de la Universidad Católica de Pereira. Es App Lead Developer en Prosavis y desarrollador cross-platform en Neacsu Horizont Ventures, con experiencia en desarrollo web, análisis de datos e inteligencia artificial.',
+    answer: `${linkedInHeadline}. Actualmente: ${currentJobs}. ${linkedInAbout.slice(0, 280)}…`,
   },
   {
     question: '¿Qué tecnologías domina Nicolás Ceballos Brito?',
     answer:
-      'Su stack principal incluye React, TypeScript, JavaScript, Python, Flutter, Node.js, TensorFlow, Power BI, Docker y bases de datos SQL/NoSQL. También tiene experiencia con Angular, Flask, FastAPI, Firebase y herramientas de DevOps.',
+      'Según su perfil de LinkedIn: JavaScript, React, Angular, Python, C++, Java, Flutter, React Native, TensorFlow, SQL, Power BI, Docker, CI/CD, metodologías ágiles, machine learning (DBSCAN, KMeans, Isolation Forest, CBLOF) y testing automatizado.',
   },
   {
     question: '¿Dónde estudió y qué formación tiene?',
     answer:
-      'Se graduó como Ingeniero en Sistemas y Telecomunicaciones de la Universidad Católica de Pereira (2025). Cuenta con certificaciones en SQL, Power BI, UX/UI y metodologías ágiles, además de experiencia en semilleros de investigación y programación competitiva.',
+      'Ingeniero en Sistemas y Telecomunicaciones de la Universidad Católica de Pereira (2021–2025). Bachiller técnico en contabilidad y costos en IE San José - La Unión Valle. Certificaciones en SQL, Power BI, UX/UI, metodologías ágiles, Python Frontend y participación en el XXIX Verano de Investigación del Pacífico (UAN).',
   },
   {
     question: '¿Cuáles son sus proyectos destacados?',
     answer:
-      'Entre sus proyectos destacados están Prosavis (plataforma móvil de servicios), ChatBot-MentalHealth (IA y salud mental con Python/Flask), PdM-Manager (mantenimiento predictivo con React y ML), FastQA-HomePage y magiacafetera-ui (Angular/TypeScript).',
+      'En LinkedIn destaca Magia Cafetera (UI para viajes en el Eje Cafetero) y ChatBot Mental-Health (NLP para apoyo en salud mental). En GitHub: ChatBot-MentalHealth, PdM-Manager, FastQA-HomePage y magiacafetera-ui.',
   },
   {
     question: '¿Cómo contactar a Nicolás Ceballos Brito?',
@@ -29,16 +34,16 @@ export const faqItems: TopicFaqItem[] = [
   {
     question: '¿Tiene experiencia en machine learning e Industria 4.0?',
     answer:
-      'Sí. Ha desarrollado proyectos de mantenimiento predictivo con machine learning (PdM-Manager), chatbots con IA, participó en el programa AI Engineer Training de Teilur.ai y tiene experiencia en Industria 4.0 desde sus semilleros de investigación.',
+      'Sí. Modelos no supervisados para mantenimiento predictivo, participación en semilleros de Industria 4.0 y Testing Automatizado en la UCP, programa AI Engineer Training en Teilur.ai/Modin.ai, y proyecto PdM-Manager.',
   },
   {
     question: '¿Participa en open source?',
     answer:
-      'Sí. Mantiene más de 15 repositorios públicos en GitHub bajo el usuario Nico2603, con proyectos en Python, JavaScript, TypeScript y más, disponibles en nicolasceballosbrito.com/repositories.',
+      'Sí. Mantiene repositorios públicos en GitHub (@Nico2603) con proyectos en Python, JavaScript, TypeScript y más, disponibles en nicolasceballosbrito.com/repositories.',
   },
   {
     question: '¿Dónde está ubicado?',
     answer:
-      'Está basado en Pereira, Colombia. Lidera el desarrollo de Prosavis y trabaja en proyectos de software e IA con alcance nacional. Su portafolio está disponible en nicolasceballosbrito.com.',
+      'Pereira, Risaralda, Colombia. Perfil de LinkedIn con 500+ conexiones y 788 seguidores.',
   },
 ]

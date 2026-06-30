@@ -5,6 +5,7 @@ import {
   PROFESSIONAL_WORKS_FOR as PROFILE_WORKS_FOR,
   graduation,
 } from '../data/profile'
+import { linkedInCertifications, linkedInExperience } from '../data/linkedin-profile'
 
 export const PROFESSIONAL_FULL_NAME = 'Nicolás Ceballos Brito'
 
@@ -21,25 +22,19 @@ export const PROFESSIONAL_ALUMNI = {
 
 export const PROFESSIONAL_WORKS_FOR = PROFILE_WORKS_FOR
 
-export const PROFESSIONAL_EXPERIENCE = [
-  {
-    title: 'App Lead Developer',
-    company: 'Prosavis',
-    startDate: '2025-07',
-  },
-  {
-    title: 'Cross-Platform Mobile Application Developer',
-    company: 'Neacsu Horizont Ventures',
-    startDate: '2025-07',
-  },
-] as const
+export const PROFESSIONAL_EXPERIENCE = linkedInExperience
+  .filter((role) => role.current)
+  .map((role) => ({
+    title: role.title,
+    company: role.company,
+    startDate: role.period.split('–')[0]?.trim() ?? role.period,
+  }))
 
-export const PROFESSIONAL_CREDENTIALS = [
-  { category: 'SQL', issuer: 'Certificación profesional' },
-  { category: 'Power BI', issuer: 'Certificación profesional' },
-  { category: 'UX/UI', issuer: 'Certificación profesional' },
-  { category: 'Metodologías ágiles', issuer: 'Certificación profesional' },
-] as const
+export const PROFESSIONAL_CREDENTIALS = linkedInCertifications.map((cert) => ({
+  category: cert.name,
+  issuer: cert.issuer,
+  credentialUrl: cert.credentialUrl,
+})) as readonly { category: string; issuer: string; credentialUrl?: string }[]
 
 export const PROFESSIONAL_KNOWS_ABOUT = [
   'Desarrollo web',
@@ -47,16 +42,19 @@ export const PROFESSIONAL_KNOWS_ABOUT = [
   'TypeScript',
   'JavaScript',
   'Python',
+  'Flutter',
   'Machine Learning',
   'Inteligencia artificial',
   'Análisis de datos',
   'Power BI',
   'Node.js',
   'Docker',
-  'Flutter',
   'Industria 4.0',
   'Mantenimiento predictivo',
   'Programación competitiva',
+  'CI/CD',
+  'Venture Studio',
+  'Desarrollo móvil',
 ] as const
 
 export const PROFESSIONAL_SAME_AS = [

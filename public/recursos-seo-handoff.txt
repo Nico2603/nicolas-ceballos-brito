@@ -10,6 +10,11 @@ Actualizar tras cada deploy significativo de contenido SEO.
 [ ] https://nicolasceballosbrito.com/sitemap.xml con 15 URLs (13 indexables + /guias + /politica-privacidad)
 [ ] https://nicolasceballosbrito.com/llms.txt con contenido actualizado (no fallback SPA)
 
+=== GOOGLE ANALYTICS 4 ===
+[ ] Variable VITE_GA_MEASUREMENT_ID=G-QFQFLD69P3 en Vercel (Production)
+[ ] Tras deploy: GA4 → Informes → Tiempo real muestra visitas
+[ ] (Opcional) Verificar GSC vía enlace con cuenta GA4
+
 === GOOGLE SEARCH CONSOLE ===
 [ ] Verificar dominio en https://search.google.com/search-console
 [ ] Reemplazar PENDIENTE_VERIFICACION_GSC en index.html con código real de GSC

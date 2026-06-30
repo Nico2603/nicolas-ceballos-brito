@@ -96,6 +96,21 @@ Pasos tras el deploy (checklist completo en [`public/recursos-seo-handoff.txt`](
 5. **Previews sociales:** [opengraph.xyz](https://www.opengraph.xyz/) en home, about y una guía.
 6. **Bing Webmaster Tools** (opcional): mismo sitemap.
 
+## Google Analytics 4
+
+ID de medición: `G-QFQFLD69P3`
+
+La etiqueta base está en `index.html` (`send_page_view: false`). Los pageviews de la SPA se envían en cada cambio de ruta vía `src/lib/analytics.ts` y `GoogleAnalytics.tsx`.
+
+```bash
+# Local (.env.local)
+VITE_GA_MEASUREMENT_ID=G-QFQFLD69P3
+```
+
+**Vercel** → Settings → Environment Variables → `VITE_GA_MEASUREMENT_ID` = `G-QFQFLD69P3` (Production).
+
+GA4 también permite verificar el dominio en Search Console como alternativa al meta tag.
+
 ## Graphify
 
 ```bash

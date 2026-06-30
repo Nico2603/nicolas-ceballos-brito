@@ -15,7 +15,7 @@ const sections = [
   {
     title: '2. Datos que recolectamos',
     content:
-      'Podemos recibir nombre, correo electrónico, mensaje de contacto y datos técnicos básicos de navegación (páginas visitadas, dispositivo, país aproximado) mediante Vercel Analytics y Speed Insights. No solicitamos datos sensibles.',
+      'Podemos recibir nombre, correo electrónico, mensaje de contacto y datos técnicos básicos de navegación (páginas visitadas, dispositivo, país aproximado) mediante Google Analytics 4, Vercel Analytics y Speed Insights. No solicitamos datos sensibles.',
   },
   {
     title: '3. Finalidad',

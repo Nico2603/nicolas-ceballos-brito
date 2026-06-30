@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
-import { Briefcase, ExternalLink, GraduationCap } from 'lucide-react'
-import { currentRoles, graduation } from '../data/profile'
+import { Briefcase, ExternalLink, GraduationCap, MapPin } from 'lucide-react'
+import { currentRoles, graduation, PROFESSIONAL_LOCATION } from '../data/profile'
 import SectionWrapper from './SectionWrapper'
 import Badge from './ui/Badge'
 import Button from './ui/Button'
@@ -25,10 +25,10 @@ export default function CurrentExperience() {
     <SectionWrapper id="experiencia" className="py-20 px-4 bg-[var(--color-bg-secondary)] relative">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
-          eyebrow="Trayectoria"
+          eyebrow="LinkedIn"
           title="Experiencia"
-          highlight="actual"
-          description="Roles profesionales donde aplico ingeniería de software, producto e inteligencia artificial."
+          highlight="profesional"
+          description={`Extraída de mi perfil en LinkedIn · ${PROFESSIONAL_LOCATION}`}
         />
 
         <motion.div
@@ -46,26 +46,29 @@ export default function CurrentExperience() {
                 </div>
                 <div className="flex-grow">
                   <div className="flex flex-wrap items-center gap-2 mb-2">
-                    <Badge variant="muted">{String(graduation.year)}</Badge>
+                    <Badge variant="muted">{graduation.period}</Badge>
                     <Badge>{graduation.degree}</Badge>
                   </div>
                   <h3 className="font-display text-xl md:text-2xl font-semibold text-[var(--color-text-primary)] mb-2">
-                    Graduado — {graduation.institution}
+                    {graduation.institution}
                   </h3>
-                  <p className="text-sm md:text-base text-[var(--color-text-secondary)] leading-relaxed">
+                  <p className="text-sm md:text-base text-[var(--color-text-secondary)] leading-relaxed mb-2">
                     {graduation.highlight}
                   </p>
+                  {graduation.activities && (
+                    <p className="text-xs text-[var(--color-text-secondary)]">{graduation.activities}</p>
+                  )}
                 </div>
               </div>
             </Card>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-6">
             {currentRoles.map((role) => (
               <motion.div
                 key={role.id}
                 variants={itemVariants}
-                className={role.featured ? 'md:col-span-2 lg:col-span-1' : ''}
+                className={role.featured ? 'md:col-span-2' : ''}
               >
                 <Card className={`h-full ${role.featured ? 'ring-2 ring-[var(--color-accent-cta)]/40' : ''}`}>
                   <article className="p-6 flex flex-col h-full">
@@ -76,7 +79,7 @@ export default function CurrentExperience() {
                       >
                         {role.initials}
                       </div>
-                      <div className="min-w-0">
+                      <div className="min-w-0 flex-grow">
                         <p className="text-xs uppercase tracking-wider font-semibold text-[var(--color-accent-label)] mb-1">
                           {role.period}
                         </p>
@@ -84,24 +87,24 @@ export default function CurrentExperience() {
                           {role.title}
                         </h3>
                         <p className="text-sm font-medium text-[var(--color-accent-primary)]">{role.company}</p>
+                        <p className="text-xs text-[var(--color-text-secondary)] flex items-center gap-1 mt-1">
+                          <MapPin size={12} />
+                          {role.location}
+                        </p>
                       </div>
+                      {role.current && <Badge variant="accent">Actual</Badge>}
                     </div>
 
-                    <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed mb-4">
+                    <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed mb-4 flex-grow">
                       {role.description}
                     </p>
 
-                    <ul className="space-y-2 mb-4 flex-grow">
-                      {role.highlights.map((highlight) => (
-                        <li
-                          key={highlight}
-                          className="text-sm text-[var(--color-text-secondary)] flex items-start gap-2"
-                        >
-                          <Briefcase size={14} className="shrink-0 mt-0.5 text-[var(--color-accent-primary)]" />
-                          <span>{highlight}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    {(role.department || role.level) && (
+                      <p className="text-xs text-[var(--color-text-secondary)] mb-3 flex items-center gap-1">
+                        <Briefcase size={12} />
+                        {[role.department, role.level].filter(Boolean).join(' · ')}
+                      </p>
+                    )}
 
                     <div className="flex flex-wrap gap-2 mb-4">
                       {role.tags.map((tag) => (

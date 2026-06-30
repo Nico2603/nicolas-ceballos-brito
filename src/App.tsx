@@ -5,6 +5,7 @@ import Lenis from 'lenis'
 import { useEffect } from 'react'
 import BottomNav from './components/BottomNav'
 import FloatingWhatsAppButton from './components/FloatingWhatsAppButton'
+import GoogleAnalytics from './components/GoogleAnalytics'
 import Navbar from './components/Navbar'
 import { ThemeProvider } from './context/ThemeContext'
 import About from './pages/About'
@@ -84,6 +85,7 @@ export default function App() {
       </main>
       <BottomNav />
       <FloatingWhatsAppButton />
+      <GoogleAnalytics />
       <Analytics />
       <SpeedInsights />
     </ThemeProvider>

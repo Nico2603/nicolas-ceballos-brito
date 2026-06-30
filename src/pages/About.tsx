@@ -3,6 +3,7 @@ import Footer from '../components/Footer'
 import GitHubStats from '../components/GitHubStats'
 import SeoHelmet from '../components/SeoHelmet'
 import SkillsSection from '../components/SkillsSection'
+import LinkedInProfileDetails from '../components/LinkedInProfileDetails'
 import SocialLinks from '../components/SocialLinks'
 import Button from '../components/ui/Button'
 import Card from '../components/ui/Card'
@@ -62,6 +63,10 @@ export default function About() {
           </Card>
 
           <SkillsSection />
+
+          <div className="mt-16">
+            <LinkedInProfileDetails />
+          </div>
 
           <div className="mt-12">
             <GitHubStats />

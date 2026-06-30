@@ -18,6 +18,13 @@ import {
 import { faqItems } from '../src/data/faq.ts'
 import { getAllGuias } from '../src/data/guias/content.ts'
 import { graduation, currentRoles } from '../src/data/profile.ts'
+import {
+  linkedInAbout,
+  linkedInHeadline,
+  linkedInLanguages,
+  linkedInSkills,
+  LINKEDIN_SCRAPED_AT,
+} from '../src/data/linkedin-profile.ts'
 import { laboresSlides, skillCategories } from '../src/data/content.ts'
 import { projectsSeo } from '../src/data/projects.ts'
 
@@ -61,6 +68,12 @@ const experienceSection = currentRoles
   .map((role) => `- ${role.title} @ ${role.company} (${role.period}): ${role.description}`)
   .join('\n')
 
+const linkedInSection = `- Headline: ${linkedInHeadline}
+- About: ${linkedInAbout}
+- Skills (${linkedInSkills.length}): ${linkedInSkills.join(', ')}
+- Idiomas: ${linkedInLanguages.map((l) => `${l.name} (${l.proficiency})`).join(', ')}
+- Última sync LinkedIn: ${LINKEDIN_SCRAPED_AT}`
+
 const content = `# ${PROFESSIONAL_FULL_NAME} — Portafolio Profesional
 # Archivo de entidad para motores de respuesta (AEO/GEO)
 # Sitio oficial: ${SITE_URL}
@@ -81,6 +94,9 @@ ${credentialsSection}
 
 ## Experiencia actual
 ${experienceSection}
+
+## Perfil LinkedIn
+${linkedInSection}
 
 ## Contacto
 - Email: ${EMAIL}

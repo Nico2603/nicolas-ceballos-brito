@@ -1,16 +1,9 @@
 import type { Project, LaboresSlide, PortfolioStat, SkillCategory } from '../types'
-import { aboutIntro, heroBio } from './profile'
+import { aboutIntro, heroBio, linkedInTypingLines } from './profile'
 
 export { heroBio, aboutIntro }
 
-export const typingLines = [
-  'Ingeniero de Sistemas y Telecomunicaciones',
-  'Investigador en Industria 4.0',
-  'Desarrollador de Software',
-  'Analista de Datos & Machine Learning',
-  'Colaborador en Startups',
-  'Apasionado por la Tecnología y la Innovación',
-]
+export const typingLines = [...linkedInTypingLines]
 
 export const portfolioStats: PortfolioStat[] = [
   { icon: 'code', value: '15+', label: 'Repositorios' },
