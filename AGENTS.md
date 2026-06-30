@@ -39,6 +39,9 @@ nicolas-ceballos-brito/
 | Lucide React | ^1.17.0 | Iconos |
 | react-router-dom | ^7.17.0 | Routing |
 | react-helmet-async | ^3.0.0 | SEO |
+| @fontsource/* | — | Fuentes autohospedadas (sin Google Fonts) |
+| @vercel/analytics | ^2.0.1 | Analytics (carga diferida) |
+| @vercel/speed-insights | ^2.0.0 | Speed Insights (carga diferida) |
 
 ## Despliegue
 
@@ -53,7 +56,7 @@ nicolas-ceballos-brito/
 ## Scripts
 
 - `npm run dev` — Servidor de desarrollo
-- `npm run build` — Build de producción (`prebuild` genera sitemap, llms.txt, tarjeta OG y apple-touch-icon; luego Vite + prerender)
+- `npm run build` — Build de producción (`prebuild` genera sitemap, llms.txt, OG, variantes de perfil y apple-touch; luego Vite + prerender)
 - `npm run lint` — ESLint
 - `npm run preview` — Preview del build
 - `npm run sync:linkedin` — Snapshot del perfil LinkedIn (`linkedin-sync.raw.json`)
@@ -62,6 +65,7 @@ nicolas-ceballos-brito/
 
 - `scripts/generate-og-image.mjs` — Tarjeta Open Graph 1200×630 (marca, sin foto)
 - `scripts/normalize-seo-images.mjs` — Valida dimensiones OG y regenera `apple-touch-icon.png`
+- `scripts/optimize-profile-images.mjs` — Genera `pic-288.webp` / `pic-576.webp` para LCP; comprime carrusel
 - `scripts/prerender.ts` — HTML estático por ruta (meta OG visibles para WhatsApp/LinkedIn)
 - Editar textos de la tarjeta OG: constantes al inicio de `generate-og-image.mjs`
 
@@ -69,8 +73,16 @@ nicolas-ceballos-brito/
 
 - **LinkedIn:** editar `src/data/linkedin-profile.ts` (experiencia, educación, certificaciones, skills, actividad). URL en `src/constants/social.ts`.
 - **Derivados:** `profile.ts`, `linkedin-posts.ts`, `credentials.ts` consumen o mapean desde ahí.
-- **GitHub:** dinámico vía `useGitHubRepos` (API pública, sin token).
+- **GitHub:** API dinámica solo en `/repositories` (`useGitHubRepos`). Home usa stats estáticos de `github-repos-fallback.ts`.
 - Tras cambios en datos de perfil: `npm run build` regenera `llms.txt` y JSON-LD.
+
+## Rendimiento
+
+- Code splitting: rutas con `React.lazy()`, secciones below-fold lazy en Home, `manualChunks` en Vite
+- LCP: `<img>` con `srcSet` en Hero; preload de `pic.webp` en `index.html`
+- Analytics/terceros: GA4 y Vercel metrics diferidos (no bloquean FCP)
+- Lenis y `HeroGrid` canvas diferidos o desactivados en mobile
+- Caché larga en `/assets/` e `/images/` vía `vercel.json`
 
 ## Skills — ubicación e instalación
 

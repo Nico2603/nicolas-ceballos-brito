@@ -1,11 +1,5 @@
 import { FULL_NAME } from '../../constants/social'
 import { featuredProjects, laboresSlides } from '../content'
-import {
-  linkedInAbout,
-  linkedInCertifications,
-  linkedInEducation,
-  linkedInExperience,
-} from '../linkedin-profile'
 import type { ExpertiseContent } from './types'
 
 const magiaCafetera = featuredProjects.find((p) => p.id === 'portafolio-magia')!

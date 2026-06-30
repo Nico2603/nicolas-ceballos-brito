@@ -6,7 +6,7 @@ Identidad visual **Dev Premium**: navy + cyan eléctrico + ámbar CTA, modo clar
 
 ## Stack
 
-React 19 · Vite 8 · TypeScript · Tailwind CSS 4 · Framer Motion · Lenis · react-router-dom
+React 19 · Vite 8 · TypeScript · Tailwind CSS 4 · Framer Motion · Lenis · react-router-dom · @fontsource
 
 ## Desarrollo
 
@@ -29,7 +29,8 @@ El pipeline `prebuild` genera automáticamente:
 - `public/llms.txt` — archivo AEO para motores de respuesta (incluye datos de LinkedIn)
 - `public/images/og-image.webp` — tarjeta Open Graph de marca (1200×630, sin foto; ver abajo)
 - `public/apple-touch-icon.png` — derivado de la tarjeta OG (180×180)
-- Inyección de JSON-LD en `index.html` (home)
+- `public/images/pic-288.webp` y `pic-576.webp` — variantes responsive de la foto de perfil (LCP)
+- Inyección de JSON-LD en `index.html` (home; único bloque estático — React no duplica en `/`)
 
 El paso `prerender` (Puppeteer + Chromium) genera HTML estático por ruta en `dist/`.
 
@@ -42,7 +43,8 @@ El sitio es un SPA estático. Los datos profesionales provienen de dos fuentes:
 | **LinkedIn** (fuente principal) | [`src/data/linkedin-profile.ts`](./src/data/linkedin-profile.ts) | Headline, about, experiencia, educación, certificaciones, skills, idiomas, proyectos, actividad |
 | Derivados | [`src/data/profile.ts`](./src/data/profile.ts) | Bio hero/about, graduación, roles actuales — consume `linkedin-profile.ts` |
 | Posts / feed | [`src/data/linkedin-posts.ts`](./src/data/linkedin-posts.ts) | Mapeo de `linkedInActivity` para el feed en Home |
-| **GitHub API** | [`src/hooks/useGitHubRepos.ts`](./src/hooks/useGitHubRepos.ts) | Repos, stars y stats en `/repositories` y línea compacta en Portafolio |
+| **GitHub API** | [`src/hooks/useGitHubRepos.ts`](./src/hooks/useGitHubRepos.ts) | Repos, stars y stats en `/repositories` |
+| Stats estáticos (Home) | [`src/data/github-repos-fallback.ts`](./src/data/github-repos-fallback.ts) | Línea compacta en Portafolio sin fetch a la API |
 | Proyectos destacados | [`src/data/content.ts`](./src/data/content.ts) | Grid 2×2 en Home (4 repos reales) |
 | SEO / JSON-LD | [`src/constants/credentials.ts`](./src/constants/credentials.ts) | Credenciales y experiencia derivadas de LinkedIn |
 
@@ -94,6 +96,7 @@ Rutas definidas en [`src/constants/seo-routes.ts`](./src/constants/seo-routes.ts
 | Sync LinkedIn | `scripts/sync-linkedin.ts` |
 | Tarjeta OG (generación) | `scripts/generate-og-image.mjs` |
 | OG / apple-touch (normalización) | `scripts/normalize-seo-images.mjs` |
+| Imágenes LCP / carrusel | `scripts/optimize-profile-images.mjs` |
 | AEO | `public/llms.txt` (regenerado en build) |
 
 ### Previews al compartir (WhatsApp, LinkedIn, X)
@@ -104,7 +107,7 @@ WhatsApp y otras redes **no ejecutan JavaScript**: leen el HTML estático que en
 |--------|---------|-----|
 | **Favicon** (pestaña) | `public/favicon.svg` | Monograma **NC** en azul `#2a5c82` |
 | **Tarjeta OG** (preview del link) | `public/images/og-image.webp` | Generada en build: navy + cyan + ámbar, nombre, eyebrow y stack — **sin foto** |
-| **Foto de perfil** (sitio) | `public/images/pic.webp` | Hero y About; no se usa en previews sociales |
+| Foto de perfil (sitio) | `public/images/pic.webp` (+ `pic-288.webp`, `pic-576.webp`) | Hero (`<img>` LCP con `srcSet`); About usa `.profile-image` |
 | **Apple touch icon** | `public/apple-touch-icon.png` | Acceso directo en iOS; recorte de la tarjeta OG |
 
 Para editar textos o colores de la tarjeta OG, modificar las constantes en `scripts/generate-og-image.mjs` y ejecutar `npm run build` (o solo `node scripts/generate-og-image.mjs` en desarrollo).
@@ -120,7 +123,24 @@ Tras un deploy, si WhatsApp muestra una preview antigua, refrescar caché en [Fa
 | Perfil LinkedIn | `CurrentExperience.tsx`, `LinkedInFeed.tsx`, `LinkedInProfileDetails.tsx` |
 | Navegación | `Navbar`, `BottomNav`, `FloatingContactButton` |
 | Hooks nav | `useSmartNavigation`, `useActiveSection` |
-| Hooks datos | `useGitHubRepos` (GitHub REST API) |
+| Hooks datos | `useGitHubRepos` (solo `/repositories`); stats estáticos en Home |
+| Rendimiento | Code splitting, lazy sections, analytics diferidos — ver abajo |
+
+## Rendimiento y Speed Insights
+
+Optimizaciones aplicadas para mejorar RES, LCP, FCP e INP (Vercel Speed Insights + Lighthouse):
+
+| Área | Implementación |
+|------|----------------|
+| **LCP** | Foto de perfil como `<img>` con `fetchPriority="high"`, `srcSet` y preload en `index.html` |
+| **JS inicial** | `React.lazy()` en rutas secundarias; secciones below-fold lazy en Home; `manualChunks` (react, motion, lenis) en `vite.config.ts` |
+| **Red** | Sin llamadas a GitHub API en Home (`Portfolio` con `staticStats`) |
+| **Fuentes** | `@fontsource/plus-jakarta-sans` y `@fontsource/fraunces` en `src/index.css` (sin Google Fonts bloqueante) |
+| **Terceros** | GA4 vía `requestIdleCallback` en `src/lib/analytics.ts`; Vercel Analytics/Speed Insights tras `load` (`DeferredVercelMetrics.tsx`) |
+| **INP** | Lenis diferido (idle o primer scroll); `HeroGrid` desactivado en mobile; `initial={false}` en Hero prerenderizado |
+| **Caché** | Headers `immutable` en `vercel.json` para `/assets/` e `/images/` |
+
+Tras deploy, validar con Lighthouse mobile en `/` y monitorear Speed Insights 48–72 h (datos de campo).
 
 ## Despliegue
 
@@ -129,7 +149,7 @@ Tras un deploy, si WhatsApp muestra una preview antigua, refrescar caché en [Fa
 - **Plataforma:** Vercel (deploy automático desde `master` vía GitHub)
 - Build: `npm run build` → carpeta `dist/`
 
-Vercel sirve archivos estáticos del filesystem antes del rewrite SPA en `vercel.json`, por lo que `dist/about/index.html` y rutas similares se entregan con meta prerenderizados.
+Vercel sirve archivos estáticos del filesystem antes del rewrite SPA en `vercel.json`, por lo que `dist/about/index.html` y rutas similares se entregan con meta prerenderizados. Assets versionados en `/assets/` e imágenes en `/images/` llevan `Cache-Control: public, max-age=31536000, immutable`.
 
 ## SEO / Google Search Console
 
@@ -148,7 +168,7 @@ Pasos tras el deploy (checklist completo en [`public/recursos-seo-handoff.txt`](
 
 ID de medición: `G-QFQFLD69P3`
 
-La etiqueta base está al inicio de `index.html` (`send_page_view: false`). Los pageviews de la SPA se envían en cada cambio de ruta vía `src/lib/analytics.ts` y `GoogleAnalytics.tsx`. Si falta la variable de entorno en Vercel, se usa el ID por defecto `G-QFQFLD69P3`.
+La carga de GA4 es **diferida** (`requestIdleCallback` en `src/lib/analytics.ts`; sin script bloqueante en `index.html`). Los pageviews de la SPA se envían en cada cambio de ruta vía `GoogleAnalytics.tsx`. Si falta la variable de entorno en Vercel, se usa el ID por defecto `G-QFQFLD69P3`.
 
 Eventos personalizados: `generate_lead` (formulario de contacto), `contact` (WhatsApp y email). La medición mejorada de GA4 cubre scroll, clics salientes y formularios automáticamente.
 

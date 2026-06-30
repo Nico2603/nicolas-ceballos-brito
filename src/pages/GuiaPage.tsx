@@ -1,5 +1,6 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
+import ContentImageFigure from '../components/ContentImageFigure'
 import Footer from '../components/Footer'
 import SeoHelmet from '../components/SeoHelmet'
 import Button from '../components/ui/Button'
@@ -70,6 +71,7 @@ export default function GuiaPage() {
                     <p key={paragraph.slice(0, 40)}>{paragraph}</p>
                   ))}
                 </div>
+                {section.image && <ContentImageFigure image={section.image} />}
               </section>
             ))}
 

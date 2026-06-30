@@ -1,4 +1,5 @@
 import type { LinkedInPost } from '../types'
+import { normalizeLinkedInUrl } from '../lib/normalize-linkedin-url'
 import { linkedInActivity } from './linkedin-profile'
 
 export const linkedInPosts: LinkedInPost[] = linkedInActivity.map((item) => ({
@@ -7,7 +8,7 @@ export const linkedInPosts: LinkedInPost[] = linkedInActivity.map((item) => ({
   excerpt: item.excerpt,
   publishedAt: item.publishedAt,
   imageUrl: item.imageUrl,
-  postUrl: item.url,
+  postUrl: normalizeLinkedInUrl(item.url),
   featured: item.featured,
   tags: item.tags,
 }))

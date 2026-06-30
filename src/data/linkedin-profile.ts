@@ -334,7 +334,7 @@ export const linkedInActivity: LinkedInActivityEntry[] = [
     title: 'El aprendizaje (brevemente)',
     excerpt:
       'Gran parte de lo que somos mes a mes se genera: observando a otros, reaccionando a lo que el ambiente nos ofrece y entendiendo…',
-    url: 'https://es.www.linkedin.com/posts/maria-camila-alzate-calzada_el-aprendizaje-brevemente-gran-parte-activity-7429994399243120640-Uwoz',
+    url: 'https://www.linkedin.com/posts/maria-camila-alzate-calzada_el-aprendizaje-brevemente-gran-parte-activity-7429994399243120640-Uwoz',
     publishedAt: '2026-02-01',
     tags: ['Aprendizaje'],
   },
@@ -345,7 +345,7 @@ export const linkedInActivity: LinkedInActivityEntry[] = [
     title: 'La verdadera diferencia no la hace el talento',
     excerpt:
       'Empecé a programar a los 13 años: algoritmos en papel, PHP, HTML y CSS. Mi primera…',
-    url: 'https://es.www.linkedin.com/posts/josé-alexander-suaza-montes_la-verdadera-diferencia-no-la-hace-el-talento-activity-7410507806656811008-uF4e',
+    url: 'https://www.linkedin.com/posts/jos%C3%A9-alexander-suaza-montes_la-verdadera-diferencia-no-la-hace-el-talento-activity-7410507806656811008-uF4e',
     publishedAt: '2025-12-15',
     tags: ['Programación', 'Carrera'],
   },

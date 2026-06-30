@@ -38,7 +38,7 @@ export const navLinks: NavLink[] = [
     href: '#contacto',
     dropdown: [
       { label: 'Email', href: 'mailto:nicolasceballosbrito@gmail.com' },
-      { label: 'LinkedIn', href: 'https://linkedin.com/in/nicolas-ceballos-brito', external: true },
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/nicolas-ceballos-brito/', external: true },
       { label: 'GitHub', href: 'https://github.com/Nico2603', external: true },
       { label: 'Twitter', href: 'https://twitter.com/NicolasCBrito', external: true },
       { label: 'Facebook', href: 'https://www.facebook.com/NicolasCeballosBrito', external: true },

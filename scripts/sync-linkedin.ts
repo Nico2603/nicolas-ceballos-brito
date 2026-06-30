@@ -2,6 +2,7 @@ import { writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import puppeteer from 'puppeteer'
 import { SOCIAL_LINKS } from '../src/constants/social.ts'
+import { normalizeLinkedInUrl } from '../src/lib/normalize-linkedin-url.ts'
 
 const PROFILE_URL = SOCIAL_LINKS.linkedin
 const RAW_OUTPUT = resolve(process.cwd(), 'src/data/linkedin-sync.raw.json')
@@ -97,6 +98,10 @@ async function scrapeLinkedInProfile(): Promise<ScrapedData> {
     return {
       scrapedAt: new Date().toISOString(),
       ...data,
+      posts: data.posts.map((post) => ({
+        ...post,
+        url: normalizeLinkedInUrl(post.url),
+      })),
     }
   } finally {
     await browser.close()

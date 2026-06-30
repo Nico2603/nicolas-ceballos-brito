@@ -1,4 +1,6 @@
+import type { NarrativeSection } from '../types/content'
 import type { TopicFaqItem, BreadcrumbItem } from '../lib/structured-data'
+import ContentImageFigure from './ContentImageFigure'
 import { ArrowRight, CheckCircle2, Mail } from 'lucide-react'
 import { EMAIL, SOCIAL_LINKS } from '../constants/social'
 import Footer from './Footer'
@@ -16,6 +18,7 @@ interface ExpertiseLandingLayoutProps {
   eyebrow: string
   h1: string
   lead: string
+  sections?: NarrativeSection[]
   leftCardTitle: string
   leftCardItems: string[]
   rightCardTitle: string
@@ -33,6 +36,7 @@ export default function ExpertiseLandingLayout({
   eyebrow,
   h1,
   lead,
+  sections,
   leftCardTitle,
   leftCardItems,
   rightCardTitle,
@@ -86,7 +90,27 @@ export default function ExpertiseLandingLayout({
           </div>
         </section>
 
-        <section className="bg-[var(--color-bg-secondary)] py-16 md:py-20">
+        {sections && sections.length > 0 && (
+          <section className="bg-[var(--color-bg-secondary)] py-16 md:py-20">
+            <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+              {sections.map((section) => (
+                <article key={section.heading} className="mb-12 last:mb-0">
+                  <h2 className="mb-4 text-2xl font-semibold tracking-tight text-[var(--color-text-primary)]">
+                    {section.heading}
+                  </h2>
+                  <div className="space-y-4 leading-relaxed text-[var(--color-text-secondary)]">
+                    {section.paragraphs.map((paragraph) => (
+                      <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+                    ))}
+                  </div>
+                  {section.image && <ContentImageFigure image={section.image} />}
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <section className="bg-[var(--color-bg-primary)] py-16 md:py-20">
           <div className="mx-auto grid max-w-5xl gap-6 px-4 sm:px-6 md:grid-cols-2 lg:px-8">
             <article className="rounded-2xl border p-6 bg-[var(--color-bg-card)] border-[var(--color-border-light)]">
               <h2 className="mb-4 text-xl font-semibold text-[var(--color-text-primary)]">

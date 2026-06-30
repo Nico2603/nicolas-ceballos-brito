@@ -1,6 +1,25 @@
 NICOLÁS CEBALLOS BRITO — CHECKLIST SEO POST-DEPLOY
 Actualizar tras cada deploy significativo de contenido SEO.
 
+=== DNS Y DOMINIO (Hostinger + Vercel) ===
+Dominio canónico: https://nicolasceballosbrito.com (sin guiones; nicolas-ceballos-brito.com NO existe)
+
+Registros esperados en Hostinger:
+[ ] Apex @ → A → 76.76.21.21
+[ ] www → CNAME → cname.vercel-dns.com
+[ ] Sin registros de parking ni A antiguos conflictivos
+[ ] Valorar migrar NS de dns-parking.com a nameservers estables de Hostinger o Vercel
+
+Vercel → Settings → Domains:
+[ ] nicolasceballosbrito.com → Valid
+[ ] www.nicolasceballosbrito.com → Valid (redirect 308 a apex vía vercel.json)
+
+Prueba iPhone (Safari):
+[ ] https://nicolasceballosbrito.com en Wi-Fi
+[ ] Misma URL en datos móviles
+[ ] Si falla solo en una red: caché DNS del operador; esperar propagación o cambiar DNS del iPhone
+[ ] Descartar VPN, Private Relay y bloqueadores DNS
+
 === DOMINIO Y ARTEFACTOS ===
 [ ] https://nicolasceballosbrito.com/ responde con HTML prerenderizado (title único, no solo shell SPA)
 [ ] https://nicolasceballosbrito.com/about contiene meta og:url → /about
