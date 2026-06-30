@@ -100,7 +100,9 @@ Pasos tras el deploy (checklist completo en [`public/recursos-seo-handoff.txt`](
 
 ID de medición: `G-QFQFLD69P3`
 
-La etiqueta base está en `index.html` (`send_page_view: false`). Los pageviews de la SPA se envían en cada cambio de ruta vía `src/lib/analytics.ts` y `GoogleAnalytics.tsx`.
+La etiqueta base está al inicio de `index.html` (`send_page_view: false`). Los pageviews de la SPA se envían en cada cambio de ruta vía `src/lib/analytics.ts` y `GoogleAnalytics.tsx`. Si falta la variable de entorno en Vercel, se usa el ID por defecto `G-QFQFLD69P3`.
+
+Eventos personalizados: `generate_lead` (formulario de contacto), `contact` (WhatsApp y email). La medición mejorada de GA4 cubre scroll, clics salientes y formularios automáticamente.
 
 ```bash
 # Local (.env.local)

@@ -18,6 +18,7 @@ import {
   WHATSAPP_PRIMARY_URL,
 } from '../data/contact'
 import { useContactForm } from '../hooks/useContactForm'
+import { trackContactClick } from '../lib/analytics'
 
 const inputStyle = {
   backgroundColor: 'var(--color-bg-primary)',
@@ -99,6 +100,13 @@ export default function Contact() {
                     href={item.href}
                     target={item.icon === 'whatsapp' ? '_blank' : undefined}
                     rel={item.icon === 'whatsapp' ? 'noopener noreferrer' : undefined}
+                    onClick={
+                      item.icon === 'whatsapp'
+                        ? () => trackContactClick('whatsapp', 'contacto_info')
+                        : item.icon === 'mail'
+                          ? () => trackContactClick('email', 'contacto_info')
+                          : undefined
+                    }
                     className="text-sm hover:underline transition-colors duration-200"
                     style={{ color: 'var(--color-text-secondary)' }}
                   >
@@ -133,6 +141,7 @@ export default function Contact() {
               href={WHATSAPP_PRIMARY_URL}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackContactClick('whatsapp', 'contacto_cta')}
               className="group inline-flex items-center gap-3 mt-8 bg-[var(--color-accent-cta)] text-[var(--color-navy-deep)] font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-[var(--shadow-cta)] hover:scale-[1.02] hover:brightness-105"
             >
               <WhatsAppIcon className="w-5 h-5" variant="light" />

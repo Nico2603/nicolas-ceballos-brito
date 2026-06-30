@@ -1,4 +1,4 @@
-const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID?.trim()
+import { GA_MEASUREMENT_ID } from '../constants/analytics'
 
 type AnalyticsEventParams = Record<string, string | number | boolean | undefined>
 
@@ -47,12 +47,14 @@ async function initGa(measurementId: string): Promise<void> {
     }
 
   const gtagSrc = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`
-  if (!hasScriptBySrc(gtagSrc)) {
+  const tagPreloaded = hasScriptBySrc(gtagSrc)
+
+  if (!tagPreloaded) {
     await loadScript('ga-base-script', gtagSrc)
+    window.gtag('js', new Date())
+    window.gtag('config', measurementId, { send_page_view: false })
   }
 
-  window.gtag('js', new Date())
-  window.gtag('config', measurementId, { send_page_view: false })
   ready = true
 }
 
@@ -70,7 +72,7 @@ export async function initGoogleAnalytics(): Promise<void> {
 
     initialized = true
     console.warn(
-      '[analytics] No se inicializó GA4: define VITE_GA_MEASUREMENT_ID (ej. G-QFQFLD69P3)',
+      `[analytics] No se inicializó GA4: ID inválido (${GA_MEASUREMENT_ID ?? 'vacío'})`,
     )
   })()
     .catch((error: unknown) => {
@@ -121,4 +123,21 @@ export function trackPageView(path: string): void {
   }
 
   trackEvent('page_view', pageParams)
+}
+
+/** Evento recomendado GA4 al enviar el formulario de contacto con éxito. */
+export function trackGenerateLead(method: string): void {
+  trackEvent('generate_lead', {
+    currency: 'COP',
+    value: 0,
+    lead_source: method,
+  })
+}
+
+/** Clic en enlace de WhatsApp u otro canal de contacto directo. */
+export function trackContactClick(channel: string, source: string): void {
+  trackEvent('contact', {
+    method: channel,
+    content: source,
+  })
 }

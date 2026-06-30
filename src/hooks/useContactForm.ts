@@ -1,5 +1,6 @@
 import { useCallback, useState, type FormEvent } from 'react'
 import { DEFAULT_PHONE_COUNTRY_ID, getPhoneCountry } from '../data/phone-countries'
+import { trackGenerateLead } from '../lib/analytics'
 import { submitContactEmail } from '../lib/contact-email'
 import { digitsOnly, isValidPhoneForCountry } from '../lib/phone'
 import { FORM_ERROR_MESSAGE } from '../data/contact'
@@ -96,6 +97,7 @@ export function useContactForm() {
       const result = await submitContactEmail(fields)
 
       if (result.ok) {
+        trackGenerateLead('contact_form')
         setSubmittedName(fields.name.trim())
         setFields(EMPTY_FIELDS)
         setIsSuccess(true)

@@ -2,6 +2,17 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
+    <!-- Google tag (gtag.js) — flujo GA4 «Start»; pageviews SPA en src/lib/analytics.ts -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QFQFLD69P3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      window.gtag = window.gtag || gtag
+      gtag('js', new Date())
+      gtag('config', 'G-QFQFLD69P3', { send_page_view: false })
+    </script>
     <meta name="google-site-verification" content="PENDIENTE_VERIFICACION_GSC" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -306,17 +317,6 @@
     }
   ]
 }
-    </script>
-    <!-- Google tag (gtag.js) — etiqueta base GA4; pageviews SPA en src/lib/analytics.ts -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QFQFLD69P3"></script>
-    <script>
-      window.dataLayer = window.dataLayer || []
-      function gtag() {
-        dataLayer.push(arguments)
-      }
-      window.gtag = window.gtag || gtag
-      gtag('js', new Date())
-      gtag('config', 'G-QFQFLD69P3', { send_page_view: false })
     </script>
   </head>
   <body>
