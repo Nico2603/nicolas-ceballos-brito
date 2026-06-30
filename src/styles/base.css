@@ -63,3 +63,91 @@ textarea::placeholder {
   background-image: var(--gradient-hero-grid);
   background-size: 48px 48px;
 }
+
+/* ── Hero atmosphere ── */
+.hero-aurora {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  will-change: transform;
+  pointer-events: none;
+}
+
+.hero-aurora-1 {
+  width: min(55vw, 480px);
+  height: min(55vw, 480px);
+  top: -8%;
+  right: -5%;
+  background: rgb(34 211 238 / 0.35);
+  animation: aurora-drift-1 14s var(--ease-smooth) infinite;
+}
+
+.hero-aurora-2 {
+  width: min(45vw, 400px);
+  height: min(45vw, 400px);
+  bottom: -10%;
+  left: -8%;
+  background: rgb(245 158 11 / 0.28);
+  animation: aurora-drift-2 18s var(--ease-smooth) infinite;
+}
+
+.hero-aurora-3 {
+  width: min(35vw, 320px);
+  height: min(35vw, 320px);
+  top: 40%;
+  left: 45%;
+  background: rgb(99 102 241 / 0.2);
+  animation: aurora-drift-3 20s var(--ease-smooth) infinite;
+}
+
+.hero-headline-glow {
+  text-shadow:
+    0 2px 24px rgb(34 211 238 / 0.35),
+    0 4px 48px rgb(3 7 18 / 0.8);
+}
+
+.hero-subcopy-glow {
+  text-shadow: 0 2px 16px rgb(3 7 18 / 0.75);
+}
+
+.hero-eyebrow-glow {
+  text-shadow: 0 0 20px rgb(251 191 36 / 0.5);
+}
+
+.hero-profile-ring {
+  position: absolute;
+  inset: -3px;
+  border-radius: 18px;
+  background: conic-gradient(
+    from 0deg,
+    #22D3EE,
+    #FBBF24,
+    #22D3EE,
+    #06B6D4,
+    #F59E0B,
+    #22D3EE
+  );
+  animation: spin-slow 8s linear infinite;
+  opacity: 0.9;
+}
+
+.hero-profile-glow {
+  box-shadow:
+    var(--shadow-glow-cyan),
+    0 24px 64px rgb(3 7 18 / 0.55);
+}
+
+.text-gradient-accent {
+  background: var(--gradient-text-accent);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 6s var(--ease-smooth) infinite;
+}
+
+.section-mesh-bg {
+  background-image:
+    radial-gradient(ellipse 80% 50% at 20% 0%, rgb(34 211 238 / 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 100%, rgb(245 158 11 / 0.05) 0%, transparent 55%);
+}

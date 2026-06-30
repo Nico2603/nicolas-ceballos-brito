@@ -29,7 +29,7 @@ type ButtonProps = ButtonAsButton | ButtonAsLink | ButtonAsRouterLink
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    'bg-[var(--color-accent-cta)] text-[var(--color-navy-deep)] shadow-[var(--shadow-cta)] hover:brightness-105',
+    'bg-[var(--color-accent-cta)] text-[var(--color-navy-deep)] shadow-[var(--shadow-cta)] hover:brightness-110 hover:shadow-[var(--shadow-glow-amber)]',
   secondary:
     'bg-transparent border-2 border-[var(--color-btn-secondary-bg)] text-[var(--color-text-primary)] hover:bg-[var(--color-btn-secondary-bg)] hover:text-[var(--color-btn-secondary-text)]',
   ghost:
@@ -46,8 +46,8 @@ function getClasses(variant: ButtonVariant, className: string) {
 }
 
 const motionProps = {
-  whileHover: { scale: 1.02 },
-  whileTap: { scale: 0.98 },
+  whileHover: { scale: 1.04, y: -2 },
+  whileTap: { scale: 0.97 },
 } as const
 
 export default function Button(props: ButtonProps) {

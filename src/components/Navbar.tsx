@@ -32,10 +32,10 @@ export default function Navbar() {
     <>
       <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none pt-4 md:pt-6 px-4">
         <div
-          className={`pointer-events-auto mx-auto max-w-fit flex items-center gap-2 md:gap-4 rounded-full border backdrop-blur-xl px-3 md:px-5 py-2 transition-all duration-500 ${
+          className={`pointer-events-auto mx-auto max-w-fit flex items-center gap-2 md:gap-4 rounded-full border backdrop-blur-xl px-3 md:px-5 py-2.5 transition-all duration-500 ${
             scrolled || !isHome
               ? 'bg-[var(--color-nav-bg)] border-[var(--color-border-light)] shadow-[var(--shadow-nav)]'
-              : 'bg-white/10 border-white/20'
+              : 'bg-[rgba(3,7,18,0.72)] border-white/25 shadow-[0_8px_32px_rgb(0_0_0/0.35)]'
           }`}
         >
           <button
@@ -51,7 +51,7 @@ export default function Navbar() {
               <div key={link.label} className="relative group">
                 <button
                   onClick={() => onNavClick(link.href)}
-                  className="flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-medium transition-colors hover:text-[var(--color-accent-primary)]"
+                  className="flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-colors hover:text-[var(--color-cyan-bright)]"
                   style={{ color: textCol }}
                 >
                   {link.label}

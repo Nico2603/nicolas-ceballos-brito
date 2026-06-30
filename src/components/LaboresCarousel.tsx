@@ -40,7 +40,7 @@ export default function LaboresCarousel() {
   const slide = laboresSlides[current]
 
   return (
-    <SectionWrapper id="labores" className="py-20 px-4 bg-[var(--color-bg-primary)]">
+    <SectionWrapper id="labores" className="py-20 px-4 bg-[var(--color-bg-primary)] section-mesh-bg relative">
       <div className="max-w-5xl mx-auto">
         <SectionHeader
           eyebrow="Experiencia"

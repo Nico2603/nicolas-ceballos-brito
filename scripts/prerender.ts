@@ -6,7 +6,16 @@ import chromium from '@sparticuz/chromium'
 import puppeteer, { type Browser } from 'puppeteer'
 import puppeteerCore from 'puppeteer-core'
 import { PRERENDER_ROUTES } from '../src/constants/seo-routes.ts'
-import { SITE_URL } from '../src/constants/social.ts'
+import { FULL_NAME } from '../src/constants/social.ts'
+
+const ROUTE_TITLES: Record<string, string> = {
+  '/': `${FULL_NAME} — Portafolio Profesional`,
+  '/about': `Acerca de mí — ${FULL_NAME}`,
+  '/repositories': `Repositorios — ${FULL_NAME}`,
+  '/desarrollo-web': `Desarrollo Web — ${FULL_NAME}`,
+  '/inteligencia-artificial': `Inteligencia Artificial — ${FULL_NAME}`,
+  '/analisis-datos': `Análisis de Datos — ${FULL_NAME}`,
+}
 
 const isVercelBuild = process.env.VERCEL === '1'
 
@@ -110,7 +119,7 @@ function waitSelectorForRoute(routePath: string): string {
     case '/about':
       return '#about-pro'
     case '/repositories':
-      return 'main h1'
+      return '#repositories-hero'
     default:
       return 'main h1'
   }
@@ -119,21 +128,25 @@ function waitSelectorForRoute(routePath: string): string {
 async function prerenderRoute(browser: Browser, previewUrl: string, routePath: string): Promise<void> {
   const page = await browser.newPage()
   const url = `${previewUrl}${routePath === '/' ? '/' : routePath}`
-  const expectedCanonical =
-    routePath === '/' ? `${SITE_URL}/` : `${SITE_URL}${routePath}`
   const routeSelector = waitSelectorForRoute(routePath)
+  const expectedTitle = ROUTE_TITLES[routePath]
 
   await page.goto(url, { waitUntil: 'networkidle0', timeout: 90_000 })
   await page.waitForSelector('#root', { timeout: 30_000 })
   await page.waitForSelector(routeSelector, { timeout: 45_000 })
-  await page.waitForFunction(
-    (canonical) => {
-      const link = document.querySelector('link[rel="canonical"]')
-      return link?.getAttribute('href') === canonical
-    },
-    { timeout: 45_000 },
-    expectedCanonical,
-  )
+
+  if (expectedTitle) {
+    await page.waitForFunction(
+      (title) => document.title === title,
+      { timeout: 45_000 },
+      expectedTitle,
+    )
+  } else {
+    await page.waitForFunction(
+      () => document.title && document.title.length > 0,
+      { timeout: 45_000 },
+    )
+  }
 
   const html = await page.content()
   const outputPath = outputPathForRoute(routePath)
@@ -153,7 +166,11 @@ async function main(): Promise<void> {
     const browser = await launchBrowser()
 
     try {
-      for (const route of PRERENDER_ROUTES) {
+      const routesToRender = [
+        ...PRERENDER_ROUTES.filter((route) => route.path !== '/'),
+        ...PRERENDER_ROUTES.filter((route) => route.path === '/'),
+      ]
+      for (const route of routesToRender) {
         await prerenderRoute(browser, previewUrl, route.path)
       }
     } finally {

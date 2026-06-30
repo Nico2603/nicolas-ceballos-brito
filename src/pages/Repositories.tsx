@@ -37,7 +37,7 @@ export default function Repositories() {
         )}
       />
 
-      <section className="pt-32 pb-8 px-4" style={{ background: 'var(--gradient-hero)' }}>
+      <section id="repositories-hero" className="pt-32 pb-8 px-4" style={{ background: 'var(--gradient-hero)' }}>
         <div className="max-w-4xl mx-auto">
           <SectionHeader
             eyebrow="GitHub"

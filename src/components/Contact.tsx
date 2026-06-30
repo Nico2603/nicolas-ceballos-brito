@@ -51,7 +51,7 @@ export default function Contact() {
   } = useContactForm()
 
   return (
-    <SectionWrapper id="contacto" className="py-20 md:py-24 px-4 bg-[var(--color-bg-secondary)]">
+    <SectionWrapper id="contacto" className="py-20 md:py-24 px-4 bg-[var(--color-bg-secondary)] section-mesh-bg relative">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16">
           <div>

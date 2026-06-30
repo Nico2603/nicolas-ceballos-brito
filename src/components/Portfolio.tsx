@@ -25,7 +25,7 @@ export default function Portfolio() {
   ]
 
   return (
-    <SectionWrapper id="portafolio" className="py-20 px-4 bg-[var(--color-bg-primary)]">
+    <SectionWrapper id="portafolio" className="py-20 px-4 bg-[var(--color-bg-primary)] section-mesh-bg relative">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           eyebrow="Portafolio"
