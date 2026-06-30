@@ -1,0 +1,38 @@
+import { FacebookIcon, GitHubIcon, InstagramIcon, LinkedInIcon, TwitterIcon } from './icons/SocialIcons'
+import { SOCIAL_LINKS } from '../constants/social'
+
+interface SocialLinksProps {
+  className?: string
+  size?: 'sm' | 'md'
+}
+
+const socialItems = [
+  { href: SOCIAL_LINKS.facebook, label: 'Facebook', Icon: FacebookIcon, color: '#1877F2' },
+  { href: SOCIAL_LINKS.twitter, label: 'Twitter', Icon: TwitterIcon, color: '#1DA1F2' },
+  { href: SOCIAL_LINKS.instagram, label: 'Instagram', Icon: InstagramIcon, color: '#E4405F' },
+  { href: SOCIAL_LINKS.linkedin, label: 'LinkedIn', Icon: LinkedInIcon, color: '#0A66C2' },
+  { href: SOCIAL_LINKS.github, label: 'GitHub', Icon: GitHubIcon, color: '#333333' },
+] as const
+
+export default function SocialLinks({ className = '', size = 'md' }: SocialLinksProps) {
+  const iconSize = size === 'sm' ? 18 : 22
+  const buttonSize = size === 'sm' ? 'w-10 h-10' : 'w-12 h-12'
+
+  return (
+    <div className={`flex flex-wrap justify-center gap-3 ${className}`}>
+      {socialItems.map(({ href, label, Icon, color }) => (
+        <a
+          key={label}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={label}
+          className={`${buttonSize} flex items-center justify-center rounded-full glass-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}
+          style={{ color }}
+        >
+          <Icon size={iconSize} />
+        </a>
+      ))}
+    </div>
+  )
+}

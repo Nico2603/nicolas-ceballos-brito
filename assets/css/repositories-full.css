@@ -1,9 +1,0 @@
-/* ========================================
-   CSS COMPLETO PARA REPOSITORIES.HTML
-======================================== */
-
-/* Importar estilos base */
-@import 'main.css';
-
-/* Estilos específicos de repositories */
-@import 'pages/repositories.css';

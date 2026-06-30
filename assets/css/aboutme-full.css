@@ -1,9 +1,0 @@
-/* ========================================
-   CSS COMPLETO PARA ABOUTME.HTML
-======================================== */
-
-/* Importar estilos base */
-@import 'main.css';
-
-/* Estilos específicos de aboutme */
-@import 'pages/aboutme.css';
