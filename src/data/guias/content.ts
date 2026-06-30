@@ -1,5 +1,5 @@
-import type { GuideSlug } from '../constants/seo-routes'
-import type { TopicFaqItem } from '../lib/structured-data'
+import type { GuideSlug } from '../../constants/seo-routes'
+import type { TopicFaqItem } from '../../lib/structured-data'
 
 export interface GuiaSection {
   heading: string

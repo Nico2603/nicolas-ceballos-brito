@@ -1,93 +1,317 @@
-import type { MouseEvent } from 'react'
-import { Mail, MapPin } from 'lucide-react'
-import { EMAIL, MAILTO_BODY, MAILTO_SUBJECT } from '../constants/social'
-import { openGmailCompose } from '../lib/github'
+import { MapPin, Mail, ArrowRight, Loader2 } from 'lucide-react'
+import { AnimatePresence, motion } from 'framer-motion'
 import SectionWrapper from './SectionWrapper'
-import SocialLinks from './SocialLinks'
-import Button from './ui/Button'
-import Card from './ui/Card'
-import SectionHeader from './ui/SectionHeader'
+import ContactFormSuccess from './ContactFormSuccess'
+import PhoneInput from './PhoneInput'
+import WhatsAppIcon from './icons/WhatsAppIcon'
+import {
+  CONTACT_SECTION_LABEL,
+  CONTACT_HEADING_START,
+  CONTACT_HEADING_ACCENT,
+  CONTACT_SUBCOPY,
+  contactInfoItems,
+  FORM_TITLE,
+  FORM_SUBMIT_TEXT,
+  FORM_SENDING_TEXT,
+  FORM_PHONE_LABEL,
+  WHATSAPP_CTA_TEXT,
+  WHATSAPP_PRIMARY_URL,
+} from '../data/contact'
+import { useContactForm } from '../hooks/useContactForm'
 
-const contactItems = [
-  {
-    icon: Mail,
-    title: 'Email',
-    description: 'La forma más directa de contactarme para colaboraciones.',
-    action: 'nicolasceballosbrito@gmail.com',
-  },
-  {
-    icon: MapPin,
-    title: 'Ubicación',
-    description: 'Basado en Pereira, Colombia — disponible remoto.',
-    action: 'Pereira, CO',
-  },
-]
+const inputStyle = {
+  backgroundColor: 'var(--color-bg-primary)',
+  borderColor: 'var(--color-border-light)',
+  color: 'var(--color-text-primary)',
+} as const
+
+const errorStyle = { color: '#DC2626' } as const
+
+const formExit = {
+  opacity: 0,
+  y: -16,
+  scale: 0.98,
+  transition: { duration: 0.28, ease: [0.22, 1, 0.36, 1] as const },
+}
+
+const inputFocusClass =
+  'focus:outline-none focus:border-[var(--color-accent-primary)] focus:ring-2 focus:ring-[var(--color-accent-primary)]/10'
 
 export default function Contact() {
-  const handleEmailClick = (e: MouseEvent<HTMLAnchorElement>) => {
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent,
-    )
-    if (!isMobile) {
-      e.preventDefault()
-      openGmailCompose(EMAIL, MAILTO_SUBJECT, MAILTO_BODY)
-    }
-  }
-
-  const mailtoHref = `mailto:${EMAIL}?subject=${encodeURIComponent(MAILTO_SUBJECT)}&body=${encodeURIComponent(MAILTO_BODY)}`
+  const {
+    fields,
+    errors,
+    isSubmitting,
+    isSuccess,
+    submittedName,
+    errorMessage,
+    updateField,
+    handleSubmit,
+    resetForm,
+  } = useContactForm()
 
   return (
-    <SectionWrapper id="contacto" className="py-20 px-4 bg-[var(--color-bg-secondary)]">
+    <SectionWrapper id="contacto" className="py-20 md:py-24 px-4 bg-[var(--color-bg-secondary)]">
       <div className="max-w-6xl mx-auto">
-        <SectionHeader
-          eyebrow="Contacto"
-          title="¿Trabajamos"
-          highlight="juntos?"
-          description="Estoy disponible para colaborar en proyectos desafiantes que requieran soluciones creativas y eficientes."
-          align="left"
-        />
+        <div className="grid md:grid-cols-2 gap-12 md:gap-16">
+          <div>
+            <p
+              className="font-semibold text-xs uppercase tracking-[0.2em] mb-3"
+              style={{ color: 'var(--color-accent-primary)' }}
+            >
+              {CONTACT_SECTION_LABEL}
+            </p>
+            <h2
+              className="font-display text-3xl md:text-5xl font-semibold mb-6 tracking-tight"
+              style={{ color: 'var(--color-text-primary)' }}
+            >
+              {CONTACT_HEADING_START}
+              <span style={{ color: 'var(--color-accent-primary)' }}>{CONTACT_HEADING_ACCENT}</span>
+            </h2>
+            <p
+              className="text-lg leading-relaxed mb-8"
+              style={{ color: 'var(--color-text-secondary)' }}
+            >
+              {CONTACT_SUBCOPY}
+            </p>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="space-y-4">
-            {contactItems.map(({ icon: Icon, title, description, action }) => (
-              <Card key={title}>
-                <div className="p-6 flex gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-[var(--color-accent-badge-bg)] flex items-center justify-center shrink-0">
-                    <Icon size={22} className="text-[var(--color-accent-primary)]" />
+            <div className="space-y-4">
+              {contactInfoItems.map((item) => {
+                const iconEl =
+                  item.icon === 'whatsapp' ? (
+                    <WhatsAppIcon className="w-6 h-6" />
+                  ) : item.icon === 'map-pin' ? (
+                    <MapPin
+                      className="w-5 h-5"
+                      strokeWidth={1.75}
+                      style={{ color: 'var(--color-accent-primary)' }}
+                    />
+                  ) : (
+                    <Mail
+                      className="w-5 h-5"
+                      strokeWidth={1.75}
+                      style={{ color: 'var(--color-accent-primary)' }}
+                    />
+                  )
+
+                const valueContent = item.href ? (
+                  <a
+                    href={item.href}
+                    target={item.icon === 'whatsapp' ? '_blank' : undefined}
+                    rel={item.icon === 'whatsapp' ? 'noopener noreferrer' : undefined}
+                    className="text-sm hover:underline transition-colors duration-200"
+                    style={{ color: 'var(--color-text-secondary)' }}
+                  >
+                    {item.value}
+                  </a>
+                ) : (
+                  <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
+                    {item.value}
+                  </p>
+                )
+
+                return (
+                  <div key={item.icon} className="flex items-center gap-4">
+                    <div
+                      className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
+                      style={{ backgroundColor: 'var(--color-accent-badge-bg)' }}
+                    >
+                      {iconEl}
+                    </div>
+                    <div>
+                      <p className="font-medium" style={{ color: 'var(--color-text-primary)' }}>
+                        {item.title}
+                      </p>
+                      {valueContent}
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-display font-semibold text-[var(--color-text-primary)] mb-1">
-                      {title}
-                    </h3>
-                    <p className="text-sm text-[var(--color-text-secondary)] mb-2">{description}</p>
-                    <p className="text-sm font-medium text-[var(--color-accent-primary)]">{action}</p>
-                  </div>
-                </div>
-              </Card>
-            ))}
+                )
+              })}
+            </div>
+
+            <a
+              href={WHATSAPP_PRIMARY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-3 mt-8 bg-[var(--color-accent-cta)] text-[var(--color-navy-deep)] font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-[var(--shadow-cta)] hover:scale-[1.02] hover:brightness-105"
+            >
+              <WhatsAppIcon className="w-5 h-5" variant="light" />
+              <span>{WHATSAPP_CTA_TEXT}</span>
+              <ArrowRight
+                className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                strokeWidth={2}
+              />
+            </a>
           </div>
 
-          <Card>
-            <div className="p-8 flex flex-col justify-center h-full">
-              <h3 className="font-display text-xl font-semibold text-[var(--color-text-primary)] mb-4">
-                Envíame un mensaje
-              </h3>
-              <p className="text-[var(--color-text-secondary)] mb-6 leading-relaxed">
-                Cuéntame sobre tu proyecto, idea o propuesta. Respondo en menos de 48 horas.
-              </p>
-              <Button
-                variant="primary"
-                href={mailtoHref}
-                onClick={handleEmailClick}
-                trailingIcon={<Mail size={14} />}
-                className="self-start mb-8"
-              >
-                Enviar correo
-              </Button>
-              <p className="text-sm text-[var(--color-text-secondary)] mb-4">O conéctate en redes:</p>
-              <SocialLinks size="sm" />
-            </div>
-          </Card>
+          <motion.div
+            layout
+            className="rounded-2xl p-8 border shadow-sm overflow-hidden"
+            style={{
+              backgroundColor: 'var(--color-bg-card)',
+              borderColor: 'var(--color-border-light)',
+            }}
+            transition={{ layout: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } }}
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              {isSuccess ? (
+                <ContactFormSuccess
+                  key="success"
+                  submittedName={submittedName}
+                  onReset={resetForm}
+                />
+              ) : (
+                <motion.div
+                  key="form"
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={formExit}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <h3
+                    className="text-xl font-semibold mb-6"
+                    style={{ color: 'var(--color-text-primary)' }}
+                  >
+                    {FORM_TITLE}
+                  </h3>
+                  <form className="space-y-5" onSubmit={handleSubmit} noValidate>
+                    <input
+                      type="checkbox"
+                      name="botcheck"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      className="hidden"
+                      aria-hidden="true"
+                    />
+                    <div>
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium mb-1.5"
+                        style={{ color: 'var(--color-text-primary)' }}
+                      >
+                        Nombre
+                      </label>
+                      <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        required
+                        minLength={2}
+                        autoComplete="name"
+                        value={fields.name}
+                        onChange={(e) => updateField('name', e.target.value)}
+                        aria-invalid={errors.name ? true : undefined}
+                        aria-describedby={errors.name ? 'name-error' : undefined}
+                        placeholder="Tu nombre"
+                        className={`w-full border rounded-xl px-4 py-3 transition-all duration-200 ${inputFocusClass}`}
+                        style={inputStyle}
+                      />
+                      {errors.name ? (
+                        <p id="name-error" className="mt-1.5 text-sm" style={errorStyle} role="alert">
+                          {errors.name}
+                        </p>
+                      ) : null}
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium mb-1.5"
+                        style={{ color: 'var(--color-text-primary)' }}
+                      >
+                        Correo electrónico
+                      </label>
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        autoComplete="email"
+                        value={fields.email}
+                        onChange={(e) => updateField('email', e.target.value)}
+                        aria-invalid={errors.email ? true : undefined}
+                        aria-describedby={errors.email ? 'email-error' : undefined}
+                        placeholder="tu@correo.com"
+                        className={`w-full border rounded-xl px-4 py-3 transition-all duration-200 ${inputFocusClass}`}
+                        style={inputStyle}
+                      />
+                      {errors.email ? (
+                        <p id="email-error" className="mt-1.5 text-sm" style={errorStyle} role="alert">
+                          {errors.email}
+                        </p>
+                      ) : null}
+                    </div>
+                    <PhoneInput
+                      id="phone"
+                      label={FORM_PHONE_LABEL}
+                      countryId={fields.phoneCountry}
+                      value={fields.phone}
+                      onCountryChange={(countryId) => updateField('phoneCountry', countryId)}
+                      onChange={(nationalDigits) => updateField('phone', nationalDigits)}
+                      error={errors.phone}
+                    />
+                    <div>
+                      <label
+                        htmlFor="message"
+                        className="block text-sm font-medium mb-1.5"
+                        style={{ color: 'var(--color-text-primary)' }}
+                      >
+                        Mensaje
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        rows={4}
+                        required
+                        minLength={10}
+                        value={fields.message}
+                        onChange={(e) => updateField('message', e.target.value)}
+                        aria-invalid={errors.message ? true : undefined}
+                        aria-describedby={errors.message ? 'message-error' : undefined}
+                        placeholder="Cuéntame sobre tu proyecto o propuesta..."
+                        className={`w-full border rounded-xl px-4 py-3 transition-all duration-200 resize-none ${inputFocusClass}`}
+                        style={inputStyle}
+                      />
+                      {errors.message ? (
+                        <p id="message-error" className="mt-1.5 text-sm" style={errorStyle} role="alert">
+                          {errors.message}
+                        </p>
+                      ) : null}
+                    </div>
+                    {errorMessage ? (
+                      <p
+                        className="text-sm rounded-xl px-4 py-3"
+                        style={{
+                          backgroundColor: 'rgba(220, 38, 38, 0.08)',
+                          color: '#DC2626',
+                        }}
+                        role="alert"
+                      >
+                        {errorMessage}
+                      </p>
+                    ) : null}
+                    <motion.button
+                      type="submit"
+                      disabled={isSubmitting}
+                      whileTap={isSubmitting ? undefined : { scale: 0.985 }}
+                      className="w-full font-semibold px-8 py-4 rounded-xl transition-all duration-300 hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                      style={{
+                        backgroundColor: 'var(--color-accent-cta)',
+                        color: 'var(--color-navy-deep)',
+                      }}
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="w-5 h-5 animate-spin" aria-hidden="true" />
+                          {FORM_SENDING_TEXT}
+                        </>
+                      ) : (
+                        FORM_SUBMIT_TEXT
+                      )}
+                    </motion.button>
+                  </form>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
         </div>
       </div>
     </SectionWrapper>

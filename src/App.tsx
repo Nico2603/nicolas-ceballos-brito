@@ -4,7 +4,7 @@ import { SpeedInsights } from '@vercel/speed-insights/react'
 import Lenis from 'lenis'
 import { useEffect } from 'react'
 import BottomNav from './components/BottomNav'
-import FloatingContactButton from './components/FloatingContactButton'
+import FloatingWhatsAppButton from './components/FloatingWhatsAppButton'
 import Navbar from './components/Navbar'
 import { ThemeProvider } from './context/ThemeContext'
 import About from './pages/About'
@@ -79,7 +79,7 @@ export default function App() {
         </Routes>
       </main>
       <BottomNav />
-      <FloatingContactButton />
+      <FloatingWhatsAppButton />
       <Analytics />
       <SpeedInsights />
     </ThemeProvider>
