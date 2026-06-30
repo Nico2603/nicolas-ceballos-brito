@@ -54,3 +54,39 @@ nicolas-ceballos-brito/
 - `npm run build` — Build de producción
 - `npm run lint` — ESLint
 - `npm run preview` — Preview del build
+
+## Skills — ubicación e instalación
+
+| Alcance | Ruta | Estado |
+|---------|------|--------|
+| **Proyecto (definitivo)** | `nicolas-ceballos-brito/.agents/skills/` | 30 skills instaladas |
+| Lockfile reproducible | `skills-lock.json` | `npx skills experimental_install` |
+
+Verificar: `npx skills ls` (desde la raíz del repo).
+
+Regla Cursor always-on: [`.cursor/rules/skills-mandatory.mdc`](.cursor/rules/skills-mandatory.mdc)
+
+### Skills instaladas (30)
+
+**Core (8):** brainstorming, systematic-debugging, using-superpowers, frontend-design, vercel-react-best-practices, web-design-guidelines, find-skills, agent-browser
+
+**Complementarias (20):** motion-framer, tailwind-design-system, design-dna, design-taste-frontend, high-end-visual-design, emil-design-eng, ui-ux-pro-max, landing-page-design, css-animations, react-typescript, seo-optimizer, aceternity-ui, vercel-composition-patterns, canvas-design, theme-factory, brand-guidelines, sleek-design-mobile-apps, extract-design-system, redesign-existing-projects, design-motion-principles
+
+**Workflow (2):** writing-plans, verification-before-completion
+
+**Analytics (2):** google-analytics-admin-api-basics, google-analytics-data-api-basics
+
+Reinstalar desde lockfile: `npx skills experimental_install -y`
+
+### Bundles resumidos
+
+- **Siempre:** `using-superpowers`
+- **Feature:** brainstorming → spec → writing-plans
+- **UI:** frontend-design + design-taste-frontend + brand-guidelines + tailwind-design-system + ui-ux-pro-max + high-end-visual-design
+- **Motion:** motion-framer + emil-design-eng + design-motion-principles + design-dna + css-animations
+- **React/TSX:** react-typescript + vercel-composition-patterns + vercel-react-best-practices
+- **Cierre:** web-design-guidelines + verification-before-completion
+- **Bug:** systematic-debugging
+- **QA visual:** agent-browser
+
+Antes de UI o features nuevas, leer [`src/styles/tokens.css`](src/styles/tokens.css). No introducir Inter/Roboto ni layouts template SaaS.

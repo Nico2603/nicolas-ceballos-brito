@@ -1,0 +1,43 @@
+---
+description: Enrutamiento obligatorio de Agent Skills en Nicolás Ceballos Brito — leer e invocar skills según tipo de tarea
+alwaysApply: true
+---
+
+# Skills obligatorias (Nicolás Ceballos Brito)
+
+Ubicación: `.agents/skills/` (proyecto). Lockfile: `skills-lock.json`.
+
+## Paso 0 — siempre
+
+Antes de cualquier acción, leer e invocar `using-superpowers`. Si aplica una skill del stack, **debes leer su SKILL.md** en `.agents/skills/<nombre>/` antes de implementar.
+
+No ejecutar las 30 skills en cada prompt. Clasifica la tarea y aplica **todas** las del bundle correspondiente.
+
+## Bundles por tipo de prompt
+
+| Tipo | Skills obligatorias (leer SKILL.md de cada una) |
+|------|--------------------------------------------------|
+| **Cualquier tarea** | `using-superpowers` |
+| **Feature / cambio de comportamiento** | `brainstorming` → spec en `docs/superpowers/specs/` → `writing-plans` |
+| **UI nueva o rediseño visual** | `frontend-design`, `design-taste-frontend`, `brand-guidelines`, `tailwind-design-system`, `high-end-visual-design`, `ui-ux-pro-max` + `src/styles/tokens.css` |
+| **Animaciones / motion** | `motion-framer`, `emil-design-eng`, `design-motion-principles`, `design-dna`, `css-animations` |
+| **Estructura landing / portafolio / CTA** | `landing-page-design` |
+| **Mobile / responsive** | `sleek-design-mobile-apps` |
+| **Rediseño conservador** | `redesign-existing-projects` |
+| **Edición TSX / React** | `react-typescript`, `vercel-composition-patterns`, `vercel-react-best-practices` |
+| **SEO / meta** | `seo-optimizer` |
+| **Antes de cerrar tarea** | `web-design-guidelines`, `verification-before-completion` |
+| **QA visual** | `agent-browser` |
+| **Bug / error** | `systematic-debugging` (Fase 1 root cause antes de fix) |
+| **Mockups / layout exploratorio** | `canvas-design` |
+| **Referencias externas de diseño** | `extract-design-system` (nunca sobrescribir `tokens.css` sin OK) |
+| **Inspiración efectos** | `aceternity-ui` (adaptar a Vite, no Next.js) |
+| **Variantes de tema** | `theme-factory` |
+| **Buscar capacidad nueva** | `find-skills` |
+| **Analytics / métricas** | `google-analytics-admin-api-basics`, `google-analytics-data-api-basics` |
+
+## Restricciones de diseño
+
+- Fuente de verdad visual: `src/styles/tokens.css` (Raleway + Montserrat, paleta teal/azul)
+- Prohibido: Inter, Roboto, layouts template SaaS genéricos
+- Stack: React 19 + Vite + Tailwind v4 + Framer Motion + Lenis (no Next.js, no shadcn)
