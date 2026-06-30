@@ -69,7 +69,7 @@
 | Display | Fraunces | `font-display` | 600, 700 |
 | Body | Plus Jakarta Sans | `font-sans` | 400, 500, 600, 700 |
 
-Autohospedadas con `@fontsource` en `src/index.css` (`font-display: swap`). No usar Google Fonts en `index.html`. Evitar añadir pesos extra sin medir impacto en LCP.
+Autohospedadas con `@fontsource`: pesos críticos en `src/styles/fonts-critical.css` (Jakarta 400, Fraunces 700) y resto diferido vía `DeferredFonts`. Entrada principal en `src/index.css` (`@import fonts-critical`, tokens, animations, base). No usar Google Fonts en `index.html`. Evitar añadir pesos extra sin medir impacto en LCP.
 
 ### 3.1 Activos de marca y previews sociales
 
@@ -77,7 +77,7 @@ Autohospedadas con `@fontsource` en `src/index.css` (`font-display: swap`). No u
 |---|---|---|---|
 | Favicon | `public/favicon.svg` | 32×32 | Monograma **NC**, fondo `#2a5c82` — pestaña del navegador |
 | Tarjeta Open Graph | `public/images/og-image.webp` | 1200×630 | Generada en `prebuild` por `scripts/generate-og-image.mjs`; paleta navy/cyan/ámbar, **sin foto** |
-| Foto de perfil | `public/images/pic.webp` | 288×288 (Hero) | Variantes `pic-288.webp` / `pic-576.webp` generadas en prebuild; Hero usa `<img>` estático con `srcSet` (elemento LCP). Preload (`pic-288.webp`) solo en `/` — Helmet + prerender, no en `index.html` global |
+| Foto de perfil | `public/images/pic.webp` | 288×288 (Hero) | Variantes `pic-224.webp`, `pic-288.webp`, `pic-576.webp` en prebuild; Hero usa `<img>` con `srcSet`. **LCP lab = `<h1>` texto** (`hero-lcp-visible`), no la imagen. Preload solo en `/` |
 | Apple touch icon | `public/apple-touch-icon.png` | 180×180 | Recorte de la tarjeta OG (`normalize-seo-images.mjs`) |
 
 La tarjeta OG replica el eyebrow del hero (*Full-Stack Developer · Ing. Sistemas*), el nombre y un stack resumido. Los meta tags (`og:title`, `og:description`, `og:image`) los inyecta `SeoHelmet.tsx` y el prerender los deja en HTML estático para crawlers de WhatsApp/LinkedIn.
@@ -256,15 +256,21 @@ Preload LCP (`pic-288.webp`) vía `Helmet` en `Home.tsx` — no en `index.html` 
 
 | Regla | Detalle |
 |---|---|
-| LCP | `<img>` estático en `Hero.tsx` — sin `motion` en foto ni `<h1>` |
+| LCP (lab) | **`<h1>` texto Fraunces** — clase `hero-lcp-visible`; sin `motion` en `<h1>`. Imagen de perfil: `<img>` estático, no es LCP en Lighthouse móvil |
+| TypingAnimation | `DeferredTypingAnimation`: texto estático hasta `requestIdleCallback`, luego lazy de `TypingAnimation` |
 | Animación hero | Clases `hero-entrance`, `hero-entrance-delay-*`, `hero-profile-float` en `src/styles/animations.css` |
 | Flotación avatar | `hero-profile-float` desactivada en `max-width: 768px` (mejor INP móvil) |
-| Framer Motion | `LazyMotion` + `domAnimation` en `App.tsx`; reservar `motion.*` para below-the-fold o micro-interacciones (CTAs hero, cards) |
+| Framer Motion | `LazyMotion` + `domAnimation` en `App.tsx`; `SectionWrapper` usa CSS `section-reveal` (sin `m`) |
+| Home lazy | `Portfolio`, `RecursosSection`, `Footer`, `LinkedInFeed`, etc. con `React.lazy()` |
+| Prerender home | CSS crítico inline (`critical-inline.css`), strip `modulepreload` below-fold, link `/schema/home.jsonld` |
+| Fuentes | `fonts-critical.css` + `DeferredFonts`; fallback `--font-display: Fraunces, Georgia, Times New Roman, serif` |
+| GA / métricas | GA4 post-interacción; Vercel Analytics/Speed Insights tras `load` |
 | Navbar móvil | Overlay con clases `mobile-menu-*` y hamburger CSS — no `AnimatePresence` |
 | Lenis | Solo viewport ≥768px; mobile usa scroll nativo |
-| Preload imagen | Solo home: `Home.tsx` (Helmet) + fallback en `scripts/prerender.ts` si Helmet no inyectó el tag |
-| JSON-LD home | `scripts/inject-home-schema.ts` en prebuild; rutas secundarias lo eliminan en post-proceso de prerender |
-| Validación build | `Select-String -Path dist/guias/*/index.html -Pattern "127.0.0.1|localhost"` debe estar vacío |
+| Preload imagen | Solo home: `Home.tsx` (Helmet) + fallback en `scripts/prerender.ts` |
+| JSON-LD home | Inline lite en prebuild; schema completo en `public/schema/home.jsonld` |
+| Imágenes carrusel | `carouselImageSources` + variantes `p*-640.webp` |
+| Validación build | Sin `127.0.0.1`/`localhost` en HTML prerenderizado |
 
 ---
 
@@ -286,4 +292,5 @@ Checklist manual:
 - [ ] Tras `npm run build`, `public/images/og-image.webp` muestra tarjeta de marca (no foto)
 - [ ] Tras `npm run build`, HTML prerenderizado sin `127.0.0.1`/`localhost` en `dist/guias/*/index.html`
 - [ ] Guías prerenderizadas sin JSON-LD de home (`#website`, `FAQPage`)
-- [ ] Lighthouse mobile en `/` — LCP con imagen de perfil, chunks `/assets/` en 200
+- [ ] Lighthouse mobile en `/` — mediana 3 runs: Performance ≥ 69, LCP < 3.5 s (`npm run audit:perf`)
+- [ ] Meta final: Performance ≥ 85, LCP < 2.5 s (ver `lighthouserc.json` y `reports/performance-baseline.json`)

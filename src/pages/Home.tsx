@@ -1,9 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { Helmet } from 'react-helmet-async'
-import Footer from '../components/Footer'
 import Hero from '../components/Hero'
-import Portfolio from '../components/Portfolio'
-import RecursosSection from '../components/RecursosSection'
 import SeoHelmet from '../components/SeoHelmet'
 import {
   SEO_HOME_DESCRIPTION,
@@ -17,6 +14,9 @@ const LinkedInFeed = lazy(() => import('../components/LinkedInFeed'))
 const LaboresCarousel = lazy(() => import('../components/LaboresCarousel'))
 const FaqSection = lazy(() => import('../components/FaqSection'))
 const Contact = lazy(() => import('../components/Contact'))
+const Portfolio = lazy(() => import('../components/Portfolio'))
+const RecursosSection = lazy(() => import('../components/RecursosSection'))
+const Footer = lazy(() => import('../components/Footer'))
 
 import { PROFILE_IMAGE_PRELOAD } from '../constants/lcp-image'
 
@@ -48,16 +48,22 @@ export default function Home() {
       <Suspense fallback={null}>
         <LinkedInFeed />
       </Suspense>
-      <Portfolio staticStats={FALLBACK_GITHUB_STATS} />
+      <Suspense fallback={null}>
+        <Portfolio staticStats={FALLBACK_GITHUB_STATS} />
+      </Suspense>
       <Suspense fallback={null}>
         <LaboresCarousel />
       </Suspense>
-      <RecursosSection />
+      <Suspense fallback={null}>
+        <RecursosSection />
+      </Suspense>
       <Suspense fallback={null}>
         <FaqSection />
         <Contact />
       </Suspense>
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </>
   )
 }

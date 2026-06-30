@@ -1,6 +1,6 @@
 import { spawn, type ChildProcess } from 'node:child_process'
 import { createServer } from 'node:net'
-import { mkdirSync, writeFileSync } from 'node:fs'
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import chromium from '@sparticuz/chromium'
 import puppeteer, { type Browser } from 'puppeteer'
@@ -37,6 +37,26 @@ async function launchBrowser(): Promise<Browser> {
 }
 
 const DIST_DIR = resolve(process.cwd(), 'dist')
+const CRITICAL_CSS_PATH = resolve(process.cwd(), 'src/styles/critical-inline.css')
+
+const BELOW_FOLD_MODULEPRELOAD_PATTERNS = [
+  /LinkedInFeed/i,
+  /LaboresCarousel/i,
+  /Contact/i,
+  /CurrentExperience/i,
+  /FaqSection/i,
+  /Portfolio/i,
+  /RecursosSection/i,
+  /Footer/i,
+  /About/i,
+  /Repositories/i,
+  /ProjectPage/i,
+  /GuiaPage/i,
+  /ExpertiseLandingLayout/i,
+  /PoliticaPrivacidad/i,
+  /vendor-motion/i,
+  /vendor-lenis/i,
+]
 
 async function getAvailablePort(): Promise<number> {
   return new Promise((resolvePort, reject) => {
@@ -173,6 +193,39 @@ function stripHomeJsonLd(html: string): string {
   )
 }
 
+function stripBelowFoldModulePreload(html: string): string {
+  return html.replace(/<link rel="modulepreload"[^>]*>/gi, (tag) => {
+    if (BELOW_FOLD_MODULEPRELOAD_PATTERNS.some((pattern) => pattern.test(tag))) {
+      return ''
+    }
+    return tag
+  })
+}
+
+function injectCriticalCss(html: string): string {
+  if (html.includes('data-critical-inline')) {
+    return html
+  }
+
+  try {
+    const css = readFileSync(CRITICAL_CSS_PATH, 'utf8').trim()
+    if (!css) return html
+    const snippet = `<style data-critical-inline>${css}</style>`
+    return injectBeforeHeadClose(html, snippet)
+  } catch {
+    return html
+  }
+}
+
+function injectSchemaAlternateLink(html: string): string {
+  const snippet =
+    '<link rel="alternate" type="application/ld+json" href="/schema/home.jsonld" />'
+  if (html.includes('/schema/home.jsonld')) {
+    return html
+  }
+  return injectBeforeHeadClose(html, snippet)
+}
+
 function injectLcpPreload(html: string): string {
   const snippet = `<link rel="preload" as="image" href="${PROFILE_IMAGE_PRELOAD.href}" type="image/webp" fetchpriority="high" imagesrcset="${PROFILE_IMAGE_PRELOAD.srcSet}" imagesizes="${PROFILE_IMAGE_PRELOAD.sizes}" />`
   if (html.includes('rel="preload" as="image"') && html.includes(PROFILE_IMAGE_PRELOAD.href)) {
@@ -186,6 +239,9 @@ function postProcessHtml(html: string, routePath: string, port: number): string 
 
   if (routePath === '/') {
     processed = injectLcpPreload(processed)
+    processed = injectSchemaAlternateLink(processed)
+    processed = injectCriticalCss(processed)
+    processed = stripBelowFoldModulePreload(processed)
   } else {
     processed = stripHomeJsonLd(processed)
   }

@@ -8,7 +8,7 @@ import Button from './ui/Button'
 import HeroAurora from './HeroAurora'
 import HeroGrid from './HeroGrid'
 import SocialLinks from './SocialLinks'
-import TypingAnimation from './TypingAnimation'
+import DeferredTypingAnimation from './DeferredTypingAnimation'
 
 const miniStats = [
   { value: String(graduation.year), label: 'Graduado UCP' },
@@ -55,7 +55,7 @@ export default function Hero() {
             </h1>
 
             <div className="hero-entrance hero-entrance-delay-3 mb-6">
-              <TypingAnimation className="text-[var(--hero-subtitle)] font-semibold hero-subcopy-glow" />
+              <DeferredTypingAnimation className="text-[var(--hero-subtitle)] font-semibold hero-subcopy-glow" />
             </div>
 
             <p className="hero-entrance hero-entrance-delay-4 direct-answer text-base md:text-lg leading-relaxed text-[var(--hero-text-muted)] mb-8 max-w-xl hero-subcopy-glow">

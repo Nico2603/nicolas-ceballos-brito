@@ -21,6 +21,30 @@
     "speedIndex": "6.9 s",
     "tti": "4.8 s"
   },
+  "postDeploy": {
+    "capturedAt": "2026-06-30",
+    "commit": "6170eed",
+    "url": "https://nicolasceballosbrito.com",
+    "source": "Lighthouse lab — mediana de 3 corridas (mobile-run2 estable como referencia)",
+    "note": "Outliers con server-response-time ~8.5 s atribuidos a cold start TTFB de Vercel, no a bug de código.",
+    "mobile": {
+      "performance": 69,
+      "seo": 100,
+      "lcp": "3.5 s",
+      "fcp": "1.8 s",
+      "tbt": "470 ms",
+      "cls": 0.029,
+      "lcpElement": "h1.font-display (texto Fraunces, no imagen)"
+    },
+    "desktop": {
+      "performance": 46,
+      "lcp": "3.5 s",
+      "fcp": "2.1 s",
+      "tbt": "320 ms",
+      "cls": 0.031,
+      "note": "Lab desktop variable; usar mediana de 3 runs"
+    }
+  },
   "targets": {
     "performanceMobile": 85,
     "performanceDesktop": 90,

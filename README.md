@@ -139,23 +139,24 @@ Optimizaciones para RES, LCP, FCP, TTFB e INP (Vercel Speed Insights + Lighthous
 
 | Área | Implementación |
 |------|----------------|
-| **Prerender** | Post-proceso en `scripts/prerender.ts`: rutas relativas a assets (fix `ERR_CONNECTION_REFUSED`), preload LCP en `/`, JSON-LD de home solo en home; el build falla si queda `127.0.0.1` o `localhost` |
-| **HTML base** | `index.html` sin JSON-LD inline ni preload global de imagen; schema y assets SEO se generan en `prebuild` |
-| **LCP** | `<img>` estático en Hero (`fetchPriority="high"`, `srcSet`); preload de `pic-288.webp` en `/` vía Helmet + prerender (no en `index.html` global) |
-| **Hero crítico** | Entrada y avatar LCP con CSS (`hero-entrance`, `hero-profile-float` en `animations.css`); flotación desactivada en mobile |
-| **JS inicial** | `React.lazy()` en rutas y en `CurrentExperience`; secciones below-fold lazy en Home; `manualChunks` (react, motion, lenis) en `vite.config.ts` |
-| **Framer Motion** | `LazyMotion` + `domAnimation` en `App.tsx`; motion en Hero limitado a CTAs; Navbar móvil con transiciones CSS |
+| **Prerender** | Post-proceso en `scripts/prerender.ts`: rutas relativas, preload LCP en `/`, CSS crítico inline (`critical-inline.css`), strip de `modulepreload` below-fold, link a `/schema/home.jsonld`; JSON-LD de home solo en home |
+| **HTML base** | `index.html` con link alterno al schema completo; preload global de imagen solo vía Helmet/prerender en `/` |
+| **LCP** | Elemento LCP lab = **`<h1>` texto Fraunces** (clase `hero-lcp-visible`); imagen de perfil con `fetchPriority="high"` y `srcSet`; preload `pic-288.webp` en `/` |
+| **Hero crítico** | `DeferredTypingAnimation` (idle + lazy); entrada con CSS (`hero-entrance`, `hero-profile-float`); flotación desactivada en mobile |
+| **JS inicial** | `React.lazy()` en rutas y secciones Home (Portfolio, Recursos, Footer, LinkedIn, etc.); `manualChunks` en `vite.config.ts` |
+| **Framer Motion** | `LazyMotion` + `domAnimation`; `SectionWrapper` sin `m` (CSS `section-reveal`); Hero sin Framer Motion |
 | **Red** | Sin llamadas a GitHub API en Home (`Portfolio` con `staticStats`) |
-| **Fuentes** | 6 pesos `@fontsource` en `src/index.css` (Jakarta 400–700, Fraunces 600–700); `font-display: swap` |
+| **Fuentes** | Críticas en `src/styles/fonts-critical.css` (Jakarta 400, Fraunces 700); pesos restantes diferidos vía `DeferredFonts` |
 | **Terceros** | GA4 vía `requestIdleCallback` en `src/lib/analytics.ts`; Vercel Analytics/Speed Insights tras `load` (`DeferredVercelMetrics.tsx`) |
 | **INP** | Lenis solo desktop (≥768px), diferido idle/primer scroll; `HeroGrid` desactivado en mobile; `prefers-reduced-motion` respetado |
 | **Caché** | Headers `immutable` en `vercel.json` para `/assets/` e `/images/` |
 
 ### Validación tras deploy
 
-1. Hard refresh en `/` y en una guía (`/guias/...`) — Network: chunks `200` desde `/assets/`, sin `127.0.0.1`.
-2. Lighthouse mobile en `/` y en una guía prerenderizada.
-3. Speed Insights: esperar 48–72 h para datos de campo (RES debería subir respecto a métricas previas al fix de prerender).
+1. Hard refresh en `/` y en una guía — Network: chunks `200` desde `/assets/`, sin `127.0.0.1`.
+2. `npm run audit:perf` — 3 corridas móvil, mediana en `reports/performance-latest.json`.
+3. `npm run audit:perf:full` — móvil + desktop con mediana.
+4. [Vercel Speed Insights](https://vercel.com/flackosss/nicolas-ceballos-brito/speed-insights) — datos de campo (LCP p75 > 2.5 s = revisar). Esperar 48–72 h post-deploy para RUM fiable.
 
 ### Errores de consola no del sitio
 
@@ -202,17 +203,25 @@ GA4 también permite verificar el dominio en Search Console como alternativa al 
 
 ## Rendimiento
 
-Baseline de junio 2026 (Lighthouse lab): móvil Performance 32 · LCP 6.2 s · desktop Performance 58. Objetivos en `lighthouserc.json` y `reports/performance-baseline.json`.
+| Métrica | Pre-OPT (baseline) | Post-OPT (jun 2026) | Meta |
+|---------|-------------------|---------------------|------|
+| Performance móvil | 32 | **69** | ≥ 85 |
+| LCP móvil | 6.2 s | **3.5 s** | < 2.5 s |
+| FCP móvil | 3.5 s | **1.8 s** | < 1.8 s |
+| TBT móvil | 12 080 ms | **470 ms** | < 800 ms |
+
+Detalle en `reports/performance-baseline.json` (sección `postDeploy`) y snapshot más reciente en `reports/performance-latest.json`.
 
 ```bash
-npm run audit:perf          # Lighthouse móvil → reports/lighthouse/
-npm run audit:perf:full     # Móvil + desktop
-npm run audit:perf:ci       # Build + Lighthouse CI local (preview en :4173)
+npm run audit:perf              # 3× Lighthouse móvil → mediana → reports/
+npm run audit:perf -- --runs=1  # Iteración rápida (1 corrida)
+npm run audit:perf:full         # 3× móvil + desktop
+npm run audit:perf:ci           # Build + Lighthouse CI local (preview :4173)
 ```
 
-Optimizaciones aplicadas: H1 visible sin animación de opacidad, fuentes críticas + subset latino, imágenes responsive (perfil y carrusel), GA diferido post-interacción/LCP, Hero sin Framer Motion, Lenis solo en desktop (import dinámico), `m` de LazyMotion en componentes animados, JSON-LD lite inline + schema completo en `/schema/home.jsonld`, prerender ligero sin GA.
+Optimizaciones: H1 visible (`hero-lcp-visible`), fuentes críticas + diferidas, lazy Portfolio/Recursos/Footer, strip `modulepreload` below-fold, CSS crítico inline en home, `DeferredTypingAnimation`, `SectionWrapper` sin Framer Motion, imágenes responsive, GA diferido, Lenis dinámico, JSON-LD lite + `/schema/home.jsonld`.
 
-CI: `.github/workflows/lighthouse.yml` ejecuta Lighthouse CI en cada PR.
+CI: `.github/workflows/lighthouse.yml` — presupuesto por etapas en `lighthouserc.json` (Performance ≥ 65, LCP < 4 s; subir a 85/2500 ms cuando mediana ≥ 80).
 
 ## Graphify
 

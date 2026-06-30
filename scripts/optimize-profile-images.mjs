@@ -1,5 +1,4 @@
 import { access } from 'node:fs/promises'
-import { rename, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import sharp from 'sharp'
@@ -76,10 +75,7 @@ async function compressCarouselImages() {
         ? pipeline.resize(maxWidth, undefined, { withoutEnlargement: true })
         : pipeline
 
-      const buffer = await output.webp({ quality: 80, effort: 4 }).toBuffer()
-      const tempPath = join(imagesDir, `.${filename}.tmp`)
-      await writeFile(tempPath, buffer)
-      await rename(tempPath, imagePath)
+      await output.webp({ quality: 80, effort: 4 }).toFile(imagePath)
       console.log(`${filename} comprimido${needsResize ? ` (max ${maxWidth}px)` : ''}`)
     } catch (error) {
       console.warn(`${filename}: no se pudo optimizar`, error instanceof Error ? error.message : error)

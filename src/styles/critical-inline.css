@@ -1,0 +1,39 @@
+/* Above-the-fold: hero H1 + navbar shell — inlined in prerender home only */
+:root {
+  --hero-text: #0a0f1a;
+  --hero-text-muted: #334155;
+  --hero-subtitle: #0e7490;
+  --gradient-hero: linear-gradient(165deg, #f0f7ff 0%, #e8f4fc 45%, #eef4fb 100%);
+  --gradient-hero-scrim: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, transparent 60%);
+}
+
+.dark {
+  --hero-text: #f8fafc;
+  --hero-text-muted: #94a3b8;
+  --hero-subtitle: #22d3ee;
+  --gradient-hero: linear-gradient(165deg, #0b1220 0%, #0f172a 50%, #0b1220 100%);
+  --gradient-hero-scrim: linear-gradient(180deg, rgba(11, 18, 32, 0.5) 0%, transparent 60%);
+}
+
+.font-display {
+  font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+}
+
+.hero-lcp-visible {
+  opacity: 1;
+  transform: none;
+}
+
+#inicio {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+}
+
+.text-gradient-accent {
+  background: linear-gradient(135deg, var(--color-cyan-bright, #22d3ee), var(--color-amber-bright, #fbbf24));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

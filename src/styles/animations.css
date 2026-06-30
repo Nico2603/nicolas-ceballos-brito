@@ -39,6 +39,21 @@
   transform: none;
 }
 
+.section-reveal {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .section-reveal {
+      animation: hero-fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 25%;
+    }
+  }
+}
+
 .hero-cta-entrance {
   animation: hero-fade-up 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
   animation-delay: 0.55s;
