@@ -37,8 +37,8 @@ npm run preview
 ## Graphify
 
 ```bash
-npx graphify update .    # Actualizar grafo de conocimiento (AST, sin costo API)
-npx graphify query "..." # Consultar el grafo en graphify-out/
+graphify update .    # Actualizar grafo de conocimiento (AST, sin costo API)
+graphify query "..." # Consultar el grafo en graphify-out/
 ```
 
 ## Licencia
