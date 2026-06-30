@@ -66,7 +66,8 @@ nicolas-ceballos-brito/
 - `scripts/generate-og-image.mjs` — Tarjeta Open Graph 1200×630 (marca, sin foto)
 - `scripts/normalize-seo-images.mjs` — Valida dimensiones OG y regenera `apple-touch-icon.png`
 - `scripts/optimize-profile-images.mjs` — Genera `pic-288.webp` / `pic-576.webp` para LCP; comprime carrusel
-- `scripts/prerender.ts` — HTML estático por ruta (meta OG visibles para WhatsApp/LinkedIn)
+- `scripts/inject-home-schema.ts` — JSON-LD de home en `index.html` (placeholder `<!-- INJECT_HOME_JSON_LD -->`)
+- `scripts/prerender.ts` — HTML estático por ruta (meta OG para WhatsApp/LinkedIn); post-proceso: strip de URLs `127.0.0.1`/`localhost`, preload LCP en `/`, elimina JSON-LD de home en rutas secundarias; falla el build si quedan referencias locales
 - Editar textos de la tarjeta OG: constantes al inicio de `generate-og-image.mjs`
 
 ## Datos del perfil
@@ -78,11 +79,17 @@ nicolas-ceballos-brito/
 
 ## Rendimiento
 
-- Code splitting: rutas con `React.lazy()`, secciones below-fold lazy en Home, `manualChunks` en Vite
-- LCP: `<img>` con `srcSet` en Hero; preload de `pic.webp` en `index.html`
-- Analytics/terceros: GA4 y Vercel metrics diferidos (no bloquean FCP)
-- Lenis y `HeroGrid` canvas diferidos o desactivados en mobile
+- Code splitting: rutas con `React.lazy()`, `CurrentExperience` y secciones below-fold lazy en Home, `manualChunks` en Vite (react, motion, lenis)
+- LCP: `<img>` estático en Hero (`fetchPriority="high"`, `srcSet`); preload de `pic-288.webp` solo en `/` (Helmet en `Home.tsx` + inyección en prerender)
+- Hero above-the-fold: animaciones CSS (`hero-entrance`, `hero-profile-float` en `animations.css`); framer-motion solo en CTAs del hero
+- Framer Motion: `LazyMotion` + `domAnimation` en `App.tsx`; menú móvil del Navbar con CSS (sin `AnimatePresence`)
+- Fuentes: 6 pesos `@fontsource` en `index.css` (Jakarta 400–700, Fraunces 600–700); sin Google Fonts
+- Analytics/terceros: GA4 (`requestIdleCallback`) y Vercel metrics tras `load` — no bloquean FCP
+- Lenis: solo desktop (≥768px), diferido idle/primer scroll; desactivado en mobile y `prefers-reduced-motion`
+- `HeroGrid` canvas desactivado en mobile
+- Prerender: assets siempre con rutas relativas `/assets/...` (evita `ERR_CONNECTION_REFUSED` en producción)
 - Caché larga en `/assets/` e `/images/` vía `vercel.json`
+- Validar: Lighthouse mobile en `/` y guías; Speed Insights 48–72 h tras deploy
 
 ## Skills — ubicación e instalación
 

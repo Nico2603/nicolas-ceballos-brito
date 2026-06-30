@@ -30,9 +30,13 @@ El pipeline `prebuild` genera automáticamente:
 - `public/images/og-image.webp` — tarjeta Open Graph de marca (1200×630, sin foto; ver abajo)
 - `public/apple-touch-icon.png` — derivado de la tarjeta OG (180×180)
 - `public/images/pic-288.webp` y `pic-576.webp` — variantes responsive de la foto de perfil (LCP)
-- Inyección de JSON-LD en `index.html` (home; único bloque estático — React no duplica en `/`)
+- `scripts/inject-home-schema.ts` — inyecta JSON-LD de home en `index.html` vía placeholder `<!-- INJECT_HOME_JSON_LD -->` (el HTML base queda liviano; el schema se genera desde `src/lib/structured-data.ts` en cada build)
 
-El paso `prerender` (Puppeteer + Chromium) genera HTML estático por ruta en `dist/`.
+El paso `prerender` (Puppeteer + Chromium) genera HTML estático por ruta en `dist/`. Tras capturar cada página, `scripts/prerender.ts` aplica post-proceso:
+
+- **Strip de origen preview:** convierte URLs absolutas `127.0.0.1`/`localhost` en rutas relativas (`/assets/...`). El build falla si queda alguna referencia local.
+- **Home (`/`):** inyecta `<link rel="preload">` de la imagen LCP (`pic-288.webp` + `srcSet`).
+- **Rutas secundarias:** elimina el JSON-LD global de home (WebSite, FAQPage, etc.) para aligerar el HTML; cada página conserva su schema vía `SeoHelmet`.
 
 ## Datos del perfil (LinkedIn + GitHub)
 
@@ -93,6 +97,7 @@ Rutas definidas en [`src/constants/seo-routes.ts`](./src/constants/seo-routes.ts
 | Rutas prerender | `src/constants/seo-routes.ts` |
 | Sitemap / llms.txt | `scripts/generate-sitemap.ts`, `scripts/generate-llms-txt.ts` |
 | Prerender Puppeteer | `scripts/prerender.ts` |
+| JSON-LD home (prebuild) | `scripts/inject-home-schema.ts` |
 | Sync LinkedIn | `scripts/sync-linkedin.ts` |
 | Tarjeta OG (generación) | `scripts/generate-og-image.mjs` |
 | OG / apple-touch (normalización) | `scripts/normalize-seo-images.mjs` |
@@ -107,7 +112,7 @@ WhatsApp y otras redes **no ejecutan JavaScript**: leen el HTML estático que en
 |--------|---------|-----|
 | **Favicon** (pestaña) | `public/favicon.svg` | Monograma **NC** en azul `#2a5c82` |
 | **Tarjeta OG** (preview del link) | `public/images/og-image.webp` | Generada en build: navy + cyan + ámbar, nombre, eyebrow y stack — **sin foto** |
-| Foto de perfil (sitio) | `public/images/pic.webp` (+ `pic-288.webp`, `pic-576.webp`) | Hero (`<img>` LCP con `srcSet`); About usa `.profile-image` |
+| Foto de perfil (sitio) | `public/images/pic.webp` (+ `pic-288.webp`, `pic-576.webp`) | Hero (`<img>` LCP con `srcSet`); preload solo en `/`; About usa `.profile-image` en CSS |
 | **Apple touch icon** | `public/apple-touch-icon.png` | Acceso directo en iOS; recorte de la tarjeta OG |
 
 Para editar textos o colores de la tarjeta OG, modificar las constantes en `scripts/generate-og-image.mjs` y ejecutar `npm run build` (o solo `node scripts/generate-og-image.mjs` en desarrollo).
@@ -128,19 +133,31 @@ Tras un deploy, si WhatsApp muestra una preview antigua, refrescar caché en [Fa
 
 ## Rendimiento y Speed Insights
 
-Optimizaciones aplicadas para mejorar RES, LCP, FCP e INP (Vercel Speed Insights + Lighthouse):
+Optimizaciones para RES, LCP, FCP, TTFB e INP (Vercel Speed Insights + Lighthouse):
 
 | Área | Implementación |
 |------|----------------|
-| **LCP** | Foto de perfil como `<img>` con `fetchPriority="high"`, `srcSet` y preload en `index.html` |
-| **JS inicial** | `React.lazy()` en rutas secundarias; secciones below-fold lazy en Home; `manualChunks` (react, motion, lenis) en `vite.config.ts` |
+| **Prerender** | Post-proceso en `scripts/prerender.ts`: rutas relativas a assets (fix `ERR_CONNECTION_REFUSED`), preload LCP en `/`, JSON-LD de home solo en home; el build falla si queda `127.0.0.1` o `localhost` |
+| **HTML base** | `index.html` sin JSON-LD inline ni preload global de imagen; schema y assets SEO se generan en `prebuild` |
+| **LCP** | `<img>` estático en Hero (`fetchPriority="high"`, `srcSet`); preload de `pic-288.webp` en `/` vía Helmet + prerender (no en `index.html` global) |
+| **Hero crítico** | Entrada y avatar LCP con CSS (`hero-entrance`, `hero-profile-float` en `animations.css`); flotación desactivada en mobile |
+| **JS inicial** | `React.lazy()` en rutas y en `CurrentExperience`; secciones below-fold lazy en Home; `manualChunks` (react, motion, lenis) en `vite.config.ts` |
+| **Framer Motion** | `LazyMotion` + `domAnimation` en `App.tsx`; motion en Hero limitado a CTAs; Navbar móvil con transiciones CSS |
 | **Red** | Sin llamadas a GitHub API en Home (`Portfolio` con `staticStats`) |
-| **Fuentes** | `@fontsource/plus-jakarta-sans` y `@fontsource/fraunces` en `src/index.css` (sin Google Fonts bloqueante) |
+| **Fuentes** | 6 pesos `@fontsource` en `src/index.css` (Jakarta 400–700, Fraunces 600–700); `font-display: swap` |
 | **Terceros** | GA4 vía `requestIdleCallback` en `src/lib/analytics.ts`; Vercel Analytics/Speed Insights tras `load` (`DeferredVercelMetrics.tsx`) |
-| **INP** | Lenis diferido (idle o primer scroll); `HeroGrid` desactivado en mobile; `initial={false}` en Hero prerenderizado |
+| **INP** | Lenis solo desktop (≥768px), diferido idle/primer scroll; `HeroGrid` desactivado en mobile; `prefers-reduced-motion` respetado |
 | **Caché** | Headers `immutable` en `vercel.json` para `/assets/` e `/images/` |
 
-Tras deploy, validar con Lighthouse mobile en `/` y monitorear Speed Insights 48–72 h (datos de campo).
+### Validación tras deploy
+
+1. Hard refresh en `/` y en una guía (`/guias/...`) — Network: chunks `200` desde `/assets/`, sin `127.0.0.1`.
+2. Lighthouse mobile en `/` y en una guía prerenderizada.
+3. Speed Insights: esperar 48–72 h para datos de campo (RES debería subir respecto a métricas previas al fix de prerender).
+
+### Errores de consola no del sitio
+
+Avisos en `contentscript.js` (`MaxListenersExceededWarning`, `ObjectMultiplex`) provienen de extensiones del navegador (p. ej. wallets). Verificar en ventana de incógnito sin extensiones.
 
 ## Despliegue
 
