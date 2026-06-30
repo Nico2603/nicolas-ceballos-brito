@@ -44,10 +44,21 @@ export default defineConfig(({ mode }) => {
     build: {
       rollupOptions: {
         output: {
-          manualChunks: {
-            'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-            'vendor-motion': ['framer-motion'],
-            'vendor-lenis': ['lenis'],
+          manualChunks(id) {
+            if (
+              id.includes('node_modules/react/') ||
+              id.includes('node_modules/react-dom/') ||
+              id.includes('node_modules/react-router')
+            ) {
+              return 'vendor-react'
+            }
+            if (id.includes('node_modules/framer-motion')) {
+              return 'vendor-motion'
+            }
+            if (id.includes('node_modules/lenis')) {
+              return 'vendor-lenis'
+            }
+            return undefined
           },
         },
       },

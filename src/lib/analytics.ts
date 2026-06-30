@@ -59,12 +59,12 @@ async function initGa(measurementId: string): Promise<void> {
 }
 
 function scheduleDeferredInit(callback: () => void): void {
-  if ('requestIdleCallback' in window) {
+  if (typeof window.requestIdleCallback === 'function') {
     window.requestIdleCallback(() => callback(), { timeout: 4000 })
     return
   }
 
-  window.setTimeout(callback, 2000)
+  globalThis.setTimeout(callback, 2000)
 }
 
 export async function initGoogleAnalytics(): Promise<void> {

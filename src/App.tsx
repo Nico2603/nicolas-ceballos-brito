@@ -20,13 +20,13 @@ const ProjectPage = lazy(() => import('./pages/ProjectPage'))
 const Repositories = lazy(() => import('./pages/Repositories'))
 
 function scheduleIdle(callback: () => void, timeout = 3000): () => void {
-  if ('requestIdleCallback' in window) {
+  if (typeof window.requestIdleCallback === 'function') {
     const id = window.requestIdleCallback(callback, { timeout })
     return () => window.cancelIdleCallback(id)
   }
 
-  const id = window.setTimeout(callback, Math.min(timeout, 2000))
-  return () => window.clearTimeout(id)
+  const id = globalThis.setTimeout(callback, Math.min(timeout, 2000))
+  return () => globalThis.clearTimeout(id)
 }
 
 export default function App() {
