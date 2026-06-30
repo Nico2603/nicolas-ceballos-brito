@@ -1,23 +1,31 @@
 import Footer from '../components/Footer'
 import Contact from '../components/Contact'
+import FaqSection from '../components/FaqSection'
 import Hero from '../components/Hero'
 import LaboresCarousel from '../components/LaboresCarousel'
 import Portfolio from '../components/Portfolio'
 import SeoHelmet from '../components/SeoHelmet'
-import { SEO_DEFAULT_DESCRIPTION } from '../constants/seo'
-import { FULL_NAME } from '../constants/social'
+import {
+  SEO_HOME_DESCRIPTION,
+  SEO_HOME_KEYWORDS,
+  SEO_HOME_TITLE,
+} from '../constants/seo-pages'
+import { buildHomeStructuredData } from '../lib/structured-data'
 
 export default function Home() {
   return (
     <>
       <SeoHelmet
-        title={`${FULL_NAME} — Portafolio Profesional`}
-        description={SEO_DEFAULT_DESCRIPTION}
+        title={SEO_HOME_TITLE}
+        description={SEO_HOME_DESCRIPTION}
         canonicalPath="/"
+        keywords={SEO_HOME_KEYWORDS}
+        structuredData={buildHomeStructuredData()}
       />
       <Hero />
       <Portfolio />
       <LaboresCarousel />
+      <FaqSection />
       <Contact />
       <Footer />
     </>
