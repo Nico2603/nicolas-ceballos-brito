@@ -1,4 +1,5 @@
 import { Route, Routes, useLocation } from 'react-router-dom'
+import { LazyMotion, domAnimation } from 'framer-motion'
 import Lenis from 'lenis'
 import { lazy, Suspense, useEffect } from 'react'
 import BottomNav from './components/BottomNav'
@@ -34,7 +35,8 @@ export default function App() {
 
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReduced) return
+    const isMobile = window.matchMedia('(max-width: 767px)').matches
+    if (prefersReduced || isMobile) return
 
     let lenis: Lenis | null = null
     let rafId = 0
@@ -104,28 +106,30 @@ export default function App() {
   }, [location.hash, location.pathname])
 
   return (
-    <ThemeProvider>
-      <Navbar />
-      <main className="pb-24 md:pb-0">
-        <Suspense fallback={null}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/repositories" element={<Repositories />} />
-            <Route path="/proyectos/:slug" element={<ProjectPage />} />
-            <Route path="/desarrollo-web" element={<DesarrolloWeb />} />
-            <Route path="/inteligencia-artificial" element={<InteligenciaArtificial />} />
-            <Route path="/analisis-datos" element={<AnalisisDatos />} />
-            <Route path="/guias" element={<GuiasIndex />} />
-            <Route path="/guias/:slug" element={<GuiaPage />} />
-            <Route path="/politica-privacidad" element={<PoliticaPrivacidad />} />
-          </Routes>
-        </Suspense>
-      </main>
-      <BottomNav />
-      <FloatingWhatsAppButton />
-      <GoogleAnalytics />
-      <DeferredVercelMetrics />
-    </ThemeProvider>
+    <LazyMotion features={domAnimation} strict>
+      <ThemeProvider>
+        <Navbar />
+        <main className="pb-24 md:pb-0">
+          <Suspense fallback={null}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/repositories" element={<Repositories />} />
+              <Route path="/proyectos/:slug" element={<ProjectPage />} />
+              <Route path="/desarrollo-web" element={<DesarrolloWeb />} />
+              <Route path="/inteligencia-artificial" element={<InteligenciaArtificial />} />
+              <Route path="/analisis-datos" element={<AnalisisDatos />} />
+              <Route path="/guias" element={<GuiasIndex />} />
+              <Route path="/guias/:slug" element={<GuiaPage />} />
+              <Route path="/politica-privacidad" element={<PoliticaPrivacidad />} />
+            </Routes>
+          </Suspense>
+        </main>
+        <BottomNav />
+        <FloatingWhatsAppButton />
+        <GoogleAnalytics />
+        <DeferredVercelMetrics />
+      </ThemeProvider>
+    </LazyMotion>
   )
 }

@@ -17,6 +17,9 @@ const ROUTE_TITLES: Record<string, string> = {
   '/analisis-datos': `Análisis de Datos — ${FULL_NAME}`,
 }
 
+const LCP_IMAGE_PRELOAD =
+  '<link rel="preload" as="image" href="/images/pic-288.webp" type="image/webp" fetchpriority="high" imagesrcset="/images/pic-288.webp 288w, /images/pic-576.webp 576w" imagesizes="(max-width: 768px) 224px, 288px" />'
+
 const isVercelBuild = process.env.VERCEL === '1'
 
 async function launchBrowser(): Promise<Browser> {
@@ -125,7 +128,73 @@ function waitSelectorForRoute(routePath: string): string {
   }
 }
 
-async function prerenderRoute(browser: Browser, previewUrl: string, routePath: string): Promise<void> {
+function stripPreviewOrigin(html: string, port: number): string {
+  const origins = [
+    `http://127.0.0.1:${port}`,
+    `http://localhost:${port}`,
+    `https://127.0.0.1:${port}`,
+    `https://localhost:${port}`,
+  ]
+
+  let result = html
+  for (const origin of origins) {
+    result = result.replaceAll(origin, '')
+  }
+
+  return result.replace(/https?:\/\/(127\.0\.0\.1|localhost)(:\d+)?/gi, '')
+}
+
+function assertNoLocalhostReferences(html: string, routePath: string): void {
+  if (/127\.0\.0\.1|localhost/i.test(html)) {
+    throw new Error(
+      `Prerendered HTML for ${routePath} still contains localhost/127.0.0.1 references`,
+    )
+  }
+}
+
+function injectBeforeHeadClose(html: string, snippet: string): string {
+  if (html.includes(snippet)) return html
+  return html.replace('</head>', `    ${snippet}\n  </head>`)
+}
+
+function stripHomeJsonLd(html: string): string {
+  return html.replace(
+    /<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/g,
+    (block) => {
+      if (
+        block.includes('#website') ||
+        block.includes('#faq') ||
+        block.includes('"@type": "FAQPage"') ||
+        block.includes('"@type":"FAQPage"')
+      ) {
+        return ''
+      }
+      return block
+    },
+  )
+}
+
+function injectLcpPreload(html: string): string {
+  if (html.includes('rel="preload" as="image"') && html.includes('/images/pic-288.webp')) {
+    return html
+  }
+  return injectBeforeHeadClose(html, LCP_IMAGE_PRELOAD)
+}
+
+function postProcessHtml(html: string, routePath: string, port: number): string {
+  let processed = stripPreviewOrigin(html, port)
+
+  if (routePath === '/') {
+    processed = injectLcpPreload(processed)
+  } else {
+    processed = stripHomeJsonLd(processed)
+  }
+
+  assertNoLocalhostReferences(processed, routePath)
+  return processed
+}
+
+async function prerenderRoute(browser: Browser, previewUrl: string, routePath: string, port: number): Promise<void> {
   const page = await browser.newPage()
   const url = `${previewUrl}${routePath === '/' ? '/' : routePath}`
   const routeSelector = waitSelectorForRoute(routePath)
@@ -148,7 +217,8 @@ async function prerenderRoute(browser: Browser, previewUrl: string, routePath: s
     )
   }
 
-  const html = await page.content()
+  const rawHtml = await page.content()
+  const html = postProcessHtml(rawHtml, routePath, port)
   const outputPath = outputPathForRoute(routePath)
   mkdirSync(dirname(outputPath), { recursive: true })
   writeFileSync(outputPath, html, 'utf8')
@@ -171,7 +241,7 @@ async function main(): Promise<void> {
         ...PRERENDER_ROUTES.filter((route) => route.path === '/'),
       ]
       for (const route of routesToRender) {
-        await prerenderRoute(browser, previewUrl, route.path)
+        await prerenderRoute(browser, previewUrl, route.path, port)
       }
     } finally {
       await browser.close()

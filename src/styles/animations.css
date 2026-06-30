@@ -9,6 +9,97 @@
   }
 }
 
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-profile-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.hero-entrance {
+  animation: hero-fade-up 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-entrance-delay-1 { animation-delay: 0.15s; }
+.hero-entrance-delay-2 { animation-delay: 0.26s; }
+.hero-entrance-delay-3 { animation-delay: 0.37s; }
+.hero-entrance-delay-4 { animation-delay: 0.48s; }
+
+.hero-profile-float {
+  animation: hero-profile-float 5.5s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  .hero-profile-float {
+    animation: none;
+  }
+}
+
+.hamburger {
+  width: 1.25rem;
+  height: 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger-line {
+  display: block;
+  height: 2px;
+  width: 100%;
+  border-radius: 9999px;
+  transform-origin: center;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.hamburger-open .hamburger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger-open .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-open .hamburger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobile-menu-overlay {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-menu-overlay.mobile-menu-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.mobile-nav-item {
+  opacity: 0;
+  transform: translateY(48px);
+  transition:
+    opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mobile-menu-open .mobile-nav-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @keyframes aurora-drift-1 {
   0%, 100% { transform: translate(0, 0) scale(1); }
   33% { transform: translate(8%, -6%) scale(1.08); }

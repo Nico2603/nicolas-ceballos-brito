@@ -16,27 +16,7 @@ const miniStats = [
   { value: 'IA', label: 'ML & Data Science' },
 ]
 
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.11, delayChildren: 0.15 },
-  },
-}
-
-const staggerItem = {
-  hidden: { opacity: 0, y: 36 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] as const },
-  },
-}
-
-const floatProfile = {
-  y: [0, -12, 0],
-  transition: { duration: 5.5, repeat: Infinity, ease: 'easeInOut' as const },
-}
+const nameWords = FULL_NAME.split(' ')
 
 export default function Hero() {
   const { theme } = useTheme()
@@ -53,50 +33,41 @@ export default function Hero() {
       <HeroAurora />
       <HeroGrid />
 
-      <motion.div
-        className="relative z-10 max-w-6xl mx-auto px-4 w-full"
-        variants={staggerContainer}
-        initial={false}
-        animate="show"
-      >
+      <div className="relative z-10 max-w-6xl mx-auto px-4 w-full hero-stagger">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="text-left">
-            <motion.p
-              variants={staggerItem}
-              className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-bold text-[var(--hero-eyebrow)] mb-5 hero-eyebrow-glow"
-            >
+            <p className="hero-entrance hero-entrance-delay-1 inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-bold text-[var(--hero-eyebrow)] mb-5 hero-eyebrow-glow">
               <Sparkles size={14} className="text-[var(--color-accent-primary)]" />
               Full-Stack Developer · Ing. Sistemas
-            </motion.p>
+            </p>
 
-            <motion.h1
-              variants={staggerItem}
-              className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-[var(--hero-text)] mb-4 leading-[1.05] hero-headline-glow"
-            >
-              {FULL_NAME.split(' ').map((word, i) => (
+            <h1 className="hero-entrance hero-entrance-delay-2 font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-[var(--hero-text)] mb-4 leading-[1.05] hero-headline-glow">
+              {nameWords.map((word, i) => (
                 <span key={word}>
                   {i === 1 ? (
                     <span className="text-gradient-accent">{word}</span>
                   ) : (
                     word
                   )}
-                  {i < FULL_NAME.split(' ').length - 1 ? ' ' : ''}
+                  {i < nameWords.length - 1 ? ' ' : ''}
                 </span>
               ))}
-            </motion.h1>
+            </h1>
 
-            <motion.div variants={staggerItem} className="mb-6">
+            <div className="hero-entrance hero-entrance-delay-3 mb-6">
               <TypingAnimation className="text-[var(--hero-subtitle)] font-semibold hero-subcopy-glow" />
-            </motion.div>
+            </div>
 
-            <motion.p
-              variants={staggerItem}
-              className="direct-answer text-base md:text-lg leading-relaxed text-[var(--hero-text-muted)] mb-8 max-w-xl hero-subcopy-glow"
-            >
+            <p className="hero-entrance hero-entrance-delay-4 direct-answer text-base md:text-lg leading-relaxed text-[var(--hero-text-muted)] mb-8 max-w-xl hero-subcopy-glow">
               {heroBio}
-            </motion.p>
+            </p>
 
-            <motion.div variants={staggerItem} className="flex flex-wrap gap-3 mb-8">
+            <motion.div
+              initial={{ opacity: 0, y: 36 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.75, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-wrap gap-3 mb-8"
+            >
               <Button
                 variant="primary"
                 href="#portafolio"
@@ -118,13 +89,17 @@ export default function Hero() {
               </Button>
             </motion.div>
 
-            <motion.div variants={staggerItem}>
+            <motion.div
+              initial={{ opacity: 0, y: 36 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.75, delay: 0.66, ease: [0.22, 1, 0.36, 1] }}
+            >
               <SocialLinks variant={isDarkHero ? 'onDark' : 'default'} />
             </motion.div>
           </div>
 
-          <motion.div variants={staggerItem} className="flex flex-col items-center gap-6">
-            <motion.div animate={floatProfile} className="relative">
+          <div className="hero-entrance hero-entrance-delay-3 flex flex-col items-center gap-6">
+            <div className="hero-profile-float relative">
               <div className="hero-profile-ring" aria-hidden />
               <div className="relative rounded-2xl p-[3px] bg-white/10 backdrop-blur-sm hero-profile-glow">
                 <img
@@ -140,7 +115,7 @@ export default function Hero() {
                   className="w-56 h-56 md:w-72 md:h-72 rounded-[14px] object-cover"
                 />
               </div>
-            </motion.div>
+            </div>
 
             <div className="grid grid-cols-3 gap-3 w-full max-w-md">
               {miniStats.map((stat, i) => (
@@ -161,9 +136,9 @@ export default function Hero() {
                 </motion.div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
-      </motion.div>
+      </div>
 
       <motion.a
         href="#portafolio"

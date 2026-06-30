@@ -1,4 +1,3 @@
-import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useTheme } from '../context/ThemeContext'
@@ -66,17 +65,14 @@ export default function Navbar() {
                 {link.dropdown && (
                   <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                     <div className="rounded-xl border border-[var(--color-border-light)] bg-[var(--color-bg-card)] shadow-[var(--shadow-card)] py-2 min-w-[200px]">
-                      {link.dropdown.map((item, i) => (
-                        <motion.button
+                      {link.dropdown.map((item) => (
+                        <button
                           key={item.label}
-                          initial={{ opacity: 0, y: 4 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          transition={{ delay: i * 0.04 }}
                           onClick={() => onNavClick(item.href, item.external)}
                           className="block w-full text-left px-4 py-2 text-sm text-[var(--color-text-primary)] hover:bg-[var(--color-bg-secondary)] transition-colors"
                         >
                           {item.label}
-                        </motion.button>
+                        </button>
                       ))}
                     </div>
                   </div>
@@ -103,57 +99,36 @@ export default function Navbar() {
               aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
               aria-expanded={menuOpen}
             >
-              <div className="w-5 h-4 relative flex flex-col justify-between">
-                <motion.span
-                  animate={menuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
-                  className="block h-0.5 w-full origin-center rounded-full"
-                  style={{ backgroundColor: textCol }}
-                />
-                <motion.span
-                  animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
-                  className="block h-0.5 w-full rounded-full"
-                  style={{ backgroundColor: textCol }}
-                />
-                <motion.span
-                  animate={menuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
-                  className="block h-0.5 w-full origin-center rounded-full"
-                  style={{ backgroundColor: textCol }}
-                />
+              <div className={`hamburger ${menuOpen ? 'hamburger-open' : ''}`}>
+                <span className="hamburger-line" style={{ backgroundColor: textCol }} />
+                <span className="hamburger-line" style={{ backgroundColor: textCol }} />
+                <span className="hamburger-line" style={{ backgroundColor: textCol }} />
               </div>
             </button>
           </div>
         </div>
       </header>
 
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 md:hidden backdrop-blur-3xl bg-[var(--color-bg-primary)]/95"
-          >
-            <nav className="flex flex-col items-center justify-center min-h-screen gap-2 px-6">
-              <div className="absolute top-8 right-6">
-                <ThemeToggle scrolled={scrolled || !isHome} onHero={onHero} />
-              </div>
-              {navLinks.map((link, index) => (
-                <motion.button
-                  key={link.label}
-                  initial={{ opacity: 0, y: 48 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 24 }}
-                  transition={{ delay: index * 0.06, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  onClick={() => onNavClick(link.href)}
-                  className="font-display text-2xl font-semibold text-[var(--color-text-primary)] py-3"
-                >
-                  {link.label}
-                </motion.button>
-              ))}
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div
+        className={`mobile-menu-overlay fixed inset-0 z-40 md:hidden backdrop-blur-3xl bg-[var(--color-bg-primary)]/95 ${menuOpen ? 'mobile-menu-open' : ''}`}
+        aria-hidden={!menuOpen}
+      >
+        <nav className="flex flex-col items-center justify-center min-h-screen gap-2 px-6">
+          <div className="absolute top-8 right-6">
+            <ThemeToggle scrolled={scrolled || !isHome} onHero={onHero} />
+          </div>
+          {navLinks.map((link, index) => (
+            <button
+              key={link.label}
+              onClick={() => onNavClick(link.href)}
+              className="mobile-nav-item font-display text-2xl font-semibold text-[var(--color-text-primary)] py-3"
+              style={{ transitionDelay: menuOpen ? `${index * 60}ms` : '0ms' }}
+            >
+              {link.label}
+            </button>
+          ))}
+        </nav>
+      </div>
     </>
   )
 }
