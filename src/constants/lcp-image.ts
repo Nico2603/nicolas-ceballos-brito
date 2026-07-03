@@ -16,7 +16,7 @@ export function carouselImageSources(basePath: string) {
   const fileName = basePath.replace(/^\/images\//, '').replace(/\.webp$/, '')
   return {
     src: `/images/${fileName}-640.webp`,
-    srcSet: `/images/${fileName}-640.webp 640w, ${basePath} 960w`,
+    srcSet: `/images/${fileName}-480.webp 480w, /images/${fileName}-640.webp 640w`,
     sizes: '(max-width: 768px) 100vw, 640px',
   }
 }

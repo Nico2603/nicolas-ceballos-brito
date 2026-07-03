@@ -5,8 +5,7 @@ import { FULL_NAME } from '../constants/social'
 import { heroBio } from '../data/content'
 import { useTheme } from '../context/ThemeContext'
 import Button from './ui/Button'
-import HeroAurora from './HeroAurora'
-import HeroGrid from './HeroGrid'
+import DeferredHeroDecor from './DeferredHeroDecor'
 import SocialLinks from './SocialLinks'
 import DeferredTypingAnimation from './DeferredTypingAnimation'
 
@@ -30,8 +29,7 @@ export default function Hero() {
     >
       <div className="absolute inset-0" style={{ background: 'var(--gradient-hero-scrim)' }} aria-hidden />
       <div className="absolute inset-0 hero-grid-bg opacity-50 mix-blend-screen" aria-hidden />
-      <HeroAurora />
-      <HeroGrid />
+      <DeferredHeroDecor />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 w-full hero-stagger">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">

@@ -68,7 +68,7 @@ function scheduleDeferredInit(callback: () => void): () => void {
     callback()
   }
 
-  const interactionEvents = ['scroll', 'pointerdown', 'keydown'] as const
+  const interactionEvents = ['pointerdown', 'keydown'] as const
   const cleanup = () => {
     for (const eventName of interactionEvents) {
       window.removeEventListener(eventName, run, true)
@@ -80,14 +80,14 @@ function scheduleDeferredInit(callback: () => void): () => void {
   }
 
   if (typeof window.requestIdleCallback === 'function') {
-    const idleId = window.requestIdleCallback(run, { timeout: 8000 })
+    const idleId = window.requestIdleCallback(run, { timeout: 15000 })
     return () => {
       cleanup()
       window.cancelIdleCallback(idleId)
     }
   }
 
-  const timeoutId = globalThis.setTimeout(run, 8000)
+  const timeoutId = globalThis.setTimeout(run, 15000)
   return () => {
     cleanup()
     globalThis.clearTimeout(timeoutId)

@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  lighthouse:
+  lighthouse-mobile:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,10 +23,35 @@ jobs:
       - name: Build site
         run: npm run build
 
-      - name: Run Lighthouse CI
+      - name: Run Lighthouse CI (mobile)
         run: |
           npm run preview -- --port 4173 --strictPort --host 127.0.0.1 &
           npx wait-on http://127.0.0.1:4173
           npx @lhci/cli autorun
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+  lighthouse-desktop:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+
+      - name: Run Lighthouse CI (desktop)
+        run: |
+          npm run preview -- --port 4173 --strictPort --host 127.0.0.1 &
+          npx wait-on http://127.0.0.1:4173
+          npx @lhci/cli autorun --config=lighthouserc.desktop.json
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}

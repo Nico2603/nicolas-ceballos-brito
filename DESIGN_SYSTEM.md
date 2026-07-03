@@ -258,18 +258,14 @@ Preload LCP (`pic-288.webp`) vía `Helmet` en `Home.tsx` — no en `index.html` 
 |---|---|
 | LCP (lab) | **`<h1>` texto Fraunces** — clase `hero-lcp-visible`; sin `motion` en `<h1>`. Imagen de perfil: `<img>` estático, no es LCP en Lighthouse móvil |
 | TypingAnimation | `DeferredTypingAnimation`: texto estático hasta `requestIdleCallback`, luego lazy de `TypingAnimation` |
-| Animación hero | Clases `hero-entrance`, `hero-entrance-delay-*`, `hero-profile-float` en `src/styles/animations.css` |
-| Flotación avatar | `hero-profile-float` desactivada en `max-width: 768px` (mejor INP móvil) |
-| Framer Motion | `LazyMotion` + `domAnimation` en `App.tsx`; `SectionWrapper` usa CSS `section-reveal` (sin `m`) |
-| Home lazy | `Portfolio`, `RecursosSection`, `Footer`, `LinkedInFeed`, etc. con `React.lazy()` |
-| Prerender home | CSS crítico inline (`critical-inline.css`), strip `modulepreload` below-fold, link `/schema/home.jsonld` |
-| Fuentes | `fonts-critical.css` + `DeferredFonts`; fallback `--font-display: Fraunces, Georgia, Times New Roman, serif` |
-| GA / métricas | GA4 post-interacción; Vercel Analytics/Speed Insights tras `load` |
-| Navbar móvil | Overlay con clases `mobile-menu-*` y hamburger CSS — no `AnimatePresence` |
-| Lenis | Solo viewport ≥768px; mobile usa scroll nativo |
-| Preload imagen | Solo home: `Home.tsx` (Helmet) + fallback en `scripts/prerender.ts` |
-| JSON-LD home | Inline lite en prebuild; schema completo en `public/schema/home.jsonld` |
-| Imágenes carrusel | `carouselImageSources` + variantes `p*-640.webp` |
+| Animación hero | `hero-entrance`, delays reducidos en mobile; `DeferredHeroDecor` (aurora/grid tras idle, off mobile) |
+| Below-fold Home | `ViewportLazy` — monta chunks lazy solo al entrar en viewport |
+| Framer Motion | Reservado para carrusel, contacto, `SectionHeader`, `Button`; `CurrentExperience`, `FaqAccordion`, `RepositoryCard` en CSS |
+| Imágenes carrusel | `carouselImageSources`: solo `-480.webp` / `-640.webp` (nunca original en `srcSet`) |
+| Fuentes | `fonts-critical.css` + `Fraunces Fallback` (metric overrides en `tokens.css`); critical inline incluye estilos `h1` LCP |
+| GA / métricas | GA4 post-interacción (15s idle); `web-vitals` → GA4; Vercel Speed Insights tras `load` |
+| Lenis | Desktop: tras 2º scroll o `scrollY > 300` (sin idle RAF) |
+| Auditoría | `audit:perf:assert`, `audit:bundle`, `performance-budget.json`; CI mobile + desktop |
 | Validación build | Sin `127.0.0.1`/`localhost` en HTML prerenderizado |
 
 ---
@@ -292,5 +288,6 @@ Checklist manual:
 - [ ] Tras `npm run build`, `public/images/og-image.webp` muestra tarjeta de marca (no foto)
 - [ ] Tras `npm run build`, HTML prerenderizado sin `127.0.0.1`/`localhost` en `dist/guias/*/index.html`
 - [ ] Guías prerenderizadas sin JSON-LD de home (`#website`, `FAQPage`)
-- [ ] Lighthouse mobile en `/` — mediana 3 runs: Performance ≥ 69, LCP < 3.5 s (`npm run audit:perf`)
-- [ ] Meta final: Performance ≥ 85, LCP < 2.5 s (ver `lighthouserc.json` y `reports/performance-baseline.json`)
+- [ ] Lighthouse mobile en `/` — mediana 3 runs: Performance ≥ 85 (`npm run audit:perf:assert`)
+- [ ] Lighthouse desktop — Performance ≥ 80 (`npm run audit:perf:full`)
+- [ ] Meta final: Speed Index < 4 s, desktop ≥ 90 (ver `performance-budget.json`)

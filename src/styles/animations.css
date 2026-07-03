@@ -42,6 +42,39 @@
 .section-reveal {
   opacity: 1;
   transform: none;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+}
+
+.hero-decor-layer {
+  position: absolute;
+  inset: 0;
+  contain: paint;
+  content-visibility: auto;
+}
+
+.stagger-reveal > * {
+  opacity: 1;
+  transform: none;
+}
+
+.card-reveal {
+  opacity: 1;
+  transform: none;
+}
+
+.faq-collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.faq-collapse-open {
+  grid-template-rows: 1fr;
+}
+
+.faq-collapse-inner {
+  overflow: hidden;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -50,6 +83,21 @@
       animation: hero-fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
       animation-timeline: view();
       animation-range: entry 0% cover 25%;
+    }
+
+    .stagger-reveal > * {
+      animation: hero-fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 20%;
+    }
+
+    .stagger-reveal > *:nth-child(2) { animation-range: entry 5% cover 25%; }
+    .stagger-reveal > *:nth-child(3) { animation-range: entry 10% cover 30%; }
+
+    .card-reveal {
+      animation: hero-fade-up 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 20%;
     }
   }
 }
@@ -98,8 +146,28 @@
 }
 
 @media (max-width: 768px) {
+  .hero-entrance {
+    animation-duration: 0.4s;
+  }
+
+  .hero-entrance-delay-1 { animation-delay: 0.08s; }
+  .hero-entrance-delay-2 { animation-delay: 0.13s; }
+  .hero-entrance-delay-3 { animation-delay: 0.18s; }
+  .hero-entrance-delay-4 { animation-delay: 0.24s; }
+
+  .hero-cta-entrance { animation-delay: 0.28s; }
+  .hero-social-entrance { animation-delay: 0.33s; }
+  .hero-stat-entrance-delay-0 { animation-delay: 0.4s; }
+  .hero-stat-entrance-delay-1 { animation-delay: 0.45s; }
+  .hero-stat-entrance-delay-2 { animation-delay: 0.5s; }
+  .hero-scroll-hint-entrance { animation-delay: 0.7s; }
+
   .hero-profile-float {
     animation: none;
+  }
+
+  .hero-aurora {
+    display: none;
   }
 }
 

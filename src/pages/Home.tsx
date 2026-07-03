@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react'
 import { Helmet } from 'react-helmet-async'
 import Hero from '../components/Hero'
 import SeoHelmet from '../components/SeoHelmet'
+import ViewportLazy from '../components/ViewportLazy'
 import {
   SEO_HOME_DESCRIPTION,
   SEO_HOME_KEYWORDS,
@@ -42,28 +43,42 @@ export default function Home() {
         />
       </Helmet>
       <Hero />
-      <Suspense fallback={null}>
-        <CurrentExperience />
-      </Suspense>
-      <Suspense fallback={null}>
-        <LinkedInFeed />
-      </Suspense>
-      <Suspense fallback={null}>
-        <Portfolio staticStats={FALLBACK_GITHUB_STATS} />
-      </Suspense>
-      <Suspense fallback={null}>
-        <LaboresCarousel />
-      </Suspense>
-      <Suspense fallback={null}>
-        <RecursosSection />
-      </Suspense>
-      <Suspense fallback={null}>
-        <FaqSection />
-        <Contact />
-      </Suspense>
-      <Suspense fallback={null}>
-        <Footer />
-      </Suspense>
+      <ViewportLazy minHeight="24rem">
+        <Suspense fallback={null}>
+          <CurrentExperience />
+        </Suspense>
+      </ViewportLazy>
+      <ViewportLazy minHeight="20rem">
+        <Suspense fallback={null}>
+          <LinkedInFeed />
+        </Suspense>
+      </ViewportLazy>
+      <ViewportLazy minHeight="28rem">
+        <Suspense fallback={null}>
+          <Portfolio staticStats={FALLBACK_GITHUB_STATS} />
+        </Suspense>
+      </ViewportLazy>
+      <ViewportLazy minHeight="24rem">
+        <Suspense fallback={null}>
+          <LaboresCarousel />
+        </Suspense>
+      </ViewportLazy>
+      <ViewportLazy minHeight="16rem">
+        <Suspense fallback={null}>
+          <RecursosSection />
+        </Suspense>
+      </ViewportLazy>
+      <ViewportLazy minHeight="20rem">
+        <Suspense fallback={null}>
+          <FaqSection />
+          <Contact />
+        </Suspense>
+      </ViewportLazy>
+      <ViewportLazy minHeight="8rem">
+        <Suspense fallback={null}>
+          <Footer />
+        </Suspense>
+      </ViewportLazy>
     </>
   )
 }

@@ -30,8 +30,6 @@ export default function LaboresCarousel() {
     preloadIndices.forEach((index) => {
       const img = new Image()
       const sources = carouselImageSources(laboresSlides[index].image)
-      img.srcset = sources.srcSet
-      img.sizes = sources.sizes
       img.src = sources.src
     })
   }, [current])

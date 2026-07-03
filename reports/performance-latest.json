@@ -1,0 +1,60 @@
+{
+  "capturedAt": "2026-06-30T04:53:02.972Z",
+  "url": "https://nicolasceballosbrito.com",
+  "runsPerProfile": 3,
+  "aggregation": "median",
+  "summaries": [
+    {
+      "profile": "mobile",
+      "runs": 3,
+      "scores": {
+        "performance": 90,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcp": "2.1 s",
+        "fcp": "1.7 s",
+        "tbt": "0.2 s",
+        "cls": "0.03934285968464693",
+        "si": "6.8 s",
+        "tti": "4.2 s"
+      },
+      "rawMetrics": {
+        "lcp": 2111.44,
+        "fcp": 1736.44,
+        "tbt": 164,
+        "cls": 0.03934285968464693,
+        "si": 6821.702859044525,
+        "tti": 4210.611000000001
+      }
+    },
+    {
+      "profile": "desktop",
+      "runs": 3,
+      "scores": {
+        "performance": 69,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcp": "2.2 s",
+        "fcp": "1.8 s",
+        "tbt": "0.2 s",
+        "cls": "0.02974368953760908",
+        "si": "6.6 s",
+        "tti": "4.4 s"
+      },
+      "rawMetrics": {
+        "lcp": 2163.219,
+        "fcp": 1788.2189999999998,
+        "tbt": 167.5,
+        "cls": 0.02974368953760908,
+        "si": 6568.279264478624,
+        "tti": 4403.567999999999
+      }
+    }
+  ]
+}

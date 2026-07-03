@@ -13,6 +13,9 @@
     "audit:contrast": "npm run build && tsx scripts/audit-contrast.ts",
     "audit:perf": "node scripts/audit-performance.mjs",
     "audit:perf:full": "node scripts/audit-performance.mjs --full",
+    "audit:perf:assert": "node scripts/audit-performance.mjs --full --assert",
+    "audit:perf:routes": "node scripts/audit-performance.mjs --full --routes=/,/about,/desarrollo-web",
+    "audit:bundle": "vite build && node scripts/audit-bundle.mjs",
     "audit:perf:ci": "npm run build && npm run preview -- --port 4173 --strictPort --host 127.0.0.1 & npx wait-on http://127.0.0.1:4173 && npx @lhci/cli autorun"
   },
   "dependencies": {
@@ -29,11 +32,13 @@
     "react-dom": "^19.2.6",
     "react-helmet-async": "^3.0.0",
     "react-router-dom": "^7.17.0",
-    "tailwindcss": "^4.3.0"
+    "tailwindcss": "^4.3.0",
+    "web-vitals": "^5.3.0"
   },
   "devDependencies": {
     "@axe-core/puppeteer": "^4.10.2",
     "@eslint/js": "^10.0.1",
+    "@lhci/cli": "^0.15.1",
     "@sparticuz/chromium": "^149.0.0",
     "@types/node": "^24.12.3",
     "@types/react": "^19.2.14",
@@ -43,6 +48,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.6.0",
+    "lighthouse": "^13.4.0",
     "puppeteer": "^25.2.1",
     "puppeteer-core": "^25.2.1",
     "sharp": "^0.35.2",
@@ -50,8 +56,6 @@
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.59.2",
     "vite": "^8.0.12",
-    "@lhci/cli": "^0.15.1",
-    "lighthouse": "^13.4.0",
     "wait-on": "^8.0.3"
   }
 }

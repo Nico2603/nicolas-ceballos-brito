@@ -1,5 +1,4 @@
 import { useId, useState } from 'react'
-import { AnimatePresence, m } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import type { TopicFaqItem } from '../lib/structured-data'
 
@@ -36,24 +35,19 @@ function FaqAccordionItem({ item, index }: FaqAccordionItemProps) {
         />
       </button>
 
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <m.div
-            id={panelId}
-            role="region"
-            aria-labelledby={triggerId}
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden"
-          >
-            <p className="faq-answer px-5 pb-5 text-center text-justify leading-relaxed text-[var(--color-text-secondary)]">
-              {item.answer}
-            </p>
-          </m.div>
-        )}
-      </AnimatePresence>
+      <div
+        id={panelId}
+        role="region"
+        aria-labelledby={triggerId}
+        className={`faq-collapse ${isOpen ? 'faq-collapse-open' : ''}`}
+        aria-hidden={!isOpen}
+      >
+        <div className="faq-collapse-inner">
+          <p className="faq-answer px-5 pb-5 text-center text-justify leading-relaxed text-[var(--color-text-secondary)]">
+            {item.answer}
+          </p>
+        </div>
+      </div>
     </article>
   )
 }

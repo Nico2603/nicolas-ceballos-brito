@@ -20,16 +20,6 @@ const PoliticaPrivacidad = lazy(() => import('./pages/PoliticaPrivacidad'))
 const ProjectPage = lazy(() => import('./pages/ProjectPage'))
 const Repositories = lazy(() => import('./pages/Repositories'))
 
-function scheduleIdle(callback: () => void, timeout = 3000): () => void {
-  if (typeof window.requestIdleCallback === 'function') {
-    const id = window.requestIdleCallback(callback, { timeout })
-    return () => window.cancelIdleCallback(id)
-  }
-
-  const id = globalThis.setTimeout(callback, Math.min(timeout, 2000))
-  return () => globalThis.clearTimeout(id)
-}
-
 export default function App() {
   const location = useLocation()
 
@@ -41,6 +31,7 @@ export default function App() {
     let lenis: { destroy: () => void; raf: (time: number) => void } | null = null
     let rafId = 0
     let started = false
+    let scrollCount = 0
 
     const startLenis = async () => {
       if (started) return
@@ -65,23 +56,29 @@ export default function App() {
       rafId = requestAnimationFrame(raf)
     }
 
-    const onInteraction = () => {
-      void startLenis()
-      window.removeEventListener('wheel', onInteraction)
-      window.removeEventListener('touchstart', onInteraction)
+    const onWheel = () => {
+      scrollCount += 1
+      if (scrollCount >= 2 || window.scrollY > 300) {
+        void startLenis()
+        window.removeEventListener('wheel', onWheel)
+        window.removeEventListener('scroll', onScroll, { capture: true })
+      }
     }
 
-    const cancelIdle = scheduleIdle(() => {
-      void startLenis()
-    })
+    const onScroll = () => {
+      if (window.scrollY > 300) {
+        void startLenis()
+        window.removeEventListener('wheel', onWheel)
+        window.removeEventListener('scroll', onScroll, { capture: true })
+      }
+    }
 
-    window.addEventListener('wheel', onInteraction, { passive: true })
-    window.addEventListener('touchstart', onInteraction, { passive: true })
+    window.addEventListener('wheel', onWheel, { passive: true })
+    window.addEventListener('scroll', onScroll, { passive: true, capture: true })
 
     return () => {
-      cancelIdle()
-      window.removeEventListener('wheel', onInteraction)
-      window.removeEventListener('touchstart', onInteraction)
+      window.removeEventListener('wheel', onWheel)
+      window.removeEventListener('scroll', onScroll, { capture: true })
       cancelAnimationFrame(rafId)
       lenis?.destroy()
       document.documentElement.classList.remove('lenis', 'lenis-smooth')

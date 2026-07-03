@@ -46,14 +46,20 @@ async function optimizeProfileImage() {
 async function generateCarouselVariant(imagePath, filename) {
   const meta = await sharp(imagePath).metadata()
   const baseName = filename.replace('.webp', '')
+  const width480 = Math.min(meta.width ?? 480, 480)
   const width640 = Math.min(meta.width ?? 640, 640)
 
   await sharp(imagePath)
+    .resize(width480, undefined, { withoutEnlargement: true })
+    .webp({ quality: 74, effort: 4 })
+    .toFile(join(imagesDir, `${baseName}-480.webp`))
+
+  await sharp(imagePath)
     .resize(width640, undefined, { withoutEnlargement: true })
-    .webp({ quality: 78, effort: 4 })
+    .webp({ quality: 74, effort: 4 })
     .toFile(join(imagesDir, `${baseName}-640.webp`))
 
-  console.log(`${baseName}-640.webp generado`)
+  console.log(`${baseName}-480.webp y ${baseName}-640.webp generados`)
 }
 
 async function compressCarouselImages() {
@@ -65,18 +71,7 @@ async function compressCarouselImages() {
 
     try {
       await generateCarouselVariant(imagePath, filename)
-
-      const meta = await sharp(imagePath).metadata()
-      const maxWidth = 960
-      const needsResize = meta.width && meta.width > maxWidth
-
-      const pipeline = sharp(imagePath)
-      const output = needsResize
-        ? pipeline.resize(maxWidth, undefined, { withoutEnlargement: true })
-        : pipeline
-
-      await output.webp({ quality: 80, effort: 4 }).toFile(imagePath)
-      console.log(`${filename} comprimido${needsResize ? ` (max ${maxWidth}px)` : ''}`)
+      console.log(`${filename}: variantes responsive generadas (original no reescrito)`)
     } catch (error) {
       console.warn(`${filename}: no se pudo optimizar`, error instanceof Error ? error.message : error)
     }

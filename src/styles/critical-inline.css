@@ -16,10 +16,15 @@
 }
 
 .font-display {
-  font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+  font-family: 'Fraunces', 'Fraunces Fallback', Georgia, 'Times New Roman', serif;
 }
 
 .hero-lcp-visible {
+  font-family: 'Fraunces', 'Fraunces Fallback', Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 5vw + 0.5rem, 4.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--hero-text);
   opacity: 1;
   transform: none;
 }

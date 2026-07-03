@@ -1,0 +1,21 @@
+{
+  "bundle": {
+    "vendorReactGzipKb": 80,
+    "vendorMotionGzipKb": 45,
+    "vendorLenisGzipKb": 15,
+    "entryGzipKb": 60,
+    "combinedVendorGzipKb": 200
+  },
+  "images": {
+    "aboveFoldMaxKb": 100
+  },
+  "lighthouse": {
+    "performanceMobile": 85,
+    "performanceDesktop": 80,
+    "lcpMs": 2500,
+    "fcpMs": 1800,
+    "tbtMs": 800,
+    "clsMax": 0.1,
+    "speedIndexMs": 5000
+  }
+}

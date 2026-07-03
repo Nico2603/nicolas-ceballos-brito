@@ -1,4 +1,3 @@
-import { m } from 'framer-motion'
 import { Clock, ExternalLink, GitFork, Star } from 'lucide-react'
 import { GitHubIcon } from './icons/SocialIcons'
 import { getTimeSince } from '../lib/github'
@@ -14,12 +13,7 @@ interface RepositoryCardProps {
 
 export default function RepositoryCard({ repo, index }: RepositoryCardProps) {
   return (
-    <m.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.05, duration: 0.4 }}
-      className="h-full"
-    >
+    <div className="card-reveal h-full" style={{ animationDelay: `${index * 50}ms` }}>
       <Card className="h-full">
         <article className="p-6 flex flex-col h-full">
           <div className="flex items-start justify-between gap-3 mb-3">
@@ -80,6 +74,6 @@ export default function RepositoryCard({ repo, index }: RepositoryCardProps) {
           </div>
         </article>
       </Card>
-    </m.div>
+    </div>
   )
 }

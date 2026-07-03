@@ -1,0 +1,350 @@
+{
+  "capturedAt": "2026-07-03T03:15:34.353Z",
+  "dist": "dist/assets",
+  "chunks": [
+    {
+      "file": "About-sDOU3M2G.js",
+      "category": "other",
+      "rawKb": 9.66,
+      "gzipKb": 2.92
+    },
+    {
+      "file": "AnalisisDatos-DN9ZIRmh.js",
+      "category": "other",
+      "rawKb": 7.73,
+      "gzipKb": 3.14
+    },
+    {
+      "file": "arrow-left-l2NjGYsB.js",
+      "category": "other",
+      "rawKb": 0.15,
+      "gzipKb": 0.15
+    },
+    {
+      "file": "Badge-D_vJ_8LZ.js",
+      "category": "other",
+      "rawKb": 0.48,
+      "gzipKb": 0.29
+    },
+    {
+      "file": "Card-DkNRx2q2.js",
+      "category": "other",
+      "rawKb": 0.46,
+      "gzipKb": 0.29
+    },
+    {
+      "file": "contact-COLJ-Q1A.js",
+      "category": "other",
+      "rawKb": 0.99,
+      "gzipKb": 0.59
+    },
+    {
+      "file": "Contact-WY6U4mWx.js",
+      "category": "other",
+      "rawKb": 28.29,
+      "gzipKb": 8.54
+    },
+    {
+      "file": "content-gvSDwLUM.js",
+      "category": "other",
+      "rawKb": 19.4,
+      "gzipKb": 7.69
+    },
+    {
+      "file": "ContentImageFigure-DzNlqlwj.js",
+      "category": "other",
+      "rawKb": 0.77,
+      "gzipKb": 0.46
+    },
+    {
+      "file": "CurrentExperience-C_35OLlC.js",
+      "category": "other",
+      "rawKb": 4,
+      "gzipKb": 1.43
+    },
+    {
+      "file": "DesarrolloWeb-CHBKQnup.js",
+      "category": "other",
+      "rawKb": 8.82,
+      "gzipKb": 3.63
+    },
+    {
+      "file": "ExpertiseLandingLayout-0EYwAZkC.js",
+      "category": "other",
+      "rawKb": 3.93,
+      "gzipKb": 1.24
+    },
+    {
+      "file": "external-link-EpYyzgMS.js",
+      "category": "other",
+      "rawKb": 0.23,
+      "gzipKb": 0.19
+    },
+    {
+      "file": "faq-D0BJNjvd.js",
+      "category": "other",
+      "rawKb": 2.09,
+      "gzipKb": 1.14
+    },
+    {
+      "file": "FaqAccordion-DSKZwWZ4.js",
+      "category": "other",
+      "rawKb": 1.37,
+      "gzipKb": 0.69
+    },
+    {
+      "file": "FaqSection-B6gR7QsO.js",
+      "category": "other",
+      "rawKb": 0.61,
+      "gzipKb": 0.4
+    },
+    {
+      "file": "Footer-o-IHH4q_.js",
+      "category": "other",
+      "rawKb": 3.65,
+      "gzipKb": 1.26
+    },
+    {
+      "file": "git-branch-C7YBCliG.js",
+      "category": "other",
+      "rawKb": 0.21,
+      "gzipKb": 0.18
+    },
+    {
+      "file": "globe-JGJZ3lOG.js",
+      "category": "other",
+      "rawKb": 0.62,
+      "gzipKb": 0.34
+    },
+    {
+      "file": "GuiaPage-Djy0wXTI.js",
+      "category": "other",
+      "rawKb": 3.27,
+      "gzipKb": 1.26
+    },
+    {
+      "file": "GuiasIndex-DXg3yrR1.js",
+      "category": "other",
+      "rawKb": 2.18,
+      "gzipKb": 0.98
+    },
+    {
+      "file": "HeroAurora-C04qp5cZ.js",
+      "category": "other",
+      "rawKb": 0.37,
+      "gzipKb": 0.22
+    },
+    {
+      "file": "HeroGrid-7c68vUnV.js",
+      "category": "other",
+      "rawKb": 1.66,
+      "gzipKb": 0.94
+    },
+    {
+      "file": "index-3eoqspSI.js",
+      "category": "entry",
+      "rawKb": 70.15,
+      "gzipKb": 24.74
+    },
+    {
+      "file": "InteligenciaArtificial-o_oTBvC3.js",
+      "category": "other",
+      "rawKb": 8.3,
+      "gzipKb": 3.33
+    },
+    {
+      "file": "LaboresCarousel-DbTeX869.js",
+      "category": "other",
+      "rawKb": 3.75,
+      "gzipKb": 1.56
+    },
+    {
+      "file": "linkedin-posts-B4iMVMy-.js",
+      "category": "other",
+      "rawKb": 0.69,
+      "gzipKb": 0.42
+    },
+    {
+      "file": "linkedin-profile-FyHJbbSQ.js",
+      "category": "other",
+      "rawKb": 10.4,
+      "gzipKb": 3.82
+    },
+    {
+      "file": "LinkedInFeed-DNJWpaeF.js",
+      "category": "other",
+      "rawKb": 5.06,
+      "gzipKb": 1.87
+    },
+    {
+      "file": "loader-circle-BQh5agvJ.js",
+      "category": "other",
+      "rawKb": 0.13,
+      "gzipKb": 0.14
+    },
+    {
+      "file": "map-pin-BcSEWR1Z.js",
+      "category": "other",
+      "rawKb": 0.24,
+      "gzipKb": 0.21
+    },
+    {
+      "file": "OptimizedImage-D5K_LcwM.js",
+      "category": "other",
+      "rawKb": 0.96,
+      "gzipKb": 0.55
+    },
+    {
+      "file": "PoliticaPrivacidad-DoHRgdJK.js",
+      "category": "other",
+      "rawKb": 2.83,
+      "gzipKb": 1.26
+    },
+    {
+      "file": "Portfolio-B7WfPvNi.js",
+      "category": "other",
+      "rawKb": 4.35,
+      "gzipKb": 1.64
+    },
+    {
+      "file": "profile-nlTveEQ0.js",
+      "category": "other",
+      "rawKb": 1.04,
+      "gzipKb": 0.59
+    },
+    {
+      "file": "ProjectPage-DYetECVN.js",
+      "category": "other",
+      "rawKb": 3.49,
+      "gzipKb": 1.34
+    },
+    {
+      "file": "projects-CYcxam2y.js",
+      "category": "other",
+      "rawKb": 2.8,
+      "gzipKb": 1.27
+    },
+    {
+      "file": "react-CBccopXI.js",
+      "category": "other",
+      "rawKb": 2.68,
+      "gzipKb": 1.26
+    },
+    {
+      "file": "react-Ch3zcr8o.js",
+      "category": "other",
+      "rawKb": 3.38,
+      "gzipKb": 1.55
+    },
+    {
+      "file": "RecursosSection-CyA1wqQt.js",
+      "category": "other",
+      "rawKb": 3.58,
+      "gzipKb": 1.27
+    },
+    {
+      "file": "Repositories-XE5GY1lJ.js",
+      "category": "other",
+      "rawKb": 7.44,
+      "gzipKb": 2.54
+    },
+    {
+      "file": "rolldown-runtime-CNC7AqOf.js",
+      "category": "other",
+      "rawKb": 0.86,
+      "gzipKb": 0.49
+    },
+    {
+      "file": "SectionHeader-2p63eRYl.js",
+      "category": "other",
+      "rawKb": 1.14,
+      "gzipKb": 0.58
+    },
+    {
+      "file": "SectionWrapper-BWgMe0SV.js",
+      "category": "other",
+      "rawKb": 0.21,
+      "gzipKb": 0.17
+    },
+    {
+      "file": "social-2K2me5a2.js",
+      "category": "other",
+      "rawKb": 0.81,
+      "gzipKb": 0.46
+    },
+    {
+      "file": "star-DnLHN4Yr.js",
+      "category": "other",
+      "rawKb": 0.45,
+      "gzipKb": 0.27
+    },
+    {
+      "file": "structured-data-CAjF4CVu.js",
+      "category": "other",
+      "rawKb": 6.06,
+      "gzipKb": 2.12
+    },
+    {
+      "file": "TypingAnimation-wc4jTxkm.js",
+      "category": "other",
+      "rawKb": 0.72,
+      "gzipKb": 0.46
+    },
+    {
+      "file": "useGitHubRepos-CieqbEMf.js",
+      "category": "other",
+      "rawKb": 3.02,
+      "gzipKb": 1.43
+    },
+    {
+      "file": "vendor-lenis-CuQXhyC8.js",
+      "category": "vendor-lenis",
+      "rawKb": 17.95,
+      "gzipKb": 5.19
+    },
+    {
+      "file": "vendor-motion-bzxaYgkB.js",
+      "category": "vendor-motion",
+      "rawKb": 84.5,
+      "gzipKb": 29.45
+    },
+    {
+      "file": "vendor-react-NWfZRlyQ.js",
+      "category": "vendor-react",
+      "rawKb": 218.47,
+      "gzipKb": 69.14
+    }
+  ],
+  "byCategory": {
+    "vendor-react": {
+      "files": 1,
+      "gzipKb": 69.14
+    },
+    "vendor-motion": {
+      "files": 1,
+      "gzipKb": 29.45
+    },
+    "vendor-lenis": {
+      "files": 1,
+      "gzipKb": 5.19
+    },
+    "entry": {
+      "files": 1,
+      "gzipKb": 24.74
+    },
+    "other": {
+      "files": 48,
+      "gzipKb": 68.57
+    }
+  },
+  "combinedVendorGzipKb": 128.52,
+  "budget": {
+    "vendorReactGzipKb": 80,
+    "vendorMotionGzipKb": 45,
+    "vendorLenisGzipKb": 15,
+    "entryGzipKb": 60,
+    "combinedVendorGzipKb": 200
+  },
+  "passed": true,
+  "violations": []
+}
