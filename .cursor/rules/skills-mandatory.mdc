@@ -11,7 +11,7 @@ Ubicación: `.agents/skills/` (proyecto). Lockfile: `skills-lock.json`.
 
 Antes de cualquier acción, leer e invocar `using-superpowers`. Si aplica una skill del stack, **debes leer su SKILL.md** en `.agents/skills/<nombre>/` antes de implementar.
 
-No ejecutar las 30 skills en cada prompt. Clasifica la tarea y aplica **todas** las del bundle correspondiente.
+No ejecutar las 32 skills en cada prompt. Clasifica la tarea y aplica **todas** las del bundle correspondiente.
 
 ## Bundles por tipo de prompt
 

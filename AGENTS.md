@@ -93,16 +93,18 @@ nicolas-ceballos-brito/
 
 ## Skills — ubicación e instalación
 
+Inventario completo del workspace: [SKILLS.md](../SKILLS.md)
+
 | Alcance | Ruta | Estado |
 |---------|------|--------|
-| **Proyecto (definitivo)** | `nicolas-ceballos-brito/.agents/skills/` | 30 skills instaladas |
-| Lockfile reproducible | `skills-lock.json` | `npx skills experimental_install` |
+| **Proyecto (definitivo)** | `nicolas-ceballos-brito/.agents/skills/` | 32 skills instaladas |
+| Lockfile reproducible | `skills-lock.json` | `npx skills experimental_install -y` |
 
 Verificar: `npx skills ls` (desde la raíz del repo).
 
 Regla Cursor always-on: [`.cursor/rules/skills-mandatory.mdc`](.cursor/rules/skills-mandatory.mdc)
 
-### Skills instaladas (30)
+### Skills instaladas (32)
 
 **Core (8):** brainstorming, systematic-debugging, using-superpowers, frontend-design, vercel-react-best-practices, web-design-guidelines, find-skills, agent-browser
 
