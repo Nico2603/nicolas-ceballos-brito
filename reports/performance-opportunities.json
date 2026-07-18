@@ -1,45 +1,10 @@
 {
   "capturedAt": "2026-07-18T02:04:27.559Z",
-  "url": "http://127.0.0.1:4173",
-  "routes": [
-    "/"
-  ],
-  "runsPerProfile": 1,
-  "aggregation": "median",
-  "throttle": null,
-  "summaries": [
+  "profiles": [
     {
       "profile": "mobile",
       "route": "/",
-      "runs": 1,
-      "scores": {
-        "performance": 93,
-        "accessibility": 100,
-        "best-practices": 96,
-        "seo": 100
-      },
-      "metrics": {
-        "lcp": "2.9 s",
-        "fcp": "2.1 s",
-        "tbt": "0.1 s",
-        "cls": "0.015252031217007495",
-        "si": "2.1 s",
-        "tti": "5.0 s",
-        "ttfb": "0.0 s",
-        "inp": "n/a"
-      },
-      "rawMetrics": {
-        "lcp": 2874.892400000001,
-        "fcp": 2088.4462,
-        "tbt": 75.5,
-        "cls": 0.015252031217007495,
-        "si": 2088.4462,
-        "tti": 4988.714495000002,
-        "ttfb": 3,
-        "inp": null
-      },
-      "lcpElement": null,
-      "opportunities": [
+      "items": [
         {
           "id": "unused-javascript",
           "title": "Reduce unused JavaScript",
@@ -69,35 +34,7 @@
     {
       "profile": "desktop",
       "route": "/",
-      "runs": 1,
-      "scores": {
-        "performance": 100,
-        "accessibility": 100,
-        "best-practices": 96,
-        "seo": 100
-      },
-      "metrics": {
-        "lcp": "0.6 s",
-        "fcp": "0.5 s",
-        "tbt": "0.0 s",
-        "cls": "0.002801067567869805",
-        "si": "0.7 s",
-        "tti": "0.6 s",
-        "ttfb": "0.0 s",
-        "inp": "n/a"
-      },
-      "rawMetrics": {
-        "lcp": 624.7752,
-        "fcp": 486.4845,
-        "tbt": 0,
-        "cls": 0.002801067567869805,
-        "si": 703.5511086304118,
-        "tti": 624.7752,
-        "ttfb": 3,
-        "inp": null
-      },
-      "lcpElement": null,
-      "opportunities": [
+      "items": [
         {
           "id": "unused-javascript",
           "title": "Reduce unused JavaScript",

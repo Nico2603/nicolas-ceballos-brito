@@ -11,7 +11,7 @@
   },
   "lighthouse": {
     "performanceMobile": 85,
-    "performanceDesktop": 80,
+    "performanceDesktop": 90,
     "lcpMs": 2500,
     "fcpMs": 1800,
     "tbtMs": 800,

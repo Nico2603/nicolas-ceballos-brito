@@ -1,0 +1,46 @@
+{
+  "capturedAt": "2026-07-18T02:04:27.561Z",
+  "previousCapturedAt": "2026-07-18T02:03:37.567Z",
+  "deltas": [
+    {
+      "profile": "mobile",
+      "route": "/",
+      "scores": {
+        "performance": 14,
+        "accessibility": 0,
+        "best-practices": 0,
+        "seo": 0
+      },
+      "rawMetrics": {
+        "lcp": -843.15,
+        "fcp": -197.37,
+        "tbt": -196.4,
+        "cls": -0.08,
+        "si": -591.55,
+        "tti": -1387.2,
+        "ttfb": -3,
+        "inp": null
+      }
+    },
+    {
+      "profile": "desktop",
+      "route": "/",
+      "scores": {
+        "performance": 33,
+        "accessibility": 0,
+        "best-practices": 0,
+        "seo": 0
+      },
+      "rawMetrics": {
+        "lcp": -2797.7,
+        "fcp": -1420.53,
+        "tbt": 0,
+        "cls": 0,
+        "si": -2509.45,
+        "tti": -2708.45,
+        "ttfb": 0,
+        "inp": null
+      }
+    }
+  ]
+}

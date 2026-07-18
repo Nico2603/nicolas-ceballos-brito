@@ -1,9 +1,11 @@
 import { ArrowRight, ChevronDown, Sparkles } from 'lucide-react'
+import { useRef } from 'react'
 import { PROFILE_IMAGE } from '../constants/lcp-image'
 import { graduation } from '../data/profile'
 import { FULL_NAME } from '../constants/social'
 import { heroBio } from '../data/content'
 import { useTheme } from '../context/ThemeContext'
+import { useHeroDecorSettle } from '../hooks/useHeroDecorSettle'
 import Button from './ui/Button'
 import DeferredHeroDecor from './DeferredHeroDecor'
 import SocialLinks from './SocialLinks'
@@ -20,9 +22,12 @@ const nameWords = FULL_NAME.split(' ')
 export default function Hero() {
   const { theme } = useTheme()
   const isDarkHero = theme === 'dark'
+  const heroRef = useRef<HTMLElement>(null)
+  useHeroDecorSettle(heroRef)
 
   return (
     <section
+      ref={heroRef}
       id="inicio"
       className="relative min-h-[100dvh] flex items-center pt-28 pb-20 overflow-hidden"
       style={{ background: 'var(--gradient-hero)' }}
@@ -131,7 +136,7 @@ export default function Hero() {
         aria-label="Desplazarse a proyectos"
       >
         <span className="text-[10px] uppercase tracking-[0.2em] font-semibold">Explorar</span>
-        <ChevronDown size={22} className="animate-[scroll-hint_2s_ease-in-out_infinite]" />
+        <ChevronDown size={22} className="hero-scroll-chevron" />
       </a>
     </section>
   )

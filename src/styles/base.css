@@ -65,11 +65,12 @@ textarea::placeholder {
 }
 
 /* ── Hero atmosphere ── */
+/* Infinite animations gated under .hero-decor-active (set after load) so
+   Lighthouse Speed Index can settle during the lab trace. */
 .hero-aurora {
   position: absolute;
   border-radius: 50%;
   filter: blur(60px);
-  will-change: transform;
   pointer-events: none;
 }
 
@@ -79,7 +80,6 @@ textarea::placeholder {
   top: -8%;
   right: -5%;
   background: rgb(34 211 238 / 0.35);
-  animation: aurora-drift-1 14s var(--ease-smooth) infinite;
 }
 
 .hero-aurora-2 {
@@ -88,7 +88,6 @@ textarea::placeholder {
   bottom: -10%;
   left: -8%;
   background: rgb(245 158 11 / 0.28);
-  animation: aurora-drift-2 18s var(--ease-smooth) infinite;
 }
 
 .hero-aurora-3 {
@@ -97,6 +96,21 @@ textarea::placeholder {
   top: 40%;
   left: 45%;
   background: rgb(99 102 241 / 0.2);
+}
+
+.hero-decor-active .hero-aurora {
+  will-change: transform;
+}
+
+.hero-decor-active .hero-aurora-1 {
+  animation: aurora-drift-1 14s var(--ease-smooth) infinite;
+}
+
+.hero-decor-active .hero-aurora-2 {
+  animation: aurora-drift-2 18s var(--ease-smooth) infinite;
+}
+
+.hero-decor-active .hero-aurora-3 {
   animation: aurora-drift-3 20s var(--ease-smooth) infinite;
 }
 
@@ -135,8 +149,11 @@ textarea::placeholder {
     #F59E0B,
     #22D3EE
   );
-  animation: spin-slow 8s linear infinite;
   opacity: 0.9;
+}
+
+.hero-decor-active .hero-profile-ring {
+  animation: spin-slow 8s linear infinite;
 }
 
 .hero-profile-glow {
@@ -152,6 +169,9 @@ textarea::placeholder {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.hero-decor-active .text-gradient-accent {
   animation: gradient-shift 6s var(--ease-smooth) infinite;
 }
 

@@ -15,8 +15,10 @@
     "audit:perf:full": "node scripts/audit-performance.mjs --full",
     "audit:perf:assert": "node scripts/audit-performance.mjs --full --assert",
     "audit:perf:routes": "node scripts/audit-performance.mjs --full --routes=/,/about,/desarrollo-web",
+    "audit:perf:local": "node scripts/audit-performance.mjs --url=http://127.0.0.1:4173 --full",
     "audit:bundle": "vite build && node scripts/audit-bundle.mjs",
-    "audit:perf:ci": "npm run build && npm run preview -- --port 4173 --strictPort --host 127.0.0.1 & npx wait-on http://127.0.0.1:4173 && npx @lhci/cli autorun"
+    "audit:perf:ci": "npm run build && npm run preview -- --port 4173 --strictPort --host 127.0.0.1 & npx wait-on http://127.0.0.1:4173 && npx @lhci/cli autorun",
+    "audit:perf:ci:desktop": "npm run build && npm run preview -- --port 4173 --strictPort --host 127.0.0.1 & npx wait-on http://127.0.0.1:4173 && npx @lhci/cli autorun --config=lighthouserc.desktop.json"
   },
   "dependencies": {
     "@fontsource/fraunces": "^5.2.9",

@@ -81,13 +81,19 @@ function runLighthouse(profile, runIndex, targetUrl, routeSlug) {
     'lighthouse',
     targetUrl,
     '--only-categories=performance,accessibility,best-practices,seo',
-    `--form-factor=${profile.formFactor}`,
-    `--screenEmulation.mobile=${profile.mobile}`,
     '--output=json',
     `--output-path=${outputPath}`,
     '--chrome-flags=--headless --no-sandbox',
     '--quiet',
   ]
+
+  if (profile.formFactor === 'desktop') {
+    // Official desktop preset: correct viewport, UA, and unthrottled network/CPU.
+    lighthouseArgs.push('--preset=desktop')
+  } else {
+    lighthouseArgs.push(`--form-factor=${profile.formFactor}`)
+    lighthouseArgs.push(`--screenEmulation.mobile=${profile.mobile}`)
+  }
 
   if (throttlePreset && THROTTLE_PRESETS[throttlePreset]) {
     const preset = THROTTLE_PRESETS[throttlePreset]

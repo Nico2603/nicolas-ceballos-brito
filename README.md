@@ -142,7 +142,7 @@ Optimizaciones para RES, LCP, FCP, TTFB e INP (Vercel Speed Insights + Lighthous
 | **Prerender** | Post-proceso en `scripts/prerender.ts`: rutas relativas, preload LCP en `/`, CSS crítico inline (`critical-inline.css`), strip de `modulepreload` below-fold, link a `/schema/home.jsonld`; JSON-LD de home solo en home |
 | **HTML base** | `index.html` con link alterno al schema completo; preload global de imagen solo vía Helmet/prerender en `/` |
 | **LCP** | Elemento LCP lab = **`<h1>` texto Fraunces** (clase `hero-lcp-visible`); imagen de perfil con `fetchPriority="high"` y `srcSet`; preload `pic-288.webp` en `/` |
-| **Hero crítico** | `DeferredTypingAnimation` (idle + lazy); `DeferredHeroDecor` (aurora/grid tras idle, off en mobile); entrada CSS con delays reducidos en mobile |
+| **Hero crítico** | `DeferredTypingAnimation` (idle + lazy); `DeferredHeroDecor` (aurora/grid tras idle, off en mobile); animaciones infinitas (`ring`, `aurora`, `float`, `scroll-hint`, `gradient-shift`) gated bajo `.hero-decor-active` tras `load`+idle (`useHeroDecorSettle`); entrada CSS con delays reducidos en mobile |
 | **Below-fold** | `ViewportLazy` + `IntersectionObserver` en Home — monta secciones solo al acercarse al viewport |
 | **JS inicial** | `React.lazy()` en rutas y secciones Home; `manualChunks` en `vite.config.ts`; `CurrentExperience`, `FaqAccordion`, `RepositoryCard` sin Framer Motion |
 | **Framer Motion** | `LazyMotion` + `domAnimation`; reservado para carrusel, contacto y UI interactiva |
@@ -155,10 +155,11 @@ Optimizaciones para RES, LCP, FCP, TTFB e INP (Vercel Speed Insights + Lighthous
 ### Validación tras deploy
 
 1. Hard refresh en `/` y en una guía — Network: chunks `200` desde `/assets/`, sin `127.0.0.1`.
-2. `npm run audit:perf` — 3 corridas móvil, mediana en `reports/performance-latest.json`.
-3. `npm run audit:perf:full` — móvil + desktop con mediana.
-4. [Vercel Speed Insights](https://vercel.com/flackosss/nicolas-ceballos-brito/speed-insights) — **campo** (P75 LCP/INP/CLS). Lab Lighthouse (`audit:perf`) mide condiciones simuladas; divergencias normales por TTFB de cold start.
-5. [PageSpeed Insights](https://pagespeed.web.dev/) en producción — field + lab tras cada deploy relevante.
+2. **Protocolo lab fiable (recomendado):** `npm run build` → `npm run preview -- --port 4173 --strictPort --host 127.0.0.1` → en otra terminal `npm run audit:perf:local` (móvil+desktop contra preview, sin latencia de red). Alternativa CI: `npm run audit:perf:ci` (móvil) y `npm run audit:perf:ci:desktop`.
+3. Comparar `reports/performance-diff.json` (delta vs snapshot anterior en `performance-latest.json`).
+4. **No** medir Lighthouse desde tu máquina contra producción (`audit:perf` sin `--url` local): suma la latencia ISP→edge EE.UU. e infla FCP/LCP/SI de escritorio.
+5. [Vercel Speed Insights](https://vercel.com/flackosss/nicolas-ceballos-brito/speed-insights) — **campo** (P75). Con <~75 muestras el RES no es representativo; el TTFB de campo suele incluir el redirect `www→apex`.
+6. [PageSpeed Insights](https://pagespeed.web.dev/) en producción — lab consistente desde infra de Google tras cada deploy relevante.
 
 ### Errores de consola no del sitio
 
@@ -205,30 +206,41 @@ GA4 también permite verificar el dominio en Search Console como alternativa al 
 
 ## Rendimiento
 
-| Métrica | Pre-OPT (baseline) | Post-OPT (jun 2026) | Meta |
-|---------|-------------------|---------------------|------|
-| Performance móvil | 32 | **90** | ≥ 85 |
-| Performance desktop | 58 | **69** | ≥ 80 → 90 |
-| Speed Index | 9.5 s | **6.8 s** | < 5.0 s → < 4.0 s |
-| LCP móvil | 6.2 s | **2.1 s** | < 2.5 s |
-| FCP móvil | 3.5 s | **1.8 s** | < 1.8 s |
-| TBT móvil | 12 080 ms | **470 ms** | < 800 ms |
+| Métrica | Pre-OPT (baseline) | Post-OPT (jun 2026) | Hero settle (jul 2026, preview local) | Meta |
+|---------|-------------------|---------------------|--------------------------------------|------|
+| Performance móvil | 32 | **90** | **93** | ≥ 85 |
+| Performance desktop | 58 | **69*** | **100** (`--preset=desktop`) | ≥ 90 |
+| Speed Index | 9.5 s | **6.8 s** | **2.1 s** móvil / **0.7 s** desktop | < 3.4 s |
+| LCP móvil | 6.2 s | **2.1 s** | **2.9 s** | < 2.5–4.0 s |
+| FCP móvil | 3.5 s | **1.8 s** | **2.1 s** | < 1.8–2.5 s |
+| TBT móvil | 12 080 ms | **470 ms** | **100 ms** | < 800 ms |
+
+\*El desktop 69 de jun 2026 se midió con throttling móvil contra curvas de escritorio (bug del script). Con `--preset=desktop` el score real es mucho más alto.
 
 Detalle en `reports/performance-baseline.json` (sección `postDeploy`) y snapshot más reciente en `reports/performance-latest.json`.
 
 ```bash
+# Lab fiable (contra preview local — sin latencia de red)
+npm run build
+npm run preview -- --port 4173 --strictPort --host 127.0.0.1
+# otra terminal:
+npm run audit:perf:local        # 3× móvil + desktop → reports/ + performance-diff.json
+
+npm run audit:perf:ci           # Build + LHCI móvil (lighthouserc.json, preview :4173)
+npm run audit:perf:ci:desktop   # Build + LHCI desktop (lighthouserc.desktop.json)
+
+# Contra producción (solo referencia; inflado por latencia ISP)
 npm run audit:perf              # 3× Lighthouse móvil → mediana → reports/
 npm run audit:perf -- --runs=1  # Iteración rápida (1 corrida)
 npm run audit:perf:full         # 3× móvil + desktop
 npm run audit:perf:assert       # full + gates vs performance-budget.json (exit 1 si falla)
 npm run audit:perf:routes       # full en /, /about, /desarrollo-web
 npm run audit:bundle            # build + tamaños gzip por chunk
-npm run audit:perf:ci           # Build + Lighthouse CI local (preview :4173)
 ```
 
 Artefactos: `reports/performance-latest.json`, `performance-opportunities.json`, `performance-diff.json`, `bundle-budget.json`. Presupuestos declarativos en `performance-budget.json`.
 
-CI: `.github/workflows/lighthouse.yml` — jobs **mobile** (`lighthouserc.json`, perf ≥ 0.85, SI < 5 s) y **desktop** (`lighthouserc.desktop.json`, perf ≥ 0.80). Regla: ningún PR que baje mediana mobile < 85 o desktop < 80.
+CI: `.github/workflows/lighthouse.yml` — jobs **mobile** (`lighthouserc.json`, perf ≥ 0.85, SI < 5 s) y **desktop** (`lighthouserc.desktop.json`, perf ≥ 0.90, SI < 3.4 s). Regla: ningún PR que baje mediana mobile < 85 o desktop < 90.
 
 ## Graphify
 
