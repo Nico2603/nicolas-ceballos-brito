@@ -18,8 +18,13 @@ import SectionWrapper from './SectionWrapper'
 import Badge from './ui/Badge'
 import Button from './ui/Button'
 import OptimizedImage from './ui/OptimizedImage'
-import SectionHeader from './ui/SectionHeader'
 
+/**
+ * Grilla 12 columnas:
+ * 1) Cabecera de marca
+ * 2) Media 7 + panel 5 (sin banner OG recortado)
+ * 3) Copy/CTAs 7 + suite 5
+ */
 export default function CurrentWorkProsavis() {
   return (
     <SectionWrapper
@@ -27,132 +32,111 @@ export default function CurrentWorkProsavis() {
       className="scroll-mt-24 md:scroll-mt-28 py-16 sm:py-20 md:py-28 px-4 bg-[var(--color-bg-secondary)] relative overflow-hidden"
     >
       <div
-        className="pointer-events-none absolute inset-0 opacity-40"
+        className="pointer-events-none absolute inset-0 opacity-30"
         style={{ background: 'var(--gradient-hero-scrim)' }}
         aria-hidden
       />
 
       <div className="relative max-w-6xl mx-auto">
-        <div className="mb-8 sm:mb-10 space-y-4 sm:space-y-5">
-          <ProsavisBrand size="lg" />
-          <SectionHeader
-            align="left"
-            className="!mb-0"
-            eyebrow="Trabajo actual"
-            title="Ahora:"
-            highlight={PROSAVIS_NAME}
-            description={`${PROSAVIS_TAGLINE}. ${PROSAVIS_GROWTH_LINE}.`}
-          />
-        </div>
+        {/* ── 1. Cabecera ── */}
+        <header className="mb-10 md:mb-14 max-w-3xl">
+          <ProsavisBrand size="lg" className="mb-6" />
+          <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-bold mb-3 text-[var(--color-accent-label)]">
+            <span className="w-6 h-px bg-[var(--color-accent-primary)]" aria-hidden />
+            Trabajo actual
+          </p>
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--color-text-primary)] mb-4 leading-tight text-balance">
+            Ahora:{' '}
+            <span className="text-gradient-accent">{PROSAVIS_NAME}</span>
+          </h2>
+          <p className="text-base md:text-lg text-[var(--color-text-secondary)] leading-relaxed max-w-2xl">
+            {PROSAVIS_TAGLINE}. {PROSAVIS_GROWTH_LINE}.
+          </p>
+        </header>
 
-        <div className="mb-10 sm:mb-12 grid grid-cols-2 md:grid-cols-12 gap-3 sm:gap-4 md:gap-5 overflow-hidden">
+        {/* ── 2. Media grid (12) ── */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-5 mb-12 md:mb-16">
           <a
             href={PROSAVIS_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="col-span-2 md:col-span-7 group relative block overflow-hidden rounded-2xl md:rounded-[1.25rem] ring-1 ring-[var(--color-border-light)]"
+            className="md:col-span-7 group relative block overflow-hidden rounded-2xl ring-1 ring-[var(--color-border-light)]"
           >
             <OptimizedImage
               src={PROSAVIS_IMAGES.limpieza.src}
               alt={PROSAVIS_IMAGES.limpieza.alt}
               width={PROSAVIS_IMAGES.limpieza.width}
               height={PROSAVIS_IMAGES.limpieza.height}
-              className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
-              wrapperClassName="aspect-[16/10] sm:aspect-[16/9] md:aspect-auto md:h-72"
+              className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.02]"
+              wrapperClassName="aspect-[16/10] md:aspect-[16/11] md:min-h-[22rem]"
             />
-            <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4 md:p-5 bg-gradient-to-t from-black/75 via-black/40 to-transparent">
-              <p className="text-white font-display text-base sm:text-lg md:text-xl font-semibold">
+            <div className="absolute inset-x-0 bottom-0 p-4 md:p-6 bg-gradient-to-t from-black/75 via-black/35 to-transparent">
+              <p className="text-white font-display text-lg md:text-2xl font-semibold">
                 Prosavis Limpieza
               </p>
-              <p className="text-white/85 text-xs sm:text-sm mt-0.5 sm:mt-1">
-                Producto vivo · Eje Cafetero
-              </p>
+              <p className="text-white/85 text-sm mt-1">Producto vivo · Eje Cafetero</p>
             </div>
           </a>
 
-          <a
-            href={PROSAVIS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="col-span-1 md:hidden group relative block overflow-hidden rounded-2xl ring-1 ring-[var(--color-border-light)]"
-          >
-            <OptimizedImage
-              src={PROSAVIS_IMAGES.og.src}
-              alt={PROSAVIS_IMAGES.og.alt}
-              width={PROSAVIS_IMAGES.og.width}
-              height={PROSAVIS_IMAGES.og.height}
-              className="h-full w-full object-cover object-left transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
-              wrapperClassName="aspect-[4/3] h-full"
-            />
-          </a>
-
-          <a
-            href={PROSAVIS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="col-span-1 md:hidden group relative block overflow-hidden rounded-2xl ring-1 ring-[var(--color-border-light)]"
-          >
-            <OptimizedImage
-              src={PROSAVIS_IMAGES.relax.src}
-              alt={PROSAVIS_IMAGES.relax.alt}
-              width={PROSAVIS_IMAGES.relax.width}
-              height={PROSAVIS_IMAGES.relax.height}
-              className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
-              wrapperClassName="aspect-[4/3] h-full"
-            />
-          </a>
-
-          <div className="hidden md:grid md:col-span-5 min-w-0 grid-rows-2 gap-4 md:gap-5">
+          <div className="md:col-span-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-4 md:gap-5 min-w-0">
+            {/* Tarjeta de mensaje completa — reemplaza el OG recortado */}
             <a
               href={PROSAVIS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative block min-w-0 overflow-hidden rounded-[1.25rem] ring-1 ring-[var(--color-border-light)]"
+              className="group flex min-h-[11rem] md:min-h-0 md:flex-1 flex-col justify-between rounded-2xl p-5 md:p-6 text-left transition-transform duration-300 hover:-translate-y-0.5"
+              style={{ background: '#1A6FD4' }}
             >
-              <OptimizedImage
-                src={PROSAVIS_IMAGES.og.src}
-                alt={PROSAVIS_IMAGES.og.alt}
-                width={PROSAVIS_IMAGES.og.width}
-                height={PROSAVIS_IMAGES.og.height}
-                className="h-full min-h-[8.5rem] w-full object-cover object-left transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
-                wrapperClassName="h-full min-h-[8.5rem]"
-              />
+              <div>
+                <p className="font-display text-xl md:text-2xl font-semibold text-white text-balance leading-snug">
+                  Servicios verificados en Colombia
+                </p>
+                <p className="mt-2 text-sm text-white/90 leading-relaxed">
+                  Plomería · Limpieza · Electricidad y más
+                </p>
+              </div>
+              <span className="mt-5 inline-flex w-fit items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-[#0B1220]">
+                prosavis.com
+                <ExternalLink size={14} aria-hidden />
+              </span>
             </a>
+
             <a
               href={PROSAVIS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative block min-w-0 overflow-hidden rounded-[1.25rem] ring-1 ring-[var(--color-border-light)]"
+              className="group relative block overflow-hidden rounded-2xl ring-1 ring-[var(--color-border-light)] md:flex-1"
             >
               <OptimizedImage
                 src={PROSAVIS_IMAGES.relax.src}
                 alt={PROSAVIS_IMAGES.relax.alt}
                 width={PROSAVIS_IMAGES.relax.width}
                 height={PROSAVIS_IMAGES.relax.height}
-                className="h-full min-h-[8.5rem] w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
-                wrapperClassName="h-full min-h-[8.5rem]"
+                className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.02]"
+                wrapperClassName="aspect-[16/10] sm:aspect-[4/3] md:aspect-auto md:h-full md:min-h-[10.5rem]"
               />
             </a>
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-          <div className="lg:col-span-7 space-y-6 sm:space-y-8">
+        {/* ── 3. Copy + suite (12) ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+          <div className="lg:col-span-7 space-y-6">
             <div className="flex flex-wrap items-center gap-2">
               <Badge variant="accent">Actual</Badge>
               <Badge variant="muted">{PROSAVIS_PERIOD}</Badge>
               <Badge>{PROSAVIS_ROLE_TITLE}</Badge>
             </div>
 
-            <p className="text-base md:text-lg leading-relaxed text-[var(--color-text-secondary)]">
+            <p className="text-base md:text-lg leading-relaxed text-[var(--color-text-secondary)] max-w-2xl">
               {PROSAVIS_SUMMARY}
             </p>
 
-            <p className="text-base md:text-lg leading-relaxed text-[var(--color-text-primary)] font-medium">
+            <p className="text-base md:text-lg leading-relaxed text-[var(--color-text-primary)] font-medium max-w-2xl">
               {PROSAVIS_ROLE_SUMMARY}
             </p>
 
-            <ul className="grid sm:grid-cols-2 gap-3">
+            <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3">
               {PROSAVIS_HIGHLIGHTS.map((item) => (
                 <li
                   key={item}
@@ -163,7 +147,7 @@ export default function CurrentWorkProsavis() {
               ))}
             </ul>
 
-            <div className="flex flex-col sm:flex-row flex-wrap gap-3 pt-1">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 pt-2">
               <Button
                 variant="primary"
                 href={PROSAVIS_URL}
@@ -195,31 +179,32 @@ export default function CurrentWorkProsavis() {
           </div>
 
           <aside className="lg:col-span-5">
-            <div className="flex items-center gap-3 mb-4 sm:mb-5">
+            <div className="flex items-center gap-3 mb-5">
               <img
                 src={PROSAVIS_IMAGES.mascot.src}
-                alt={PROSAVIS_IMAGES.mascot.alt}
-                width={48}
-                height={48}
+                alt=""
+                width={40}
+                height={40}
                 loading="lazy"
                 decoding="async"
-                className="h-10 w-10 sm:h-12 sm:w-12 rounded-full object-cover ring-1 ring-[var(--color-border-light)]"
+                className="h-10 w-10 rounded-full object-cover ring-1 ring-[var(--color-border-light)]"
+                aria-hidden
               />
               <p className="text-xs uppercase tracking-[0.2em] font-semibold text-[var(--color-accent-label)]">
                 Suite de producto
               </p>
             </div>
-            <ol className="space-y-0 border-t border-[var(--color-border-light)]">
+            <ol className="border-t border-[var(--color-border-light)]">
               {PROSAVIS_SUITE.map((surface, index) => (
                 <li
                   key={surface.name}
-                  className="group border-b border-[var(--color-border-light)] py-3.5 sm:py-4 flex gap-3 sm:gap-4 transition-colors duration-300 hover:bg-[var(--color-bg-card)]/60"
+                  className="border-b border-[var(--color-border-light)] py-4 grid grid-cols-[2rem_1fr] gap-3"
                 >
-                  <span className="font-display text-sm font-bold text-[var(--color-accent-primary)] w-7 sm:w-8 shrink-0 pt-0.5">
+                  <span className="font-display text-sm font-bold text-[var(--color-accent-primary)] pt-0.5">
                     {String(index + 1).padStart(2, '0')}
                   </span>
                   <div className="min-w-0">
-                    <h3 className="font-display text-base sm:text-lg font-semibold text-[var(--color-text-primary)] mb-1">
+                    <h3 className="font-display text-base font-semibold text-[var(--color-text-primary)] mb-1">
                       {surface.name}
                     </h3>
                     <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">

@@ -171,8 +171,8 @@ LazyMotion (domAnimation)
 
 | Sección | Patrón | Archivo |
 |---|---|---|
-| Hero | Split `md:grid-cols-2`, mesh + `HeroGrid` canvas; eyebrow Prosavis; CTA freelance; panel “Ahora” con señales de producto vivo | `Hero.tsx` |
-| Ahora: Prosavis | Editorial split 7/5: rol + highlights + CTAs públicos; lista numerada de suite de producto | `CurrentWorkProsavis.tsx`, `data/prosavis.ts` |
+| Hero | Grid 12: copy `col-span-7` + foto `col-span-5` (sin cards bajo la foto). Eyebrow Prosavis + CTAs freelance | `Hero.tsx` |
+| Ahora: Prosavis | Grid 12: (1) cabecera marca, (2) media 7 + panel 5 con tarjeta de mensaje completa (no OG recortado) + foto relax, (3) copy/CTAs 7 + suite 5 | `CurrentWorkProsavis.tsx`, `data/prosavis.ts` |
 | Portafolio | Grid 2×2 uniforme, stats GitHub en una línea | `Portfolio.tsx` |
 | Experiencia | Banner graduación + roles LinkedIn **sin** Prosavis (ya destacado en `#ahora`) | `CurrentExperience.tsx` |
 | Labores | Carousel spring + barra de progreso | `LaboresCarousel.tsx` |

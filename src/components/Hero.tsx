@@ -1,29 +1,16 @@
-import { ArrowRight, ChevronDown, ExternalLink } from 'lucide-react'
+import { ArrowRight, ChevronDown } from 'lucide-react'
 import { useRef } from 'react'
 import { PROFILE_IMAGE } from '../constants/lcp-image'
 import { FULL_NAME } from '../constants/social'
 import { heroBio } from '../data/content'
-import {
-  PROSAVIS_IMAGES,
-  PROSAVIS_NAME,
-  PROSAVIS_PERIOD,
-  PROSAVIS_ROLE_TITLE,
-  PROSAVIS_URL,
-} from '../data/prosavis'
+import { PROSAVIS_NAME, PROSAVIS_ROLE_TITLE } from '../data/prosavis'
 import { useHeroDecorSettle } from '../hooks/useHeroDecorSettle'
 import Button from './ui/Button'
 import DeferredHeroDecor from './DeferredHeroDecor'
-import ProsavisBrand from './ProsavisBrand'
 import SocialLinks from './SocialLinks'
 import DeferredTypingAnimation from './DeferredTypingAnimation'
 
 const nameWords = FULL_NAME.split(' ')
-
-const currentSignals = [
-  { value: PROSAVIS_NAME, label: 'Empresa' },
-  { value: 'Lead', label: 'Rol actual' },
-  { value: 'Live', label: 'En prod.' },
-]
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null)
@@ -41,14 +28,14 @@ export default function Hero() {
       <DeferredHeroDecor />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 w-full hero-stagger">
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="text-left">
+        <div className="grid md:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div className="md:col-span-7 text-left">
             <p className="hero-entrance hero-entrance-delay-1 inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em] font-semibold text-[var(--hero-eyebrow)] mb-5 hero-eyebrow-glow">
               <span className="h-px w-6 bg-[var(--color-accent-primary)]/70" aria-hidden />
               {PROSAVIS_ROLE_TITLE} · {PROSAVIS_NAME}
             </p>
 
-            <h1 className="hero-lcp-visible font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-[var(--hero-text)] mb-4 leading-[1.05] hero-headline-glow">
+            <h1 className="hero-lcp-visible font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-[var(--hero-text)] mb-4 leading-[1.05] text-balance hero-headline-glow">
               {nameWords.map((word, i) => (
                 <span key={word}>
                   {i === 1 ? (
@@ -84,8 +71,8 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="hero-entrance hero-entrance-delay-3 flex flex-col items-center gap-6">
-            <div className="hero-profile-float relative">
+          <div className="md:col-span-5 flex justify-center md:justify-end">
+            <div className="hero-entrance hero-entrance-delay-3 hero-profile-float relative">
               <div className="hero-profile-ring" aria-hidden />
               <div className="relative rounded-2xl p-[3px] bg-white/10 backdrop-blur-sm hero-profile-glow">
                 <img
@@ -98,59 +85,10 @@ export default function Hero() {
                   fetchPriority="high"
                   loading="eager"
                   decoding="async"
-                  className="w-56 h-56 md:w-72 md:h-72 rounded-[14px] object-cover"
+                  className="w-56 h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-[14px] object-cover"
                 />
               </div>
             </div>
-
-            <a
-              href={PROSAVIS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full max-w-md rounded-xl backdrop-blur-md border overflow-hidden text-left shadow-[var(--shadow-glow-cyan)] bg-[var(--hero-stat-surface)] border-[var(--hero-stat-border)] transition-transform duration-300 hover:scale-[1.02] hover:-translate-y-0.5 group"
-            >
-              <div className="relative aspect-[2.4/1] max-h-28 overflow-hidden">
-                <img
-                  src={PROSAVIS_IMAGES.og.src}
-                  alt=""
-                  width={480}
-                  height={200}
-                  loading="lazy"
-                  decoding="async"
-                  className="absolute inset-0 h-full w-full object-cover opacity-90 transition-transform duration-500 group-hover:scale-105"
-                  aria-hidden
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" aria-hidden />
-              </div>
-              <div className="px-3 sm:px-4 py-3">
-                <div className="flex items-center justify-between gap-2 mb-3 min-w-0">
-                  <ProsavisBrand size="sm" />
-                  <ExternalLink
-                    size={14}
-                    className="shrink-0 text-[var(--color-accent-primary)] opacity-70 group-hover:opacity-100 transition-opacity"
-                    aria-hidden
-                  />
-                </div>
-                <p className="text-[10px] uppercase tracking-[0.18em] font-semibold text-[var(--hero-text-muted)] mb-2.5">
-                  Ahora · {PROSAVIS_PERIOD}
-                </p>
-                <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
-                  {currentSignals.map((signal, i) => (
-                    <div
-                      key={signal.label}
-                      className={`hero-stat-entrance hero-stat-entrance-delay-${i} text-center min-w-0`}
-                    >
-                      <div className="font-display text-xs sm:text-sm md:text-base font-bold text-[var(--color-accent-primary)] leading-tight truncate">
-                        {signal.value}
-                      </div>
-                      <div className="text-[9px] sm:text-[10px] text-[var(--hero-text-muted)] leading-tight mt-0.5 font-medium">
-                        {signal.label}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </a>
           </div>
         </div>
       </div>
