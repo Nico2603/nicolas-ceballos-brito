@@ -81,7 +81,7 @@ async function getAvailablePort(): Promise<number> {
   })
 }
 
-function waitForServer(url: string, timeoutMs = 60_000): Promise<void> {
+function waitForServer(url: string, timeoutMs = 12_000): Promise<void> {
   const start = Date.now()
 
   return new Promise((resolvePromise, reject) => {
@@ -101,7 +101,7 @@ function waitForServer(url: string, timeoutMs = 60_000): Promise<void> {
         return
       }
 
-      setTimeout(check, 500)
+      setTimeout(check, 150)
     }
 
     void check()
@@ -271,20 +271,20 @@ async function prerenderRoute(browser: Browser, previewUrl: string, routePath: s
   const routeSelector = waitSelectorForRoute(routePath)
   const expectedTitle = ROUTE_TITLES[routePath]
 
-  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 90_000 })
-  await page.waitForSelector('#root', { timeout: 30_000 })
-  await page.waitForSelector(routeSelector, { timeout: 45_000 })
+  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 15_000 })
+  await page.waitForSelector('#root', { timeout: 8_000 })
+  await page.waitForSelector(routeSelector, { timeout: 10_000 })
 
   if (expectedTitle) {
     await page.waitForFunction(
       (title) => document.title === title,
-      { timeout: 45_000 },
+      { timeout: 8_000 },
       expectedTitle,
     )
   } else {
     await page.waitForFunction(
       () => document.title && document.title.length > 0,
-      { timeout: 45_000 },
+      { timeout: 5_000 },
     )
   }
 
@@ -295,6 +295,25 @@ async function prerenderRoute(browser: Browser, previewUrl: string, routePath: s
   writeFileSync(outputPath, html, 'utf8')
   console.log(`Prerendered ${routePath} -> ${outputPath}`)
   await page.close()
+}
+
+function killPreview(preview: ChildProcess): void {
+  const pid = preview.pid
+  if (!pid) return
+
+  if (process.platform === 'win32') {
+    try {
+      spawn('taskkill', ['/pid', String(pid), '/T', '/F'], {
+        stdio: 'ignore',
+        windowsHide: true,
+      })
+    } catch {
+      preview.kill()
+    }
+    return
+  }
+
+  preview.kill('SIGTERM')
 }
 
 async function main(): Promise<void> {
@@ -315,13 +334,14 @@ async function main(): Promise<void> {
         await prerenderRoute(browser, previewUrl, route.path, port)
       }
     } finally {
-      await browser.close()
+      await browser.close().catch(() => undefined)
     }
   } finally {
-    preview.kill('SIGTERM')
+    killPreview(preview)
   }
 
   console.log(`Prerender complete: ${PRERENDER_ROUTES.length} routes`)
+  process.exit(0)
 }
 
 main().catch((error: unknown) => {
