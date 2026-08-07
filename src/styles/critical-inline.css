@@ -37,7 +37,7 @@
 }
 
 .text-gradient-accent {
-  background: linear-gradient(135deg, var(--color-cyan-bright, #22d3ee), var(--color-amber-bright, #fbbf24));
+  background: linear-gradient(135deg, var(--color-cyan-bright, #7ba3c9), var(--color-amber-bright, #c4a574));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
