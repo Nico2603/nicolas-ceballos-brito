@@ -11,11 +11,11 @@
 | Atributo | Valor |
 |---|---|
 | **Nombre** | Nicolás Ceballos Brito |
-| **Identidad** | Dev Premium — navy profundo + acentos eléctricos |
-| **Tono** | Técnico, editorial, confiable, moderno |
+| **Identidad** | Dev Premium — Ink & Steel (graphite + steel + bronze) |
+| **Tono** | Técnico, editorial, serio, confiable |
 | **Audiencia** | Reclutadores, clientes, colaboradores tech |
 | **Dominio producción** | `https://nicolasceballosbrito.com` |
-| **Paleta maestra** | Navy (`#0B1220`) + Cyan (`#22D3EE`) + Ámbar CTA (`#F59E0B`) |
+| **Paleta maestra** | Ink (`#070A0F`) + Steel (`#3D5A80` / `#7BA3C9`) + Chick-yellow CTA (`#FACC15` / `#FDE047`) |
 
 ---
 
@@ -25,26 +25,26 @@
 
 | Token | Valor | Uso |
 |---|---|---|
-| `--color-navy-deep` | `#1E293B` | Footer, texto sobre CTA |
-| `--color-navy-mid` | `#0F172A` | Fondos oscuros profundos |
-| `--color-cyan` | `#0891B2` | Acento claro (modo light) |
-| `--color-cyan-bright` | `#22D3EE` | Acento oscuro (modo dark) |
-| `--color-amber` | `#F59E0B` | CTA primario (light) |
-| `--color-amber-bright` | `#FBBF24` | CTA primario (dark) |
+| `--color-navy-deep` | `#0F172A` | Footer, texto sobre CTA |
+| `--color-navy-mid` | `#0B1220` | Fondos oscuros profundos |
+| `--color-cyan` | `#3D5A80` | Steel acento (light) — nombre legacy |
+| `--color-cyan-bright` | `#7BA3C9` | Steel acento (dark) — nombre legacy |
+| `--color-amber` | `#EAB308` | Chick yellow (light) — nombre legacy |
+| `--color-amber-bright` | `#FACC15` | Chick yellow bright — nombre legacy |
 
 ### 2.2 Variables de tema (cambian con `.dark`)
 
 | Token | Light (`:root`) | Dark (`.dark`) | Uso |
 |---|---|---|---|
-| `--color-bg-primary` | `#F7F9FC` | `#0B1220` | Fondo de página |
-| `--color-bg-secondary` | `#E8EEF7` | `#111827` | Secciones alternas |
-| `--color-bg-card` | `#FFFFFF` | `#1A2332` | Superficies de tarjeta |
-| `--color-text-primary` | `#0F172A` | `#F1F5F9` | Texto principal |
-| `--color-text-secondary` | `#475569` | `#94A3B8` | Texto secundario |
-| `--color-accent-primary` | `#0891B2` | `#22D3EE` | Links, iconos, highlights |
-| `--color-accent-cta` | `#F59E0B` | `#FBBF24` | Botones primarios |
-| `--color-border-light` | `#E2E8F0` | `#1E293B` | Bordes, inputs |
-| `--color-nav-bg` | `rgba(255,255,255,0.85)` | `rgba(11,18,32,0.9)` | Navbar / dock |
+| `--color-bg-primary` | `#F4F6F8` | `#070A0F` | Fondo de página |
+| `--color-bg-secondary` | `#E8EDF2` | `#0E141C` | Secciones alternas |
+| `--color-bg-card` | `#FFFFFF` | `#141B24` | Superficies de tarjeta |
+| `--color-text-primary` | `#0B1220` | `#F1F4F8` | Texto principal |
+| `--color-text-secondary` | `#3F4B5A` | `#A8B3C2` | Texto secundario |
+| `--color-accent-primary` | `#2F4A6B` | `#7BA3C9` | Links, iconos, highlights |
+| `--color-accent-cta` | `#FACC15` | `#FDE047` | Botones primarios (chick yellow) |
+| `--color-border-light` | `#D5DCE5` | `#243041` | Bordes, inputs |
+| `--color-nav-bg` | `rgba(255,255,255,0.94)` | `rgba(7,10,15,0.92)` | Navbar / dock |
 
 ### 2.3 Sombras y gradientes
 

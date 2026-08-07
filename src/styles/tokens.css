@@ -11,15 +11,17 @@
 
 @variant dark (&:where(.dark, .dark *));
 
+/* Ink & Steel — professional portfolio palette.
+   Token names kept for compatibility; values remapped to muted steel + bronze. */
 @theme {
   --color-navy-deep: #0F172A;
   --color-navy-mid: #0B1220;
-  --color-cyan: #06B6D4;
-  --color-cyan-bright: #22D3EE;
-  --color-cyan-glow: #67E8F9;
-  --color-amber: #F59E0B;
-  --color-amber-bright: #FBBF24;
-  --color-amber-glow: #FDE68A;
+  --color-cyan: #3D5A80;
+  --color-cyan-bright: #7BA3C9;
+  --color-cyan-glow: #A8C4DE;
+  --color-amber: #EAB308;
+  --color-amber-bright: #FACC15;
+  --color-amber-glow: #FDE047;
   --font-sans: 'Plus Jakarta Sans', sans-serif;
   --font-display: 'Fraunces', 'Fraunces Fallback', Georgia, 'Times New Roman', serif;
   --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
@@ -32,106 +34,106 @@
 }
 
 :root {
-  --color-bg-primary: #F8FAFD;
-  --color-bg-secondary: #EEF4FB;
+  --color-bg-primary: #F4F6F8;
+  --color-bg-secondary: #E8EDF2;
   --color-bg-card: #FFFFFF;
   --color-bg-elevated: #FFFFFF;
-  --color-text-primary: #0A0F1A;
-  --color-text-secondary: #334155;
-  --color-text-placeholder: rgba(10, 15, 26, 0.5);
-  --color-text-on-hero: #0A0F1A;
-  --color-border-light: #CBD5E1;
+  --color-text-primary: #0B1220;
+  --color-text-secondary: #3F4B5A;
+  --color-text-placeholder: rgba(11, 18, 32, 0.45);
+  --color-text-on-hero: #0B1220;
+  --color-border-light: #D5DCE5;
   --color-nav-bg: rgba(255, 255, 255, 0.94);
-  --color-accent-primary: #0E7490;
-  --color-accent-cta: #EA580C;
-  --color-accent-label: #0E7490;
-  --color-accent-highlight: #0A0F1A;
-  --color-accent-icon: #0891B2;
-  --color-accent-badge-bg: rgba(8, 145, 178, 0.14);
-  --color-accent-badge-text: #0A5260;
+  --color-accent-primary: #2F4A6B;
+  --color-accent-cta: #FACC15;
+  --color-accent-label: #2F4A6B;
+  --color-accent-highlight: #0B1220;
+  --color-accent-icon: #3D5A80;
+  --color-accent-badge-bg: rgba(61, 90, 128, 0.12);
+  --color-accent-badge-text: #243B55;
   --color-btn-secondary-bg: #0F172A;
   --color-btn-secondary-text: #FFFFFF;
   --color-navy-deep: #0F172A;
-  --shadow-card: 0 8px 32px rgb(15 23 42 / 0.1);
-  --shadow-card-hover: 0 20px 48px rgb(6 182 212 / 0.22);
-  --shadow-cta: 0 8px 28px rgb(217 119 6 / 0.45);
-  --shadow-glow-cyan: 0 0 40px rgb(34 211 238 / 0.35);
-  --shadow-glow-amber: 0 0 36px rgb(251 191 36 / 0.4);
-  --shadow-nav: 0 12px 40px rgb(15 23 42 / 0.18);
-  --hero-text: #0A0F1A;
-  --hero-text-muted: rgba(10, 15, 26, 0.88);
-  --hero-subtitle: #0E7490;
-  --hero-eyebrow: #B45309;
-  --hero-stat-surface: rgba(255, 255, 255, 0.88);
-  --hero-stat-border: rgba(14, 116, 144, 0.22);
-  --hero-nav-surface: rgba(255, 255, 255, 0.9);
-  --hero-nav-border: rgba(14, 116, 144, 0.22);
+  --shadow-card: 0 8px 28px rgb(15 23 42 / 0.08);
+  --shadow-card-hover: 0 16px 40px rgb(47 74 107 / 0.14);
+  --shadow-cta: 0 8px 24px rgb(250 204 21 / 0.35);
+  --shadow-glow-cyan: 0 0 28px rgb(61 90 128 / 0.16);
+  --shadow-glow-amber: 0 0 24px rgb(250 204 21 / 0.35);
+  --shadow-nav: 0 10px 32px rgb(15 23 42 / 0.12);
+  --hero-text: #0B1220;
+  --hero-text-muted: rgba(11, 18, 32, 0.82);
+  --hero-subtitle: #2F4A6B;
+  --hero-eyebrow: #CA8A04;
+  --hero-stat-surface: rgba(255, 255, 255, 0.9);
+  --hero-stat-border: rgba(47, 74, 107, 0.18);
+  --hero-nav-surface: rgba(255, 255, 255, 0.92);
+  --hero-nav-border: rgba(47, 74, 107, 0.16);
   --gradient-hero: linear-gradient(
     155deg,
-    #F0F7FF 0%,
-    #E2F0FA 24%,
-    #C8E8F6 50%,
-    #7DD3EC 76%,
-    #22D3EE 100%
+    #F7F8FA 0%,
+    #EEF2F6 28%,
+    #E0E7EF 55%,
+    #C9D5E3 78%,
+    #A8B9CD 100%
   );
   --gradient-hero-scrim:
-    radial-gradient(ellipse 55% 45% at 85% 15%, rgb(245 158 11 / 0.14) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 50% at 10% 85%, rgb(34 211 238 / 0.18) 0%, transparent 58%),
-    radial-gradient(ellipse 90% 70% at 50% 100%, rgb(255 255 255 / 0.55) 0%, transparent 70%);
-  --gradient-hero-grid: linear-gradient(rgb(14 116 144 / 0.09) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(14 116 144 / 0.09) 1px, transparent 1px);
-  --gradient-text-accent: linear-gradient(135deg, #22D3EE 0%, #FBBF24 100%);
+    radial-gradient(ellipse 50% 40% at 88% 12%, rgb(154 112 70 / 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 45% at 8% 88%, rgb(47 74 107 / 0.1) 0%, transparent 58%),
+    radial-gradient(ellipse 90% 70% at 50% 100%, rgb(255 255 255 / 0.5) 0%, transparent 70%);
+  --gradient-hero-grid: linear-gradient(rgb(47 74 107 / 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(47 74 107 / 0.06) 1px, transparent 1px);
+  --gradient-text-accent: linear-gradient(135deg, #2F4A6B 0%, #EAB308 100%);
   --gradient-page: var(--color-bg-primary);
 }
 
 .dark {
-  --color-bg-primary: #030712;
-  --color-bg-secondary: #0B1220;
-  --color-bg-card: #111827;
-  --color-bg-elevated: #1A2332;
-  --color-text-primary: #F8FAFC;
-  --color-text-secondary: #CBD5E1;
-  --color-text-placeholder: rgba(248, 250, 252, 0.45);
+  --color-bg-primary: #070A0F;
+  --color-bg-secondary: #0E141C;
+  --color-bg-card: #141B24;
+  --color-bg-elevated: #1A2330;
+  --color-text-primary: #F1F4F8;
+  --color-text-secondary: #A8B3C2;
+  --color-text-placeholder: rgba(241, 244, 248, 0.42);
   --color-text-on-hero: #FFFFFF;
-  --hero-text: #FFFFFF;
-  --hero-text-muted: rgba(255, 255, 255, 0.95);
-  --hero-subtitle: #67E8F9;
-  --hero-eyebrow: #FBBF24;
-  --hero-stat-surface: rgba(3, 7, 18, 0.55);
-  --hero-stat-border: rgba(255, 255, 255, 0.22);
-  --hero-nav-surface: rgba(3, 7, 18, 0.78);
-  --hero-nav-border: rgba(255, 255, 255, 0.28);
-  --color-border-light: #1E293B;
-  --color-nav-bg: rgba(3, 7, 18, 0.92);
-  --color-accent-primary: #22D3EE;
-  --color-accent-cta: #FBBF24;
-  --color-accent-label: #67E8F9;
-  --color-accent-highlight: #FBBF24;
-  --color-accent-icon: #22D3EE;
-  --color-accent-badge-bg: rgba(34, 211, 238, 0.15);
-  --color-accent-badge-text: #67E8F9;
-  --color-btn-secondary-bg: #1E293B;
-  --color-btn-secondary-text: #F8FAFC;
-  --color-navy-deep: #030712;
-  --shadow-card: 0 8px 32px rgb(0 0 0 / 0.45);
-  --shadow-card-hover: 0 20px 48px rgb(34 211 238 / 0.18);
-  --shadow-cta: 0 8px 28px rgb(251 191 36 / 0.35);
-  --shadow-glow-cyan: 0 0 48px rgb(34 211 238 / 0.25);
-  --shadow-glow-amber: 0 0 40px rgb(251 191 36 / 0.3);
-  --shadow-nav: 0 12px 40px rgb(0 0 0 / 0.55);
+  --hero-text: #F7F9FC;
+  --hero-text-muted: rgba(247, 249, 252, 0.88);
+  --hero-subtitle: #A8C4DE;
+  --hero-eyebrow: #FDE047;
+  --hero-stat-surface: rgba(7, 10, 15, 0.62);
+  --hero-stat-border: rgba(255, 255, 255, 0.14);
+  --hero-nav-surface: rgba(7, 10, 15, 0.82);
+  --hero-nav-border: rgba(255, 255, 255, 0.18);
+  --color-border-light: #243041;
+  --color-nav-bg: rgba(7, 10, 15, 0.92);
+  --color-accent-primary: #7BA3C9;
+  --color-accent-cta: #FDE047;
+  --color-accent-label: #A8C4DE;
+  --color-accent-highlight: #FDE047;
+  --color-accent-icon: #7BA3C9;
+  --color-accent-badge-bg: rgba(123, 163, 201, 0.14);
+  --color-accent-badge-text: #A8C4DE;
+  --color-btn-secondary-bg: #1A2330;
+  --color-btn-secondary-text: #F1F4F8;
+  --color-navy-deep: #070A0F;
+  --shadow-card: 0 8px 28px rgb(0 0 0 / 0.4);
+  --shadow-card-hover: 0 16px 40px rgb(123 163 201 / 0.12);
+  --shadow-cta: 0 8px 24px rgb(253 224 71 / 0.28);
+  --shadow-glow-cyan: 0 0 32px rgb(123 163 201 / 0.14);
+  --shadow-glow-amber: 0 0 28px rgb(253 224 71 / 0.28);
+  --shadow-nav: 0 10px 32px rgb(0 0 0 / 0.5);
   --gradient-hero: linear-gradient(
     155deg,
-    #000000 0%,
-    #030712 22%,
-    #0B1220 48%,
-    #0C4A6E 75%,
-    #06B6D4 100%
+    #05070A 0%,
+    #070A0F 24%,
+    #0E141C 52%,
+    #1A2838 78%,
+    #2A3F55 100%
   );
   --gradient-hero-scrim:
-    radial-gradient(ellipse 55% 45% at 80% 12%, rgb(251 191 36 / 0.18) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 50% at 15% 88%, rgb(34 211 238 / 0.22) 0%, transparent 58%),
-    radial-gradient(ellipse 90% 70% at 50% 100%, rgb(0 0 0 / 0.9) 0%, transparent 70%);
-  --gradient-hero-grid: linear-gradient(rgb(34 211 238 / 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(34 211 238 / 0.08) 1px, transparent 1px);
+    radial-gradient(ellipse 50% 40% at 82% 10%, rgb(196 165 116 / 0.1) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 45% at 12% 88%, rgb(123 163 201 / 0.12) 0%, transparent 58%),
+    radial-gradient(ellipse 90% 70% at 50% 100%, rgb(0 0 0 / 0.85) 0%, transparent 70%);
+  --gradient-hero-grid: linear-gradient(rgb(123 163 201 / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(123 163 201 / 0.05) 1px, transparent 1px);
   --gradient-page: var(--color-bg-primary);
 }

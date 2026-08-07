@@ -1,4 +1,4 @@
-import { ArrowRight, ChevronDown, Sparkles } from 'lucide-react'
+import { ArrowRight, ChevronDown } from 'lucide-react'
 import { useRef } from 'react'
 import { PROFILE_IMAGE } from '../constants/lcp-image'
 import { graduation } from '../data/profile'
@@ -39,8 +39,8 @@ export default function Hero() {
       <div className="relative z-10 max-w-6xl mx-auto px-4 w-full hero-stagger">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="text-left">
-            <p className="hero-entrance hero-entrance-delay-1 inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-bold text-[var(--hero-eyebrow)] mb-5 hero-eyebrow-glow">
-              <Sparkles size={14} className="text-[var(--color-accent-primary)]" />
+            <p className="hero-entrance hero-entrance-delay-1 inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em] font-semibold text-[var(--hero-eyebrow)] mb-5 hero-eyebrow-glow">
+              <span className="h-px w-6 bg-[var(--color-accent-primary)]/70" aria-hidden />
               Full-Stack Developer · Ing. Sistemas
             </p>
 
@@ -65,12 +65,12 @@ export default function Hero() {
               {heroBio}
             </p>
 
-            <div className="hero-cta-entrance flex flex-wrap gap-3 mb-8">
+            <div className="hero-cta-entrance flex flex-wrap items-center gap-3 mb-8">
               <Button
                 variant="primary"
                 href="#portafolio"
                 trailingIcon={<ArrowRight size={14} />}
-                className="!bg-[var(--color-amber-bright)] !text-[#0A0F1A] !font-bold !shadow-[var(--shadow-cta)] hover:!brightness-110 hover:!shadow-[var(--shadow-glow-amber)]"
+                className="!rounded-full !min-h-11 !min-w-[12.5rem] !justify-center !bg-[var(--color-accent-cta)] !text-[#0B1220] !font-bold !shadow-[var(--shadow-cta)] hover:!brightness-105 hover:!shadow-[var(--shadow-glow-amber)]"
               >
                 Ver proyectos
               </Button>
@@ -79,8 +79,8 @@ export default function Hero() {
                 to="/about"
                 className={
                   isDarkHero
-                    ? '!text-white !border-white/60 !bg-white/10 hover:!bg-white/20 hover:!border-[var(--color-cyan-bright)] backdrop-blur-sm'
-                    : '!text-[var(--hero-text)] !border-[var(--color-accent-primary)]/35 !bg-white/70 hover:!bg-white/90 hover:!border-[var(--color-accent-primary)] backdrop-blur-sm'
+                    ? '!rounded-full !min-h-11 !justify-center !text-white !border-white/45 !bg-white/8 hover:!bg-white/14 hover:!border-[var(--color-cyan-bright)] backdrop-blur-sm'
+                    : '!rounded-full !min-h-11 !justify-center !text-[var(--hero-text)] !border-[var(--color-accent-primary)]/30 !bg-white/75 hover:!bg-white/95 hover:!border-[var(--color-accent-primary)] backdrop-blur-sm'
                 }
               >
                 Sobre mí

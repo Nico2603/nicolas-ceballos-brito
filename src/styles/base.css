@@ -133,7 +133,7 @@ textarea::placeholder {
 }
 
 .hero-eyebrow-glow {
-  text-shadow: 0 0 20px rgb(251 191 36 / 0.5);
+  text-shadow: 0 0 16px rgb(154 112 70 / 0.28);
 }
 
 .hero-profile-ring {
@@ -142,14 +142,14 @@ textarea::placeholder {
   border-radius: 18px;
   background: conic-gradient(
     from 0deg,
-    #22D3EE,
-    #FBBF24,
-    #22D3EE,
-    #06B6D4,
-    #F59E0B,
-    #22D3EE
+    #3D5A80,
+    #FACC15,
+    #2F4A6B,
+    #7BA3C9,
+    #EAB308,
+    #3D5A80
   );
-  opacity: 0.9;
+  opacity: 0.72;
 }
 
 .hero-decor-active .hero-profile-ring {

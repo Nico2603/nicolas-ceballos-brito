@@ -28,7 +28,6 @@ export function useHeroDecorSettle(heroRef: RefObject<HTMLElement | null>): void
     let inViewport = true
     let idleId: number | undefined
     let timeoutId: ReturnType<typeof setTimeout> | undefined
-    let observer: IntersectionObserver | undefined
 
     const syncClass = () => {
       if (settled && inViewport) {
@@ -66,7 +65,7 @@ export function useHeroDecorSettle(heroRef: RefObject<HTMLElement | null>): void
       window.addEventListener('load', onLoad, { once: true })
     }
 
-    observer = new IntersectionObserver(
+    const observer = new IntersectionObserver(
       ([entry]) => {
         inViewport = entry?.isIntersecting ?? false
         syncClass()
@@ -83,7 +82,7 @@ export function useHeroDecorSettle(heroRef: RefObject<HTMLElement | null>): void
       if (timeoutId != null) {
         globalThis.clearTimeout(timeoutId)
       }
-      observer?.disconnect()
+      observer.disconnect()
       element.classList.remove(DECOR_CLASS)
     }
   }, [heroRef])

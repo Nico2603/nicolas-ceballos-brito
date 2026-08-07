@@ -70,14 +70,14 @@ export default function Button(props: ButtonProps) {
   const classes = getClasses(variant, className)
 
   const inner = (
-    <>
-      {children}
+    <span className="inline-flex items-center justify-center gap-2">
+      <span className="leading-none">{children}</span>
       {trailingIcon && (
-        <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-black/10">
+        <span className="inline-flex shrink-0 items-center justify-center" aria-hidden>
           {trailingIcon}
         </span>
       )}
-    </>
+    </span>
   )
 
   if ('to' in props && props.to) {

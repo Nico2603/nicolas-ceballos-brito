@@ -8,6 +8,8 @@
     "prebuild": "node scripts/generate-og-image.mjs && node scripts/normalize-seo-images.mjs && node scripts/optimize-profile-images.mjs && tsx scripts/generate-sitemap.ts && tsx scripts/generate-llms-txt.ts && tsx scripts/inject-home-schema.ts && tsx scripts/validate-linkedin-urls.ts",
     "build": "tsc -b && vite build && tsx scripts/prerender.ts",
     "lint": "eslint .",
+    "deploy:prod": "powershell -NoProfile -ExecutionPolicy Bypass -File \"%LOCALAPPDATA%\\cursor-agent\\personal\\scripts\\Deploy-PersonalProject.ps1\" -ProjectSlug nicolas-ceballos-brito -Target production",
+    "deploy:preflight": "powershell -NoProfile -ExecutionPolicy Bypass -File \"%LOCALAPPDATA%\\cursor-agent\\personal\\tests\\Probe-PersonalDeploy.ps1\"",
     "sync:linkedin": "tsx scripts/sync-linkedin.ts",
     "preview": "vite preview",
     "audit:contrast": "npm run build && tsx scripts/audit-contrast.ts",
