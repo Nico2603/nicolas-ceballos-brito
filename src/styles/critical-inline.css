@@ -1,18 +1,18 @@
 /* Above-the-fold: hero H1 + navbar shell — inlined in prerender home only */
 :root {
-  --hero-text: #0a0f1a;
-  --hero-text-muted: #334155;
-  --hero-subtitle: #0e7490;
-  --gradient-hero: linear-gradient(165deg, #f0f7ff 0%, #e8f4fc 45%, #eef4fb 100%);
+  --hero-text: #0b1220;
+  --hero-text-muted: #3f4b5a;
+  --hero-subtitle: #2f4a6b;
+  --gradient-hero: linear-gradient(165deg, #f7f8fa 0%, #eef2f6 45%, #e8edf2 100%);
   --gradient-hero-scrim: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, transparent 60%);
 }
 
 .dark {
-  --hero-text: #f8fafc;
-  --hero-text-muted: #94a3b8;
-  --hero-subtitle: #22d3ee;
-  --gradient-hero: linear-gradient(165deg, #0b1220 0%, #0f172a 50%, #0b1220 100%);
-  --gradient-hero-scrim: linear-gradient(180deg, rgba(11, 18, 32, 0.5) 0%, transparent 60%);
+  --hero-text: #f7f9fc;
+  --hero-text-muted: #a8b3c2;
+  --hero-subtitle: #a8c4de;
+  --gradient-hero: linear-gradient(165deg, #070a0f 0%, #0e141c 50%, #070a0f 100%);
+  --gradient-hero-scrim: linear-gradient(180deg, rgba(7, 10, 15, 0.5) 0%, transparent 60%);
 }
 
 .font-display {
