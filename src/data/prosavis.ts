@@ -12,9 +12,9 @@ export const PROSAVIS_PLAY_STORE_URL =
 export const PROSAVIS_APP_STORE_URL =
   'https://apps.apple.com/co/app/prosavis/id6754036487'
 
-export const PROSAVIS_ROLE_TITLE = 'App Lead Developer'
+export const PROSAVIS_ROLE_TITLE = 'Director técnico'
 
-export const PROSAVIS_PERIOD = 'Jul 2025 – Presente'
+export const PROSAVIS_PERIOD = 'Sept 2025 – Presente'
 
 export const PROSAVIS_TAGLINE =
   'La app de confianza para servicios verificados en Colombia'
@@ -23,7 +23,7 @@ export const PROSAVIS_SUMMARY =
   'Prosavis conecta personas y empresas con profesionales verificados para el hogar y la oficina: limpieza, plomería, electricidad y más. Incluye búsqueda inteligente, mapa interactivo, chat en tiempo real, agenda y pagos seguros — con cobertura nacional del marketplace y una vertical fuerte de limpieza en el Eje Cafetero.'
 
 export const PROSAVIS_ROLE_SUMMARY =
-  'Como App Lead Developer dirijo el desarrollo, la estrategia y el lanzamiento del producto: roadmap, equipo técnico, experiencia móvil y alianzas. Trabajo en una compañía que está creciendo con fuerza en el sector de servicios locales en Colombia.'
+  'Como CTO de Prosavis defino la visión tecnológica y lidero el equipo técnico: arquitectura, adopción de nuevas tecnologías, ciberseguridad, costos operativos y las implementaciones de mayor complejidad — alineando la plataforma con los objetivos de negocio.'
 
 export const PROSAVIS_GROWTH_LINE =
   'Marketplace en expansión · producto vivo en producción · stack multi-superficie'

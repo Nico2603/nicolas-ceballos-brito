@@ -6,7 +6,7 @@ import Button from './ui/Button'
 import Card from './ui/Card'
 import SectionHeader from './ui/SectionHeader'
 
-/** Educación + 4 roles (CTO Prosavis + Neacsu + venture studios) en grilla 2×2. */
+/** Educación + 4 roles LinkedIn (Director técnico, App Lead, Modin, Teilur) en grilla 2×2. */
 export default function CurrentExperience() {
   return (
     <SectionWrapper id="experiencia" className="py-20 px-4 bg-[var(--color-bg-primary)] relative">
@@ -15,7 +15,7 @@ export default function CurrentExperience() {
           eyebrow="Trayectoria"
           title="Más"
           highlight="experiencia"
-          description={`CTO en Prosavis, desarrollo cross-platform, venture studios e ingeniería · ${PROFESSIONAL_LOCATION}.`}
+          description={`Director técnico en Prosavis, liderazgo de producto y venture studios de IA · ${PROFESSIONAL_LOCATION}.`}
         />
 
         <div className="space-y-8 stagger-reveal">
@@ -69,9 +69,7 @@ export default function CurrentExperience() {
                           {role.location}
                         </p>
                       </div>
-                      {role.id === 'prosavis' && role.current && (
-                        <Badge variant="accent">Actual</Badge>
-                      )}
+                      {role.current && <Badge variant="accent">Actual</Badge>}
                     </div>
 
                     <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed mb-4 flex-grow">

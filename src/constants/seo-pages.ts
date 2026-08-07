@@ -6,12 +6,12 @@ function truncate(text: string, maxLength: number): string {
   return `${text.slice(0, maxLength - 1).trim()}…`
 }
 
-export const SEO_HOME_TITLE = `${FULL_NAME} — App Lead en Prosavis · Freelance`
+export const SEO_HOME_TITLE = `${FULL_NAME} — Director técnico en Prosavis · Freelance`
 
 export const SEO_HOME_DESCRIPTION = truncate(heroBio, 160)
 
 export const SEO_HOME_KEYWORDS =
-  'Nicolás Ceballos Brito, Prosavis, App Lead Developer, freelance, desarrollador web, React, TypeScript, Flutter, startups, Pereira, Colombia'
+  'Nicolás Ceballos Brito, Prosavis, Director técnico, CTO, freelance, desarrollador web, React, TypeScript, Flutter, startups, Pereira, Colombia'
 
 export const SEO_ABOUT_TITLE = `Acerca de mí — ${FULL_NAME}`
 
