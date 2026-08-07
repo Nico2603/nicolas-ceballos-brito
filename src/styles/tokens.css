@@ -19,9 +19,9 @@
   --color-cyan: #3D5A80;
   --color-cyan-bright: #7BA3C9;
   --color-cyan-glow: #A8C4DE;
-  --color-amber: #EAB308;
-  --color-amber-bright: #FACC15;
-  --color-amber-glow: #FDE047;
+  --color-amber: #FACC15;
+  --color-amber-bright: #FFEB3B;
+  --color-amber-glow: #FFF59D;
   --font-sans: 'Plus Jakarta Sans', sans-serif;
   --font-display: 'Fraunces', 'Fraunces Fallback', Georgia, 'Times New Roman', serif;
   --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
@@ -45,7 +45,7 @@
   --color-border-light: #D5DCE5;
   --color-nav-bg: rgba(255, 255, 255, 0.94);
   --color-accent-primary: #2F4A6B;
-  --color-accent-cta: #FACC15;
+  --color-accent-cta: #FFEB3B;
   --color-accent-label: #2F4A6B;
   --color-accent-highlight: #0B1220;
   --color-accent-icon: #3D5A80;
@@ -56,9 +56,9 @@
   --color-navy-deep: #0F172A;
   --shadow-card: 0 8px 28px rgb(15 23 42 / 0.08);
   --shadow-card-hover: 0 16px 40px rgb(47 74 107 / 0.14);
-  --shadow-cta: 0 8px 24px rgb(250 204 21 / 0.35);
+  --shadow-cta: 0 8px 24px rgb(255 235 59 / 0.4);
   --shadow-glow-cyan: 0 0 28px rgb(61 90 128 / 0.16);
-  --shadow-glow-amber: 0 0 24px rgb(250 204 21 / 0.35);
+  --shadow-glow-amber: 0 0 24px rgb(255 235 59 / 0.4);
   --shadow-nav: 0 10px 32px rgb(15 23 42 / 0.12);
   --hero-text: #0B1220;
   --hero-text-muted: rgba(11, 18, 32, 0.82);
@@ -106,9 +106,9 @@
   --color-border-light: #243041;
   --color-nav-bg: rgba(7, 10, 15, 0.92);
   --color-accent-primary: #7BA3C9;
-  --color-accent-cta: #FDE047;
+  --color-accent-cta: #FFEB3B;
   --color-accent-label: #A8C4DE;
-  --color-accent-highlight: #FDE047;
+  --color-accent-highlight: #FFEB3B;
   --color-accent-icon: #7BA3C9;
   --color-accent-badge-bg: rgba(123, 163, 201, 0.14);
   --color-accent-badge-text: #A8C4DE;
@@ -117,9 +117,9 @@
   --color-navy-deep: #070A0F;
   --shadow-card: 0 8px 28px rgb(0 0 0 / 0.4);
   --shadow-card-hover: 0 16px 40px rgb(123 163 201 / 0.12);
-  --shadow-cta: 0 8px 24px rgb(253 224 71 / 0.28);
+  --shadow-cta: 0 8px 24px rgb(255 235 59 / 0.32);
   --shadow-glow-cyan: 0 0 32px rgb(123 163 201 / 0.14);
-  --shadow-glow-amber: 0 0 28px rgb(253 224 71 / 0.28);
+  --shadow-glow-amber: 0 0 28px rgb(255 235 59 / 0.32);
   --shadow-nav: 0 10px 32px rgb(0 0 0 / 0.5);
   --gradient-hero: linear-gradient(
     155deg,

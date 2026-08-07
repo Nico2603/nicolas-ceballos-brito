@@ -65,22 +65,18 @@ export default function Hero() {
               {heroBio}
             </p>
 
-            <div className="hero-cta-entrance flex flex-wrap items-center gap-3 mb-8">
-              <Button
-                variant="primary"
-                href="#portafolio"
-                trailingIcon={<ArrowRight size={16} strokeWidth={2.25} />}
-                className="!h-11 !px-7 !rounded-full !bg-[var(--color-accent-cta)] !text-[#0B1220] !font-bold !leading-none !shadow-[var(--shadow-cta)] hover:!brightness-105 hover:!shadow-[var(--shadow-glow-amber)]"
-              >
-                Ver proyectos
-              </Button>
+            <div className="hero-cta-entrance hero-cta-row mb-8">
+              <a href="#portafolio" className="hero-btn-primary">
+                <span>Ver proyectos</span>
+                <ArrowRight size={16} strokeWidth={2.25} aria-hidden />
+              </a>
               <Button
                 variant="ghost"
                 to="/about"
                 className={
                   isDarkHero
-                    ? '!h-11 !px-7 !rounded-full !leading-none !text-white !border-white/45 !bg-white/8 hover:!bg-white/14 hover:!border-[var(--color-cyan-bright)] backdrop-blur-sm'
-                    : '!h-11 !px-7 !rounded-full !leading-none !text-[var(--hero-text)] !border-[var(--color-accent-primary)]/30 !bg-white/75 hover:!bg-white/95 hover:!border-[var(--color-accent-primary)] backdrop-blur-sm'
+                    ? 'hero-btn-secondary !text-white !border-white/45 !bg-white/8 hover:!bg-white/14 hover:!border-[var(--color-cyan-bright)]'
+                    : 'hero-btn-secondary !text-[var(--hero-text)] !border-[var(--color-accent-primary)]/30 !bg-white/75 hover:!bg-white/95 hover:!border-[var(--color-accent-primary)]'
                 }
               >
                 Sobre mí
