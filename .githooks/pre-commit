@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+if git diff --cached -U0 | grep -Eiq '(api[_-]?key|secret|token|password)\s*[:=]\s*['\''\"][^'\''\"]{8,}'; then
+  echo 'POLICY_SECRET_SCAN: possible secret in staged changes' >&2
+  exit 1
+fi
+if git diff --cached --name-only | grep -Eiq '(^|/)\.env($|\.|\\.local)|credentials|id_rsa'; then
+  echo 'POLICY_SECRET_SCAN: blocked sensitive filename in staged changes' >&2
+  exit 1
+fi
+exit 0

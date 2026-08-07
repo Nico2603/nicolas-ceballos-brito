@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+EXPECTED_REMOTE="https://github.com/Nico2603/nicolas-ceballos-brito.git"
+remote_url="$(git remote get-url origin | sed 's#\.git$##')"
+expected="$(echo "$EXPECTED_REMOTE" | sed 's#\.git$##')"
+if [ "$(echo "$remote_url" | tr '[:upper:]' '[:lower:]')" != "$(echo "$expected" | tr '[:upper:]' '[:lower:]')" ]; then
+  echo "POLICY_REMOTE_MISMATCH: origin is $remote_url (expected $EXPECTED_REMOTE)" >&2
+  exit 1
+fi
+exit 0

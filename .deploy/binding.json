@@ -1,0 +1,13 @@
+{
+  "github": "Nico2603/nicolas-ceballos-brito",
+  "vercel": {
+    "enabled": false,
+    "verificationStatus": "blocked-until-orgId-and-projectId-match-domain-and-git-repo",
+    "documentedTeamSlug": "flackosss",
+    "documentedProjectName": "nicolas-ceballos-brito",
+    "productionBranch": "master"
+  },
+  "supabase": {
+    "enabled": false
+  }
+}

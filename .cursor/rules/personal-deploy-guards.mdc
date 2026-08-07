@@ -1,0 +1,12 @@
+---
+description: Fail-closed deploy and provider guards for personal My Machines
+alwaysApply: true
+---
+
+# Personal deploy guards (Portfolio)
+
+- Production path: GitHub PR → merge to `master` → Vercel Git integration only.
+- Vercel MCP/CLI inspect stays **blocked** until `orgId`/`projectId` are verified against team `flackosss` and written into `.deploy/binding.json` + personal manifest.
+- Never run `vercel --prod`, `vercel link`, `vercel unlink`, or scope/project switching.
+- Before any provider action, run `%LOCALAPPDATA%\cursor-agent\personal\scripts\Assert-PersonalProject.ps1 -ProjectSlug nicolas-ceballos-brito -Operation sensitive`.
+- Secrets never go in git, chat, MCP JSON, or scripts.
