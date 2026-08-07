@@ -45,7 +45,7 @@ export default function CurrentWorkProsavis() {
           />
         </div>
 
-        <div className="mb-10 sm:mb-12 grid grid-cols-2 md:grid-cols-12 gap-3 sm:gap-4 md:gap-5">
+        <div className="mb-10 sm:mb-12 grid grid-cols-2 md:grid-cols-12 gap-3 sm:gap-4 md:gap-5 overflow-hidden">
           <a
             href={PROSAVIS_URL}
             target="_blank"
@@ -74,14 +74,14 @@ export default function CurrentWorkProsavis() {
             href={PROSAVIS_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="col-span-1 md:col-span-5 md:row-span-1 group relative block overflow-hidden rounded-2xl md:rounded-[1.25rem] ring-1 ring-[var(--color-border-light)] md:hidden"
+            className="col-span-1 md:hidden group relative block overflow-hidden rounded-2xl ring-1 ring-[var(--color-border-light)]"
           >
             <OptimizedImage
               src={PROSAVIS_IMAGES.og.src}
               alt={PROSAVIS_IMAGES.og.alt}
               width={PROSAVIS_IMAGES.og.width}
               height={PROSAVIS_IMAGES.og.height}
-              className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
+              className="h-full w-full object-cover object-left transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
               wrapperClassName="aspect-[4/3] h-full"
             />
           </a>
@@ -102,19 +102,19 @@ export default function CurrentWorkProsavis() {
             />
           </a>
 
-          <div className="hidden md:grid md:col-span-5 grid-rows-2 gap-4 md:gap-5">
+          <div className="hidden md:grid md:col-span-5 min-w-0 grid-rows-2 gap-4 md:gap-5">
             <a
               href={PROSAVIS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative block overflow-hidden rounded-[1.25rem] ring-1 ring-[var(--color-border-light)]"
+              className="group relative block min-w-0 overflow-hidden rounded-[1.25rem] ring-1 ring-[var(--color-border-light)]"
             >
               <OptimizedImage
                 src={PROSAVIS_IMAGES.og.src}
                 alt={PROSAVIS_IMAGES.og.alt}
                 width={PROSAVIS_IMAGES.og.width}
                 height={PROSAVIS_IMAGES.og.height}
-                className="h-full min-h-[8.5rem] w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
+                className="h-full min-h-[8.5rem] w-full object-cover object-left transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
                 wrapperClassName="h-full min-h-[8.5rem]"
               />
             </a>
@@ -122,7 +122,7 @@ export default function CurrentWorkProsavis() {
               href={PROSAVIS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative block overflow-hidden rounded-[1.25rem] ring-1 ring-[var(--color-border-light)]"
+              className="group relative block min-w-0 overflow-hidden rounded-[1.25rem] ring-1 ring-[var(--color-border-light)]"
             >
               <OptimizedImage
                 src={PROSAVIS_IMAGES.relax.src}

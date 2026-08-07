@@ -31,8 +31,8 @@ export default function SocialLinks({ className = '', size = 'md', variant = 'de
           aria-label={label}
           className={`${buttonSize} flex items-center justify-center rounded-xl border transition-all duration-300 hover:-translate-y-0.5 ${
             isOnDark
-              ? 'bg-white/10 border-white/20 hover:bg-white/20'
-              : 'bg-[var(--color-bg-card)] border-[var(--color-border-light)] shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)]'
+              ? 'bg-white/12 border-white/30 text-white hover:bg-white/22'
+              : 'bg-white border-[var(--color-border-light)] shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)]'
           }`}
           style={{ color: isOnDark ? 'white' : color }}
         >

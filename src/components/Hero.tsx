@@ -82,8 +82,8 @@ export default function Hero() {
                 href="#ahora"
                 className={
                   isDarkHero
-                    ? 'hero-btn-secondary !text-white !border-white/45 !bg-white/8 hover:!bg-white/14 hover:!border-[var(--color-cyan-bright)]'
-                    : 'hero-btn-secondary !text-[var(--hero-text)] !border-[var(--color-accent-primary)]/30 !bg-white/75 hover:!bg-white/95 hover:!border-[var(--color-accent-primary)]'
+                    ? 'hero-btn-secondary !text-white !border-white/50 !bg-white/12 hover:!bg-white/18 hover:!border-[var(--color-cyan-bright)]'
+                    : 'hero-btn-secondary !text-[#0B1220] !border-[#2F4A6B]/55 !bg-white hover:!bg-[#F4F6F8] hover:!border-[#2F4A6B] shadow-sm'
                 }
               >
                 Ver trabajo actual
@@ -91,7 +91,10 @@ export default function Hero() {
             </div>
 
             <div className="hero-social-entrance">
-              <SocialLinks variant={isDarkHero ? 'onDark' : 'default'} />
+              <SocialLinks
+                variant={isDarkHero ? 'onDark' : 'default'}
+                className="!justify-start"
+              />
             </div>
           </div>
 

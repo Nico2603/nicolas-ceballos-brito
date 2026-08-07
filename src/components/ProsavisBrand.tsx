@@ -1,11 +1,15 @@
 import { PROSAVIS_IMAGES, PROSAVIS_NAME } from '../data/prosavis'
+import { useTheme } from '../context/ThemeContext'
 
 type ProsavisBrandProps = {
   /** Tamaño del ícono: sm (hero móvil), md (default), lg (sección) */
   size?: 'sm' | 'md' | 'lg'
   /** Mostrar wordmark PROSAVIS */
   showWordmark?: boolean
-  /** Chip detrás del wordmark para contraste en fondos oscuros */
+  /**
+   * Forzar chip oscuro detrás del wordmark (p. ej. sobre foto).
+   * En tema dark el wordmark siempre va sobre chip claro (PRO navy ilegible en negro).
+   */
   wordmarkOnDark?: boolean
   className?: string
 }
@@ -37,7 +41,16 @@ export default function ProsavisBrand({
   wordmarkOnDark = false,
   className = '',
 }: ProsavisBrandProps) {
+  const { theme } = useTheme()
   const s = sizeMap[size]
+  const isDarkTheme = theme === 'dark'
+
+  // Wordmark tiene "PRO" en navy: necesita superficie clara en dark mode.
+  const chipClass = wordmarkOnDark
+    ? `rounded-lg bg-black/55 ${s.chip} backdrop-blur-sm ring-1 ring-white/15`
+    : isDarkTheme
+      ? `rounded-lg bg-white ${s.chip} shadow-sm ring-1 ring-black/10`
+      : ''
 
   return (
     <div className={`inline-flex items-center ${s.gap} min-w-0 max-w-full ${className}`.trim()}>
@@ -51,13 +64,7 @@ export default function ProsavisBrand({
         className={`${s.icon} shrink-0 object-contain`}
       />
       {showWordmark ? (
-        <span
-          className={
-            wordmarkOnDark
-              ? `inline-flex min-w-0 items-center rounded-lg bg-black/55 ${s.chip} backdrop-blur-sm ring-1 ring-white/15`
-              : 'inline-flex min-w-0 items-center'
-          }
-        >
+        <span className={`inline-flex min-w-0 items-center ${chipClass}`.trim()}>
           <img
             src={PROSAVIS_IMAGES.wordmark.src}
             alt={PROSAVIS_IMAGES.wordmark.alt || PROSAVIS_NAME}
