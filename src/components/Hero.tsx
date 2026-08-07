@@ -10,7 +10,6 @@ import {
   PROSAVIS_ROLE_TITLE,
   PROSAVIS_URL,
 } from '../data/prosavis'
-import { useTheme } from '../context/ThemeContext'
 import { useHeroDecorSettle } from '../hooks/useHeroDecorSettle'
 import Button from './ui/Button'
 import DeferredHeroDecor from './DeferredHeroDecor'
@@ -27,8 +26,6 @@ const currentSignals = [
 ]
 
 export default function Hero() {
-  const { theme } = useTheme()
-  const isDarkHero = theme === 'dark'
   const heroRef = useRef<HTMLElement>(null)
   useHeroDecorSettle(heroRef)
 
@@ -77,24 +74,13 @@ export default function Hero() {
                 <span>Hablemos de tu proyecto</span>
                 <ArrowRight size={16} strokeWidth={2.25} aria-hidden />
               </a>
-              <Button
-                variant="ghost"
-                href="#ahora"
-                className={
-                  isDarkHero
-                    ? 'hero-btn-secondary !text-white !border-white/50 !bg-white/12 hover:!bg-white/18 hover:!border-[var(--color-cyan-bright)]'
-                    : 'hero-btn-secondary !text-[#0B1220] !border-[#2F4A6B]/55 !bg-white hover:!bg-[#F4F6F8] hover:!border-[#2F4A6B] shadow-sm'
-                }
-              >
+              <Button variant="ghost" href="#ahora" className="hero-btn-secondary">
                 Ver trabajo actual
               </Button>
             </div>
 
             <div className="hero-social-entrance">
-              <SocialLinks
-                variant={isDarkHero ? 'onDark' : 'default'}
-                className="!justify-start"
-              />
+              <SocialLinks className="hero-social-links !justify-start" />
             </div>
           </div>
 

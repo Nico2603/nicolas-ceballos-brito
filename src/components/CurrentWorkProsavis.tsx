@@ -24,7 +24,7 @@ export default function CurrentWorkProsavis() {
   return (
     <SectionWrapper
       id="ahora"
-      className="py-16 sm:py-20 md:py-28 px-4 bg-[var(--color-bg-secondary)] relative overflow-hidden"
+      className="scroll-mt-24 md:scroll-mt-28 py-16 sm:py-20 md:py-28 px-4 bg-[var(--color-bg-secondary)] relative overflow-hidden"
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-40"

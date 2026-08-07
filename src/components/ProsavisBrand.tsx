@@ -1,5 +1,4 @@
 import { PROSAVIS_IMAGES, PROSAVIS_NAME } from '../data/prosavis'
-import { useTheme } from '../context/ThemeContext'
 
 type ProsavisBrandProps = {
   /** Tamaño del ícono: sm (hero móvil), md (default), lg (sección) */
@@ -29,7 +28,7 @@ const sizeMap = {
   },
   lg: {
     icon: 'h-12 w-12 sm:h-14 sm:w-14',
-    wordmark: 'h-5 sm:h-7 max-w-[10rem] sm:max-w-[13rem]',
+    wordmark: 'h-6 sm:h-7 w-auto max-w-[11rem] sm:max-w-[14rem]',
     gap: 'gap-3',
     chip: 'px-2.5 py-1.5',
   },
@@ -41,16 +40,12 @@ export default function ProsavisBrand({
   wordmarkOnDark = false,
   className = '',
 }: ProsavisBrandProps) {
-  const { theme } = useTheme()
   const s = sizeMap[size]
-  const isDarkTheme = theme === 'dark'
 
-  // Wordmark tiene "PRO" en navy: necesita superficie clara en dark mode.
+  // Chip vía CSS (.dark) — no depende del state React del theme.
   const chipClass = wordmarkOnDark
-    ? `rounded-lg bg-black/55 ${s.chip} backdrop-blur-sm ring-1 ring-white/15`
-    : isDarkTheme
-      ? `rounded-lg bg-white ${s.chip} shadow-sm ring-1 ring-black/10`
-      : ''
+    ? `prosavis-wordmark-chip prosavis-wordmark-chip--on-media ${s.chip}`
+    : `prosavis-wordmark-chip ${s.chip}`
 
   return (
     <div className={`inline-flex items-center ${s.gap} min-w-0 max-w-full ${className}`.trim()}>
@@ -64,7 +59,7 @@ export default function ProsavisBrand({
         className={`${s.icon} shrink-0 object-contain`}
       />
       {showWordmark ? (
-        <span className={`inline-flex min-w-0 items-center ${chipClass}`.trim()}>
+        <span className={`inline-flex shrink-0 items-center rounded-lg ${chipClass}`.trim()}>
           <img
             src={PROSAVIS_IMAGES.wordmark.src}
             alt={PROSAVIS_IMAGES.wordmark.alt || PROSAVIS_NAME}
@@ -72,7 +67,7 @@ export default function ProsavisBrand({
             height={PROSAVIS_IMAGES.wordmark.height}
             loading="lazy"
             decoding="async"
-            className={`${s.wordmark} w-auto object-contain object-left`}
+            className={`${s.wordmark} object-contain object-left`}
           />
         </span>
       ) : null}
