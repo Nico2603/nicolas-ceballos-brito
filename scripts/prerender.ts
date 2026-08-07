@@ -6,12 +6,17 @@ import chromium from '@sparticuz/chromium'
 import puppeteer, { type Browser } from 'puppeteer'
 import puppeteerCore from 'puppeteer-core'
 import { PRERENDER_ROUTES } from '../src/constants/seo-routes.ts'
+import {
+  SEO_ABOUT_TITLE,
+  SEO_HOME_TITLE,
+  SEO_REPOSITORIES_TITLE,
+} from '../src/constants/seo-pages.ts'
 import { FULL_NAME } from '../src/constants/social.ts'
 
 const ROUTE_TITLES: Record<string, string> = {
-  '/': `${FULL_NAME} — Portafolio Profesional`,
-  '/about': `Acerca de mí — ${FULL_NAME}`,
-  '/repositories': `Repositorios — ${FULL_NAME}`,
+  '/': SEO_HOME_TITLE,
+  '/about': SEO_ABOUT_TITLE,
+  '/repositories': SEO_REPOSITORIES_TITLE,
   '/desarrollo-web': `Desarrollo Web — ${FULL_NAME}`,
   '/inteligencia-artificial': `Inteligencia Artificial — ${FULL_NAME}`,
   '/analisis-datos': `Análisis de Datos — ${FULL_NAME}`,
