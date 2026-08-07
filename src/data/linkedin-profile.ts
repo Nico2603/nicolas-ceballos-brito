@@ -36,14 +36,14 @@ export interface LinkedInExperienceEntry {
 export const linkedInExperience: LinkedInExperienceEntry[] = [
   {
     id: 'prosavis',
-    title: 'App Lead Developer',
+    title: 'CTO',
     company: 'Prosavis',
     period: 'Jul 2025 – Presente (8 meses)',
     location: 'Pereira, Risaralda, Colombia',
     description:
-      'Dirijo el desarrollo, estrategia y lanzamiento de Prosavis, una plataforma móvil para servicios en Colombia. Gestiono equipo de producto, roadmap, marketing digital y partnerships.',
+      'CTO de Prosavis: lidero la estrategia técnica, el desarrollo y el lanzamiento de la plataforma móvil de servicios en Colombia. Dirijo equipo de producto, roadmap, alianzas y la ejecución del stack multi-superficie en producción.',
     department: 'Engineering and Technical',
-    level: 'Manager',
+    level: 'Executive',
     current: true,
     featured: true,
     initials: 'P',
@@ -59,7 +59,8 @@ export const linkedInExperience: LinkedInExperienceEntry[] = [
       'Responsable del ciclo de vida completo del producto: levantamiento de requisitos, diseño de arquitectura, implementación, despliegue y mantenimiento de soluciones móviles y cross-platform. Construyo landing pages, diseño y optimizo bases de datos, desarrollo APIs backend robustas e interfaces frontend responsivas. Uso Flutter, React Native, Kotlin y Swift. Aplico metodologías ágiles, pipelines CI/CD y testing automatizado para entregas de alta calidad.',
     department: 'Engineering and Technical',
     level: 'Specialist',
-    current: true,
+    /** Un solo pin “Actual” en el portafolio: el rol vigente es CTO en Prosavis. */
+    current: false,
     initials: 'NH',
   },
   {

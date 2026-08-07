@@ -32,7 +32,7 @@ export type CurrentRole = LinkedInExperienceEntry & {
 }
 
 function roleTags(role: LinkedInExperienceEntry): string[] {
-  if (role.id === 'prosavis') return ['Flutter', 'Producto', 'Roadmap', 'Firebase']
+  if (role.id === 'prosavis') return ['CTO', 'Producto', 'Flutter', 'Firebase']
   if (role.id === 'neacsu') return ['Flutter', 'React Native', 'CI/CD', 'APIs']
   if (role.id === 'modin' || role.id === 'teilur') return ['IA', 'MVPs', 'Venture Studio', 'GenAI']
   return []

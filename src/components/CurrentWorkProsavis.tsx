@@ -154,7 +154,7 @@ export default function CurrentWorkProsavis() {
                   href={PROSAVIS_PLAY_STORE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-12 w-[9rem] items-center justify-center transition-opacity hover:opacity-90"
+                  className="inline-flex h-[3.45rem] w-[10.35rem] items-center justify-center transition-opacity hover:opacity-90"
                 >
                   <img
                     src={PROSAVIS_IMAGES.badgePlay.src}
