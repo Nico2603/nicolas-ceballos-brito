@@ -1,8 +1,10 @@
 import { ArrowRight, ExternalLink } from 'lucide-react'
 import {
+  PROSAVIS_APP_STORE_URL,
   PROSAVIS_GROWTH_LINE,
   PROSAVIS_HIGHLIGHTS,
   PROSAVIS_IMAGES,
+  PROSAVIS_LIMPIEZA_URL,
   PROSAVIS_NAME,
   PROSAVIS_PERIOD,
   PROSAVIS_PLAY_STORE_URL,
@@ -20,10 +22,10 @@ import Button from './ui/Button'
 import OptimizedImage from './ui/OptimizedImage'
 
 /**
- * Grilla 12 columnas:
- * 1) Cabecera de marca
- * 2) Media 7 + panel 5 (sin banner OG recortado)
- * 3) Copy/CTAs 7 + suite 5
+ * Grilla 12:
+ * 1) Cabecera
+ * 2) Dos fotos 6/6 (mismo aspect 4:3, sin overlay)
+ * 3) Copy + CTAs jerárquicos + suite
  */
 export default function CurrentWorkProsavis() {
   return (
@@ -38,8 +40,7 @@ export default function CurrentWorkProsavis() {
       />
 
       <div className="relative max-w-6xl mx-auto">
-        {/* ── 1. Cabecera ── */}
-        <header className="mb-10 md:mb-14 max-w-3xl">
+        <header className="mb-10 md:mb-12 max-w-3xl">
           <ProsavisBrand size="lg" className="mb-6" />
           <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-bold mb-3 text-[var(--color-accent-label)]">
             <span className="w-6 h-px bg-[var(--color-accent-primary)]" aria-hidden />
@@ -54,72 +55,61 @@ export default function CurrentWorkProsavis() {
           </p>
         </header>
 
-        {/* ── 2. Media grid (12) ── */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-5 mb-12 md:mb-16">
-          <a
-            href={PROSAVIS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="md:col-span-7 group relative block overflow-hidden rounded-2xl ring-1 ring-[var(--color-border-light)]"
-          >
-            <OptimizedImage
-              src={PROSAVIS_IMAGES.limpieza.src}
-              alt={PROSAVIS_IMAGES.limpieza.alt}
-              width={PROSAVIS_IMAGES.limpieza.width}
-              height={PROSAVIS_IMAGES.limpieza.height}
-              className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.02]"
-              wrapperClassName="aspect-[16/10] md:aspect-[16/11] md:min-h-[22rem]"
-            />
-            <div className="absolute inset-x-0 bottom-0 p-4 md:p-6 bg-gradient-to-t from-black/75 via-black/35 to-transparent">
-              <p className="text-white font-display text-lg md:text-2xl font-semibold">
+        {/* Dos imágenes iguales — sin espacio vacío ni texto encima */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 mb-10 md:mb-14">
+          <figure className="min-w-0">
+            <a
+              href={PROSAVIS_LIMPIEZA_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block overflow-hidden rounded-2xl ring-1 ring-[var(--color-border-light)]"
+            >
+              <OptimizedImage
+                src={PROSAVIS_IMAGES.limpieza.src}
+                alt={PROSAVIS_IMAGES.limpieza.alt}
+                width={PROSAVIS_IMAGES.limpieza.width}
+                height={PROSAVIS_IMAGES.limpieza.height}
+                className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.02]"
+                wrapperClassName="aspect-[4/3]"
+              />
+            </a>
+            <figcaption className="mt-3 px-0.5">
+              <p className="font-display text-base font-semibold text-[var(--color-text-primary)]">
                 Prosavis Limpieza
               </p>
-              <p className="text-white/85 text-sm mt-1">Producto vivo · Eje Cafetero</p>
-            </div>
-          </a>
+              <p className="text-sm text-[var(--color-text-secondary)] mt-0.5">
+                Producto vivo · Pereira, Dosquebradas y Cerritos
+              </p>
+            </figcaption>
+          </figure>
 
-          <div className="md:col-span-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-4 md:gap-5 min-w-0">
-            {/* Tarjeta de mensaje completa — reemplaza el OG recortado */}
+          <figure className="min-w-0">
             <a
               href={PROSAVIS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex min-h-[11rem] md:min-h-0 md:flex-1 flex-col justify-between rounded-2xl p-5 md:p-6 text-left transition-transform duration-300 hover:-translate-y-0.5"
-              style={{ background: '#1A6FD4' }}
-            >
-              <div>
-                <p className="font-display text-xl md:text-2xl font-semibold text-white text-balance leading-snug">
-                  Servicios verificados en Colombia
-                </p>
-                <p className="mt-2 text-sm text-white/90 leading-relaxed">
-                  Plomería · Limpieza · Electricidad y más
-                </p>
-              </div>
-              <span className="mt-5 inline-flex w-fit items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-[#0B1220]">
-                prosavis.com
-                <ExternalLink size={14} aria-hidden />
-              </span>
-            </a>
-
-            <a
-              href={PROSAVIS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative block overflow-hidden rounded-2xl ring-1 ring-[var(--color-border-light)] md:flex-1"
+              className="group block overflow-hidden rounded-2xl ring-1 ring-[var(--color-border-light)]"
             >
               <OptimizedImage
                 src={PROSAVIS_IMAGES.relax.src}
                 alt={PROSAVIS_IMAGES.relax.alt}
                 width={PROSAVIS_IMAGES.relax.width}
                 height={PROSAVIS_IMAGES.relax.height}
-                className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.02]"
-                wrapperClassName="aspect-[16/10] sm:aspect-[4/3] md:aspect-auto md:h-full md:min-h-[10.5rem]"
+                className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.02]"
+                wrapperClassName="aspect-[4/3]"
               />
             </a>
-          </div>
+            <figcaption className="mt-3 px-0.5">
+              <p className="font-display text-base font-semibold text-[var(--color-text-primary)]">
+                Marketplace de servicios
+              </p>
+              <p className="text-sm text-[var(--color-text-secondary)] mt-0.5">
+                Profesionales verificados en Colombia
+              </p>
+            </figcaption>
+          </figure>
         </div>
 
-        {/* ── 3. Copy + suite (12) ── */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           <div className="lg:col-span-7 space-y-6">
             <div className="flex flex-wrap items-center gap-2">
@@ -147,34 +137,75 @@ export default function CurrentWorkProsavis() {
               ))}
             </ul>
 
-            <div className="flex flex-col sm:flex-row flex-wrap gap-3 pt-2">
+            {/* CTA primario grande */}
+            <div className="pt-2 space-y-4">
               <Button
                 variant="primary"
                 href={PROSAVIS_URL}
                 external
                 animated
-                trailingIcon={<ExternalLink size={14} />}
-                className="w-full sm:w-auto justify-center"
+                trailingIcon={<ExternalLink size={18} />}
+                className="!h-14 !px-8 !text-base w-full sm:w-auto justify-center shadow-[var(--shadow-cta)]"
               >
                 Ver Prosavis
               </Button>
-              <Button
-                variant="secondary"
-                href={PROSAVIS_PLAY_STORE_URL}
-                external
-                trailingIcon={<ExternalLink size={14} />}
-                className="w-full sm:w-auto justify-center"
-              >
-                Google Play
-              </Button>
-              <Button
-                variant="ghost"
-                href="#contacto"
-                trailingIcon={<ArrowRight size={14} />}
-                className="w-full sm:w-auto justify-center"
-              >
-                ¿Un producto así para tu empresa?
-              </Button>
+
+              {/* Badges de tiendas */}
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href={PROSAVIS_PLAY_STORE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex transition-opacity hover:opacity-90"
+                >
+                  <img
+                    src={PROSAVIS_IMAGES.badgePlay.src}
+                    alt={PROSAVIS_IMAGES.badgePlay.alt}
+                    width={PROSAVIS_IMAGES.badgePlay.width}
+                    height={PROSAVIS_IMAGES.badgePlay.height}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-12 w-auto"
+                  />
+                </a>
+                <a
+                  href={PROSAVIS_APP_STORE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex transition-opacity hover:opacity-90"
+                >
+                  <img
+                    src={PROSAVIS_IMAGES.badgeAppStore.src}
+                    alt={PROSAVIS_IMAGES.badgeAppStore.alt}
+                    width={PROSAVIS_IMAGES.badgeAppStore.width}
+                    height={PROSAVIS_IMAGES.badgeAppStore.height}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-12 w-auto"
+                  />
+                </a>
+              </div>
+
+              {/* Secundarios */}
+              <div className="flex flex-col sm:flex-row flex-wrap gap-2.5">
+                <Button
+                  variant="secondary"
+                  href={PROSAVIS_LIMPIEZA_URL}
+                  external
+                  trailingIcon={<ExternalLink size={14} />}
+                  className="w-full sm:w-auto justify-center !text-sm"
+                >
+                  Prosavis Limpieza
+                </Button>
+                <Button
+                  variant="ghost"
+                  href="#contacto"
+                  trailingIcon={<ArrowRight size={14} />}
+                  className="w-full sm:w-auto justify-center !text-sm"
+                >
+                  ¿Un producto así para tu empresa?
+                </Button>
+              </div>
             </div>
           </div>
 

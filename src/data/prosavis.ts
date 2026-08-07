@@ -4,8 +4,13 @@ export const PROSAVIS_NAME = 'Prosavis'
 
 export const PROSAVIS_URL = 'https://prosavis.com/'
 
+export const PROSAVIS_LIMPIEZA_URL = 'https://prosavis.com/limpieza'
+
 export const PROSAVIS_PLAY_STORE_URL =
   'https://play.google.com/store/apps/details?id=com.prosavis.app'
+
+export const PROSAVIS_APP_STORE_URL =
+  'https://apps.apple.com/co/app/prosavis/id6754036487'
 
 export const PROSAVIS_ROLE_TITLE = 'App Lead Developer'
 
@@ -26,7 +31,7 @@ export const PROSAVIS_GROWTH_LINE =
 export const PROSAVIS_SUITE = [
   {
     name: 'App móvil',
-    detail: 'Producto principal en Android (Google Play) para contratar servicios verificados.',
+    detail: 'Producto principal en Android e iOS para contratar servicios verificados.',
   },
   {
     name: 'Web',
@@ -59,14 +64,12 @@ export const PROSAVIS_HIGHLIGHTS = [
 
 /** Assets públicos de Prosavis-Web / branding (copiados a este sitio). */
 export const PROSAVIS_IMAGES = {
-  /** Ícono vectorial naranja→amarillo (LogoIcono.svg). Preferido sobre PNG/WebP. */
   logo: {
     src: '/images/prosavis/logo.svg',
     alt: 'Logo Prosavis',
     width: 56,
     height: 56,
   },
-  /** Wordmark PROSAVIS (App branding). Mejor contraste sobre chip claro u oscuro. */
   wordmark: {
     src: '/images/prosavis/nombre.webp',
     alt: 'Prosavis',
@@ -82,19 +85,31 @@ export const PROSAVIS_IMAGES = {
   limpieza: {
     src: '/images/prosavis/limpieza-hero.webp',
     alt: 'Profesional de Prosavis Limpieza en servicio',
-    width: 960,
-    height: 640,
+    width: 1200,
+    height: 900,
   },
   relax: {
     src: '/images/prosavis/limpieza-relax.webp',
-    alt: 'Experiencia Prosavis Limpieza — espacio listo',
-    width: 960,
-    height: 640,
+    alt: 'Cliente disfrutando mientras Prosavis se encarga',
+    width: 1200,
+    height: 900,
   },
   mascot: {
     src: '/images/prosavis/prosavito.webp',
     alt: 'Prosavito, mascota de Prosavis',
     width: 320,
     height: 320,
+  },
+  badgePlay: {
+    src: '/images/prosavis/badge-google-play.webp',
+    alt: 'Disponible en Google Play',
+    width: 180,
+    height: 70,
+  },
+  badgeAppStore: {
+    src: '/images/prosavis/badge-app-store.svg',
+    alt: 'Consíguelo en el App Store',
+    width: 148,
+    height: 50,
   },
 } as const
