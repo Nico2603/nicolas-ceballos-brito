@@ -56,3 +56,37 @@ export const PROSAVIS_HIGHLIGHTS = [
   'IA para búsqueda y asistencia al usuario',
   'Prosavis Limpieza en Pereira, Dosquebradas y Cerritos',
 ] as const
+
+/** Assets públicos de Prosavis-Web / branding (copiados a este sitio). */
+export const PROSAVIS_IMAGES = {
+  logo: {
+    src: '/images/prosavis/logo-256.webp',
+    alt: 'Logo Prosavis',
+    width: 256,
+    height: 256,
+  },
+  og: {
+    src: '/images/prosavis/og-prosavis.webp',
+    alt: 'Prosavis — servicios verificados en Colombia',
+    width: 1200,
+    height: 630,
+  },
+  limpieza: {
+    src: '/images/prosavis/limpieza-hero.webp',
+    alt: 'Profesional de Prosavis Limpieza en servicio',
+    width: 960,
+    height: 640,
+  },
+  relax: {
+    src: '/images/prosavis/limpieza-relax.webp',
+    alt: 'Experiencia Prosavis Limpieza — espacio listo',
+    width: 960,
+    height: 640,
+  },
+  mascot: {
+    src: '/images/prosavis/prosavito.webp',
+    alt: 'Prosavito, mascota de Prosavis',
+    width: 320,
+    height: 320,
+  },
+} as const

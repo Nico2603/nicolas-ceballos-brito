@@ -4,6 +4,7 @@ import { PROFILE_IMAGE } from '../constants/lcp-image'
 import { FULL_NAME } from '../constants/social'
 import { heroBio } from '../data/content'
 import {
+  PROSAVIS_IMAGES,
   PROSAVIS_NAME,
   PROSAVIS_PERIOD,
   PROSAVIS_ROLE_TITLE,
@@ -116,32 +117,56 @@ export default function Hero() {
               href={PROSAVIS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full max-w-md rounded-xl backdrop-blur-md border px-4 py-3 text-left shadow-[var(--shadow-glow-cyan)] bg-[var(--hero-stat-surface)] border-[var(--hero-stat-border)] transition-transform duration-300 hover:scale-[1.02] hover:-translate-y-0.5 group"
+              className="w-full max-w-md rounded-xl backdrop-blur-md border overflow-hidden text-left shadow-[var(--shadow-glow-cyan)] bg-[var(--hero-stat-surface)] border-[var(--hero-stat-border)] transition-transform duration-300 hover:scale-[1.02] hover:-translate-y-0.5 group"
             >
-              <div className="flex items-center justify-between gap-3 mb-3">
-                <p className="text-[10px] uppercase tracking-[0.18em] font-semibold text-[var(--hero-text-muted)]">
-                  Ahora · {PROSAVIS_PERIOD}
-                </p>
-                <ExternalLink
-                  size={14}
-                  className="text-[var(--color-accent-primary)] opacity-70 group-hover:opacity-100 transition-opacity"
+              <div className="relative h-24 overflow-hidden">
+                <img
+                  src={PROSAVIS_IMAGES.og.src}
+                  alt=""
+                  width={480}
+                  height={96}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover opacity-90 transition-transform duration-500 group-hover:scale-105"
                   aria-hidden
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" aria-hidden />
+                <img
+                  src={PROSAVIS_IMAGES.logo.src}
+                  alt={PROSAVIS_IMAGES.logo.alt}
+                  width={40}
+                  height={40}
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute bottom-2 left-3 h-10 w-10 rounded-xl object-cover ring-2 ring-white/40"
+                />
               </div>
-              <div className="grid grid-cols-3 gap-2">
-                {currentSignals.map((signal, i) => (
-                  <div
-                    key={signal.label}
-                    className={`hero-stat-entrance hero-stat-entrance-delay-${i} text-center`}
-                  >
-                    <div className="font-display text-sm md:text-base font-bold text-[var(--color-accent-primary)] leading-tight">
-                      {signal.value}
+              <div className="px-4 py-3">
+                <div className="flex items-center justify-between gap-3 mb-3">
+                  <p className="text-[10px] uppercase tracking-[0.18em] font-semibold text-[var(--hero-text-muted)]">
+                    Ahora · {PROSAVIS_PERIOD}
+                  </p>
+                  <ExternalLink
+                    size={14}
+                    className="text-[var(--color-accent-primary)] opacity-70 group-hover:opacity-100 transition-opacity"
+                    aria-hidden
+                  />
+                </div>
+                <div className="grid grid-cols-3 gap-2">
+                  {currentSignals.map((signal, i) => (
+                    <div
+                      key={signal.label}
+                      className={`hero-stat-entrance hero-stat-entrance-delay-${i} text-center`}
+                    >
+                      <div className="font-display text-sm md:text-base font-bold text-[var(--color-accent-primary)] leading-tight">
+                        {signal.value}
+                      </div>
+                      <div className="text-[10px] text-[var(--hero-text-muted)] leading-tight mt-0.5 font-medium">
+                        {signal.label}
+                      </div>
                     </div>
-                    <div className="text-[10px] text-[var(--hero-text-muted)] leading-tight mt-0.5 font-medium">
-                      {signal.label}
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </a>
           </div>
