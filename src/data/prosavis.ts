@@ -59,11 +59,19 @@ export const PROSAVIS_HIGHLIGHTS = [
 
 /** Assets públicos de Prosavis-Web / branding (copiados a este sitio). */
 export const PROSAVIS_IMAGES = {
+  /** Ícono vectorial naranja→amarillo (LogoIcono.svg). Preferido sobre PNG/WebP. */
   logo: {
-    src: '/images/prosavis/logo-256.webp',
+    src: '/images/prosavis/logo.svg',
     alt: 'Logo Prosavis',
-    width: 256,
-    height: 256,
+    width: 56,
+    height: 56,
+  },
+  /** Wordmark PROSAVIS (App branding). Mejor contraste sobre chip claro u oscuro. */
+  wordmark: {
+    src: '/images/prosavis/nombre.webp',
+    alt: 'Prosavis',
+    width: 480,
+    height: 76,
   },
   og: {
     src: '/images/prosavis/og-prosavis.webp',

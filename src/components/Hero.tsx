@@ -14,6 +14,7 @@ import { useTheme } from '../context/ThemeContext'
 import { useHeroDecorSettle } from '../hooks/useHeroDecorSettle'
 import Button from './ui/Button'
 import DeferredHeroDecor from './DeferredHeroDecor'
+import ProsavisBrand from './ProsavisBrand'
 import SocialLinks from './SocialLinks'
 import DeferredTypingAnimation from './DeferredTypingAnimation'
 
@@ -130,16 +131,10 @@ export default function Hero() {
                   className="h-full w-full object-cover opacity-90 transition-transform duration-500 group-hover:scale-105"
                   aria-hidden
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" aria-hidden />
-                <img
-                  src={PROSAVIS_IMAGES.logo.src}
-                  alt={PROSAVIS_IMAGES.logo.alt}
-                  width={40}
-                  height={40}
-                  loading="lazy"
-                  decoding="async"
-                  className="absolute bottom-2 left-3 h-10 w-10 rounded-xl object-cover ring-2 ring-white/40"
-                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" aria-hidden />
+                <div className="absolute bottom-2 left-3 right-3">
+                  <ProsavisBrand iconSize={36} wordmarkOnDark />
+                </div>
               </div>
               <div className="px-4 py-3">
                 <div className="flex items-center justify-between gap-3 mb-3">

@@ -33,3 +33,5 @@ audit-output/
 
 # LinkedIn sync raw snapshot (regenerable via npm run sync:linkedin)
 src/data/linkedin-sync.raw.json
+
+tmp/

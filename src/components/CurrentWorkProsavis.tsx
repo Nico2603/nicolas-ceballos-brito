@@ -13,6 +13,7 @@ import {
   PROSAVIS_TAGLINE,
   PROSAVIS_URL,
 } from '../data/prosavis'
+import ProsavisBrand from './ProsavisBrand'
 import SectionWrapper from './SectionWrapper'
 import Badge from './ui/Badge'
 import Button from './ui/Button'
@@ -32,16 +33,8 @@ export default function CurrentWorkProsavis() {
       />
 
       <div className="relative max-w-6xl mx-auto">
-        <div className="flex flex-wrap items-center gap-4 mb-8">
-          <img
-            src={PROSAVIS_IMAGES.logo.src}
-            alt={PROSAVIS_IMAGES.logo.alt}
-            width={56}
-            height={56}
-            loading="lazy"
-            decoding="async"
-            className="h-14 w-14 rounded-2xl object-cover shadow-[var(--shadow-card)]"
-          />
+        <div className="mb-10 space-y-5">
+          <ProsavisBrand iconSize={56} />
           <SectionHeader
             align="left"
             className="!mb-0"
