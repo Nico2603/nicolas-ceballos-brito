@@ -103,13 +103,13 @@ export const PROSAVIS_IMAGES = {
   badgePlay: {
     src: '/images/prosavis/badge-google-play.webp',
     alt: 'Disponible en Google Play',
-    width: 180,
-    height: 70,
+    width: 360,
+    height: 120,
   },
   badgeAppStore: {
     src: '/images/prosavis/badge-app-store.svg',
     alt: 'Consíguelo en el App Store',
-    width: 148,
-    height: 50,
+    width: 360,
+    height: 120,
   },
 } as const
