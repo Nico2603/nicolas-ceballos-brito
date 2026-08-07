@@ -69,8 +69,8 @@ export default function Hero() {
               <Button
                 variant="primary"
                 href="#portafolio"
-                trailingIcon={<ArrowRight size={14} />}
-                className="!rounded-full !min-h-11 !min-w-[12.5rem] !justify-center !bg-[var(--color-accent-cta)] !text-[#0B1220] !font-bold !shadow-[var(--shadow-cta)] hover:!brightness-105 hover:!shadow-[var(--shadow-glow-amber)]"
+                trailingIcon={<ArrowRight size={16} strokeWidth={2.25} />}
+                className="!h-11 !px-7 !rounded-full !bg-[var(--color-accent-cta)] !text-[#0B1220] !font-bold !leading-none !shadow-[var(--shadow-cta)] hover:!brightness-105 hover:!shadow-[var(--shadow-glow-amber)]"
               >
                 Ver proyectos
               </Button>
@@ -79,8 +79,8 @@ export default function Hero() {
                 to="/about"
                 className={
                   isDarkHero
-                    ? '!rounded-full !min-h-11 !justify-center !text-white !border-white/45 !bg-white/8 hover:!bg-white/14 hover:!border-[var(--color-cyan-bright)] backdrop-blur-sm'
-                    : '!rounded-full !min-h-11 !justify-center !text-[var(--hero-text)] !border-[var(--color-accent-primary)]/30 !bg-white/75 hover:!bg-white/95 hover:!border-[var(--color-accent-primary)] backdrop-blur-sm'
+                    ? '!h-11 !px-7 !rounded-full !leading-none !text-white !border-white/45 !bg-white/8 hover:!bg-white/14 hover:!border-[var(--color-cyan-bright)] backdrop-blur-sm'
+                    : '!h-11 !px-7 !rounded-full !leading-none !text-[var(--hero-text)] !border-[var(--color-accent-primary)]/30 !bg-white/75 hover:!bg-white/95 hover:!border-[var(--color-accent-primary)] backdrop-blur-sm'
                 }
               >
                 Sobre mí

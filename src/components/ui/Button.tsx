@@ -41,8 +41,8 @@ const variantClasses: Record<ButtonVariant, string> = {
 
 function getClasses(variant: ButtonVariant, className: string) {
   const base =
-    'inline-flex items-center justify-center gap-2 font-semibold text-sm transition-all duration-300 rounded-full'
-  const size = variant === 'icon' ? '' : 'px-6 py-2.5'
+    'box-border inline-flex flex-row items-center justify-center gap-2 font-semibold text-sm leading-none transition-all duration-300 rounded-full no-underline'
+  const size = variant === 'icon' ? '' : 'h-11 px-6'
   return `${base} ${size} ${variantClasses[variant]} ${className}`
 }
 
@@ -62,29 +62,25 @@ function MotionWrap({
     return <>{children}</>
   }
 
-  return <m.div {...motionProps}>{children}</m.div>
+  return <m.div className="inline-flex" {...motionProps}>{children}</m.div>
 }
 
 export default function Button(props: ButtonProps) {
   const { variant = 'primary', children, trailingIcon, className = '', animated = false } = props
   const classes = getClasses(variant, className)
 
-  const inner = (
-    <span className="inline-flex items-center justify-center gap-2">
-      <span className="leading-none">{children}</span>
-      {trailingIcon && (
-        <span className="inline-flex shrink-0 items-center justify-center" aria-hidden>
-          {trailingIcon}
-        </span>
-      )}
-    </span>
+  const content = (
+    <>
+      {children}
+      {trailingIcon ? <span className="inline-flex shrink-0 translate-y-px" aria-hidden>{trailingIcon}</span> : null}
+    </>
   )
 
   if ('to' in props && props.to) {
     return (
       <MotionWrap animated={animated}>
         <Link to={props.to} className={classes}>
-          {inner}
+          {content}
         </Link>
       </MotionWrap>
     )
@@ -102,7 +98,7 @@ export default function Button(props: ButtonProps) {
           rel={external || href.startsWith('http') ? 'noopener noreferrer' : undefined}
           {...rest}
         >
-          {inner}
+          {content}
         </a>
       </MotionWrap>
     )
@@ -112,7 +108,7 @@ export default function Button(props: ButtonProps) {
   return (
     <MotionWrap animated={animated}>
       <button type={type} onClick={onClick} disabled={disabled} className={classes} {...rest}>
-        {inner}
+        {content}
       </button>
     </MotionWrap>
   )
