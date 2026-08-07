@@ -21,9 +21,9 @@ import DeferredTypingAnimation from './DeferredTypingAnimation'
 const nameWords = FULL_NAME.split(' ')
 
 const currentSignals = [
-  { value: PROSAVIS_NAME, label: 'Empresa actual' },
-  { value: 'Lead', label: PROSAVIS_ROLE_TITLE },
-  { value: 'Live', label: 'Producto en producción' },
+  { value: PROSAVIS_NAME, label: 'Empresa' },
+  { value: 'Lead', label: 'Rol actual' },
+  { value: 'Live', label: 'En prod.' },
 ]
 
 export default function Hero() {
@@ -120,43 +120,41 @@ export default function Hero() {
               rel="noopener noreferrer"
               className="w-full max-w-md rounded-xl backdrop-blur-md border overflow-hidden text-left shadow-[var(--shadow-glow-cyan)] bg-[var(--hero-stat-surface)] border-[var(--hero-stat-border)] transition-transform duration-300 hover:scale-[1.02] hover:-translate-y-0.5 group"
             >
-              <div className="relative h-24 overflow-hidden">
+              <div className="relative aspect-[2.4/1] max-h-28 overflow-hidden">
                 <img
                   src={PROSAVIS_IMAGES.og.src}
                   alt=""
                   width={480}
-                  height={96}
+                  height={200}
                   loading="lazy"
                   decoding="async"
-                  className="h-full w-full object-cover opacity-90 transition-transform duration-500 group-hover:scale-105"
+                  className="absolute inset-0 h-full w-full object-cover opacity-90 transition-transform duration-500 group-hover:scale-105"
                   aria-hidden
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" aria-hidden />
-                <div className="absolute bottom-2 left-3 right-3">
-                  <ProsavisBrand iconSize={36} wordmarkOnDark />
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" aria-hidden />
               </div>
-              <div className="px-4 py-3">
-                <div className="flex items-center justify-between gap-3 mb-3">
-                  <p className="text-[10px] uppercase tracking-[0.18em] font-semibold text-[var(--hero-text-muted)]">
-                    Ahora · {PROSAVIS_PERIOD}
-                  </p>
+              <div className="px-3 sm:px-4 py-3">
+                <div className="flex items-center justify-between gap-2 mb-3 min-w-0">
+                  <ProsavisBrand size="sm" />
                   <ExternalLink
                     size={14}
-                    className="text-[var(--color-accent-primary)] opacity-70 group-hover:opacity-100 transition-opacity"
+                    className="shrink-0 text-[var(--color-accent-primary)] opacity-70 group-hover:opacity-100 transition-opacity"
                     aria-hidden
                   />
                 </div>
-                <div className="grid grid-cols-3 gap-2">
+                <p className="text-[10px] uppercase tracking-[0.18em] font-semibold text-[var(--hero-text-muted)] mb-2.5">
+                  Ahora · {PROSAVIS_PERIOD}
+                </p>
+                <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
                   {currentSignals.map((signal, i) => (
                     <div
                       key={signal.label}
-                      className={`hero-stat-entrance hero-stat-entrance-delay-${i} text-center`}
+                      className={`hero-stat-entrance hero-stat-entrance-delay-${i} text-center min-w-0`}
                     >
-                      <div className="font-display text-sm md:text-base font-bold text-[var(--color-accent-primary)] leading-tight">
+                      <div className="font-display text-xs sm:text-sm md:text-base font-bold text-[var(--color-accent-primary)] leading-tight truncate">
                         {signal.value}
                       </div>
-                      <div className="text-[10px] text-[var(--hero-text-muted)] leading-tight mt-0.5 font-medium">
+                      <div className="text-[9px] sm:text-[10px] text-[var(--hero-text-muted)] leading-tight mt-0.5 font-medium">
                         {signal.label}
                       </div>
                     </div>

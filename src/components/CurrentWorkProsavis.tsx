@@ -24,7 +24,7 @@ export default function CurrentWorkProsavis() {
   return (
     <SectionWrapper
       id="ahora"
-      className="py-24 md:py-28 px-4 bg-[var(--color-bg-secondary)] relative overflow-hidden"
+      className="py-16 sm:py-20 md:py-28 px-4 bg-[var(--color-bg-secondary)] relative overflow-hidden"
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-40"
@@ -33,8 +33,8 @@ export default function CurrentWorkProsavis() {
       />
 
       <div className="relative max-w-6xl mx-auto">
-        <div className="mb-10 space-y-5">
-          <ProsavisBrand iconSize={56} />
+        <div className="mb-8 sm:mb-10 space-y-4 sm:space-y-5">
+          <ProsavisBrand size="lg" />
           <SectionHeader
             align="left"
             className="!mb-0"
@@ -45,32 +45,64 @@ export default function CurrentWorkProsavis() {
           />
         </div>
 
-        <div className="mb-12 grid md:grid-cols-12 gap-4 md:gap-5">
+        <div className="mb-10 sm:mb-12 grid grid-cols-2 md:grid-cols-12 gap-3 sm:gap-4 md:gap-5">
           <a
             href={PROSAVIS_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="md:col-span-7 group relative block overflow-hidden rounded-[1.25rem] ring-1 ring-[var(--color-border-light)]"
+            className="col-span-2 md:col-span-7 group relative block overflow-hidden rounded-2xl md:rounded-[1.25rem] ring-1 ring-[var(--color-border-light)]"
           >
             <OptimizedImage
               src={PROSAVIS_IMAGES.limpieza.src}
               alt={PROSAVIS_IMAGES.limpieza.alt}
               width={PROSAVIS_IMAGES.limpieza.width}
               height={PROSAVIS_IMAGES.limpieza.height}
-              className="h-56 md:h-72 w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
-              wrapperClassName="h-56 md:h-72"
+              className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
+              wrapperClassName="aspect-[16/10] sm:aspect-[16/9] md:aspect-auto md:h-72"
             />
-            <div className="absolute inset-x-0 bottom-0 p-4 md:p-5 bg-gradient-to-t from-black/70 via-black/35 to-transparent">
-              <p className="text-white font-display text-lg md:text-xl font-semibold">
+            <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4 md:p-5 bg-gradient-to-t from-black/75 via-black/40 to-transparent">
+              <p className="text-white font-display text-base sm:text-lg md:text-xl font-semibold">
                 Prosavis Limpieza
               </p>
-              <p className="text-white/85 text-sm mt-1">
-                Producto vivo · Pereira, Dosquebradas y Cerritos
+              <p className="text-white/85 text-xs sm:text-sm mt-0.5 sm:mt-1">
+                Producto vivo · Eje Cafetero
               </p>
             </div>
           </a>
 
-          <div className="md:col-span-5 grid grid-rows-2 gap-4 md:gap-5">
+          <a
+            href={PROSAVIS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="col-span-1 md:col-span-5 md:row-span-1 group relative block overflow-hidden rounded-2xl md:rounded-[1.25rem] ring-1 ring-[var(--color-border-light)] md:hidden"
+          >
+            <OptimizedImage
+              src={PROSAVIS_IMAGES.og.src}
+              alt={PROSAVIS_IMAGES.og.alt}
+              width={PROSAVIS_IMAGES.og.width}
+              height={PROSAVIS_IMAGES.og.height}
+              className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
+              wrapperClassName="aspect-[4/3] h-full"
+            />
+          </a>
+
+          <a
+            href={PROSAVIS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="col-span-1 md:hidden group relative block overflow-hidden rounded-2xl ring-1 ring-[var(--color-border-light)]"
+          >
+            <OptimizedImage
+              src={PROSAVIS_IMAGES.relax.src}
+              alt={PROSAVIS_IMAGES.relax.alt}
+              width={PROSAVIS_IMAGES.relax.width}
+              height={PROSAVIS_IMAGES.relax.height}
+              className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
+              wrapperClassName="aspect-[4/3] h-full"
+            />
+          </a>
+
+          <div className="hidden md:grid md:col-span-5 grid-rows-2 gap-4 md:gap-5">
             <a
               href={PROSAVIS_URL}
               target="_blank"
@@ -104,8 +136,8 @@ export default function CurrentWorkProsavis() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          <div className="lg:col-span-7 space-y-8">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+          <div className="lg:col-span-7 space-y-6 sm:space-y-8">
             <div className="flex flex-wrap items-center gap-2">
               <Badge variant="accent">Actual</Badge>
               <Badge variant="muted">{PROSAVIS_PERIOD}</Badge>
@@ -131,13 +163,14 @@ export default function CurrentWorkProsavis() {
               ))}
             </ul>
 
-            <div className="flex flex-wrap gap-3 pt-2">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 pt-1">
               <Button
                 variant="primary"
                 href={PROSAVIS_URL}
                 external
                 animated
                 trailingIcon={<ExternalLink size={14} />}
+                className="w-full sm:w-auto justify-center"
               >
                 Ver Prosavis
               </Button>
@@ -146,6 +179,7 @@ export default function CurrentWorkProsavis() {
                 href={PROSAVIS_PLAY_STORE_URL}
                 external
                 trailingIcon={<ExternalLink size={14} />}
+                className="w-full sm:w-auto justify-center"
               >
                 Google Play
               </Button>
@@ -153,6 +187,7 @@ export default function CurrentWorkProsavis() {
                 variant="ghost"
                 href="#contacto"
                 trailingIcon={<ArrowRight size={14} />}
+                className="w-full sm:w-auto justify-center"
               >
                 ¿Un producto así para tu empresa?
               </Button>
@@ -160,7 +195,7 @@ export default function CurrentWorkProsavis() {
           </div>
 
           <aside className="lg:col-span-5">
-            <div className="flex items-center gap-3 mb-5">
+            <div className="flex items-center gap-3 mb-4 sm:mb-5">
               <img
                 src={PROSAVIS_IMAGES.mascot.src}
                 alt={PROSAVIS_IMAGES.mascot.alt}
@@ -168,7 +203,7 @@ export default function CurrentWorkProsavis() {
                 height={48}
                 loading="lazy"
                 decoding="async"
-                className="h-12 w-12 rounded-full object-cover ring-1 ring-[var(--color-border-light)]"
+                className="h-10 w-10 sm:h-12 sm:w-12 rounded-full object-cover ring-1 ring-[var(--color-border-light)]"
               />
               <p className="text-xs uppercase tracking-[0.2em] font-semibold text-[var(--color-accent-label)]">
                 Suite de producto
@@ -178,13 +213,13 @@ export default function CurrentWorkProsavis() {
               {PROSAVIS_SUITE.map((surface, index) => (
                 <li
                   key={surface.name}
-                  className="group border-b border-[var(--color-border-light)] py-4 flex gap-4 transition-colors duration-300 hover:bg-[var(--color-bg-card)]/60"
+                  className="group border-b border-[var(--color-border-light)] py-3.5 sm:py-4 flex gap-3 sm:gap-4 transition-colors duration-300 hover:bg-[var(--color-bg-card)]/60"
                 >
-                  <span className="font-display text-sm font-bold text-[var(--color-accent-primary)] w-8 shrink-0 pt-0.5">
+                  <span className="font-display text-sm font-bold text-[var(--color-accent-primary)] w-7 sm:w-8 shrink-0 pt-0.5">
                     {String(index + 1).padStart(2, '0')}
                   </span>
-                  <div>
-                    <h3 className="font-display text-lg font-semibold text-[var(--color-text-primary)] mb-1">
+                  <div className="min-w-0">
+                    <h3 className="font-display text-base sm:text-lg font-semibold text-[var(--color-text-primary)] mb-1">
                       {surface.name}
                     </h3>
                     <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
