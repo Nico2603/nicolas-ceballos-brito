@@ -1,13 +1,27 @@
-{
-  "github": "Nico2603/nicolas-ceballos-brito",
-  "vercel": {
-    "enabled": false,
-    "verificationStatus": "blocked-until-orgId-and-projectId-match-domain-and-git-repo",
-    "documentedTeamSlug": "flackosss",
-    "documentedProjectName": "nicolas-ceballos-brito",
-    "productionBranch": "master"
-  },
-  "supabase": {
-    "enabled": false
-  }
+﻿{
+    "github":  "Nico2603/nicolas-ceballos-brito",
+    "accounts":  {
+                     "vercel":  {
+                                    "email":  "nicolasceballosbrito@gmail.com",
+                                    "displayName":  "nico2603",
+                                    "teamSlug":  "flackosss",
+                                    "teamName":  "Flacko\u0027s"
+                                }
+                 },
+    "vercel":  {
+                   "enabled":  true,
+                   "orgId":  "team_yB1bqKYTqnFaTaq4ovtDorOE",
+                   "projectId":  "prj_H3oHmiMmWVxTiHwkM0x2ADJ94cUr",
+                   "projectName":  "nicolas-ceballos-brito",
+                   "teamSlug":  "flackosss",
+                   "productionDomain":  "nicolasceballosbrito.com",
+                   "productionBranch":  "master",
+                   "modes":  [
+                                 "inspect",
+                                 "admin"
+                             ]
+               },
+    "supabase":  {
+                     "enabled":  false
+                 }
 }

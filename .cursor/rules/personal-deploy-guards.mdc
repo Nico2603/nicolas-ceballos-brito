@@ -1,12 +1,14 @@
 ---
-description: Fail-closed deploy and provider guards for personal My Machines
+description: Provider guards for Portfolio on Nico-Laptop (Vercel admin via gateway)
 alwaysApply: true
 ---
 
-# Personal deploy guards (Portfolio)
+# Personal deploy guards (Portfolio) — Vercel admin enabled
 
-- Production path: GitHub PR → merge to `master` → Vercel Git integration only.
-- Vercel MCP/CLI inspect stays **blocked** until `orgId`/`projectId` are verified against team `flackosss` and written into `.deploy/binding.json` + personal manifest.
-- Never run `vercel --prod`, `vercel link`, `vercel unlink`, or scope/project switching.
-- Before any provider action, run `%LOCALAPPDATA%\cursor-agent\personal\scripts\Assert-PersonalProject.ps1 -ProjectSlug nicolas-ceballos-brito -Operation sensitive`.
-- Secrets never go in git, chat, MCP JSON, or scripts.
+- Runtime: **`Nico-Laptop`**.
+- **Vercel:** `nicolasceballosbrito@gmail.com` (nico2603 / `flackosss`) — inspect + **admin** via `nico-portfolio-vercel-admin`.
+- No Supabase for this project.
+- Bindings fijos en `.deploy/binding.json`.
+- Forbidden: Prosavis tokens/runtimes.
+- Preflight: `Assert-PersonalProject.ps1 -ProjectSlug nicolas-ceballos-brito -Operation sensitive`.
+- Secrets: `CursorPersonal/nicolas-ceballos-brito/vercel/*` only.
