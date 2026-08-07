@@ -31,7 +31,7 @@ export default function Navbar() {
   const textCol = onHero ? 'var(--hero-text)' : 'var(--color-text-primary)'
   const logoVariant = onHero && isDarkHero ? 'onDark' : 'default'
   const heroCtaClasses =
-    '!px-4 !py-1.5 !text-xs !font-semibold !bg-[var(--color-accent-cta)] !text-[var(--color-navy-deep)] !shadow-[var(--shadow-cta)] hover:!brightness-105'
+    '!rounded-full !px-4 !py-1.5 !text-xs !font-bold !justify-center !bg-[var(--color-accent-cta)] !text-[#0B1220] !shadow-[var(--shadow-cta)] hover:!brightness-105'
 
   return (
     <>

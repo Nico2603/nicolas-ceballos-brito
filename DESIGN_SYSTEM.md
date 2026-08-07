@@ -15,7 +15,7 @@
 | **Tono** | Técnico, editorial, serio, confiable |
 | **Audiencia** | Reclutadores, clientes, colaboradores tech |
 | **Dominio producción** | `https://nicolasceballosbrito.com` |
-| **Paleta maestra** | Ink (`#070A0F`) + Steel (`#3D5A80` / `#7BA3C9`) + Bronze CTA (`#9A7046` / `#C4A574`) |
+| **Paleta maestra** | Ink (`#070A0F`) + Steel (`#3D5A80` / `#7BA3C9`) + Chick-yellow CTA (`#FACC15` / `#FDE047`) |
 
 ---
 
@@ -29,8 +29,8 @@
 | `--color-navy-mid` | `#0B1220` | Fondos oscuros profundos |
 | `--color-cyan` | `#3D5A80` | Steel acento (light) — nombre legacy |
 | `--color-cyan-bright` | `#7BA3C9` | Steel acento (dark) — nombre legacy |
-| `--color-amber` | `#A67C52` | Bronze CTA (light) — nombre legacy |
-| `--color-amber-bright` | `#C4A574` | Bronze CTA (dark) — nombre legacy |
+| `--color-amber` | `#EAB308` | Chick yellow (light) — nombre legacy |
+| `--color-amber-bright` | `#FACC15` | Chick yellow bright — nombre legacy |
 
 ### 2.2 Variables de tema (cambian con `.dark`)
 
@@ -42,7 +42,7 @@
 | `--color-text-primary` | `#0B1220` | `#F1F4F8` | Texto principal |
 | `--color-text-secondary` | `#3F4B5A` | `#A8B3C2` | Texto secundario |
 | `--color-accent-primary` | `#2F4A6B` | `#7BA3C9` | Links, iconos, highlights |
-| `--color-accent-cta` | `#9A7046` | `#C4A574` | Botones primarios |
+| `--color-accent-cta` | `#FACC15` | `#FDE047` | Botones primarios (chick yellow) |
 | `--color-border-light` | `#D5DCE5` | `#243041` | Bordes, inputs |
 | `--color-nav-bg` | `rgba(255,255,255,0.94)` | `rgba(7,10,15,0.92)` | Navbar / dock |
 
