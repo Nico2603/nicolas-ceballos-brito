@@ -46,7 +46,10 @@ nicolas-ceballos-brito/
 ## Despliegue
 
 - **Producción:** https://nicolasceballosbrito.com
-- **Plataforma:** Vercel (deploy automático desde `master`)
+- **Plataforma:** Vercel (team `flackosss`)
+- **Autónomo (Nico-Laptop):** ver workspace `docs/REMOTE-CONTROL-DEPLOY.md`
+  - `npm run deploy:prod` → `Deploy-PersonalProject.ps1 -ProjectSlug nicolas-ceballos-brito`
+  - Preferir rama `cursor/…` + ship script; no depender de `vercel whoami` (multi-cuenta)
 
 ## Convenciones
 
