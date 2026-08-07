@@ -10,6 +10,7 @@ import {
 } from '../constants/seo-pages'
 import { FALLBACK_GITHUB_STATS } from '../data/github-repos-fallback'
 
+const CurrentWorkProsavis = lazy(() => import('../components/CurrentWorkProsavis'))
 const CurrentExperience = lazy(() => import('../components/CurrentExperience'))
 const LinkedInFeed = lazy(() => import('../components/LinkedInFeed'))
 const LaboresCarousel = lazy(() => import('../components/LaboresCarousel'))
@@ -43,14 +44,9 @@ export default function Home() {
         />
       </Helmet>
       <Hero />
-      <ViewportLazy minHeight="24rem">
+      <ViewportLazy minHeight="28rem">
         <Suspense fallback={null}>
-          <CurrentExperience />
-        </Suspense>
-      </ViewportLazy>
-      <ViewportLazy minHeight="20rem">
-        <Suspense fallback={null}>
-          <LinkedInFeed />
+          <CurrentWorkProsavis />
         </Suspense>
       </ViewportLazy>
       <ViewportLazy minHeight="28rem">
@@ -60,7 +56,17 @@ export default function Home() {
       </ViewportLazy>
       <ViewportLazy minHeight="24rem">
         <Suspense fallback={null}>
+          <CurrentExperience />
+        </Suspense>
+      </ViewportLazy>
+      <ViewportLazy minHeight="24rem">
+        <Suspense fallback={null}>
           <LaboresCarousel />
+        </Suspense>
+      </ViewportLazy>
+      <ViewportLazy minHeight="20rem">
+        <Suspense fallback={null}>
+          <LinkedInFeed />
         </Suspense>
       </ViewportLazy>
       <ViewportLazy minHeight="16rem">

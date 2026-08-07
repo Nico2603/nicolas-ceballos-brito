@@ -352,10 +352,10 @@ export const linkedInActivity: LinkedInActivityEntry[] = [
 ]
 
 export const linkedInTypingLines = [
-  'Ingeniero en Sistemas y Telecomunicaciones',
   'App Lead Developer en Prosavis',
-  'Desarrollador de Software y Web',
+  'Ingeniero en Sistemas y Telecomunicaciones',
+  'Productos web y móvil para startups',
+  'Desarrollador Full-Stack · Freelance',
   'Analista de Datos e IA',
-  'AI Engineer Trainee & Venture Studio',
   'Cross-Platform Mobile Developer',
 ] as const

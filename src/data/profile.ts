@@ -21,7 +21,8 @@ export const graduation = {
   activities: ucpEducation.activities,
 } as const
 
-export const heroBio = linkedInAbout.slice(0, 220).trim() + '…'
+export const heroBio =
+  'App Lead Developer en Prosavis, la plataforma de servicios verificados en Colombia. Diseño y construyo productos web y móvil para startups y empresas — disponible para proyectos freelance y colaboraciones selectas.'
 
 export const aboutIntro = linkedInAbout
 

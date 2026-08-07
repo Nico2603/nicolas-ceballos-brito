@@ -1,9 +1,14 @@
-import { ArrowRight, ChevronDown } from 'lucide-react'
+import { ArrowRight, ChevronDown, ExternalLink } from 'lucide-react'
 import { useRef } from 'react'
 import { PROFILE_IMAGE } from '../constants/lcp-image'
-import { graduation } from '../data/profile'
 import { FULL_NAME } from '../constants/social'
 import { heroBio } from '../data/content'
+import {
+  PROSAVIS_NAME,
+  PROSAVIS_PERIOD,
+  PROSAVIS_ROLE_TITLE,
+  PROSAVIS_URL,
+} from '../data/prosavis'
 import { useTheme } from '../context/ThemeContext'
 import { useHeroDecorSettle } from '../hooks/useHeroDecorSettle'
 import Button from './ui/Button'
@@ -11,13 +16,13 @@ import DeferredHeroDecor from './DeferredHeroDecor'
 import SocialLinks from './SocialLinks'
 import DeferredTypingAnimation from './DeferredTypingAnimation'
 
-const miniStats = [
-  { value: String(graduation.year), label: 'Graduado UCP' },
-  { value: '5+', label: 'Años programando' },
-  { value: 'IA', label: 'ML & Data Science' },
-]
-
 const nameWords = FULL_NAME.split(' ')
+
+const currentSignals = [
+  { value: PROSAVIS_NAME, label: 'Empresa actual' },
+  { value: 'Lead', label: PROSAVIS_ROLE_TITLE },
+  { value: 'Live', label: 'Producto en producción' },
+]
 
 export default function Hero() {
   const { theme } = useTheme()
@@ -41,7 +46,7 @@ export default function Hero() {
           <div className="text-left">
             <p className="hero-entrance hero-entrance-delay-1 inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em] font-semibold text-[var(--hero-eyebrow)] mb-5 hero-eyebrow-glow">
               <span className="h-px w-6 bg-[var(--color-accent-primary)]/70" aria-hidden />
-              Full-Stack Developer · Ing. Sistemas
+              {PROSAVIS_ROLE_TITLE} · {PROSAVIS_NAME}
             </p>
 
             <h1 className="hero-lcp-visible font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-[var(--hero-text)] mb-4 leading-[1.05] hero-headline-glow">
@@ -66,20 +71,20 @@ export default function Hero() {
             </p>
 
             <div className="hero-cta-entrance hero-cta-row mb-8">
-              <a href="#portafolio" className="hero-btn-primary">
-                <span>Ver proyectos</span>
+              <a href="#contacto" className="hero-btn-primary">
+                <span>Hablemos de tu proyecto</span>
                 <ArrowRight size={16} strokeWidth={2.25} aria-hidden />
               </a>
               <Button
                 variant="ghost"
-                to="/about"
+                href="#ahora"
                 className={
                   isDarkHero
                     ? 'hero-btn-secondary !text-white !border-white/45 !bg-white/8 hover:!bg-white/14 hover:!border-[var(--color-cyan-bright)]'
                     : 'hero-btn-secondary !text-[var(--hero-text)] !border-[var(--color-accent-primary)]/30 !bg-white/75 hover:!bg-white/95 hover:!border-[var(--color-accent-primary)]'
                 }
               >
-                Sobre mí
+                Ver trabajo actual
               </Button>
             </div>
 
@@ -107,31 +112,48 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-3 w-full max-w-md">
-              {miniStats.map((stat, i) => (
-                <div
-                  key={stat.label}
-                  className={`hero-stat-entrance hero-stat-entrance-delay-${i} rounded-xl backdrop-blur-md border px-3 py-3 text-center shadow-[var(--shadow-glow-cyan)] bg-[var(--hero-stat-surface)] border-[var(--hero-stat-border)] transition-transform duration-300 hover:scale-105 hover:-translate-y-1`}
-                >
-                  <div className="font-display text-xl font-bold text-[var(--color-accent-primary)]">
-                    {stat.value}
+            <a
+              href={PROSAVIS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full max-w-md rounded-xl backdrop-blur-md border px-4 py-3 text-left shadow-[var(--shadow-glow-cyan)] bg-[var(--hero-stat-surface)] border-[var(--hero-stat-border)] transition-transform duration-300 hover:scale-[1.02] hover:-translate-y-0.5 group"
+            >
+              <div className="flex items-center justify-between gap-3 mb-3">
+                <p className="text-[10px] uppercase tracking-[0.18em] font-semibold text-[var(--hero-text-muted)]">
+                  Ahora · {PROSAVIS_PERIOD}
+                </p>
+                <ExternalLink
+                  size={14}
+                  className="text-[var(--color-accent-primary)] opacity-70 group-hover:opacity-100 transition-opacity"
+                  aria-hidden
+                />
+              </div>
+              <div className="grid grid-cols-3 gap-2">
+                {currentSignals.map((signal, i) => (
+                  <div
+                    key={signal.label}
+                    className={`hero-stat-entrance hero-stat-entrance-delay-${i} text-center`}
+                  >
+                    <div className="font-display text-sm md:text-base font-bold text-[var(--color-accent-primary)] leading-tight">
+                      {signal.value}
+                    </div>
+                    <div className="text-[10px] text-[var(--hero-text-muted)] leading-tight mt-0.5 font-medium">
+                      {signal.label}
+                    </div>
                   </div>
-                  <div className="text-[10px] text-[var(--hero-text-muted)] leading-tight mt-0.5 font-medium">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            </a>
           </div>
         </div>
       </div>
 
       <a
-        href="#portafolio"
+        href="#ahora"
         className="hero-scroll-hint-entrance absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 text-[var(--hero-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors"
-        aria-label="Desplazarse a proyectos"
+        aria-label="Desplazarse al trabajo actual en Prosavis"
       >
-        <span className="text-[10px] uppercase tracking-[0.2em] font-semibold">Explorar</span>
+        <span className="text-[10px] uppercase tracking-[0.2em] font-semibold">Ahora</span>
         <ChevronDown size={22} className="hero-scroll-chevron" />
       </a>
     </section>

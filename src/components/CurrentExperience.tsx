@@ -6,15 +6,18 @@ import Button from './ui/Button'
 import Card from './ui/Card'
 import SectionHeader from './ui/SectionHeader'
 
+/** Prosavis se destaca en `#ahora`; aquí el resto del recorrido profesional. */
+const otherRoles = currentRoles.filter((role) => role.id !== 'prosavis')
+
 export default function CurrentExperience() {
   return (
-    <SectionWrapper id="experiencia" className="py-20 px-4 bg-[var(--color-bg-secondary)] relative">
+    <SectionWrapper id="experiencia" className="py-20 px-4 bg-[var(--color-bg-primary)] relative">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
-          eyebrow="LinkedIn"
-          title="Experiencia"
-          highlight="profesional"
-          description={`Extraída de mi perfil en LinkedIn · ${PROFESSIONAL_LOCATION}`}
+          eyebrow="Trayectoria"
+          title="Más"
+          highlight="experiencia"
+          description={`Neacsu, venture studios e ingeniería · ${PROFESSIONAL_LOCATION}. Prosavis está arriba, en Trabajo actual.`}
         />
 
         <div className="space-y-8 stagger-reveal">
@@ -44,9 +47,9 @@ export default function CurrentExperience() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {currentRoles.map((role) => (
-              <div key={role.id} className={role.featured ? 'md:col-span-2' : ''}>
-                <Card className={`h-full ${role.featured ? 'ring-2 ring-[var(--color-accent-cta)]/40' : ''}`}>
+            {otherRoles.map((role) => (
+              <div key={role.id}>
+                <Card className="h-full">
                   <article className="p-6 flex flex-col h-full">
                     <div className="flex items-start gap-4 mb-4">
                       <div

@@ -171,11 +171,12 @@ LazyMotion (domAnimation)
 
 | Sección | Patrón | Archivo |
 |---|---|---|
-| Hero | Split `md:grid-cols-2`, mesh + `HeroGrid` canvas, mini-stats desde graduación UCP | `Hero.tsx` |
-| Experiencia actual | Banner graduación + grid 2 cols de roles LinkedIn | `CurrentExperience.tsx` |
-| Feed LinkedIn | Post destacado ancho + grid 2 cols de actividad | `LinkedInFeed.tsx` |
+| Hero | Split `md:grid-cols-2`, mesh + `HeroGrid` canvas; eyebrow Prosavis; CTA freelance; panel “Ahora” con señales de producto vivo | `Hero.tsx` |
+| Ahora: Prosavis | Editorial split 7/5: rol + highlights + CTAs públicos; lista numerada de suite de producto | `CurrentWorkProsavis.tsx`, `data/prosavis.ts` |
 | Portafolio | Grid 2×2 uniforme, stats GitHub en una línea | `Portfolio.tsx` |
+| Experiencia | Banner graduación + roles LinkedIn **sin** Prosavis (ya destacado en `#ahora`) | `CurrentExperience.tsx` |
 | Labores | Carousel spring + barra de progreso | `LaboresCarousel.tsx` |
+| Feed LinkedIn | Post destacado ancho + grid 2 cols de actividad | `LinkedInFeed.tsx` |
 | Contacto | Split 2 cols, icon containers | `Contact.tsx` |
 | Footer | Navy sólido, 3 columnas | `Footer.tsx` |
 | About | Foto + bio, `SkillsSection`, perfil LinkedIn completo | `About.tsx`, `LinkedInProfileDetails.tsx` |
@@ -184,8 +185,10 @@ LazyMotion (domAnimation)
 ### Orden Home (`pages/Home.tsx`)
 
 ```
-Hero → CurrentExperience (lazy) → LinkedInFeed (lazy) → Portfolio → LaboresCarousel (lazy) → RecursosSection → FaqSection (lazy) → Contact (lazy) → Footer
+Hero → CurrentWorkProsavis (lazy) → Portfolio → CurrentExperience (lazy) → LaboresCarousel (lazy) → LinkedInFeed (lazy) → RecursosSection → FaqSection (lazy) → Contact (lazy) → Footer
 ```
+
+**Narrativa:** freelance-first + disponible para roles fuertes; señal #1 = Prosavis en producción (solo datos públicos: web, Play Store, LinkedIn).
 
 Preload LCP (`pic-288.webp`) vía `Helmet` en `Home.tsx` — no en `index.html` global.
 
