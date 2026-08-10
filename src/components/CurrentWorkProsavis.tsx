@@ -137,26 +137,24 @@ export default function CurrentWorkProsavis() {
               ))}
             </ul>
 
-            {/* CTA primario grande */}
-            <div className="pt-2 space-y-4">
-              <Button
-                variant="primary"
+            {/* CTAs centrados en la columna izquierda */}
+            <div className="pt-2 flex flex-col items-center gap-4 text-center">
+              <a
                 href={PROSAVIS_URL}
-                external
-                animated
-                trailingIcon={<ExternalLink size={18} />}
-                className="!h-14 !px-8 !text-base w-full sm:w-auto justify-center shadow-[var(--shadow-cta)]"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-14 w-full max-w-xs items-center justify-center gap-2 rounded-xl bg-[var(--color-accent-cta)] px-8 text-base font-semibold leading-none text-[var(--color-navy-deep)] no-underline shadow-[var(--shadow-cta)] transition-all duration-300 hover:brightness-110 hover:shadow-[var(--shadow-glow-amber)]"
               >
-                Ver Prosavis
-              </Button>
+                <span>Ver Prosavis</span>
+                <ExternalLink size={18} aria-hidden className="shrink-0" />
+              </a>
 
-              {/* Badges de tiendas */}
-              <div className="flex flex-wrap items-center gap-3">
+              <div className="flex flex-wrap items-center justify-center gap-3">
                 <a
                   href={PROSAVIS_PLAY_STORE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex transition-opacity hover:opacity-90"
+                  className="inline-flex h-[3.45rem] w-[10.35rem] items-center justify-center transition-opacity hover:opacity-90"
                 >
                   <img
                     src={PROSAVIS_IMAGES.badgePlay.src}
@@ -165,14 +163,14 @@ export default function CurrentWorkProsavis() {
                     height={PROSAVIS_IMAGES.badgePlay.height}
                     loading="lazy"
                     decoding="async"
-                    className="h-12 w-auto"
+                    className="h-full w-full object-contain"
                   />
                 </a>
                 <a
                   href={PROSAVIS_APP_STORE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex transition-opacity hover:opacity-90"
+                  className="inline-flex h-12 w-[9rem] items-center justify-center transition-opacity hover:opacity-90"
                 >
                   <img
                     src={PROSAVIS_IMAGES.badgeAppStore.src}
@@ -181,19 +179,18 @@ export default function CurrentWorkProsavis() {
                     height={PROSAVIS_IMAGES.badgeAppStore.height}
                     loading="lazy"
                     decoding="async"
-                    className="h-12 w-auto"
+                    className="h-full w-full object-contain"
                   />
                 </a>
               </div>
 
-              {/* Secundarios */}
-              <div className="flex flex-col sm:flex-row flex-wrap gap-2.5">
+              <div className="flex w-full max-w-md flex-col items-stretch gap-2.5 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
                 <Button
                   variant="secondary"
                   href={PROSAVIS_LIMPIEZA_URL}
                   external
                   trailingIcon={<ExternalLink size={14} />}
-                  className="w-full sm:w-auto justify-center !text-sm"
+                  className="w-full sm:w-auto !justify-center !text-sm !rounded-xl"
                 >
                   Prosavis Limpieza
                 </Button>
@@ -201,7 +198,7 @@ export default function CurrentWorkProsavis() {
                   variant="ghost"
                   href="#contacto"
                   trailingIcon={<ArrowRight size={14} />}
-                  className="w-full sm:w-auto justify-center !text-sm"
+                  className="w-full sm:w-auto !justify-center !text-sm !rounded-xl"
                 >
                   ¿Un producto así para tu empresa?
                 </Button>

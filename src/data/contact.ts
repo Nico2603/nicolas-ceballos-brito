@@ -11,7 +11,7 @@ export const CONTACT_SECTION_LABEL = 'Contacto'
 export const CONTACT_HEADING_START = '¿Trabajamos '
 export const CONTACT_HEADING_ACCENT = 'juntos?'
 export const CONTACT_SUBCOPY =
-  'Hoy lidero producto en Prosavis y acepto proyectos freelance selectos para startups y empresas. Cuéntame tu idea y te respondo en menos de 48 horas.'
+  'Hoy soy Director técnico en Prosavis y acepto proyectos freelance selectos para startups y empresas. Cuéntame tu idea y te respondo en menos de 48 horas.'
 
 export interface ContactInfoItem {
   icon: 'map-pin' | 'whatsapp' | 'mail'

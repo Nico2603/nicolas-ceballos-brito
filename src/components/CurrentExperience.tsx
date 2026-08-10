@@ -6,9 +6,7 @@ import Button from './ui/Button'
 import Card from './ui/Card'
 import SectionHeader from './ui/SectionHeader'
 
-/** Prosavis se destaca en `#ahora`; aquí el resto del recorrido profesional. */
-const otherRoles = currentRoles.filter((role) => role.id !== 'prosavis')
-
+/** Educación + 4 roles LinkedIn (Director técnico, App Lead, Modin, Teilur) en grilla 2×2. */
 export default function CurrentExperience() {
   return (
     <SectionWrapper id="experiencia" className="py-20 px-4 bg-[var(--color-bg-primary)] relative">
@@ -17,7 +15,7 @@ export default function CurrentExperience() {
           eyebrow="Trayectoria"
           title="Más"
           highlight="experiencia"
-          description={`Neacsu, venture studios e ingeniería · ${PROFESSIONAL_LOCATION}. Prosavis está arriba, en Trabajo actual.`}
+          description={`Director técnico en Prosavis, liderazgo de producto y venture studios de IA · ${PROFESSIONAL_LOCATION}.`}
         />
 
         <div className="space-y-8 stagger-reveal">
@@ -47,7 +45,7 @@ export default function CurrentExperience() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {otherRoles.map((role) => (
+            {currentRoles.map((role) => (
               <div key={role.id}>
                 <Card className="h-full">
                   <article className="p-6 flex flex-col h-full">

@@ -5,7 +5,7 @@
 import { SOCIAL_LINKS } from '../constants/social'
 
 export const LINKEDIN_PROFILE_URL = SOCIAL_LINKS.linkedin
-export const LINKEDIN_SCRAPED_AT = '2026-06-29T00:00:00.000Z'
+export const LINKEDIN_SCRAPED_AT = '2026-08-07T00:00:00.000Z'
 
 export const linkedInHeadline =
   'Ingeniero en Sistemas y Telecomunicaciones | Desarrollador de Software y Web | Analista de Datos e IA | AI Engineer Trainee & Venture Studio Program'
@@ -13,7 +13,7 @@ export const linkedInHeadline =
 export const linkedInLocation = 'Pereira, Risaralda, Colombia'
 export const linkedInConnections = 500
 export const linkedInFollowers = 788
-export const linkedInTotalExperience = '11 meses'
+export const linkedInTotalExperience = '1 año 2 meses'
 
 export const linkedInAbout =
   'Ingeniero en Sistemas y Telecomunicaciones de la Universidad Católica de Pereira, con experiencia en desarrollo de software, análisis de datos e inteligencia artificial. Mi enfoque es aplicar tecnologías innovadoras para resolver problemas reales, combinando aprendizaje teórico con práctica. Desarrollo web con JavaScript, React y Angular. Desarrollo de software con C++, Java y Python. IA y análisis de datos: modelos no supervisados como DBSCAN, KMeans, Isolation Forest y CBLOF para mantenimiento predictivo. Testing automatizado e integración QA en el ciclo de vida del software. Liderazgo e investigación: representante estudiantil en el Consejo Académico (2023-2025) y participante en semilleros de investigación en Industria 4.0 y programación competitiva. Participé en el XXIX Verano de la Investigación Científica y Tecnológica del Pacífico, colaborando en proyectos de machine learning y mantenimiento predictivo. Certificaciones en SQL, Power BI, UX/UI y metodologías ágiles. Apasionado por la innovación, la transformación digital y soluciones tecnológicas de alto impacto.'
@@ -33,56 +33,56 @@ export interface LinkedInExperienceEntry {
   initials: string
 }
 
+/** Experiencia alineada al perfil de LinkedIn (actualizado 2026-08-07). */
 export const linkedInExperience: LinkedInExperienceEntry[] = [
   {
     id: 'prosavis',
-    title: 'App Lead Developer',
+    title: 'Director técnico',
     company: 'Prosavis',
-    period: 'Jul 2025 – Presente (8 meses)',
-    location: 'Pereira, Risaralda, Colombia',
+    period: 'Sept 2025 – Presente (1 año)',
+    location: 'Pereira, Risaralda, Colombia · Presencial',
     description:
-      'Dirijo el desarrollo, estrategia y lanzamiento de Prosavis, una plataforma móvil para servicios en Colombia. Gestiono equipo de producto, roadmap, marketing digital y partnerships.',
+      'Como CTO de Prosavis, defino la visión tecnológica y lidero el equipo técnico, tomando decisiones estratégicas de alto nivel. Estoy a cargo de la arquitectura, adopción de nuevas tecnologías, ciberseguridad, optimización de costos operativos y gestión del equipo. Sigo participando activamente en las implementaciones técnicas de mayor complejidad y rigor, asegurando que la plataforma sea robusta, segura y escalable mientras alineo la tecnología con los objetivos de negocio.',
     department: 'Engineering and Technical',
-    level: 'Manager',
+    level: 'Director',
     current: true,
     featured: true,
     initials: 'P',
   },
   {
-    id: 'neacsu',
-    title: 'Cross-Platform Mobile Application Developer',
-    company: 'Neacsu Horizont Ventures',
-    companyUrl: 'https://www.linkedin.com/company/neacsu-horizont-ventures',
-    period: 'Jul 2025 – Presente (7 meses)',
-    location: 'Pereira, Risaralda, Colombia',
+    id: 'prosavis-app-lead',
+    title: 'Desarrollador jefe de aplicaciones',
+    company: 'Prosavis',
+    period: 'Jul 2025 – Sept 2025 (3 meses)',
+    location: 'Pereira, Risaralda, Colombia · Presencial',
     description:
-      'Responsable del ciclo de vida completo del producto: levantamiento de requisitos, diseño de arquitectura, implementación, despliegue y mantenimiento de soluciones móviles y cross-platform. Construyo landing pages, diseño y optimizo bases de datos, desarrollo APIs backend robustas e interfaces frontend responsivas. Uso Flutter, React Native, Kotlin y Swift. Aplico metodologías ágiles, pipelines CI/CD y testing automatizado para entregas de alta calidad.',
+      'Lideré desde cero el diseño, arquitectura y desarrollo técnico completo de Prosavis, plataforma móvil para servicios en Colombia. Me enfoqué en la creación del backend en Firebase, paneles administrativos y CDMs para consolas de usuario, construyendo todo el workspace operativo de la plataforma. Diseñé e implementé la arquitectura backend escalable y segura, desarrollé los paneles administrativos y lideré el desarrollo full stack del producto móvil, definiendo estándares de código y mejores prácticas. Gestioné el roadmap técnico y coordiné el lanzamiento exitoso junto con producto y marketing.',
     department: 'Engineering and Technical',
-    level: 'Specialist',
-    current: true,
-    initials: 'NH',
+    level: 'Lead',
+    current: false,
+    initials: 'P',
   },
   {
     id: 'modin',
-    title: 'AI Engineer Training Venture Studio Program',
+    title: 'AI Engineer Training & Venture Studio Program',
     company: 'Modin.ai',
     companyUrl: 'https://www.linkedin.com/company/modin-ai',
-    period: 'Mar 2025 – Ago 2025 (5 meses)',
-    location: 'Claymont, Delaware, Estados Unidos',
+    period: 'Jun 2025 – Ago 2025 (3 meses)',
+    location: 'Claymont, Delaware, Estados Unidos · En remoto',
     description:
-      'AI Engineer en el programa AI Engineer Training & Venture Studio de Teilur AI. Desarrollo de MVPs impulsados por IA con herramientas de vanguardia en un entorno ágil, estratégico y de alto rendimiento para transformar ideas en productos disruptivos.',
+      'Soy ingeniero de IA en el programa AI Engineer Training & Venture Studio de Teilur AI. Mi función se centra en el desarrollo de MVP impulsados por IA mediante el aprovechamiento de herramientas de vanguardia para crear soluciones innovadoras y escalables. Trabajo en un entorno ágil, estratégico y de alto rendimiento para transformar ideas en productos tangibles y disruptivos.',
     current: false,
     initials: 'M',
   },
   {
     id: 'teilur',
-    title: 'AI Engineer Training Venture Studio Program',
+    title: 'AI Engineer Training & Venture Studio Program',
     company: 'Teilur.ai',
     companyUrl: 'https://www.linkedin.com/company/teilur-labs',
-    period: 'Mar 2025 – Jun 2025 (3 meses)',
-    location: 'Claymont, Delaware, Estados Unidos',
+    period: 'Mar 2025 – Jun 2025 (4 meses)',
+    location: 'Claymont, Delaware, Estados Unidos · En remoto',
     description:
-      'AI Engineer en el programa AI Engineer Training & Venture Studio de Teilur AI. Desarrollo de MVPs impulsados por IA con herramientas de vanguardia en un entorno ágil, estratégico y de alto rendimiento para transformar ideas en productos disruptivos y escalables.',
+      'Soy ingeniero de IA en el programa AI Engineer Training & Venture Studio de Teilur AI. Mi función se centra en el desarrollo de MVP impulsados por IA mediante el aprovechamiento de herramientas de vanguardia para crear soluciones innovadoras y escalables. Trabajo en un entorno ágil, estratégico y de alto rendimiento para transformar ideas en productos tangibles y disruptivos.',
     current: false,
     initials: 'T',
   },
@@ -352,10 +352,10 @@ export const linkedInActivity: LinkedInActivityEntry[] = [
 ]
 
 export const linkedInTypingLines = [
-  'App Lead Developer en Prosavis',
+  'Director técnico en Prosavis',
   'Ingeniero en Sistemas y Telecomunicaciones',
   'Productos web y móvil para startups',
   'Desarrollador Full-Stack · Freelance',
   'Analista de Datos e IA',
-  'Cross-Platform Mobile Developer',
+  'Arquitectura y liderazgo técnico',
 ] as const

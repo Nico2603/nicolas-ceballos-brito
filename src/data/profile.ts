@@ -22,7 +22,7 @@ export const graduation = {
 } as const
 
 export const heroBio =
-  'App Lead Developer en Prosavis, la plataforma de servicios verificados en Colombia. Diseño y construyo productos web y móvil para startups y empresas — disponible para proyectos freelance y colaboraciones selectas.'
+  'Director técnico en Prosavis, la plataforma de servicios verificados en Colombia. Diseño y construyo productos web y móvil para startups y empresas — disponible para proyectos freelance y colaboraciones selectas.'
 
 export const aboutIntro = linkedInAbout
 
@@ -32,9 +32,15 @@ export type CurrentRole = LinkedInExperienceEntry & {
 }
 
 function roleTags(role: LinkedInExperienceEntry): string[] {
-  if (role.id === 'prosavis') return ['Flutter', 'Producto', 'Roadmap', 'Firebase']
-  if (role.id === 'neacsu') return ['Flutter', 'React Native', 'CI/CD', 'APIs']
-  if (role.id === 'modin' || role.id === 'teilur') return ['IA', 'MVPs', 'Venture Studio', 'GenAI']
+  if (role.id === 'prosavis') {
+    return ['Arquitectura', 'Ciberseguridad', 'Liderazgo', 'Producto']
+  }
+  if (role.id === 'prosavis-app-lead') {
+    return ['Flutter', 'Firebase', 'Full-Stack', 'Móvil']
+  }
+  if (role.id === 'modin' || role.id === 'teilur') {
+    return ['IA', 'MVPs', 'Venture Studio', 'Arquitectura IA']
+  }
   return []
 }
 
