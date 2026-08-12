@@ -1,5 +1,6 @@
-import { useEffect, useRef, type ReactNode } from 'react'
-import { Bend } from '@/components/canvasui/Bend'
+import { useEffect, useRef, useSyncExternalStore, type ReactNode } from 'react'
+import { Bend, supportsHtmlInCanvas } from '@/components/canvasui/Bend'
+import CssPageBend from './CssPageBend'
 import { PAGE_SCROLLER_ATTR } from '../lib/page-scroller'
 
 const DEMO_BEND = {
@@ -24,7 +25,9 @@ function findOverflowScroller(root: HTMLElement): HTMLElement | null {
   return null
 }
 
-export default function PageBend({ children }: { children: ReactNode }) {
+const emptySubscribe = () => () => {}
+
+function NativePageBend({ children }: { children: ReactNode }) {
   const rootRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -60,4 +63,15 @@ export default function PageBend({ children }: { children: ReactNode }) {
       </Bend>
     </div>
   )
+}
+
+export default function PageBend({ children }: { children: ReactNode }) {
+  const native = useSyncExternalStore(
+    emptySubscribe,
+    supportsHtmlInCanvas,
+    () => false,
+  )
+
+  if (native) return <NativePageBend>{children}</NativePageBend>
+  return <CssPageBend>{children}</CssPageBend>
 }

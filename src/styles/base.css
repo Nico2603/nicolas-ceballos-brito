@@ -14,6 +14,58 @@ html.lenis body { height: auto; }
   }
 }
 
+.css-page-bend {
+  overflow: hidden;
+  perspective-origin: 50% 50%;
+  background: var(--color-bg-primary);
+}
+
+.css-page-bend-face {
+  position: relative;
+  transform-origin: 50% 50%;
+  transform-style: preserve-3d;
+  will-change: transform;
+  background: var(--color-bg-primary);
+}
+
+.css-page-bend-face > * {
+  position: relative;
+  z-index: 1;
+}
+
+.css-page-bend-face::before,
+.css-page-bend-face::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  pointer-events: none;
+  height: var(--bend-zone, 240px);
+}
+
+.css-page-bend-face::before {
+  top: 0;
+  opacity: var(--bend-top, 0);
+  background: linear-gradient(
+    to bottom,
+    rgb(0 0 0 / 0.28),
+    rgb(0 0 0 / 0.08) 55%,
+    transparent
+  );
+}
+
+.css-page-bend-face::after {
+  bottom: 0;
+  opacity: var(--bend-bot, 0);
+  background: linear-gradient(
+    to top,
+    rgb(0 0 0 / 0.28),
+    rgb(0 0 0 / 0.08) 55%,
+    transparent
+  );
+}
+
 /* ── Scrollbar ── */
 html { scrollbar-width: thin; scrollbar-color: var(--color-border-light) transparent; background-color: var(--color-bg-primary); }
 ::-webkit-scrollbar { width: 8px; }
