@@ -17,4 +17,4 @@ Add another component from the project root:
 cmd.exe /c "npx --yes shadcn@latest add @canvas-ui/<name>-react -y"
 ```
 
-Registry is pinned in `components.json`. This portfolio is the default place to showcase these effects. Production Chrome needs an origin trial token per domain; without it, children still render as HTML.
+Registry is pinned in `components.json`. This portfolio wraps desktop pages in `PageBend` (Bend demo: cube-face scroll). Production Chrome needs an origin trial token per domain; without it, children still render as HTML.

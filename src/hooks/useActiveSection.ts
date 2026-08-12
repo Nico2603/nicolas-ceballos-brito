@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import { getPageScroller } from '../lib/page-scroller'
 
 const HOME_SECTIONS = ['inicio', 'portafolio', 'labores', 'contacto'] as const
 
@@ -19,26 +20,44 @@ export function useActiveSection() {
   useEffect(() => {
     if (location.pathname !== '/') return
 
-    const observers: IntersectionObserver[] = []
+    let observers: IntersectionObserver[] = []
+    let cancelled = false
 
-    HOME_SECTIONS.forEach((id) => {
-      const el = document.getElementById(id)
-      if (!el) return
+    const attach = () => {
+      if (cancelled) return
+      observers.forEach((observer) => observer.disconnect())
+      observers = []
 
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setHomeSection(id)
-          }
-        },
-        { rootMargin: '-40% 0px -50% 0px', threshold: 0 },
-      )
+      HOME_SECTIONS.forEach((id) => {
+        const el = document.getElementById(id)
+        if (!el) return
 
-      observer.observe(el)
-      observers.push(observer)
-    })
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              setHomeSection(id)
+            }
+          },
+          {
+            root: getPageScroller(),
+            rootMargin: '-40% 0px -50% 0px',
+            threshold: 0,
+          },
+        )
 
-    return () => observers.forEach((o) => o.disconnect())
+        observer.observe(el)
+        observers.push(observer)
+      })
+    }
+
+    attach()
+    const raf = requestAnimationFrame(attach)
+
+    return () => {
+      cancelled = true
+      cancelAnimationFrame(raf)
+      observers.forEach((observer) => observer.disconnect())
+    }
   }, [location.pathname])
 
   return routeSection ?? homeSection

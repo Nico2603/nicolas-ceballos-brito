@@ -15,8 +15,7 @@ This skill is local (not in `skills-lock.json`). Keep the folder if you reinstal
 
 ## Where it belongs
 
-This portfolio is the default showcase (hero, case studies, scroll set pieces).
-Rayito: only if calm and on-brand. **Never** on Lumen Care.
+This portfolio is the default showcase. **Home and inner pages use full-page `PageBend` on desktop** (canvasui.dev demo props). Rayito: only if calm and on-brand. **Never** on Lumen Care.
 
 Wrap one region, not the whole app. Components fall back to regular HTML when html-in-canvas is missing.
 

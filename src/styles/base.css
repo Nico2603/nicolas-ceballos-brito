@@ -4,6 +4,16 @@ html.lenis-smooth { scroll-behavior: auto; }
 html.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 html.lenis body { height: auto; }
 
+/* Canvas UI Bend owns scrolling on desktop */
+@media (min-width: 768px) {
+  html.page-bend-active,
+  html.page-bend-active body,
+  html.page-bend-active #root {
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
 /* ── Scrollbar ── */
 html { scrollbar-width: thin; scrollbar-color: var(--color-border-light) transparent; background-color: var(--color-bg-primary); }
 ::-webkit-scrollbar { width: 8px; }
