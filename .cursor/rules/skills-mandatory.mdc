@@ -32,6 +32,7 @@ No ejecutar las 32 skills en cada prompt. Clasifica la tarea y aplica **todas** 
 | **Mockups / layout exploratorio** | `canvas-design` |
 | **Referencias externas de diseño** | `extract-design-system` (nunca sobrescribir `tokens.css` sin OK) |
 | **Inspiración efectos** | `aceternity-ui` (adaptar a Vite, no Next.js) |
+| **Canvas UI / html-in-canvas** | `canvas-ui` (`@canvas-ui` Liquid, Bend, … — no Lumen) |
 | **Variantes de tema** | `theme-factory` |
 | **Buscar capacidad nueva** | `find-skills` |
 | **Analytics / métricas** | `google-analytics-admin-api-basics`, `google-analytics-data-api-basics` |
@@ -40,4 +41,5 @@ No ejecutar las 32 skills en cada prompt. Clasifica la tarea y aplica **todas** 
 
 - Fuente de verdad visual: `src/styles/tokens.css` (Raleway + Montserrat, paleta teal/azul)
 - Prohibido: Inter, Roboto, layouts template SaaS genéricos
-- Stack: React 19 + Vite + Tailwind v4 + Framer Motion + Lenis (no Next.js, no shadcn)
+- Stack: React 19 + Vite + Tailwind v4 + Framer Motion + Lenis (no Next.js, no kit shadcn/ui)
+- Canvas UI (`@canvas-ui`) está permitido como efecto html-in-canvas, no como design system

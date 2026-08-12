@@ -2,6 +2,10 @@ import { defineConfig, loadEnv, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import type { Connect } from 'vite'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const GA_MEASUREMENT_ID_DEFAULT = 'G-QFQFLD69P3'
 
@@ -73,6 +77,11 @@ function spaFallback(): { name: string; configurePreviewServer: (server: { middl
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   return {
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+      },
+    },
     plugins: [
       react(),
       tailwindcss(),

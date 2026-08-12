@@ -1,0 +1,14 @@
+---
+description: Canvas UI html-in-canvas effects — install via @canvas-ui, do not replace the design system
+alwaysApply: false
+globs: src/**/*.tsx
+---
+
+# Canvas UI
+
+Read `.agents/skills/canvas-ui/SKILL.md` before wrapping UI in Liquid, Bend, or other `@canvas-ui` effects.
+
+- Installed: `src/components/canvasui/Liquid.tsx`, `Bend.tsx`
+- Add: `cmd.exe /c "npx --yes shadcn@latest add @canvas-ui/<name>-react -y"`
+- This portfolio is the default place to showcase these effects.
+- Effects only. Keep `src/styles/tokens.css`. This is not a shadcn/ui kit swap.
