@@ -1,21 +1,27 @@
 import { ChevronDown } from 'lucide-react'
+import { useEffect, useState } from 'react'
 import { useTheme } from '../context/ThemeContext'
 import Logo from './Logo'
 import Button from './ui/Button'
 import ThemeToggle from './ui/ThemeToggle'
 import { navLinks } from '../data/navigation'
 import { useMobileMenu } from '../hooks/useMobileMenu'
-import { usePageScrolled } from '../hooks/usePageScrollY'
 import { useSmartNavigation } from '../hooks/useSmartNavigation'
 
 export default function Navbar() {
-  const scrolled = usePageScrolled(60)
+  const [scrolled, setScrolled] = useState(false)
   const { theme } = useTheme()
   const { menuOpen, toggleMenu, closeMenu } = useMobileMenu()
   const { handleNavClick, location } = useSmartNavigation()
   const isHome = location.pathname === '/'
   const onHero = isHome && !scrolled
   const isDarkHero = theme === 'dark'
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   const onNavClick = (href: string, external?: boolean) => {
     closeMenu()

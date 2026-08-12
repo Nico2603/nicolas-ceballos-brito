@@ -4,6 +4,7 @@ import {
   useEffect,
   useRef,
   useState,
+  useSyncExternalStore,
   type ReactNode,
 } from "react";
 
@@ -278,11 +279,11 @@ export function createBend(
   const { source, content, output } = elements;
 
   const gl = output.getContext("webgl2", {
-    alpha: false,
+    alpha: true,
     depth: false,
     stencil: false,
     antialias: false,
-    premultipliedAlpha: true,
+    premultipliedAlpha: false,
   });
   if (!gl || gl.isContextLost()) return null;
 
@@ -295,104 +296,17 @@ export function createBend(
   );
 
   let contentDirty = false;
-  let hasCapture = false;
-  let captureBusy = false;
-  let captureQueued = false;
-  let captureTimer = 0;
-  let destroyed = false;
   let wake = () => {};
-
-  let nativePaintOk: boolean | null = null;
-
-  function paintSource() {
-    if (destroyed) return;
-    if (nativePaintOk === false) {
-      scheduleCapture();
-      return;
-    }
-    if (htmlInCanvas) {
-      try {
-        sourceCtx!.drawElementImage!(content, 0, 0);
-        const sample = sourceCtx!.getImageData(8, 8, 1, 1).data;
-        if (sample[3] > 0) {
-          nativePaintOk = true;
-          contentDirty = true;
-          hasCapture = true;
-          wake();
-          return;
-        }
-      } catch {}
-    }
-    nativePaintOk = false;
-    scheduleCapture();
-  }
 
   if (htmlInCanvas) {
     paintable.onpaint = () => {
-      paintSource();
+      try {
+        sourceCtx!.reset();
+        sourceCtx!.drawElementImage!(content, 0, 0);
+        contentDirty = true;
+        wake();
+      } catch {}
     };
-  }
-
-  async function captureContent() {
-    if (nativePaintOk || destroyed) return;
-    if (captureBusy) {
-      captureQueued = true;
-      return;
-    }
-    captureBusy = true;
-    captureQueued = false;
-    try {
-      const { toCanvas } = await import("html-to-image");
-      const w = Math.max(1, content.clientWidth);
-      const h = Math.max(1, content.clientHeight);
-      const pr = Math.min(window.devicePixelRatio || 1, 1.5);
-      const bg =
-        getComputedStyle(content).backgroundColor ||
-        getComputedStyle(document.body).backgroundColor ||
-        "#000";
-      const snap = await toCanvas(content, {
-        pixelRatio: pr,
-        width: w,
-        height: h,
-        canvasWidth: Math.round(w * pr),
-        canvasHeight: Math.round(h * pr),
-        backgroundColor: bg,
-        style: {
-          width: `${content.scrollWidth}px`,
-          height: `${content.scrollHeight}px`,
-          marginTop: `-${content.scrollTop}px`,
-          overflow: "visible",
-          transform: "none",
-        },
-      });
-      if (destroyed) return;
-      const ctx = source.getContext("2d");
-      if (!ctx) return;
-      source.width = snap.width;
-      source.height = snap.height;
-      ctx.clearRect(0, 0, snap.width, snap.height);
-      ctx.drawImage(snap, 0, 0);
-      contentDirty = true;
-      hasCapture = true;
-      wake();
-    } catch (err) {
-      console.warn("Bend capture fallback failed", err);
-    } finally {
-      captureBusy = false;
-      if (captureQueued && !destroyed) {
-        captureTimer = window.setTimeout(() => {
-          void captureContent();
-        }, 48);
-      }
-    }
-  }
-
-  function scheduleCapture() {
-    if (nativePaintOk) return;
-    window.clearTimeout(captureTimer);
-    captureTimer = window.setTimeout(() => {
-      void captureContent();
-    }, 48);
   }
 
   function compile(type: number, text: string): WebGLShader {
@@ -411,9 +325,6 @@ export function createBend(
   gl.attachShader(program, vertexShader);
   gl.attachShader(program, fragmentShader);
   gl.linkProgram(program);
-  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-    console.error("Bend link error:", gl.getProgramInfoLog(program));
-  }
 
   const uniforms: Record<string, WebGLUniformLocation> = {};
   const count = gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS);
@@ -502,7 +413,6 @@ export function createBend(
         source.height = cssHeight * dpr;
       }
       paintable.requestPaint!();
-      paintSource();
     }
   }
 
@@ -534,7 +444,7 @@ export function createBend(
   syncBgColor();
 
   function uploadContent() {
-    if ((!htmlInCanvas && !hasCapture) || !contentDirty) return;
+    if (!htmlInCanvas || !contentDirty) return;
     contentDirty = false;
     syncBgColor();
     gl!.bindTexture(gl!.TEXTURE_2D, contentTexture);
@@ -570,7 +480,7 @@ export function createBend(
     gl!.uniform1f(uniforms.uMaxX, contentMaxX);
     gl!.uniform1f(uniforms.uPxY, 1.5 / h);
     gl!.uniform1f(uniforms.uPxX, 1.5 / w);
-    gl!.uniform1f(uniforms.uCover, hasCapture ? 1 : 0);
+    gl!.uniform1f(uniforms.uCover, htmlInCanvas ? 1 : 0);
     gl!.uniform3f(uniforms.uBg, bg[0], bg[1], bg[2]);
     gl!.uniform1f(uniforms.uTiltX, tiltXCurrent);
     gl!.uniform1f(uniforms.uTiltY, tiltYCurrent);
@@ -586,6 +496,7 @@ export function createBend(
 
   let raf = 0;
   let lastTime = performance.now();
+  let destroyed = false;
   let running = false;
   let visible = true;
 
@@ -655,26 +566,10 @@ export function createBend(
 
   wake = start;
   start();
-  paintSource();
-  scheduleCapture();
-  requestAnimationFrame(() => {
-    syncCanvasSize();
-    syncScroll();
-    paintSource();
-    start();
-  });
-  window.setTimeout(() => {
-    syncScroll();
-    paintSource();
-    start();
-  }, 250);
 
   function onScroll() {
     syncScroll();
-    if (htmlInCanvas) {
-      paintable.requestPaint!();
-      paintSource();
-    } else scheduleCapture();
+    if (htmlInCanvas) paintable.requestPaint!();
     if (hoverOn) updateHover(hoverClientX, hoverClientY);
     start();
   }
@@ -842,9 +737,9 @@ export function createBend(
   let hoverClientY = 0;
   let hoverOn = false;
 
-  content.setAttribute(CONTENT_ATTR, "");
   if (htmlInCanvas) {
     patchHoverRules();
+    content.setAttribute(CONTENT_ATTR, "");
   }
 
   function setHoverTarget(target: Element | null) {
@@ -1018,8 +913,6 @@ export function createBend(
   const observer = new ResizeObserver(() => {
     syncCanvasSize();
     syncScroll();
-    paintSource();
-    scheduleCapture();
     start();
   });
   observer.observe(output);
@@ -1050,7 +943,6 @@ export function createBend(
     },
     destroy() {
       destroyed = true;
-      window.clearTimeout(captureTimer);
       cancelAnimationFrame(raf);
       setHoverTarget(null);
       content.removeAttribute(CONTENT_ATTR);
@@ -1081,12 +973,22 @@ export interface BendProps extends BendOptions {
   style?: React.CSSProperties;
 }
 
+const emptySubscribe = () => () => {};
+
 export function Bend({ children, className, style, ...options }: BendProps) {
   const sourceRef = useRef<HTMLCanvasElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const outputRef = useRef<HTMLCanvasElement>(null);
   const instanceRef = useRef<BendInstance | null>(null);
   const [initialOptions] = useState(options);
+  const [failed, setFailed] = useState(false);
+
+  const supported = useSyncExternalStore(
+    emptySubscribe,
+    supportsHtmlInCanvas,
+    () => false,
+  );
+  const native = supported && !failed;
 
   useEffect(() => {
     const source = sourceRef.current;
@@ -1097,56 +999,63 @@ export function Bend({ children, className, style, ...options }: BendProps) {
       { source, content, output },
       initialOptions,
     );
+    if (native && !instanceRef.current) setFailed(true);
     return () => {
       instanceRef.current?.destroy();
       instanceRef.current = null;
     };
-  }, [initialOptions]);
+  }, [initialOptions, native]);
 
   useEffect(() => {
     instanceRef.current?.setOptions(options);
   });
 
   return (
-    <div
-      className={className}
-      style={{ position: "relative", isolation: "isolate", ...style }}
-    >
-      <div
-        ref={contentRef}
-        style={{
-          position: "relative",
-          zIndex: 0,
-          width: "100%",
-          height: "100%",
-          overflow: "auto",
-        }}
-      >
-        {children}
-      </div>
+    <div className={className} style={{ position: "relative", ...style }}>
       <canvas
         ref={sourceRef}
         // @ts-expect-error experimental html-in-canvas attribute
         layoutsubtree="true"
         suppressHydrationWarning
-        aria-hidden
-        style={{
-          position: "absolute",
-          inset: 0,
-          zIndex: 1,
-          width: "100%",
-          height: "100%",
-          visibility: "hidden",
-          pointerEvents: "none",
-        }}
-      />
+        style={
+          native
+            ? { position: "absolute", inset: 0, width: "100%", height: "100%" }
+            : { display: "none" }
+        }
+      >
+        {native ? (
+          <div
+            ref={contentRef}
+            style={{
+              position: "relative",
+              width: "100%",
+              height: "100%",
+              overflow: "auto",
+            }}
+          >
+            {children}
+          </div>
+        ) : null}
+      </canvas>
+      {!native ? (
+        <div
+          ref={contentRef}
+          style={{
+            position: "relative",
+            width: "100%",
+            height: "100%",
+            overflow: "auto",
+          }}
+        >
+          {children}
+        </div>
+      ) : null}
       <canvas
         ref={outputRef}
         aria-hidden
         style={{
           position: "absolute",
           inset: 0,
-          zIndex: 2,
           width: "100%",
           height: "100%",
           pointerEvents: "none",

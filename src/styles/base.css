@@ -4,39 +4,6 @@ html.lenis-smooth { scroll-behavior: auto; }
 html.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 html.lenis body { height: auto; }
 
-/* Canvas UI Bend: full-viewport cube face (same as canvasui.dev).
-   transform + isolation trap position:fixed / z-index / Framer Motion
-   layers inside the source canvas so the WebGL fold paints on top. */
-@media (min-width: 768px) {
-  html.page-bend-active,
-  html.page-bend-active body,
-  html.page-bend-active #root {
-    height: 100%;
-    overflow: hidden;
-  }
-}
-
-.page-bend-root {
-  isolation: isolate;
-  transform: translateZ(0);
-  background: var(--color-bg-primary);
-}
-
-/* Flatten stacking so live HTML cannot paint over the WebGL fold.
-   canvasui.dev content is static flow; this page has fixed/z-index/motion. */
-html.page-bend-active [data-canvasui-content] * {
-  z-index: auto !important;
-}
-
-html.page-bend-active [data-canvasui-content] > header {
-  position: absolute !important;
-}
-
-html.page-bend-active [data-canvasui-content] .section-reveal {
-  transform: none !important;
-  opacity: 1 !important;
-}
-
 /* ── Scrollbar ── */
 html { scrollbar-width: thin; scrollbar-color: var(--color-border-light) transparent; background-color: var(--color-bg-primary); }
 ::-webkit-scrollbar { width: 8px; }
