@@ -296,6 +296,11 @@ export function createBend(
   );
 
   let contentDirty = false;
+  let hasCapture = false;
+  let captureBusy = false;
+  let captureQueued = false;
+  let captureTimer = 0;
+  let destroyed = false;
   let wake = () => {};
 
   if (htmlInCanvas) {
@@ -307,6 +312,67 @@ export function createBend(
         wake();
       } catch {}
     };
+  }
+
+  async function captureContent() {
+    if (htmlInCanvas || destroyed) return;
+    if (captureBusy) {
+      captureQueued = true;
+      return;
+    }
+    captureBusy = true;
+    captureQueued = false;
+    try {
+      const { toCanvas } = await import("html-to-image");
+      const w = Math.max(1, content.clientWidth);
+      const h = Math.max(1, content.clientHeight);
+      const pr = Math.min(window.devicePixelRatio || 1, 1.5);
+      const bg =
+        getComputedStyle(content).backgroundColor ||
+        getComputedStyle(document.body).backgroundColor ||
+        "#000";
+      const snap = await toCanvas(content, {
+        pixelRatio: pr,
+        width: w,
+        height: h,
+        canvasWidth: Math.round(w * pr),
+        canvasHeight: Math.round(h * pr),
+        backgroundColor: bg,
+        style: {
+          width: `${w}px`,
+          height: `${h}px`,
+          overflow: "hidden",
+          transform: `translateY(-${content.scrollTop}px)`,
+        },
+      });
+      if (destroyed) return;
+      const ctx = source.getContext("2d");
+      if (!ctx) return;
+      source.width = snap.width;
+      source.height = snap.height;
+      ctx.clearRect(0, 0, snap.width, snap.height);
+      ctx.drawImage(snap, 0, 0);
+      contentDirty = true;
+      hasCapture = true;
+      wake();
+    } catch (err) {
+      console.warn("Bend capture fallback failed", err);
+    } finally {
+      captureBusy = false;
+      if (captureQueued && !destroyed) {
+        captureTimer = window.setTimeout(() => {
+          void captureContent();
+        }, 48);
+      }
+    }
+  }
+
+  function scheduleCapture() {
+    if (htmlInCanvas) return;
+    window.clearTimeout(captureTimer);
+    captureTimer = window.setTimeout(() => {
+      void captureContent();
+    }, 48);
   }
 
   function compile(type: number, text: string): WebGLShader {
@@ -444,7 +510,7 @@ export function createBend(
   syncBgColor();
 
   function uploadContent() {
-    if (!htmlInCanvas || !contentDirty) return;
+    if ((!htmlInCanvas && !hasCapture) || !contentDirty) return;
     contentDirty = false;
     syncBgColor();
     gl!.bindTexture(gl!.TEXTURE_2D, contentTexture);
@@ -480,7 +546,7 @@ export function createBend(
     gl!.uniform1f(uniforms.uMaxX, contentMaxX);
     gl!.uniform1f(uniforms.uPxY, 1.5 / h);
     gl!.uniform1f(uniforms.uPxX, 1.5 / w);
-    gl!.uniform1f(uniforms.uCover, htmlInCanvas ? 1 : 0);
+    gl!.uniform1f(uniforms.uCover, htmlInCanvas || hasCapture ? 1 : 0);
     gl!.uniform3f(uniforms.uBg, bg[0], bg[1], bg[2]);
     gl!.uniform1f(uniforms.uTiltX, tiltXCurrent);
     gl!.uniform1f(uniforms.uTiltY, tiltYCurrent);
@@ -496,7 +562,6 @@ export function createBend(
 
   let raf = 0;
   let lastTime = performance.now();
-  let destroyed = false;
   let running = false;
   let visible = true;
 
@@ -566,10 +631,12 @@ export function createBend(
 
   wake = start;
   start();
+  scheduleCapture();
 
   function onScroll() {
     syncScroll();
     if (htmlInCanvas) paintable.requestPaint!();
+    else scheduleCapture();
     if (hoverOn) updateHover(hoverClientX, hoverClientY);
     start();
   }
@@ -913,6 +980,7 @@ export function createBend(
   const observer = new ResizeObserver(() => {
     syncCanvasSize();
     syncScroll();
+    scheduleCapture();
     start();
   });
   observer.observe(output);
@@ -943,6 +1011,7 @@ export function createBend(
     },
     destroy() {
       destroyed = true;
+      window.clearTimeout(captureTimer);
       cancelAnimationFrame(raf);
       setHoverTarget(null);
       content.removeAttribute(CONTENT_ATTR);
@@ -1011,7 +1080,10 @@ export function Bend({ children, className, style, ...options }: BendProps) {
   });
 
   return (
-    <div className={className} style={{ position: "relative", ...style }}>
+    <div
+      className={className}
+      style={{ position: "relative", isolation: "isolate", ...style }}
+    >
       <canvas
         ref={sourceRef}
         // @ts-expect-error experimental html-in-canvas attribute
@@ -1019,7 +1091,13 @@ export function Bend({ children, className, style, ...options }: BendProps) {
         suppressHydrationWarning
         style={
           native
-            ? { position: "absolute", inset: 0, width: "100%", height: "100%" }
+            ? {
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+                zIndex: 0,
+              }
             : { display: "none" }
         }
       >
@@ -1042,6 +1120,7 @@ export function Bend({ children, className, style, ...options }: BendProps) {
           ref={contentRef}
           style={{
             position: "relative",
+            zIndex: 0,
             width: "100%",
             height: "100%",
             overflow: "auto",
@@ -1056,6 +1135,7 @@ export function Bend({ children, className, style, ...options }: BendProps) {
         style={{
           position: "absolute",
           inset: 0,
+          zIndex: 2,
           width: "100%",
           height: "100%",
           pointerEvents: "none",

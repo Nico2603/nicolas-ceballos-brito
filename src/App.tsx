@@ -45,8 +45,6 @@ function AppShell({ children }: { children: ReactNode }) {
     <>
       <Navbar />
       {children}
-      <BottomNav />
-      <FloatingWhatsAppButton />
     </>
   )
 }
@@ -169,6 +167,8 @@ export default function App() {
         ) : (
           <AppShell>{routes}</AppShell>
         )}
+        <BottomNav />
+        <FloatingWhatsAppButton />
         <GoogleAnalytics />
         <DeferredVercelMetrics />
       </ThemeProvider>
