@@ -1,0 +1,3 @@
+{
+  "install": "npm ci && node scripts/write-cloud-env.mjs"
+}

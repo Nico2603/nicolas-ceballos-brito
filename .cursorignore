@@ -1,0 +1,7 @@
+.env
+.env.*
+!.env.example
+*.local
+.vercel
+**/*token*.json
+**/*secret*.json

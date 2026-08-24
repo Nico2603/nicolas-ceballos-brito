@@ -50,6 +50,15 @@ nicolas-ceballos-brito/
 - **Autónomo (Nico-Laptop):** ver workspace `docs/REMOTE-CONTROL-DEPLOY.md`
   - `npm run deploy:prod` → `Deploy-PersonalProject.ps1 -ProjectSlug nicolas-ceballos-brito`
   - Preferir rama `cursor/…` + ship script; no depender de `vercel whoami` (multi-cuenta)
+- **Cloud Agent (VM Ubuntu):** `npm run cloud:probe` / `cloud:deploy` · [`../docs/CLOUD-AGENT-SECRETS.md`](../docs/CLOUD-AGENT-SECRETS.md)
+
+## Cursor Cloud specific instructions
+
+- Crea (si falta) un Cloud environment **solo** para `Nico2603/nicolas-ceballos-brito`.
+- Skills: `.agents/skills/` + `skills-lock.json`. `npx skills ls`.
+- MCP: `.cursor/mcp.json` → HTTP `https://mcp.vercel.com`. Integrations & MCP: mismo URL. OAuth Vercel con `nicolasceballosbrito@gmail.com` (team `flackosss`).
+- Token deploy: `npm run cloud:deploy` / `cloud:deploy:prod` cuando `VERCEL_TOKEN=set`.
+- `nico-ops`, Drive y galería: Runtime Nico-Laptop, no esta VM.
 
 ## Convenciones
 
@@ -63,6 +72,7 @@ nicolas-ceballos-brito/
 - `npm run lint` — ESLint
 - `npm run preview` — Preview del build
 - `npm run sync:linkedin` — Snapshot del perfil LinkedIn (`linkedin-sync.raw.json`)
+- `npm run cloud:probe` / `cloud:env` / `cloud:deploy` / `cloud:deploy:prod` — Cloud Agent Ubuntu (ver sección Cloud arriba)
 
 ### SEO / previews sociales
 
