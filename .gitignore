@@ -35,3 +35,12 @@ audit-output/
 src/data/linkedin-sync.raw.json
 
 tmp/
+tmp-bend-shots/
+
+# Local Bend/canvas probes (not shipped)
+scripts/probe-*.mjs
+scripts/shot-*.mjs
+scripts/analyze-all.mjs
+scripts/analyze-demo-vs-local.mjs
+scripts/analyze-fold.mjs
+scripts/inspect-bend.mjs
