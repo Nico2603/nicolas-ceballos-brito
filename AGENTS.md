@@ -50,15 +50,28 @@ nicolas-ceballos-brito/
 - **Autónomo (Nico-Laptop):** ver workspace `docs/REMOTE-CONTROL-DEPLOY.md`
   - `npm run deploy:prod` → `Deploy-PersonalProject.ps1 -ProjectSlug nicolas-ceballos-brito`
   - Preferir rama `cursor/…` + ship script; no depender de `vercel whoami` (multi-cuenta)
-- **Cloud Agent (VM Ubuntu):** `npm run cloud:probe` / `cloud:deploy` · [`../docs/CLOUD-AGENT-SECRETS.md`](../docs/CLOUD-AGENT-SECRETS.md)
+- **Cloud Agent (VM Ubuntu):** environment `Nico2603/nicolas-ceballos-brito` · `npm run cloud:probe` / `cloud:status` / `cloud:deploy` · [`../docs/CLOUD-AGENT-SECRETS.md`](../docs/CLOUD-AGENT-SECRETS.md)
 
 ## Cursor Cloud specific instructions
 
-- Crea (si falta) un Cloud environment **solo** para `Nico2603/nicolas-ceballos-brito`.
+- Environment personal ya existe: `Nico2603/nicolas-ceballos-brito`. My Secrets: `VITE_WEB3FORMS_ACCESS_KEY`, `VITE_GA_MEASUREMENT_ID`. **Falta** `VERCEL_TOKEN`.
 - Skills: `.agents/skills/` + `skills-lock.json`. `npx skills ls`.
 - MCP: `.cursor/mcp.json` → HTTP `https://mcp.vercel.com`. Integrations & MCP: mismo URL. OAuth Vercel con `nicolasceballosbrito@gmail.com` (team `flackosss`).
-- Token deploy: `npm run cloud:deploy` / `cloud:deploy:prod` cuando `VERCEL_TOKEN=set`.
+- Token deploy: `npm run cloud:deploy` / `cloud:deploy:prod` cuando `VERCEL_TOKEN=set`. Estado: `npm run cloud:status`.
 - `nico-ops`, Drive y galería: Runtime Nico-Laptop, no esta VM.
+
+## Cloud fallback (sin Remote Control)
+
+Este repo **es** el canal portafolio. Si el runtime no es `Nico-Laptop`: lee `.agents/skills/cloud-agent-fallback/SKILL.md`. No PowerShell personal, no `nico-ops`.
+
+| Pedido | Acción |
+|---|---|
+| probe / ¿faltan secretos? | `npm run cloud:probe` |
+| estado / último deploy | `npm run cloud:status` |
+| preview / arregla deploy | `npm run cloud:deploy` |
+| prod | `npm run cloud:deploy:prod` |
+
+Si `VERCEL_TOKEN` sale `missing`, parar. Pegar en My Secrets scoped a `Nico2603/nicolas-ceballos-brito`. Código local sin push **no está** en esta VM.
 
 ## Convenciones
 
@@ -72,7 +85,7 @@ nicolas-ceballos-brito/
 - `npm run lint` — ESLint
 - `npm run preview` — Preview del build
 - `npm run sync:linkedin` — Snapshot del perfil LinkedIn (`linkedin-sync.raw.json`)
-- `npm run cloud:probe` / `cloud:env` / `cloud:deploy` / `cloud:deploy:prod` — Cloud Agent Ubuntu (ver sección Cloud arriba)
+- `npm run cloud:probe` / `cloud:status` / `cloud:env` / `cloud:deploy` / `cloud:deploy:prod` — Cloud Agent Ubuntu (ver sección Cloud arriba)
 
 ### SEO / previews sociales
 

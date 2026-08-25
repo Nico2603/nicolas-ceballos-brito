@@ -12,6 +12,7 @@
     "deploy:preflight": "powershell -NoProfile -ExecutionPolicy Bypass -File \"%LOCALAPPDATA%\\cursor-agent\\personal\\tests\\Probe-PersonalDeploy.ps1\"",
     "cloud:env": "node scripts/write-cloud-env.mjs",
     "cloud:probe": "node scripts/write-cloud-env.mjs --probe",
+    "cloud:status": "node scripts/cloud-status.mjs",
     "cloud:deploy": "node scripts/cloud-deploy.mjs",
     "cloud:deploy:prod": "node scripts/cloud-deploy.mjs --prod",
     "sync:linkedin": "tsx scripts/sync-linkedin.ts",

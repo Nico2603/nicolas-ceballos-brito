@@ -51,7 +51,7 @@ function encodeEnvValue(value) {
 function loadBinding() {
   if (!existsSync(bindingPath)) return null
   try {
-    return JSON.parse(readFileSync(bindingPath, 'utf8'))
+    return JSON.parse(readFileSync(bindingPath, 'utf8').replace(/^\uFEFF/, ''))
   } catch {
     return null
   }

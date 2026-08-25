@@ -23,7 +23,7 @@ if (!existsSync(bindingPath)) {
   process.exit(1)
 }
 
-const binding = JSON.parse(readFileSync(bindingPath, 'utf8'))
+const binding = JSON.parse(readFileSync(bindingPath, 'utf8').replace(/^\uFEFF/, ''))
 if (!binding?.vercel?.enabled) {
   console.error('cloud-deploy: vercel.enabled is false in binding.json')
   process.exit(1)
