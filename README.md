@@ -1,8 +1,16 @@
-# Nicolás Ceballos Brito — Portafolio Personal
+<div align="center">
+  <img src="docs/assets/banner.svg" alt="Nicolás Ceballos Brito" width="100%" />
+</div>
 
-Portafolio profesional de **Nicolás Ceballos Brito**, Ingeniero en Sistemas y Telecomunicaciones (UCP 2025). App Lead Developer en Prosavis.
+<br />
 
-Identidad visual **Dev Premium**: navy + cyan eléctrico + ámbar CTA, modo claro/oscuro, navbar isla flotante y bottom dock móvil. Ver [`DESIGN_SYSTEM.md`](./DESIGN_SYSTEM.md) para tokens, componentes y patrones.
+# Nicolás Ceballos Brito — Portafolio personal
+
+Sitio: **[nicolasceballosbrito.com](https://nicolasceballosbrito.com)**
+
+Ingeniero en Sistemas y Telecomunicaciones (UCP 2025). Director técnico en Prosavis. Diseño y construyo productos web, móvil e IA.
+
+Identidad visual **Ink & Steel** (graphite + steel + chick yellow), modo claro/oscuro, navbar isla y dock móvil. Tokens: [`DESIGN_SYSTEM.md`](./DESIGN_SYSTEM.md).
 
 ## Stack
 
@@ -252,3 +260,26 @@ graphify query "..." # Consultar el grafo en graphify-out/
 ## Licencia
 
 MIT © Nicolás Ceballos Brito
+
+---
+
+<div align="center">
+
+**Nicolás Ceballos Brito** · Ingeniero en Sistemas y Telecomunicaciones (UCP 2025)  
+CTO · Prosavis · Pereira, Colombia
+
+[nicolasceballosbrito.com](https://nicolasceballosbrito.com)
+·
+[GitHub](https://github.com/Nico2603)
+·
+[LinkedIn](https://www.linkedin.com/in/nicolas-ceballos-brito/)
+·
+[X](https://x.com/NicolasCBrito)
+·
+[Instagram](https://www.instagram.com/nico_ceballos26/)
+·
+[Hugging Face](https://huggingface.co/Flackoooo)
+·
+[Email](mailto:nicolasceballosbrito@gmail.com)
+
+</div>

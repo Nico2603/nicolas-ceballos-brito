@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="420" viewBox="0 0 1280 420" role="img" aria-label="Nicolás Ceballos Brito">
+  <defs>
+    <linearGradient id="ink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070A0F"/>
+      <stop offset="55%" stop-color="#0E141C"/>
+      <stop offset="100%" stop-color="#141B24"/>
+    </linearGradient>
+    <linearGradient id="steel" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3D5A80"/>
+      <stop offset="100%" stop-color="#7BA3C9"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#7BA3C9" stroke-opacity="0.07" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1280" height="420" fill="url(#ink)"/>
+  <rect width="1280" height="420" fill="url(#grid)"/>
+  <rect x="0" y="0" width="8" height="420" fill="url(#steel)"/>
+  <rect x="0" y="404" width="1280" height="4" fill="#FACC15"/>
+  <circle cx="1120" cy="90" r="140" fill="#7BA3C9" fill-opacity="0.06"/>
+  <circle cx="1180" cy="320" r="90" fill="#FACC15" fill-opacity="0.08"/>
+  <rect x="56" y="56" width="64" height="64" rx="14" fill="none" stroke="#7BA3C9" stroke-width="1.5"/>
+  <text x="88" y="98" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="700" fill="#F1F4F8">NC</text>
+  <text x="140" y="78" font-family="Georgia, 'Times New Roman', serif" font-size="13" letter-spacing="4" fill="#7BA3C9">LANDING  ·  SITIO</text>
+  <text x="140" y="112" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="700" fill="#F1F4F8">Nicolás Ceballos Brito</text>
+  <text x="56" y="198" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#A8B3C2">Portafolio · Ink &amp; Steel · nicolasceballosbrito.com</text>
+  <text x="56" y="268" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" letter-spacing="2" fill="#7BA3C9">NICOLÁS CEBALLOS BRITO  ·  nicolasceballosbrito.com</text>
+  <rect x="56" y="300" width="48" height="3" fill="#FACC15"/>
+</svg>

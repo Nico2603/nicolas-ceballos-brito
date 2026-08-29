@@ -13,11 +13,13 @@ Rules:
 
 # Nicolás Ceballos Brito — Portafolio Personal
 
-`C:\Users\nicol\Documentos\GitHub\nicolas-ceballos-brito\`
+`C:\Users\Nicolas\Documents\GitHub\landings\nicolas-ceballos-brito\`
+
+Identidad: skill `nicolas-identity`. Marca Ink & Steel. Sitio: https://nicolasceballosbrito.com
 
 ## Visión General
 
-Portafolio profesional de Nicolás Ceballos Brito — Ingeniero en Sistemas y Telecomunicaciones (UCP 2025), App Lead Developer en Prosavis.
+Portafolio profesional — Ingeniero en Sistemas y Telecomunicaciones (UCP 2025), director técnico en Prosavis.
 
 ```
 nicolas-ceballos-brito/
