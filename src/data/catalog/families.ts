@@ -273,7 +273,7 @@ export const catalogFamilies: CatalogFamily[] = [
     pageDescription:
       'Nicolás Ceballos Brito es director técnico de Prosavis: app de servicios verificados en Colombia, línea de limpieza y operación en el Eje Cafetero.',
     thesis:
-      'Prosavis es una plataforma de servicios verificados en Colombia. Yo dirijo la técnica: app, paneles y la operación digital que sostiene a profesionales y a clientes. También hay una línea propia de limpieza. El Eje —Pereira, Dosquebradas, Santa Rosa de Cabal, Cerritos— es el territorio. No publico Firebase, tokens ni repos de la organización.',
+      'Prosavis es una plataforma de servicios verificados en Colombia. Yo dirijo la técnica: app, paneles y la operación digital que sostiene a profesionales y a clientes. También hay una línea propia de limpieza. El Eje —Pereira, Dosquebradas, Santa Rosa de Cabal, Cerritos— es el territorio. No publico infraestructura interna, tokens ni repos de la organización.',
     story: [
       {
         heading: 'Qué es Prosavis, en voz de producto',
