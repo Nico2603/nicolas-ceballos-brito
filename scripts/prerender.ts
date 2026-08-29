@@ -148,7 +148,7 @@ function waitSelectorForRoute(routePath: string): string {
     case '/repositories':
       return '#repositories-hero'
     default:
-      return 'main h1'
+      return 'main h1, main h2'
   }
 }
 
