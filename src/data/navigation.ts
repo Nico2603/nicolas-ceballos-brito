@@ -16,10 +16,13 @@ export const navLinks: NavLink[] = [
     label: 'Portafolio',
     href: '#portafolio',
     dropdown: [
-      { label: 'ChatBot-MentalHealth', href: '/proyectos/chatbot-mental-health' },
-      { label: 'PdM-Manager', href: '/proyectos/pdm-manager' },
-      { label: 'FastQA-HomePage', href: '/proyectos/fastqa-homepage' },
-      { label: 'magiacafetera-ui', href: '/proyectos/magiacafetera-ui' },
+      { label: 'Salud mental', href: '/salud-mental' },
+      { label: 'Mantenimiento predictivo', href: '/mantenimiento-predictivo' },
+      { label: 'Productos clínicos', href: '/productos-clinicos' },
+      { label: 'Webs', href: '/webs' },
+      { label: 'Aula', href: '/aula' },
+      { label: 'Académicos', href: '/academicos' },
+      { label: 'Prosavis', href: '/trabajo/prosavis' },
     ],
   },
   {

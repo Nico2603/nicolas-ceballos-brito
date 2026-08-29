@@ -67,7 +67,12 @@ function personNode(options?: { maxCredentials?: number }) {
         name: credential.issuer,
       },
     })),
-    knowsAbout: [...PROFESSIONAL_KNOWS_ABOUT],
+    knowsAbout: [
+      ...PROFESSIONAL_KNOWS_ABOUT,
+      'Cursor',
+      'Cloud Agents',
+      'Orquestación de modelos',
+    ],
     sameAs: [...PROFESSIONAL_SAME_AS],
   }
 }
@@ -446,26 +451,25 @@ export function buildGuiasIndexStructuredData(breadcrumbs: BreadcrumbItem[]) {
 export function getRepositoriesSnapshot() {
   return [
     {
-      name: 'ChatBot-MentalHealth',
-      url: 'https://github.com/Nico2603/ChatBot-MentalHealth',
+      name: 'ChatBot-MentalHealth-BERT',
+      url: 'https://github.com/Nico2603/ChatBot-MentalHealth-BERT',
       description:
-        'Chatbot especializado en apoyo de salud mental utilizando IA para proporcionar recursos y soporte emocional.',
+        'v1 de la línea de salud mental: BERT propio que clasifica emoción y responde con plantillas.',
+    },
+    {
+      name: 'MarIA',
+      url: 'https://github.com/Nico2603/MarIA',
+      description: 'Producto v2 de acompañamiento emocional con voz, texto e historial.',
     },
     {
       name: 'PdM-Manager',
       url: 'https://github.com/Nico2603/PdM-Manager',
-      description:
-        'Sistema avanzado de gestión para mantenimiento predictivo con React, Node.js y machine learning.',
-    },
-    {
-      name: 'FastQA-HomePage',
-      url: 'https://github.com/Nico2603/FastQA-HomePage',
-      description: 'Página de inicio moderna para plataforma de preguntas y respuestas rápidas.',
+      description: 'Núcleo de mantenimiento predictivo con FastAPI, Keras y Chart.js.',
     },
     {
       name: 'magiacafetera-ui',
       url: 'https://github.com/Nico2603/magiacafetera-ui',
-      description: 'Interfaz elegante para aplicación de café colombiano premium con Angular y TypeScript.',
+      description: 'UI Angular para viajes personalizados en el Eje Cafetero.',
     },
   ]
 }

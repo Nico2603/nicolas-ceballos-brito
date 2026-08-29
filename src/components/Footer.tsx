@@ -13,6 +13,13 @@ const footerLinks = [
 ]
 
 const expertiseLinks = [
+  { label: 'Salud mental', href: '/salud-mental' },
+  { label: 'Mantenimiento predictivo', href: '/mantenimiento-predictivo' },
+  { label: 'Productos clínicos', href: '/productos-clinicos' },
+  { label: 'Webs', href: '/webs' },
+  { label: 'Aula', href: '/aula' },
+  { label: 'Académicos', href: '/academicos' },
+  { label: 'Prosavis', href: '/trabajo/prosavis' },
   { label: 'Desarrollo web', href: '/desarrollo-web' },
   { label: 'Inteligencia artificial', href: '/inteligencia-artificial' },
   { label: 'Análisis de datos', href: '/analisis-datos' },

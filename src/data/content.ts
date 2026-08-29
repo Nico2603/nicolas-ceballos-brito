@@ -14,25 +14,25 @@ export const portfolioStats: PortfolioStat[] = [
 export const featuredProjects: Project[] = [
   {
     id: 'portafolio-chatbot',
-    title: 'ChatBot-MentalHealth',
+    title: 'ChatBot-MentalHealth-BERT',
     description:
-      'Chatbot especializado en apoyo de salud mental utilizando IA para proporcionar recursos y soporte emocional a usuarios que lo necesiten.',
+      'v1 de la línea de salud mental: BERT propio que clasifica emoción y responde con plantillas. No sustituye atención clínica.',
     stars: 5,
     language: 'Python',
-    techTags: ['Python', 'IA', 'Flask'],
+    techTags: ['Python', 'BERT', 'Flask'],
     imageUrl:
       'https://repository-images.githubusercontent.com/938412804/7f2b92ec-e56c-4931-b4d4-2abb01349316',
-    repoUrl: 'https://github.com/Nico2603/ChatBot-MentalHealth',
+    repoUrl: 'https://github.com/Nico2603/ChatBot-MentalHealth-BERT',
     status: 'active',
   },
   {
     id: 'portafolio-pdm',
     title: 'PdM-Manager',
     description:
-      'Sistema avanzado de gestión para mantenimiento predictivo, optimizando recursos industriales y previniendo fallos técnicos.',
+      'Núcleo PdM: FastAPI, PostgreSQL, RNN Keras y Chart.js. Vibración, severidad y alertas en lab o LAN.',
     stars: 8,
-    language: 'JavaScript',
-    techTags: ['React', 'Node.js', 'ML'],
+    language: 'Python',
+    techTags: ['FastAPI', 'Keras', 'Chart.js'],
     imageUrl:
       'https://repository-images.githubusercontent.com/941674189/849d685d-01e7-4cdb-b160-e51e5e6b5f0d',
     repoUrl: 'https://github.com/Nico2603/PdM-Manager',
@@ -55,7 +55,7 @@ export const featuredProjects: Project[] = [
     id: 'portafolio-magia',
     title: 'magiacafetera-ui',
     description:
-      'Interfaz de usuario elegante para aplicación relacionada con la producción y distribución de café colombiano premium.',
+      'Interfaz Angular para viajes personalizados en el Eje Cafetero. Fork de Uruena2603; no es una tienda de café premium.',
     stars: 4,
     language: 'TypeScript',
     techTags: ['Angular', 'TypeScript', 'SASS'],
@@ -130,7 +130,7 @@ export const skillCategories: SkillCategory[] = [
       },
       {
         title: 'Herramientas',
-        tags: ['Vite', 'Figma', 'Cypress', 'Flutter', 'WordPress'],
+        tags: ['Vite', 'Figma', 'Cypress', 'Flutter', 'WordPress', 'Cursor', 'OpenCode'],
       },
     ],
   },
@@ -169,6 +169,29 @@ export const skillCategories: SkillCategory[] = [
       {
         title: 'Flujo de trabajo',
         tags: ['Git', 'GitHub', 'GitLab', 'CI/CD', 'Jenkins', 'Jira', 'Postman'],
+      },
+    ],
+  },
+  {
+    title: 'Herramientas & orquestación',
+    icon: 'sparkles',
+    subcategories: [
+      {
+        title: 'Entornos agente',
+        tags: ['Cursor (experto)', 'Cloud Agents', 'Composer', 'OpenCode', 'cron y paralelo'],
+      },
+      {
+        title: 'Familias de modelos',
+        tags: [
+          'GPT-5.6 Sol/Terra/Luna',
+          'Claude Opus 5',
+          'Gemini 3.7 Flash',
+          'Grok',
+          'DeepSeek V4',
+          'Qwen 3.8-Max',
+          'Kimi K3',
+          'Nemotron 3.5 Lightning',
+        ],
       },
     ],
   },

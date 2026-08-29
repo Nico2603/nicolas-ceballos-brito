@@ -5,6 +5,26 @@
       "has": [{ "type": "host", "value": "www.nicolasceballosbrito.com" }],
       "destination": "https://nicolasceballosbrito.com/:path*",
       "permanent": true
+    },
+    {
+      "source": "/proyectos/chatbot-mental-health",
+      "destination": "/salud-mental/chatbot-mental-health-bert",
+      "permanent": true
+    },
+    {
+      "source": "/proyectos/pdm-manager",
+      "destination": "/mantenimiento-predictivo/pdm-manager",
+      "permanent": true
+    },
+    {
+      "source": "/proyectos/fastqa-homepage",
+      "destination": "/webs/fastqa-homepage",
+      "permanent": true
+    },
+    {
+      "source": "/proyectos/magiacafetera-ui",
+      "destination": "/webs/magiacafetera-ui",
+      "permanent": true
     }
   ],
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],

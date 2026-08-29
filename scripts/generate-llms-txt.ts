@@ -26,7 +26,7 @@ import {
   LINKEDIN_SCRAPED_AT,
 } from '../src/data/linkedin-profile.ts'
 import { laboresSlides, skillCategories } from '../src/data/content.ts'
-import { projectsSeo } from '../src/data/projects.ts'
+import { catalogFamilies, catalogProjects } from '../src/data/catalog/index.ts'
 
 const guias = getAllGuias()
 const guiasSection = guias
@@ -53,10 +53,14 @@ const stackSection = skillCategories
   })
   .join('\n')
 
-const projectsSection = projectsSeo
+const hubsSection = catalogFamilies
+  .map((family) => `- ${family.navLabel}: ${SITE_URL}${family.path}\n  ${family.thesis}`)
+  .join('\n\n')
+
+const projectsSection = catalogProjects
   .map(
     (p) =>
-      `- ${p.title}: ${SITE_URL}${p.path}\n  ${p.directAnswer}\n  Tech: ${p.techStack.join(', ')}\n  Repo: ${p.repoUrl}`,
+      `- ${p.title}: ${SITE_URL}${p.path}\n  ${p.lead}\n  Tech: ${p.stack.join(', ')}${p.repoUrl ? `\n  Repo: ${p.repoUrl}` : ''}`,
   )
   .join('\n\n')
 
@@ -111,7 +115,10 @@ ${stackSection}
 ## Áreas de conocimiento
 ${PROFESSIONAL_KNOWS_ABOUT.join(', ')}
 
-## Proyectos destacados
+## Líneas de portafolio
+${hubsSection}
+
+## Proyectos y artículos
 ${projectsSection}
 
 ## Logros y labores

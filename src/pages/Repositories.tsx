@@ -45,9 +45,9 @@ export default function Repositories() {
             highlight="repositorios"
             description="Colección completa de proyectos con filtros avanzados por lenguaje, estrellas y más."
             align="left"
-            className="[&_h2]:text-white [&_p]:text-white/80 [&_p:first-of-type]:text-[var(--color-accent-cta)]"
+            tone="hero"
           />
-          <p className="direct-answer mt-4 text-white/80 max-w-2xl leading-relaxed">
+          <p className="direct-answer mt-4 text-[var(--hero-text-muted)] max-w-2xl leading-relaxed">
             {SEO_REPOSITORIES_DESCRIPTION}
           </p>
         </div>

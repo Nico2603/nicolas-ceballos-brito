@@ -1,5 +1,5 @@
 import { m } from 'framer-motion'
-import { Brain, Code, Database, GitBranch } from 'lucide-react'
+import { Brain, Code, Database, GitBranch, Sparkles } from 'lucide-react'
 import { skillCategories } from '../data/content'
 import Badge from './ui/Badge'
 import Card from './ui/Card'
@@ -10,6 +10,7 @@ const categoryIcons: Record<string, typeof Code> = {
   brain: Brain,
   database: Database,
   'git-branch': GitBranch,
+  sparkles: Sparkles,
 }
 
 export default function SkillsSection() {
@@ -17,8 +18,8 @@ export default function SkillsSection() {
     <div className="space-y-8">
       <SectionHeader
         eyebrow="Stack técnico"
-        title="Tecnologías &"
-        highlight="habilidades"
+        title="Stack y"
+        highlight="herramientas"
         align="center"
       />
 

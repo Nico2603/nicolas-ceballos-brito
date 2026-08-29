@@ -6,6 +6,8 @@ interface SectionHeaderProps {
   highlight?: string
   description?: string
   align?: 'left' | 'center'
+  /** Hero bands use theme-aware ink/paper tokens — never hardcoded white. */
+  tone?: 'default' | 'hero'
   className?: string
 }
 
@@ -15,9 +17,16 @@ export default function SectionHeader({
   highlight,
   description,
   align = 'center',
+  tone = 'default',
   className = '',
 }: SectionHeaderProps) {
   const alignClass = align === 'center' ? 'text-center mx-auto' : 'text-left'
+  const eyebrowColor =
+    tone === 'hero' ? 'text-[var(--hero-eyebrow)]' : 'text-[var(--color-accent-label)]'
+  const titleColor =
+    tone === 'hero' ? 'text-[var(--hero-text)]' : 'text-[var(--color-text-primary)]'
+  const descriptionColor =
+    tone === 'hero' ? 'text-[var(--hero-text-muted)]' : 'text-[var(--color-text-secondary)]'
 
   return (
     <m.div
@@ -28,13 +37,13 @@ export default function SectionHeader({
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
     >
       {eyebrow && (
-        <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-bold mb-3 text-[var(--color-accent-label)]">
+        <p className={`inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-bold mb-3 ${eyebrowColor}`}>
           <span className="w-6 h-px bg-[var(--color-accent-primary)]" aria-hidden />
           {eyebrow}
           <span className="w-6 h-px bg-[var(--color-accent-primary)]" aria-hidden />
         </p>
       )}
-      <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--color-text-primary)] mb-4 leading-tight">
+      <h2 className={`font-display text-3xl md:text-4xl lg:text-5xl font-bold ${titleColor} mb-4 leading-tight`}>
         {title}
         {highlight && (
           <>
@@ -45,7 +54,7 @@ export default function SectionHeader({
       </h2>
       {description && (
         <p
-          className={`text-lg text-[var(--color-text-secondary)] leading-relaxed max-w-2xl ${
+          className={`text-lg ${descriptionColor} leading-relaxed max-w-2xl ${
             align === 'center' ? 'mx-auto' : ''
           }`}
         >

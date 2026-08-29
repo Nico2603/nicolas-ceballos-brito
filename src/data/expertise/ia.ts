@@ -32,8 +32,8 @@ export const inteligenciaArtificialExpertise: ExpertiseContent = {
     {
       heading: 'Proyectos aplicados',
       paragraphs: [
-        'ChatBot-MentalHealth (octubre 2024 – presente) es una aplicación diseñada para brindar apoyo en salud mental mediante un chatbot interactivo. Utiliza procesamiento de lenguaje natural para responder preguntas y ofrecer orientación, con stack Python, IA y Flask según el repositorio en GitHub (Nico2603/ChatBot-MentalHealth). Es el ejemplo concreto de cómo integro NLP en un producto con propósito social.',
-        'PdM-Manager es un sistema avanzado de gestión para mantenimiento predictivo que optimiza recursos industriales y previene fallos técnicos. Combina React en frontend, Node.js en backend y modelos ML — coherente con los algoritmos no supervisados que describo en mi perfil. El repositorio (Nico2603/PdM-Manager) documenta el enfoque full-stack que aplico cuando la IA debe ser consumible en dashboards y APIs, no solo en notebooks.',
+        'ChatBot-MentalHealth-BERT es la v1 de la línea: un BERT propio clasifica emoción y elige plantillas; Flask sirve el chat. MarIA es la v2 (Next.js, voz, historial) y LiveKit_Agent_MarIA el proceso que habla. El relato largo está en /salud-mental. No sustituyen a un clínico.',
+        'PdM-Manager no es React/Node: es FastAPI, PostgreSQL, un RNN Keras y Chart.js. El cuarteto (landing, Arduino, algoritmos no supervisados y el manager) está en /mantenimiento-predictivo. Ahí se ve cómo integro hardware, modelo y tablero.',
         `En el ámbito académico-investigativo, obtuve certificación de estancia en el XXIX Verano de la Investigación Científica y Tecnológica del Pacífico (Universidad Autónoma de Nayarit, agosto 2024) y reconocimiento por destacada participación en el mismo evento. Esas credenciales avalan trabajo colaborativo en machine learning y mantenimiento predictivo en contexto internacional.`,
         'Más allá del código, lideré una iniciativa comunitaria documentada en LinkedIn que asistió a más de 500 familias y entregó 170 kits educativos en el barrio Futuro Bajo. Tecnología e impacto social no son opuestos: un chatbot de salud mental o un modelo predictivo industrial comparten la misma pregunta — ¿cómo usar datos e IA para mejorar vidas reales?',
       ],
@@ -48,9 +48,9 @@ export const inteligenciaArtificialExpertise: ExpertiseContent = {
     {
       heading: 'Integración de modelos en producto',
       paragraphs: [
-        'La IA útil no termina en un notebook. En PdM-Manager el modelo alimenta visualizaciones y decisiones operativas; en ChatBot-MentalHealth el procesamiento de lenguaje se expone vía Flask para usuarios finales. Esa integración — Pandas y NumPy para pipelines, Scikit-learn o TensorFlow para entrenamiento, APIs para serving — es el patrón que repito en proyectos colaborativos y profesionales.',
-        'Tengo perfil en Hugging Face (Flackoooo) y experiencia con modelos preentrenados, OpenCV para visión por computador y herramientas del ecosistema Python. Cuando un problema requiere deep learning escalo a TensorFlow o PyTorch; cuando basta con modelos clásicos o no supervisados, priorizo interpretabilidad y tiempos de inferencia razonables.',
-        'Si buscas colaboración en IA aplicada — chatbots, mantenimiento predictivo, MVPs con LLMs o pipelines de datos — puedes revisar los repositorios en GitHub, las certificaciones en LinkedIn o contactarme directamente desde este sitio.',
+        'La IA útil no termina en un notebook. En PdM-Manager el modelo alimenta Chart.js y alertas; en la línea de salud mental el BERT y MarIA se operan como producto. El patrón —pipelines, entrenamiento, API— es el que vendo.',
+        'Orquesto Cursor, Cloud Agents y OpenCode a nivel experto, y recorro familias de modelos desde los primeros GPT, Claude y Gemini hasta GPT-5.6, Claude Opus 5, Gemini 3.7 Flash, Grok, DeepSeek V4, Qwen, Kimi y Nemotron. Eso no sustituye entrenar los míos: BERT, PdM y EfficientDet están en GitHub. Perfil Hugging Face: Flackoooo (sin inventar la URL del Space).',
+        'Si buscas colaboración en IA aplicada —acompañamiento, PdM, agentes o pipelines— entra a los hubs o escríbeme desde este sitio.',
       ],
       image: {
         src: apoyoComunitario.image,
@@ -70,8 +70,8 @@ export const inteligenciaArtificialExpertise: ExpertiseContent = {
   ],
   rightCardTitle: 'Proyectos reales',
   rightCardItems: [
-    'ChatBot-MentalHealth (Python, Flask, NLP)',
-    'PdM-Manager (React, Node.js, ML)',
+    'ChatBot-MentalHealth-BERT + MarIA + agente LiveKit',
+    'PdM-Manager (FastAPI, Keras, Chart.js)',
     'Verano del Pacífico — ML industrial',
     'MVPs en Modin.ai / Teilur.ai Venture Studio',
   ],
@@ -80,12 +80,12 @@ export const inteligenciaArtificialExpertise: ExpertiseContent = {
     {
       question: '¿Qué experiencia tiene Nicolás en inteligencia artificial?',
       answer:
-        'Ha desarrollado ChatBot-MentalHealth con IA y NLP para salud mental (oct 2024 – presente), PdM-Manager con machine learning para mantenimiento predictivo, y participó en el AI Engineer Training Venture Studio Program en Modin.ai y Teilur.ai (2025). Su perfil de LinkedIn detalla modelos no supervisados — DBSCAN, KMeans, Isolation Forest y CBLOF — y certificaciones del XXIX Verano del Pacífico con reconocimiento por destacada participación. Trabaja con TensorFlow, PyTorch, Scikit-learn, Hugging Face y Python en pipelines de datos reales.',
+        'Línea de salud mental (BERT propio, MarIA, LiveKit), PdM con FastAPI y Keras, Venture Studio en Modin/Teilur (2025), modelos no supervisados en LinkedIn y orquestación diaria en Cursor / Cloud Agents con familias actuales de OpenAI, Anthropic, Google, xAI, DeepSeek, Qwen, Kimi y NVIDIA.',
     },
     {
       question: '¿Qué proyectos de ML tiene en su portafolio?',
       answer:
-        'PdM-Manager aplica ML para predicción de fallos industriales con stack React, Node.js y modelos integrados en dashboard. ChatBot-MentalHealth usa procesamiento de lenguaje natural con Python y Flask. Ambos están en GitHub (@Nico2603) con README y capturas. Complementan experiencia académica en el Verano de la Investigación del Pacífico (Universidad Autónoma de Nayarit, 2024) y formación en venture studio donde construyó MVPs impulsados por IA.',
+        'PdM-Manager (FastAPI + Keras + Chart.js) y el cuarteto de repos de mantenimiento predictivo. Salud mental: BERT, MarIA y el agente de voz. Verano del Pacífico 2024 y MVPs de venture studio. Las páginas /salud-mental y /mantenimiento-predictivo desglosan cada pieza.',
     },
     {
       question: '¿Usa Hugging Face u otras plataformas de IA?',

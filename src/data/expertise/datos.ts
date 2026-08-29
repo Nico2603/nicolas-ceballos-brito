@@ -38,7 +38,7 @@ export const analisisDatosExpertise: ExpertiseContent = {
     {
       heading: 'Mantenimiento predictivo y visualización',
       paragraphs: [
-        'PdM-Manager es el proyecto bandera donde convergen análisis de datos e Industria 4.0: sistema de gestión para mantenimiento predictivo con React en frontend, Node.js en backend y modelos ML que alimentan visualizaciones industriales. El repositorio en GitHub (Nico2603/PdM-Manager) documenta cómo pasar de datos crudos a alertas accionables.',
+        'PdM-Manager es el proyecto bandera donde convergen análisis de datos e Industria 4.0: FastAPI, PostgreSQL, RNN Keras y Chart.js. El repositorio documenta cómo pasar de vibración cruda a alertas de severidad. El relato largo está en /mantenimiento-predictivo/pdm-manager.',
         'En mi resumen de LinkedIn detallo modelos no supervisados — DBSCAN, KMeans, Isolation Forest y CBLOF — aplicados específicamente a mantenimiento predictivo. Esos algoritmos detectan anomalías y clusters en series temporales o multivariadas cuando no hay suficientes etiquetas de fallo, escenario común en plantas industriales.',
         'La participación en el XXIX Verano de la Investigación Científica y Tecnológica del Pacífico (certificación UAN, agosto 2024, más reconocimiento por destacada participación) consolidó trabajo colaborativo en machine learning aplicado a contextos reales de investigación, con rigor académico y entregables medibles.',
         'El testing automatizado del semillero Industria 4.0 (UCP, 2024) refuerza la idea de que datos confiables exigen pipelines validados: sin calidad en la captura y en el ETL, ningún dashboard ni modelo predictivo sostiene decisiones críticas.',

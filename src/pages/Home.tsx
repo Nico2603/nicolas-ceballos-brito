@@ -8,7 +8,6 @@ import {
   SEO_HOME_KEYWORDS,
   SEO_HOME_TITLE,
 } from '../constants/seo-pages'
-import { FALLBACK_GITHUB_STATS } from '../data/github-repos-fallback'
 
 const CurrentWorkProsavis = lazy(() => import('../components/CurrentWorkProsavis'))
 const CurrentExperience = lazy(() => import('../components/CurrentExperience'))
@@ -16,7 +15,7 @@ const LinkedInFeed = lazy(() => import('../components/LinkedInFeed'))
 const LaboresCarousel = lazy(() => import('../components/LaboresCarousel'))
 const FaqSection = lazy(() => import('../components/FaqSection'))
 const Contact = lazy(() => import('../components/Contact'))
-const Portfolio = lazy(() => import('../components/Portfolio'))
+const PortfolioHubs = lazy(() => import('../components/PortfolioHubs'))
 const RecursosSection = lazy(() => import('../components/RecursosSection'))
 const Footer = lazy(() => import('../components/Footer'))
 
@@ -51,7 +50,7 @@ export default function Home() {
       </ViewportLazy>
       <ViewportLazy minHeight="28rem">
         <Suspense fallback={null}>
-          <Portfolio staticStats={FALLBACK_GITHUB_STATS} />
+          <PortfolioHubs />
         </Suspense>
       </ViewportLazy>
       <ViewportLazy minHeight="24rem">

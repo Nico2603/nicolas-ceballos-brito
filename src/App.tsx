@@ -8,10 +8,13 @@ import FloatingWhatsAppButton from './components/FloatingWhatsAppButton'
 import GoogleAnalytics from './components/GoogleAnalytics'
 import Navbar from './components/Navbar'
 import { ThemeProvider } from './context/ThemeContext'
+import { catalogFamilies, catalogProjects } from './data/catalog'
 import Home from './pages/Home'
 
 const About = lazy(() => import('./pages/About'))
 const AnalisisDatos = lazy(() => import('./pages/AnalisisDatos'))
+const CatalogProjectPage = lazy(() => import('./pages/CatalogProjectPage'))
+const ConglomeratePage = lazy(() => import('./pages/ConglomeratePage'))
 const DesarrolloWeb = lazy(() => import('./pages/DesarrolloWeb'))
 const GuiaPage = lazy(() => import('./pages/GuiaPage'))
 const GuiasIndex = lazy(() => import('./pages/GuiasIndex'))
@@ -117,6 +120,12 @@ export default function App() {
               <Route path="/about" element={<About />} />
               <Route path="/repositories" element={<Repositories />} />
               <Route path="/proyectos/:slug" element={<ProjectPage />} />
+              {catalogFamilies.map((family) => (
+                <Route key={family.path} path={family.path} element={<ConglomeratePage />} />
+              ))}
+              {catalogProjects.map((project) => (
+                <Route key={project.path} path={project.path} element={<CatalogProjectPage />} />
+              ))}
               <Route path="/desarrollo-web" element={<DesarrolloWeb />} />
               <Route path="/inteligencia-artificial" element={<InteligenciaArtificial />} />
               <Route path="/analisis-datos" element={<AnalisisDatos />} />

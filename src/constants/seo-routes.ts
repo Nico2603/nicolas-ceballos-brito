@@ -1,3 +1,5 @@
+import { getCatalogPrerenderPaths } from '../data/catalog'
+
 export interface SeoRoute {
   path: string
   changefreq: 'weekly' | 'monthly' | 'yearly'
@@ -27,14 +29,17 @@ export const EXPERTISE_SLUGS = [
   '/analisis-datos',
 ] as const
 
+const catalogRoutes: SeoRoute[] = getCatalogPrerenderPaths().map((path) => ({
+  path,
+  changefreq: 'monthly',
+  priority: path.split('/').filter(Boolean).length === 1 ? 0.86 : 0.8,
+}))
+
 export const PRERENDER_ROUTES: SeoRoute[] = [
   { path: '/', changefreq: 'monthly', priority: 1.0 },
   { path: '/about', changefreq: 'monthly', priority: 0.9 },
   { path: '/repositories', changefreq: 'weekly', priority: 0.85 },
-  { path: '/proyectos/chatbot-mental-health', changefreq: 'monthly', priority: 0.8 },
-  { path: '/proyectos/pdm-manager', changefreq: 'monthly', priority: 0.8 },
-  { path: '/proyectos/fastqa-homepage', changefreq: 'monthly', priority: 0.8 },
-  { path: '/proyectos/magiacafetera-ui', changefreq: 'monthly', priority: 0.8 },
+  ...catalogRoutes,
   { path: '/desarrollo-web', changefreq: 'monthly', priority: 0.85 },
   { path: '/inteligencia-artificial', changefreq: 'monthly', priority: 0.85 },
   { path: '/analisis-datos', changefreq: 'monthly', priority: 0.85 },

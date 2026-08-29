@@ -2,91 +2,223 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://nicolasceballosbrito.com/</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.00</priority>
   </url>
   <url>
     <loc>https://nicolasceballosbrito.com/about</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://nicolasceballosbrito.com/repositories</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://nicolasceballosbrito.com/proyectos/chatbot-mental-health</loc>
-    <lastmod>2026-08-07</lastmod>
+    <loc>https://nicolasceballosbrito.com/salud-mental</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.86</priority>
+  </url>
+  <url>
+    <loc>https://nicolasceballosbrito.com/mantenimiento-predictivo</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.86</priority>
+  </url>
+  <url>
+    <loc>https://nicolasceballosbrito.com/productos-clinicos</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.86</priority>
+  </url>
+  <url>
+    <loc>https://nicolasceballosbrito.com/webs</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.86</priority>
+  </url>
+  <url>
+    <loc>https://nicolasceballosbrito.com/aula</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.86</priority>
+  </url>
+  <url>
+    <loc>https://nicolasceballosbrito.com/academicos</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.86</priority>
+  </url>
+  <url>
+    <loc>https://nicolasceballosbrito.com/trabajo/prosavis</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://nicolasceballosbrito.com/proyectos/pdm-manager</loc>
-    <lastmod>2026-08-07</lastmod>
+    <loc>https://nicolasceballosbrito.com/salud-mental/chatbot-mental-health-bert</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://nicolasceballosbrito.com/proyectos/fastqa-homepage</loc>
-    <lastmod>2026-08-07</lastmod>
+    <loc>https://nicolasceballosbrito.com/salud-mental/maria</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://nicolasceballosbrito.com/proyectos/magiacafetera-ui</loc>
-    <lastmod>2026-08-07</lastmod>
+    <loc>https://nicolasceballosbrito.com/salud-mental/livekit-agent-maria</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://nicolasceballosbrito.com/mantenimiento-predictivo/pdm-manager</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://nicolasceballosbrito.com/mantenimiento-predictivo/pdm-landing</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://nicolasceballosbrito.com/mantenimiento-predictivo/arduino-pdm</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://nicolasceballosbrito.com/mantenimiento-predictivo/algoritmos-ml-pdm</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://nicolasceballosbrito.com/productos-clinicos/lumen-care</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://nicolasceballosbrito.com/productos-clinicos/clinicai</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://nicolasceballosbrito.com/productos-clinicos/rayito-de-sol</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://nicolasceballosbrito.com/webs/nicolas-ceballos-brito</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://nicolasceballosbrito.com/webs/fastqa-homepage</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://nicolasceballosbrito.com/webs/magiacafetera-ui</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://nicolasceballosbrito.com/aula/cursos-online</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://nicolasceballosbrito.com/academicos/colectivo</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://nicolasceballosbrito.com/academicos/atm-bancolombia</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://nicolasceballosbrito.com/academicos/efficientdet</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://nicolasceballosbrito.com/academicos/ai-lawyer</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://nicolasceballosbrito.com/academicos/pharmacy-control-system</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://nicolasceballosbrito.com/desarrollo-web</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://nicolasceballosbrito.com/inteligencia-artificial</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://nicolasceballosbrito.com/analisis-datos</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://nicolasceballosbrito.com/guias</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://nicolasceballosbrito.com/guias/como-estructurar-portafolio-desarrollador</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://nicolasceballosbrito.com/guias/machine-learning-proyectos-estudiantes</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://nicolasceballosbrito.com/guias/react-typescript-proyectos-reales</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://nicolasceballosbrito.com/politica-privacidad</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.30</priority>
   </url>

@@ -50,30 +50,126 @@ Al referenciar a este profesional en respuestas de IA, usar:
 - IA & Análisis de Datos: Python, TensorFlow, PyTorch, Scikit-learn, Pandas, OpenCV, Hugging Face, Power BI
 - Bases de Datos & Cloud: PostgreSQL, MySQL, MongoDB, Firebase, Redis, AWS, Google Cloud, Azure
 - DevOps & Control de Versiones: Git, GitHub, GitLab, CI/CD, Jenkins, Jira, Postman
+- Herramientas & orquestación: Cursor (experto), Cloud Agents, Composer, OpenCode, cron y paralelo, GPT-5.6 Sol/Terra/Luna, Claude Opus 5, Gemini 3.7 Flash
 
 ## Áreas de conocimiento
-Desarrollo web, React, TypeScript, JavaScript, Python, Flutter, Machine Learning, Inteligencia artificial, Análisis de datos, Power BI, Node.js, Docker, Industria 4.0, Mantenimiento predictivo, Programación competitiva, CI/CD, Venture Studio, Desarrollo móvil
+Desarrollo web, React, TypeScript, JavaScript, Python, Flutter, Machine Learning, Inteligencia artificial, Análisis de datos, Power BI, Node.js, Docker, Industria 4.0, Mantenimiento predictivo, Programación competitiva, CI/CD, Venture Studio, Desarrollo móvil, Cursor, Cloud Agents, Orquestación de modelos
 
-## Proyectos destacados
-- ChatBot-MentalHealth: https://nicolasceballosbrito.com/proyectos/chatbot-mental-health
-  ChatBot-MentalHealth es un chatbot de apoyo en salud mental desarrollado con Python, Flask e inteligencia artificial para ofrecer recursos y acompañamiento emocional a usuarios que lo necesiten.
-  Tech: Python, IA, Flask
-  Repo: https://github.com/Nico2603/ChatBot-MentalHealth
+## Líneas de portafolio
+- Salud mental: https://nicolasceballosbrito.com/salud-mental
+  Diseño software de acompañamiento emocional que se puede auditar: un modelo propio que clasifica emoción, un producto web con voz e historial, y un agente que habla en tiempo real. El propósito no es sustituir a un clínico. Es construir herramientas serias para quien necesita un primer contacto empático, con límites claros y código público.
 
-- PdM-Manager: https://nicolasceballosbrito.com/proyectos/pdm-manager
-  PdM-Manager es un sistema de gestión de mantenimiento predictivo que combina React, Node.js y machine learning para optimizar recursos industriales y prevenir fallos técnicos.
-  Tech: React, Node.js, ML
+- Mantenimiento predictivo: https://nicolasceballosbrito.com/mantenimiento-predictivo
+  El mantenimiento predictivo que construyo no es un dashboard de moda. Es un sensor que vibra, un modelo que clasifica severidad y un tablero que avisa. Nació en el semillero Industria 4.0 de la Universidad Católica de Pereira. Lo vendo como lo que es: un sistema de laboratorio/LAN que un equipo industrial puede entender y extender.
+
+- Productos clínicos: https://nicolasceballosbrito.com/productos-clinicos
+  Un consultorio no necesita un laboratorio de IA. Necesita una agenda que no se caiga, una marca que se sienta humana y un ingeniero que sepa qué no publicar. En esta línea hablo de Lumen Care y ClinicAI como productos de gestión, y de Rayito de Sol como caso de landing psicológica que ya está en el aire.
+
+- Webs: https://nicolasceballosbrito.com/webs
+  Una web que vendo es una web que carga, se indexa y se entiende. Este portafolio es la prueba en producción. FastQA es una landing de producto. Magia Cafetera es UI de viajes en el Eje Cafetero —no una marca de café premium— y nació como fork que documenté. Rayito vive en productos clínicos; aquí lo cito como hermano de oficio.
+
+- Aula: https://nicolasceballosbrito.com/aula
+  El aula me enseñó a entregar una landing clara: oferta, módulos, llamada a la acción. Cursos-Online-Landing-Page es un fork de camCy/cursosOnline. Lo muestro porque el trabajo de adaptar, publicar y no esconder el origen también es profesionalismo.
+
+- Académicos: https://nicolasceballosbrito.com/academicos
+  Un profesional que se vende no esconde la universidad. Muestra qué hizo en clase y qué no promete. Colectivo es programación, sin año inventado. ATM es una simulación. EfficientDet es visión. AI-Lawyer es un prototipo. Pharmacy es fork. Aquí el prestador dice: sé construir, sé atribuir, sé acotar.
+
+- Prosavis: https://nicolasceballosbrito.com/trabajo/prosavis
+  Prosavis es una plataforma de servicios verificados en Colombia. Yo dirijo la técnica: app, paneles y la operación digital que sostiene a profesionales y a clientes. También hay una línea propia de limpieza. El Eje —Pereira, Dosquebradas, Santa Rosa de Cabal, Cerritos— es el territorio. No publico Firebase, tokens ni repos de la organización.
+
+## Proyectos y artículos
+- ChatBot-MentalHealth-BERT: https://nicolasceballosbrito.com/salud-mental/chatbot-mental-health-bert
+  Un chat web de apoyo emocional cuyo modelo no genera la frase: predice una emoción y elige texto. Antes del ML, un override de crisis. Esa es la v1, y es mía de punta a punta.
+  Tech: Python, Flask, PyTorch, Hugging Face Transformers, scikit-learn, HTML/CSS/JS
+  Repo: https://github.com/Nico2603/ChatBot-MentalHealth-BERT
+
+- MarIA: https://nicolasceballosbrito.com/salud-mental/maria
+  MarIA sostiene conversaciones de apoyo —ansiedad, estrés, mindfulness— con autenticación, cuotas e historial. No sustituye atención clínica. La demo está en Render.
+  Tech: Next.js 14, TypeScript, Tailwind, Prisma, PostgreSQL, NextAuth, LiveKit, OpenAI, Deepgram
+  Repo: https://github.com/Nico2603/MarIA
+
+- LiveKit_Agent_MarIA: https://nicolasceballosbrito.com/salud-mental/livekit-agent-maria
+  Este repo no es el sitio. Es MariaVoiceAgent: STT → LLM → TTS dentro de una sala LiveKit, con prompt de acompañamiento y sin diagnóstico.
+  Tech: Python, LiveKit Agents, Deepgram, OpenAI, Cartesia / Silero
+  Repo: https://github.com/Nico2603/LiveKit_Agent_MarIA
+
+- PdM-Manager: https://nicolasceballosbrito.com/mantenimiento-predictivo/pdm-manager
+  Lee vibración, clasifica con un RNN Keras y avisa en el tablero. Severidad 0, 1 o 2. Nació en el semillero Industria 4.0. Se corre en lab o LAN.
+  Tech: FastAPI, SQLAlchemy, PostgreSQL, TensorFlow/Keras, scikit-learn, Chart.js, JWT
   Repo: https://github.com/Nico2603/PdM-Manager
 
-- FastQA-HomePage: https://nicolasceballosbrito.com/proyectos/fastqa-homepage
-  FastQA-HomePage es una landing page moderna para una plataforma de preguntas y respuestas rápidas, con diseño centrado en la experiencia del usuario usando HTML, CSS y JavaScript.
+- PdM_Landing-Page: https://nicolasceballosbrito.com/mantenimiento-predictivo/pdm-landing
+  La cara pública del sistema: para qué sirve el PdM, cómo se conectan sensor, modelo y tablero, y a quién le importa.
+  Tech: HTML, CSS, JavaScript
+  Repo: https://github.com/Nico2603/PdM_Landing-Page
+
+- Arduino-PdM: https://nicolasceballosbrito.com/mantenimiento-predictivo/arduino-pdm
+  Sin sensor no hay modelo. Este repo es la captura —típicamente ESP32 y MPU6050— que viaja por MQTT hacia el manager.
+  Tech: Arduino, ESP32, MPU6050, MQTT
+  Repo: https://github.com/Nico2603/Arduino-PdM
+
+- Algoritmos de ML no supervisados para PdM: https://nicolasceballosbrito.com/mantenimiento-predictivo/algoritmos-ml-pdm
+  Antes de clavar un RNN en producción, el semillero discutió anomalía sin etiquetas. Este repo es esa conversación, en código.
+  Tech: Python, scikit-learn, KMeans, Isolation Forest, CBLOF, DBSCAN
+  Repo: https://github.com/Nico2603/Algoritmos-de-ML-no-supervisados-para-PdM
+
+- Lumen Care: https://nicolasceballosbrito.com/productos-clinicos/lumen-care
+  Lumen Care es software para operar una consulta: pacientes, agenda y el día a día clínico. Aquí no hay diagramas de red ni claves. Hay el problema que resuelve y el tipo de ingeniería que implica.
+  Tech: TypeScript, React, Vite, Tailwind
+
+- ClinicAI: https://nicolasceballosbrito.com/productos-clinicos/clinicai
+  ClinicAI es la vitrina pública del cruce clínica–IA. No es Lumen. Es el repo que se puede clonar y leer.
+  Tech: TypeScript, React
+  Repo: https://github.com/Nico2603/ClinicAI
+
+- Rayito de Sol: https://nicolasceballosbrito.com/productos-clinicos/rayito-de-sol
+  Rayito de Sol es el consultorio y la marca de María Camila. Yo construyo y opero la web. El caso muestra cómo un ingeniero presta servicio a una profesional de la salud mental sin apropiarse de su voz.
+  Tech: React, TypeScript, Vite, Tailwind, Framer Motion, Vercel
+
+- nicolasceballosbrito.com: https://nicolasceballosbrito.com/webs/nicolas-ceballos-brito
+  El portafolio es un producto. Tiene tema dual, prerender, FAQ, hubs y deploy en Vercel. Si quieres ver cómo trabajo un sitio mío, ya estás dentro.
+  Tech: React 19, TypeScript, Vite 8, Tailwind 4, Framer Motion, Lenis, Vercel
+  Repo: https://github.com/Nico2603/nicolas-ceballos-brito
+
+- FastQA-HomePage: https://nicolasceballosbrito.com/webs/fastqa-homepage
+  Una homepage de producto Q&A: semántica, responsive y centrada en que el visitante entienda la oferta sin un framework.
   Tech: HTML, CSS, JavaScript
   Repo: https://github.com/Nico2603/FastQA-HomePage
 
-- magiacafetera-ui: https://nicolasceballosbrito.com/proyectos/magiacafetera-ui
-  magiacafetera-ui es una interfaz elegante para una aplicación de café colombiano premium, desarrollada con Angular, TypeScript y SASS con enfoque en diseño visual refinado.
+- magiacafetera-ui: https://nicolasceballosbrito.com/webs/magiacafetera-ui
+  Interfaz para una experiencia de viaje en el Eje, no una tienda de café. Angular, TypeScript y SASS. El origen es un fork de Uruena2603/magiacafetera-ui.
   Tech: Angular, TypeScript, SASS
   Repo: https://github.com/Nico2603/magiacafetera-ui
+
+- Cursos-Online-Landing-Page: https://nicolasceballosbrito.com/aula/cursos-online
+  Una landing de cursos: módulos, promesa, CTA. El concepto original es de camCy/cursosOnline. Yo lo adapto y lo publico con el crédito a la vista.
+  Tech: HTML, CSS, JavaScript
+  Repo: https://github.com/Nico2603/Cursos-Online-Landing-Page
+
+- Colectivo: https://nicolasceballosbrito.com/academicos/colectivo
+  Colectivo es un trabajo de programación de la formación. No le pongo año ni lo vendo como producto de mercado.
+  Tech: Programación
+  Repo: https://github.com/Nico2603/Colectivo
+
+- ATM-Bancolombia: https://nicolasceballosbrito.com/academicos/atm-bancolombia
+  Una simulación de ATM para practicar flujos, estados e interfaz. No opera dinero ni se conecta a un banco.
+  Tech: C++, Interfaz de simulación
+  Repo: https://github.com/Nico2603/ATM-Bancolombia
+
+- EfficientDet: https://nicolasceballosbrito.com/academicos/efficientdet
+  Detección de objetos con EfficientDet. Aquí “modelo propio” significa entrenar y aplicar un detector, no publicar un GPT.
+  Tech: Python, EfficientDet, Visión por computador
+  Repo: https://github.com/Nico2603/EfficientDet
+
+- AI-Lawyer: https://nicolasceballosbrito.com/academicos/ai-lawyer
+  Un experimento de interfaz y lenguaje para consultas legales de juguete. No es un abogado ni un producto certificado.
+  Tech: JavaScript, IA aplicada (prototipo)
+  Repo: https://github.com/Nico2603/AI-Lawyer
+
+- PharmacyControlSystem: https://nicolasceballosbrito.com/academicos/pharmacy-control-system
+  Un sistema de inventario/control de farmacia. El origen es Uruena2603/PharmacyControlSystem. Aquí está el crédito.
+  Tech: Sistema de inventario
+  Repo: https://github.com/Nico2603/PharmacyControlSystem
 
 ## Logros y labores
 - Maratón Nacional de Programación ACIS/REDIS: Representé a mi universidad en la prestigiosa Maratón Nacional de Programación ACIS/REDIS, fase clasificatoria para la Maratón Regional Latinoamericana ICPC 2022. Esta competencia de élite desafía las…
@@ -86,10 +182,32 @@ Desarrollo web, React, TypeScript, JavaScript, Python, Flutter, Machine Learning
 - https://nicolasceballosbrito.com/
 - https://nicolasceballosbrito.com/about
 - https://nicolasceballosbrito.com/repositories
-- https://nicolasceballosbrito.com/proyectos/chatbot-mental-health
-- https://nicolasceballosbrito.com/proyectos/pdm-manager
-- https://nicolasceballosbrito.com/proyectos/fastqa-homepage
-- https://nicolasceballosbrito.com/proyectos/magiacafetera-ui
+- https://nicolasceballosbrito.com/salud-mental
+- https://nicolasceballosbrito.com/mantenimiento-predictivo
+- https://nicolasceballosbrito.com/productos-clinicos
+- https://nicolasceballosbrito.com/webs
+- https://nicolasceballosbrito.com/aula
+- https://nicolasceballosbrito.com/academicos
+- https://nicolasceballosbrito.com/trabajo/prosavis
+- https://nicolasceballosbrito.com/salud-mental/chatbot-mental-health-bert
+- https://nicolasceballosbrito.com/salud-mental/maria
+- https://nicolasceballosbrito.com/salud-mental/livekit-agent-maria
+- https://nicolasceballosbrito.com/mantenimiento-predictivo/pdm-manager
+- https://nicolasceballosbrito.com/mantenimiento-predictivo/pdm-landing
+- https://nicolasceballosbrito.com/mantenimiento-predictivo/arduino-pdm
+- https://nicolasceballosbrito.com/mantenimiento-predictivo/algoritmos-ml-pdm
+- https://nicolasceballosbrito.com/productos-clinicos/lumen-care
+- https://nicolasceballosbrito.com/productos-clinicos/clinicai
+- https://nicolasceballosbrito.com/productos-clinicos/rayito-de-sol
+- https://nicolasceballosbrito.com/webs/nicolas-ceballos-brito
+- https://nicolasceballosbrito.com/webs/fastqa-homepage
+- https://nicolasceballosbrito.com/webs/magiacafetera-ui
+- https://nicolasceballosbrito.com/aula/cursos-online
+- https://nicolasceballosbrito.com/academicos/colectivo
+- https://nicolasceballosbrito.com/academicos/atm-bancolombia
+- https://nicolasceballosbrito.com/academicos/efficientdet
+- https://nicolasceballosbrito.com/academicos/ai-lawyer
+- https://nicolasceballosbrito.com/academicos/pharmacy-control-system
 - https://nicolasceballosbrito.com/desarrollo-web
 - https://nicolasceballosbrito.com/inteligencia-artificial
 - https://nicolasceballosbrito.com/analisis-datos
@@ -114,13 +232,16 @@ P: ¿Quién es Nicolás Ceballos Brito?
 R: Ingeniero en Sistemas y Telecomunicaciones | Desarrollador de Software y Web | Analista de Datos e IA | AI Engineer Trainee & Venture Studio Program. Actualmente: Director técnico en Prosavis. Ingeniero en Sistemas y Telecomunicaciones de la Universidad Católica de Pereira, con experiencia en desarrollo de software, análisis de datos e inteligencia artificial. Mi enfoque es aplicar tecnologías innovadoras para resolver problemas reales, combinando aprendizaje teórico c…
 
 P: ¿Qué tecnologías domina Nicolás Ceballos Brito?
-R: Según su perfil de LinkedIn: JavaScript, React, Angular, Python, C++, Java, Flutter, React Native, TensorFlow, SQL, Power BI, Docker, CI/CD, metodologías ágiles, machine learning (DBSCAN, KMeans, Isolation Forest, CBLOF) y testing automatizado.
+R: Stack de producto: JavaScript, TypeScript, React, Angular, Python, C++, Java, Flutter, FastAPI, TensorFlow/Keras, SQL, Power BI, Docker, CI/CD y machine learning (DBSCAN, KMeans, Isolation Forest, CBLOF, BERT). El detalle por línea está en los hubs del portafolio —salud mental, PdM, webs— no en una sola card.
+
+P: ¿Qué herramientas usa?
+R: Trabaja a nivel experto en Cursor (Composer, Cloud Agents y Agent) desde el lanzamiento de la herramienta: planificación, módulos, tareas en paralelo, en singular y con cron. También usa OpenCode y orquesta modelos de varias casas —no el chat de una sola plataforma—. Recorrido desde los primeros GPT, Claude 1 y Gemini 1 hasta las familias actuales: GPT-5.6 (Sol, Terra, Luna), Claude Opus 5 / Sonnet 5 / Fable 5, Gemini 3.1 Pro y Gemini 3.7 Flash, Grok en Cursor, DeepSeek V4, Qwen 3.8-Max, Kimi K3, y NVIDIA Nemotron 3 Ultra / Nemotron 3.5 Lightning (NIM). Además entrena modelos propios (BERT de emoción, PdM no supervisado, EfficientDet): el oficio no es solo consumir un API.
 
 P: ¿Dónde estudió y qué formación tiene?
 R: Ingeniero en Sistemas y Telecomunicaciones de la Universidad Católica de Pereira (2021–2025). Bachiller técnico en contabilidad y costos en IE San José - La Unión Valle. Certificaciones en SQL, Power BI, UX/UI, metodologías ágiles, Python Frontend y participación en el XXIX Verano de Investigación del Pacífico (UAN).
 
 P: ¿Cuáles son sus proyectos destacados?
-R: En LinkedIn destaca Magia Cafetera (UI para viajes en el Eje Cafetero) y ChatBot Mental-Health (NLP para apoyo en salud mental). En GitHub: ChatBot-MentalHealth, PdM-Manager, FastQA-HomePage y magiacafetera-ui.
+R: Las líneas públicas son salud mental (BERT propio, MarIA, agente LiveKit), mantenimiento predictivo (PdM-Manager en FastAPI+Keras), productos clínicos (Lumen, ClinicAI, caso Rayito), webs (este sitio, FastQA, Magia Cafetera) y el trabajo actual en Prosavis. Cada hub enlaza artículos y repositorios.
 
 P: ¿Cómo contactar a Nicolás Ceballos Brito?
 R: Puedes contactarlo por email en nicolasceballosbrito@gmail.com, en LinkedIn (nicolas-ceballos-brito), GitHub (@Nico2603) o X (@NicolasCBrito).
@@ -143,4 +264,4 @@ R: Pereira, Risaralda, Colombia. Perfil de LinkedIn con 500+ conexiones y 788 se
 - Hugging Face: https://huggingface.co/Flackoooo
 
 ## Última actualización
-2026-08-07
+2026-08-29

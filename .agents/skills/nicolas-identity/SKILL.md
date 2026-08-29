@@ -37,6 +37,19 @@ Bio corta (README / footer):
 
 No escribir: «estudiante de noveno semestre», «novato», placeholders `tu-usuario` / `<URL_DEL_REPOSITORIO>`.
 
+## Herramientas y modelos (agosto 2026)
+
+Orquesta con agentes, no “usa el chat” de una sola casa. Nivel **experto en Cursor** (Composer, Cloud Agents, Agent) desde el lanzamiento: plan, módulos, paralelo, singular y cron. También **OpenCode**.
+
+- OpenAI: GPT-3 → GPT-4 → **GPT-5.6 Sol / Terra / Luna**
+- Anthropic: Claude 1 → **Opus 5, Sonnet 5, Fable 5**
+- Google: Gemini 1 → **Gemini 3.1 Pro, Gemini 3.7 Flash**
+- xAI: **Grok**
+- Chinos: **DeepSeek V4, Qwen 3.8-Max, Kimi K3**
+- NVIDIA: **Nemotron 3 Ultra, Nemotron 3.5 Lightning / NIM**
+
+Modelos propios: BERT de emoción, PdM no supervisado, EfficientDet. No inventar la URL del Space Hugging Face.
+
 ## Marca visual (Ink & Steel)
 
 Fuente de verdad de producto: `landings/nicolas-ceballos-brito/DESIGN_SYSTEM.md`.

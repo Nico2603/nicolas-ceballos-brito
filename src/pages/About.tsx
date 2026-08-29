@@ -46,7 +46,8 @@ export default function About() {
             eyebrow="Sobre mí"
             title="Nicolás Ceballos Brito"
             align="left"
-            className="!mb-0 [&_h2]:text-white [&_p]:text-white/80"
+            tone="hero"
+            className="!mb-0"
           />
         </div>
       </section>
