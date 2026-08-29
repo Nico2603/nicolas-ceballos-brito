@@ -45,6 +45,7 @@ export default function ConglomerateLayout({ family, projects }: ConglomerateLay
             highlight={family.highlight}
             align="left"
             tone="hero"
+            as="h1"
             className="!mb-4"
           />
           <p className="direct-answer text-lg leading-relaxed text-[var(--hero-text-muted)] max-w-3xl">
