@@ -14,6 +14,8 @@ export const catalogFamilies: CatalogFamily[] = [
       'Línea de acompañamiento emocional de Nicolás Ceballos Brito: BERT propio, MarIA en producción y agente de voz LiveKit. Ingeniería, no terapia.',
     thesis:
       'Diseño software de acompañamiento emocional que se puede auditar: un modelo propio que clasifica emoción, un producto web con voz e historial, y un agente que habla en tiempo real. El propósito no es sustituir a un clínico. Es construir herramientas serias para quien necesita un primer contacto empático, con límites claros y código público.',
+    hubLead:
+      'BERT propio, MarIA con voz e historial, y un agente LiveKit. Tres piezas de un mismo arco: primer contacto empático con código público.',
     story: [
       {
         heading: 'Por qué esta línea existe',
@@ -68,6 +70,8 @@ export const catalogFamilies: CatalogFamily[] = [
       'Cuarteto PdM de Nicolás Ceballos Brito: sensor Arduino, algoritmos no supervisados, núcleo FastAPI+Keras y landing. Semillero Industria 4.0, UCP.',
     thesis:
       'El mantenimiento predictivo que construyo no es un dashboard de moda. Es un sensor que vibra, un modelo que clasifica severidad y un tablero que avisa. Nació en el semillero Industria 4.0 de la Universidad Católica de Pereira. Lo vendo como lo que es: un sistema de laboratorio/LAN que un equipo industrial puede entender y extender.',
+    hubLead:
+      'Sensor de vibración, modelo de severidad y tablero que avisa. Semillero Industria 4.0 de la UCP: un sistema de laboratorio que un equipo industrial puede extender.',
     story: [
       {
         heading: 'Del semillero al cuarteto',
@@ -120,6 +124,8 @@ export const catalogFamilies: CatalogFamily[] = [
       'Lumen Care, ClinicAI y el caso Rayito de Sol: cómo Nicolás Ceballos Brito construye producto web para consulta psicológica y gestión clínica, sin exponer infra privada.',
     thesis:
       'Un consultorio no necesita un laboratorio de IA. Necesita una agenda que no se caiga, una marca que se sienta humana y un ingeniero que sepa qué no publicar. En esta línea hablo de Lumen Care y ClinicAI como productos de gestión, y de Rayito de Sol como caso de landing psicológica que ya está en el aire.',
+    hubLead:
+      'Lumen Care y ClinicAI para la consulta; Rayito de Sol como marca en el aire. Software para quien atiende personas.',
     story: [
       {
         heading: 'Prestar servicio a quien atiende personas',
@@ -164,6 +170,8 @@ export const catalogFamilies: CatalogFamily[] = [
       'Sitios y UIs de Nicolás Ceballos Brito: este portafolio, FastQA, Magia Cafetera (viajes del Eje) y el caso Rayito. React, Angular, Vite, SEO.',
     thesis:
       'Una web que vendo es una web que carga, se indexa y se entiende. Este portafolio es la prueba en producción. FastQA es una landing de producto. Magia Cafetera es UI de viajes en el Eje Cafetero —no una marca de café premium— y nació como fork que documenté. Rayito vive en productos clínicos; aquí lo cito como hermano de oficio.',
+    hubLead:
+      'Este portafolio, FastQA y Magia Cafetera. Sitios que cargan, se indexan y se entienden —React, Angular y Vite.',
     story: [
       {
         heading: 'Del portafolio al caso de cliente',
@@ -203,6 +211,8 @@ export const catalogFamilies: CatalogFamily[] = [
       'Cursos-Online y piezas de aula: landings educativas en las que Nicolás Ceballos Brito participa, con crédito honesto a forks.',
     thesis:
       'El aula me enseñó a entregar una landing clara: oferta, módulos, llamada a la acción. Cursos-Online-Landing-Page es un fork de camCy/cursosOnline. Lo muestro porque el trabajo de adaptar, publicar y no esconder el origen también es profesionalismo.',
+    hubLead:
+      'Landings de programa: oferta, módulos y llamada a la acción. Cursos-Online, adaptado y publicado con crédito al origen.',
     story: [
       {
         heading: 'Enseñar con una página que se entiende',
@@ -234,6 +244,8 @@ export const catalogFamilies: CatalogFamily[] = [
       'Colectivo, ATM Bancolombia, EfficientDet, AI-Lawyer y Pharmacy: demos y asignaturas de Nicolás Ceballos Brito. Honestidad de alcance, crédito a forks.',
     thesis:
       'Un profesional que se vende no esconde la universidad. Muestra qué hizo en clase y qué no promete. Colectivo es programación, sin año inventado. ATM es una simulación. EfficientDet es visión. AI-Lawyer es un prototipo. Pharmacy es fork. Aquí el prestador dice: sé construir, sé atribuir, sé acotar.',
+    hubLead:
+      'Colectivo, ATM, EfficientDet, AI-Lawyer y Pharmacy. Demos y asignaturas con alcance declarado: sé construir y sé acotar.',
     story: [
       {
         heading: 'Por qué estos repos siguen en el sitio',
@@ -274,6 +286,8 @@ export const catalogFamilies: CatalogFamily[] = [
       'Nicolás Ceballos Brito es director técnico de Prosavis: app de servicios verificados en Colombia, línea de limpieza y operación en el Eje Cafetero.',
     thesis:
       'Prosavis es una plataforma de servicios verificados en Colombia. Yo dirijo la técnica: app, paneles y la operación digital que sostiene a profesionales y a clientes. También hay una línea propia de limpieza. El Eje —Pereira, Dosquebradas, Santa Rosa de Cabal, Cerritos— es el territorio. No publico infraestructura interna, tokens ni repos de la organización.',
+    hubLead:
+      'App, paneles y operación en Pereira, Dosquebradas y el Eje. Dirección técnica de un marketplace de servicios verificados.',
     story: [
       {
         heading: 'Qué es Prosavis, en voz de producto',

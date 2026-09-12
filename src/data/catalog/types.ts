@@ -24,6 +24,8 @@ export interface CatalogFamily {
   pageTitle: string
   pageDescription: string
   thesis: string
+  /** One-line home blurb. Family pages keep `thesis`. */
+  hubLead: string
   story: CatalogSection[]
   audience: string[]
   offer: string[]

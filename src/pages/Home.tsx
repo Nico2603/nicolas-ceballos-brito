@@ -48,7 +48,7 @@ export default function Home() {
           <CurrentWorkProsavis />
         </Suspense>
       </ViewportLazy>
-      <ViewportLazy minHeight="28rem">
+      <ViewportLazy minHeight="42rem">
         <Suspense fallback={null}>
           <PortfolioHubs />
         </Suspense>
