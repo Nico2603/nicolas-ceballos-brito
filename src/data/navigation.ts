@@ -20,6 +20,8 @@ export const navLinks: NavLink[] = [
       { label: 'Mantenimiento predictivo', href: '/mantenimiento-predictivo' },
       { label: 'Productos clínicos', href: '/productos-clinicos' },
       { label: 'Webs', href: '/webs' },
+      { label: 'Landings', href: '/#landings' },
+      { label: 'Caso Marcela', href: '/webs/marcela-brito-avellaneda' },
       { label: 'Aula', href: '/aula' },
       { label: 'Académicos', href: '/academicos' },
       { label: 'Prosavis', href: '/trabajo/prosavis' },

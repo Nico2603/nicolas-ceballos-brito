@@ -1,4 +1,5 @@
 import { FULL_NAME } from '../../constants/social'
+import { MARCELA_CASE_MEDIA } from '../cases/marcela'
 import type { CatalogProject } from './types'
 
 export const catalogProjects: CatalogProject[] = [
@@ -410,6 +411,58 @@ export const catalogProjects: CatalogProject[] = [
         question: '¿Puedo contratar el mismo stack para mi marca?',
         answer:
           'Sí. React, TypeScript, Tailwind y Vercel son el oficio diario. El sistema visual se adapta a la marca del cliente, no se copia Ink & Steel a ciegas.',
+      },
+    ],
+  },
+  {
+    slug: 'marcela-brito-avellaneda',
+    familyId: 'webs',
+    path: '/webs/marcela-brito-avellaneda',
+    title: 'Marcela Brito Avellaneda',
+    pageTitle: `Caso Marcela Brito Avellaneda — ${FULL_NAME}`,
+    pageDescription:
+      'Rediseño en curso de marcelabritoavellaneda.com. Marca de Marcela; ingeniería de Nicolás Ceballos Brito. El antes es el sitio vivo. El después se publica cuando se note.',
+    eyebrow: 'Caso en taller',
+    lead:
+      'La marca es de Marcela Brito Avellaneda. Yo reconstruyo la web. Hoy el sitio vivo confunde clínica y espiritualidad, publica un Inicio Copy y deja Adiós Trauma sin enlaces. Aquí está el antes. El después todavía no.',
+    period: '2026 – presente',
+    role: 'Ingeniería y rediseño de la web',
+    purpose:
+      'Pasar de un constructor a una web con dos caminos inequívocos, contacto seguro y una portada que se entiende en diez segundos — sin apropiarme de su voz.',
+    stack: ['Astro', 'TypeScript', 'HTML semántico', 'Vercel'],
+    highlights: [
+      'Antes fotografiado en el dominio público',
+      'Después vacío hasta que el cambio se vea',
+      'Marca de Marcela, oficio de Nicolás',
+    ],
+    body: [
+      {
+        heading: 'Qué documenta el antes',
+        paragraphs: [
+          'El 13 de septiembre de 2026 el sitio público todavía corre sobre Hostinger AI Builder. La portada mete la promesa en una imagen, el menú enseña Inicio Copy, Adiós Trauma imprime “Video YouTube” como texto y el subdominio de Renacer no resuelve. El formulario de contacto invita a narrar el caso sin aviso clínico.',
+          'Eso no es un defecto estético menor. Es el mismo diagnóstico de la auditoría: autoridad mezclada, catálogo sin jerarquía y un embudo que no cierra. El rediseño parte de preservar su historia y separar con honestidad psicología y Registros Akáshicos.',
+        ],
+      },
+      {
+        heading: 'Por qué el después está vacío',
+        paragraphs: [
+          'Una captura prematura del taller vendería un cambio que todavía no existe. Los marcos “En taller” son el contrato: cuando la diferencia sea fotográfica —dos caminos, móvil usable, contacto mínimo— se cuelgan aquí. No antes.',
+        ],
+      },
+    ],
+    liveUrl: 'https://www.marcelabritoavellaneda.com',
+    liveUrlLabel: 'Sitio actual (antes)',
+    caseMedia: MARCELA_CASE_MEDIA,
+    faq: [
+      {
+        question: '¿Nicolás ofrece consulta en esta marca?',
+        answer:
+          'No. La atención y la marca son de Marcela Brito Avellaneda. Nicolás desarrolla y rediseña el sitio, con el mismo criterio que en Rayito de Sol.',
+      },
+      {
+        question: '¿Dónde está el después?',
+        answer:
+          'Todavía no. El rediseño sigue en taller. Esta página reserva los huecos para no inventar una mejora que aún no se puede fotografiar.',
       },
     ],
   },

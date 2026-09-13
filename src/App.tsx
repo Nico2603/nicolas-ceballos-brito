@@ -19,6 +19,7 @@ const DesarrolloWeb = lazy(() => import('./pages/DesarrolloWeb'))
 const GuiaPage = lazy(() => import('./pages/GuiaPage'))
 const GuiasIndex = lazy(() => import('./pages/GuiasIndex'))
 const InteligenciaArtificial = lazy(() => import('./pages/InteligenciaArtificial'))
+const MarcelaCasePage = lazy(() => import('./pages/MarcelaCasePage'))
 const PoliticaPrivacidad = lazy(() => import('./pages/PoliticaPrivacidad'))
 const ProjectPage = lazy(() => import('./pages/ProjectPage'))
 const Repositories = lazy(() => import('./pages/Repositories'))
@@ -123,9 +124,12 @@ export default function App() {
               {catalogFamilies.map((family) => (
                 <Route key={family.path} path={family.path} element={<ConglomeratePage />} />
               ))}
-              {catalogProjects.map((project) => (
-                <Route key={project.path} path={project.path} element={<CatalogProjectPage />} />
-              ))}
+              <Route path="/webs/marcela-brito-avellaneda" element={<MarcelaCasePage />} />
+              {catalogProjects
+                .filter((project) => project.path !== '/webs/marcela-brito-avellaneda')
+                .map((project) => (
+                  <Route key={project.path} path={project.path} element={<CatalogProjectPage />} />
+                ))}
               <Route path="/desarrollo-web" element={<DesarrolloWeb />} />
               <Route path="/inteligencia-artificial" element={<InteligenciaArtificial />} />
               <Route path="/analisis-datos" element={<AnalisisDatos />} />

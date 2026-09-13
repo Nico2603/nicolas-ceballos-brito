@@ -2,7 +2,15 @@ import { catalogFamilies } from './families'
 import { catalogProjects } from './projects'
 import type { CatalogFamily, CatalogProject, FamilyId } from './types'
 
-export type { CatalogFamily, CatalogProject, CatalogSection, FamilyId } from './types'
+export type {
+  CaseMedia,
+  CaseShot,
+  CaseViewport,
+  CatalogFamily,
+  CatalogProject,
+  CatalogSection,
+  FamilyId,
+} from './types'
 export { catalogFamilies } from './families'
 export { catalogProjects } from './projects'
 

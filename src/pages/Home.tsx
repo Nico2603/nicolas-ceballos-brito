@@ -16,6 +16,7 @@ const LaboresCarousel = lazy(() => import('../components/LaboresCarousel'))
 const FaqSection = lazy(() => import('../components/FaqSection'))
 const Contact = lazy(() => import('../components/Contact'))
 const PortfolioHubs = lazy(() => import('../components/PortfolioHubs'))
+const LandingsCraft = lazy(() => import('../components/LandingsCraft'))
 const RecursosSection = lazy(() => import('../components/RecursosSection'))
 const Footer = lazy(() => import('../components/Footer'))
 
@@ -51,6 +52,11 @@ export default function Home() {
       <ViewportLazy minHeight="42rem">
         <Suspense fallback={null}>
           <PortfolioHubs />
+        </Suspense>
+      </ViewportLazy>
+      <ViewportLazy id="landings" className="scroll-mt-24 md:scroll-mt-28" minHeight="52rem">
+        <Suspense fallback={null}>
+          <LandingsCraft />
         </Suspense>
       </ViewportLazy>
       <ViewportLazy minHeight="24rem">

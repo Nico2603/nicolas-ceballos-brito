@@ -33,6 +33,27 @@ export interface CatalogFamily {
   projectSlugs: string[]
 }
 
+export type CaseViewport = 'desktop' | 'mobile'
+
+export interface CaseShot {
+  id: string
+  src: string
+  alt: string
+  caption: string
+  finding: string
+  viewport: CaseViewport
+}
+
+export interface CaseMedia {
+  before: CaseShot[]
+  /** Reserved slots only. Do not attach after screenshots until the redesign is ready. */
+  afterSlots: Array<{
+    id: string
+    label: string
+    viewport: CaseViewport
+  }>
+}
+
 export interface CatalogProject {
   slug: string
   familyId: FamilyId
@@ -53,4 +74,5 @@ export interface CatalogProject {
   liveUrlLabel?: string
   forkCredit?: string
   faq: TopicFaqItem[]
+  caseMedia?: CaseMedia
 }

@@ -6,6 +6,7 @@ interface ViewportLazyProps {
   className?: string
   rootMargin?: string
   minHeight?: string
+  id?: string
 }
 
 export default function ViewportLazy({
@@ -13,11 +14,12 @@ export default function ViewportLazy({
   className = '',
   rootMargin = '200px 0px',
   minHeight = '1px',
+  id,
 }: ViewportLazyProps) {
   const { ref, isVisible } = useInViewport({ rootMargin, once: true })
 
   return (
-    <div ref={ref} className={className} style={{ minHeight }}>
+    <div id={id} ref={ref} className={className} style={{ minHeight }}>
       {isVisible ? children : null}
     </div>
   )
