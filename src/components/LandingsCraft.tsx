@@ -1,7 +1,7 @@
 import { m, useReducedMotion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { LANDING_THUMBS, MARCELA_HOME_PREVIEWS } from '../data/cases/marcela'
+import { LANDING_THUMBS, MARCELA_HOME_AFTER, MARCELA_HOME_PREVIEWS } from '../data/cases/marcela'
 import DeviceFrame from './cases/DeviceFrame'
 import SectionWrapper from './SectionWrapper'
 import Button from './ui/Button'
@@ -16,6 +16,8 @@ const reveal = {
 
 const featuredBefore = MARCELA_HOME_PREVIEWS[0]
 const secondaryBefore = MARCELA_HOME_PREVIEWS.slice(1)
+const featuredAfter = MARCELA_HOME_AFTER[0]
+const secondaryAfter = MARCELA_HOME_AFTER.slice(1)
 
 export default function LandingsCraft() {
   const reduceMotion = useReducedMotion()
@@ -31,7 +33,7 @@ export default function LandingsCraft() {
           eyebrow="Oficio visible"
           title="Landings"
           highlight="desde cero"
-          description="Sitios que nacen en código, no en un constructor. Este portafolio, FastQA y Rayito ya están en el aire. Marcela Brito Avellaneda es el caso en taller: el antes es el sitio vivo; el después se llena cuando el cambio se vea."
+          description="Sitios que nacen en código, no en un constructor. Este portafolio, FastQA y Rayito ya están en el aire. Marcela Brito Avellaneda es el caso en curso: el antes es el constructor de septiembre; el después ya está en el dominio y sigue en proceso."
         />
 
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-start">
@@ -43,9 +45,9 @@ export default function LandingsCraft() {
               Marcela Brito Avellaneda
             </h3>
             <p className="leading-relaxed text-[var(--color-text-secondary)] mb-6">
-              La marca es de ella. Yo reconstruyo la web. El sitio actual mezcla clínica y
-              espiritualidad, publica un Inicio Copy y deja el recurso gratuito sin enlaces.
-              Aquí está fotografiado hoy — no un mock del rediseño.
+              La marca es de ella. Yo reconstruyo la web. La versión nueva separa psicología
+              y Registros Akáshicos, acorta el menú y avisa en el contacto. Sigue en proceso:
+              faltan piezas que todavía no están listas para publicarse.
             </p>
             <div className="flex flex-wrap gap-2 mb-8">
               {[
@@ -68,12 +70,12 @@ export default function LandingsCraft() {
           </m.div>
 
           <m.div className="lg:col-span-7" {...motion} transition={{ ...motion.transition, delay: reduceMotion ? 0 : 0.08 }}>
-            {featuredBefore && (
+            {featuredAfter && (
               <DeviceFrame
-                src={featuredBefore.src}
-                alt={featuredBefore.alt}
-                caption={featuredBefore.caption}
-                finding={`Antes · ${featuredBefore.finding}`}
+                src={featuredAfter.src}
+                alt={featuredAfter.alt}
+                caption={featuredAfter.caption}
+                finding={`Después · ${featuredAfter.finding}`}
                 viewport="desktop"
                 priority
               />
@@ -145,9 +147,18 @@ export default function LandingsCraft() {
         <div className="mt-14 grid md:grid-cols-2 gap-6 md:gap-8 items-start">
           <div>
             <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-[var(--color-accent-label)] mb-4">
-              Antes · sitio vivo
+              Antes · 13 septiembre
             </p>
             <div className="grid gap-5">
+              {featuredBefore && (
+                <DeviceFrame
+                  src={featuredBefore.src}
+                  alt={featuredBefore.alt}
+                  caption={featuredBefore.caption}
+                  finding={featuredBefore.finding}
+                  viewport="desktop"
+                />
+              )}
               {secondaryBefore.map((shot) => (
                 <DeviceFrame
                   key={shot.id}
@@ -162,17 +173,24 @@ export default function LandingsCraft() {
           </div>
           <div>
             <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-[var(--color-accent-label)] mb-4">
-              Después · todavía no
+              Después · en curso
             </p>
-            <DeviceFrame
-              alt="Espacio reservado para el rediseño de Marcela Brito Avellaneda"
-              emptyLabel="En taller"
-              emptyDetail="Cuando el rediseño se note, aquí va la captura. No hay un después inventado."
-              viewport="desktop"
-            />
+            <div className="grid gap-5">
+              {secondaryAfter.map((shot) => (
+                <DeviceFrame
+                  key={shot.id}
+                  src={shot.src}
+                  alt={shot.alt}
+                  caption={shot.caption}
+                  finding={shot.finding}
+                  viewport="desktop"
+                />
+              ))}
+            </div>
             <p className="mt-4 text-sm text-[var(--color-text-secondary)] leading-relaxed">
-              El hueco es deliberado. La diferencia tiene que ser fotográfica, no un recorte
-              retocado del constructor.
+              La versión nueva ya está en el dominio. Psicología y Registros Akáshicos van
+              por caminos distintos. Sigue en proceso: hamaca, Integrarte y niveles 3 y 4
+              todavía no cierran.
             </p>
           </div>
         </div>

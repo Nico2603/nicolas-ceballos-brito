@@ -109,17 +109,71 @@ export const MARCELA_BEFORE_SHOTS: CaseShot[] = [
   },
 ]
 
+const DESPUES = '/images/cases/marcela/despues'
+
+export const MARCELA_AFTER_SHOTS: CaseShot[] = [
+  {
+    id: 'after-home-psico',
+    src: `${DESPUES}/home-psico.webp`,
+    alt: 'Portada nueva de psicología: Marcela Brito Avellaneda, menú Integrarte, Acompañamiento y Contacto, titular Sobreviviste. Ahora elige cómo vivir.',
+    caption: 'Psicología · nombre completo, menú corto y promesa en texto',
+    finding: 'Un camino clínico',
+    viewport: 'desktop',
+  },
+  {
+    id: 'after-contacto',
+    src: `${DESPUES}/contacto.webp`,
+    alt: 'Contacto nuevo con aviso de no enviar historias clínicas, correo, WhatsApp y casilla de autorización',
+    caption: 'Contacto · sin historia clínica y con consentimiento',
+    finding: 'Formulario avisado',
+    viewport: 'desktop',
+  },
+  {
+    id: 'after-akashicos',
+    src: `${DESPUES}/akashicos.webp`,
+    alt: 'Portada de Registros Akáshicos en su subdominio, con menú Primeros Pasos, Profundiza y Contacto',
+    caption: 'Registros Akáshicos · otro host y otro menú',
+    finding: 'El segundo camino',
+    viewport: 'desktop',
+  },
+  {
+    id: 'after-m-home',
+    src: `${DESPUES}/m-home.webp`,
+    alt: 'Portada de psicología en móvil, en español, sin banner de cookies',
+    caption: 'Móvil · primer tramo de psicología',
+    finding: 'Sin cookies en inglés',
+    viewport: 'mobile',
+  },
+  {
+    id: 'after-m-menu',
+    src: `${DESPUES}/m-menu.webp`,
+    alt: 'Menú móvil de psicología: Integrarte, Acompañamiento, Consulta y Contacto',
+    caption: 'Móvil · menú sin Inicio Copy',
+    finding: 'Navegación cerrada',
+    viewport: 'mobile',
+  },
+  {
+    id: 'after-m-contacto',
+    src: `${DESPUES}/m-contacto.webp`,
+    alt: 'Formulario de contacto en móvil, con motivo Consulta y autorización de datos',
+    caption: 'Móvil · contacto con consentimiento',
+    finding: 'Formulario avisado',
+    viewport: 'mobile',
+  },
+]
+
 export const MARCELA_CASE_MEDIA: CaseMedia = {
   before: MARCELA_BEFORE_SHOTS,
-  afterSlots: [
-    { id: 'after-home', label: 'Portada · dos caminos claros', viewport: 'desktop' },
-    { id: 'after-contacto', label: 'Contacto · mínimo y avisado', viewport: 'desktop' },
-    { id: 'after-mobile', label: 'Móvil · primer tramo usable', viewport: 'mobile' },
-  ],
+  after: MARCELA_AFTER_SHOTS,
+  afterSlots: [],
 }
 
 export const MARCELA_HOME_PREVIEWS = MARCELA_BEFORE_SHOTS.filter((shot) =>
   shot.id === 'home-hero' || shot.id === 'adios-trauma' || shot.id === 'contacto',
+)
+
+export const MARCELA_HOME_AFTER = MARCELA_AFTER_SHOTS.filter((shot) =>
+  shot.id === 'after-home-psico' || shot.id === 'after-contacto' || shot.id === 'after-akashicos',
 )
 
 export const LANDING_THUMBS = {

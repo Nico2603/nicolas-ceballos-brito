@@ -421,37 +421,38 @@ export const catalogProjects: CatalogProject[] = [
     title: 'Marcela Brito Avellaneda',
     pageTitle: `Caso Marcela Brito Avellaneda — ${FULL_NAME}`,
     pageDescription:
-      'Rediseño en curso de marcelabritoavellaneda.com. Marca de Marcela; ingeniería de Nicolás Ceballos Brito. El antes es el sitio vivo. El después se publica cuando se note.',
-    eyebrow: 'Caso en taller',
+      'Rediseño en curso de marcelabritoavellaneda.com. Marca de Marcela; ingeniería de Nicolás Ceballos Brito. El antes es el constructor de septiembre. El después ya está en el dominio y sigue en proceso.',
+    eyebrow: 'Caso en curso',
     lead:
-      'La marca es de Marcela Brito Avellaneda. Yo reconstruyo la web. Hoy el sitio vivo confunde clínica y espiritualidad, publica un Inicio Copy y deja Adiós Trauma sin enlaces. Aquí está el antes. El después todavía no.',
+      'La marca es de Marcela Brito Avellaneda. Yo reconstruyo la web. El 13 de septiembre el sitio público mezclaba clínica y espiritualidad. Hoy hay una versión nueva en el mismo dominio, con mejor organización, y sigue en proceso.',
     period: '2026 – presente',
     role: 'Ingeniería y rediseño de la web',
     purpose:
       'Pasar de un constructor a una web con dos caminos inequívocos, contacto seguro y una portada que se entiende en diez segundos — sin apropiarme de su voz.',
     stack: ['Astro', 'TypeScript', 'HTML semántico', 'Vercel'],
     highlights: [
-      'Antes fotografiado en el dominio público',
-      'Después vacío hasta que el cambio se vea',
-      'Marca de Marcela, oficio de Nicolás',
+      'Antes: el constructor, fotografiado el 13 de septiembre',
+      'Después: dos experiencias, menú corto y contacto avisado',
+      'Sigue abierto: hamaca, Integrarte y niveles 3 y 4',
     ],
     body: [
       {
         heading: 'Qué documenta el antes',
         paragraphs: [
-          'El 13 de septiembre de 2026 el sitio público todavía corre sobre Hostinger AI Builder. La portada mete la promesa en una imagen, el menú enseña Inicio Copy, Adiós Trauma imprime “Video YouTube” como texto y el subdominio de Renacer no resuelve. El formulario de contacto invita a narrar el caso sin aviso clínico.',
-          'Eso no es un defecto estético menor. Es el mismo diagnóstico de la auditoría: autoridad mezclada, catálogo sin jerarquía y un embudo que no cierra. El rediseño parte de preservar su historia y separar con honestidad psicología y Registros Akáshicos.',
+          'El 13 de septiembre de 2026 el sitio público corría sobre Hostinger AI Builder. La portada metía la promesa en una imagen, el menú enseñaba Inicio Copy, Adiós Trauma imprimía “Video YouTube” como texto y el subdominio de Renacer no resolvía. El formulario de contacto invitaba a narrar el caso sin aviso clínico.',
+          'Eso no era un defecto estético menor. Era el diagnóstico de la auditoría: autoridad mezclada, catálogo sin jerarquía y un embudo que no cerraba. El rediseño parte de preservar su historia y separar con honestidad psicología y Registros Akáshicos.',
         ],
       },
       {
-        heading: 'Por qué el después está vacío',
+        heading: 'Qué ya cambia, y qué sigue abierto',
         paragraphs: [
-          'Una captura prematura del taller vendería un cambio que todavía no existe. Los marcos “En taller” son el contrato: cuando la diferencia sea fotográfica —dos caminos, móvil usable, contacto mínimo— se cuelgan aquí. No antes.',
+          'La versión de octubre ya no es el constructor. Está hecha en Astro, en español y en modo claro, con el nombre completo. Psicología vive en www: Integrarte, Acompañamiento y Contacto. Registros Akáshicos tiene su subdominio y su menú (Primeros Pasos, Profundiza, Contacto). El contacto avisa que no se envíen historias clínicas, pide autorización y deja WhatsApp a la vista. En el móvil ya no tapa la portada un banner de cookies en inglés.',
+          'Sigue en proceso. Faltan la foto de la hamaca en Por qué, los enlaces del acordeón de Integrarte y los niveles 3 y 4 de certificación. Renacer sigue fuera del menú. Estas capturas muestran el estado de hoy, no un cierre.',
         ],
       },
     ],
     liveUrl: 'https://www.marcelabritoavellaneda.com',
-    liveUrlLabel: 'Sitio actual (antes)',
+    liveUrlLabel: 'Sitio en curso',
     caseMedia: MARCELA_CASE_MEDIA,
     faq: [
       {
@@ -462,7 +463,7 @@ export const catalogProjects: CatalogProject[] = [
       {
         question: '¿Dónde está el después?',
         answer:
-          'Todavía no. El rediseño sigue en taller. Esta página reserva los huecos para no inventar una mejora que aún no se puede fotografiar.',
+          'En esta página, junto al antes. Es la versión que ya está en el aire: mejor organización y dos caminos separados. Sigue en proceso; no es el cierre del encargo.',
       },
     ],
   },

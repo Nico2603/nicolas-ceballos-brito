@@ -49,7 +49,7 @@ export default function DeviceFrame({
               height={viewport === 'mobile' ? 1688 : 800}
               priority={priority}
               className="absolute inset-0 h-full w-full object-cover object-top"
-              wrapperClassName="absolute inset-0"
+              wrapperClassName="absolute! inset-0"
             />
           ) : (
             <div

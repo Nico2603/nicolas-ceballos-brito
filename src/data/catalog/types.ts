@@ -46,7 +46,9 @@ export interface CaseShot {
 
 export interface CaseMedia {
   before: CaseShot[]
-  /** Reserved slots only. Do not attach after screenshots until the redesign is ready. */
+  /** Live redesign. It can be in production and still unfinished. */
+  after: CaseShot[]
+  /** Reserved holes for work that is not ready to photograph. */
   afterSlots: Array<{
     id: string
     label: string

@@ -26,6 +26,8 @@ export default function MarcelaCasePage() {
   const media = project.caseMedia
   const beforeDesktop = media?.before.filter((shot) => shot.viewport === 'desktop') ?? []
   const beforeMobile = media?.before.filter((shot) => shot.viewport === 'mobile') ?? []
+  const afterDesktop = media?.after.filter((shot) => shot.viewport === 'desktop') ?? []
+  const afterMobile = media?.after.filter((shot) => shot.viewport === 'mobile') ?? []
   const afterSlots = media?.afterSlots ?? []
   const siblings = getSiblingProjects(project)
 
@@ -49,7 +51,7 @@ export default function MarcelaCasePage() {
           project.faq,
           breadcrumbs,
           '2026-09-13',
-          '2026-09-13',
+          '2026-10-16',
         )}
       />
 
@@ -116,7 +118,7 @@ export default function MarcelaCasePage() {
               Antes · 13 septiembre 2026
             </p>
             <h2 className="font-display text-3xl font-semibold text-[var(--color-text-primary)] mb-3">
-              El sitio que está en el aire
+              El constructor que había que reemplazar
             </h2>
             <p className="max-w-2xl text-[var(--color-text-secondary)] leading-relaxed mb-10">
               Capturas del documento en Chrome, sin la bandeja del navegador. Cada marco
@@ -147,8 +149,8 @@ export default function MarcelaCasePage() {
                 El mismo sitio a 390
               </h2>
               <p className="max-w-2xl text-[var(--color-text-secondary)] leading-relaxed mb-10">
-                Estas tomas quedan para medir el responsive del rediseño. Todavía no hay
-                un después móvil que valga la pena colgar.
+                El mismo sitio a 390 píxeles: cookies en inglés, Inicio Copy y un recurso
+                gratuito sin destinos. Sirve para medir el móvil de la versión nueva.
               </p>
               <div className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory">
                 {beforeMobile.map((shot) => (
@@ -170,29 +172,82 @@ export default function MarcelaCasePage() {
         <section className="px-4 py-16 bg-[var(--color-bg-secondary)]">
           <div className="mx-auto max-w-6xl">
             <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-[var(--color-accent-label)] mb-3">
-              Después · en taller
+              Después · en curso
             </p>
             <h2 className="font-display text-3xl font-semibold text-[var(--color-text-primary)] mb-3">
-              Huecos a propósito
+              La versión que ya está en el aire
             </h2>
             <p className="max-w-2xl text-[var(--color-text-secondary)] leading-relaxed mb-10">
-              No hay capturas del rediseño. Los marcos esperan la versión que se note:
-              dos caminos, contacto mínimo y un móvil que no tape la oferta con cookies
-              en inglés.
+              Tomadas el 16 de octubre de 2026 sobre el dominio vivo. Psicología y
+              Registros Akáshicos ya no comparten menú. El contacto pide consentimiento
+              y no invita a contar la historia clínica. Sigue en proceso: faltan la
+              hamaca, los enlaces de Integrarte y los niveles 3 y 4.
             </p>
-            <div className="grid md:grid-cols-3 gap-6">
-              {afterSlots.map((slot) => (
+            <div className="grid md:grid-cols-2 gap-8">
+              {afterDesktop.map((shot) => (
                 <DeviceFrame
-                  key={slot.id}
-                  alt={`Espacio reservado: ${slot.label}`}
-                  emptyLabel="En taller"
-                  emptyDetail={slot.label}
-                  viewport={slot.viewport === 'mobile' ? 'mobile' : 'desktop'}
+                  key={shot.id}
+                  src={shot.src}
+                  alt={shot.alt}
+                  caption={shot.caption}
+                  finding={shot.finding}
+                  viewport="desktop"
                 />
               ))}
             </div>
           </div>
         </section>
+
+        {afterMobile.length > 0 && (
+          <section className="px-4 py-16 bg-[var(--color-bg-primary)]">
+            <div className="mx-auto max-w-6xl">
+              <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-[var(--color-accent-label)] mb-3">
+                Después · móvil
+              </p>
+              <h2 className="font-display text-3xl font-semibold text-[var(--color-text-primary)] mb-3">
+                El primer tramo a 390
+              </h2>
+              <p className="max-w-2xl text-[var(--color-text-secondary)] leading-relaxed mb-10">
+                Portada, menú y contacto en el ancho de un teléfono. Ya no hay banner de
+                cookies en inglés ni el ítem Inicio Copy.
+              </p>
+              <div className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory">
+                {afterMobile.map((shot) => (
+                  <div key={shot.id} className="snap-start shrink-0 w-[17rem]">
+                    <DeviceFrame
+                      src={shot.src}
+                      alt={shot.alt}
+                      caption={shot.caption}
+                      finding={shot.finding}
+                      viewport="mobile"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {afterSlots.length > 0 && (
+          <section className="px-4 py-16 bg-[var(--color-bg-secondary)]">
+            <div className="mx-auto max-w-6xl">
+              <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-[var(--color-accent-label)] mb-3">
+                Todavía sin fotografiar
+              </p>
+              <div className="grid md:grid-cols-3 gap-6">
+                {afterSlots.map((slot) => (
+                  <DeviceFrame
+                    key={slot.id}
+                    alt={`Espacio reservado: ${slot.label}`}
+                    emptyLabel="En proceso"
+                    emptyDetail={slot.label}
+                    viewport={slot.viewport === 'mobile' ? 'mobile' : 'desktop'}
+                  />
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         <section className="px-4 py-12 bg-[var(--color-bg-primary)]">
           <div className="mx-auto max-w-3xl space-y-12">

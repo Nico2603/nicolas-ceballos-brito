@@ -169,14 +169,14 @@ export const catalogFamilies: CatalogFamily[] = [
     pageDescription:
       'Sitios y UIs de Nicolás Ceballos Brito: este portafolio, FastQA, Magia Cafetera, Rayito y el caso Marcela Brito Avellaneda. React, Angular, Vite, SEO.',
     thesis:
-      'Una web que vendo es una web que carga, se indexa y se entiende. Este portafolio es la prueba en producción. FastQA es una landing de producto. Magia Cafetera es UI de viajes en el Eje Cafetero —no una marca de café premium— y nació como fork que documenté. Marcela Brito Avellaneda es el caso en taller: el antes está fotografiado; el después se cuelga cuando se note. Rayito vive en productos clínicos; aquí lo cito como hermano de oficio.',
+      'Una web que vendo es una web que carga, se indexa y se entiende. Este portafolio es la prueba en producción. FastQA es una landing de producto. Magia Cafetera es UI de viajes en el Eje Cafetero —no una marca de café premium— y nació como fork que documenté. Marcela Brito Avellaneda es el caso en curso: el antes es el constructor y el después ya está en el dominio, todavía abierto. Rayito vive en productos clínicos; aquí lo cito como hermano de oficio.',
     hubLead:
-      'Este portafolio, FastQA, Magia Cafetera y el caso Marcela. Sitios que cargan y se entienden —y un rediseño en curso con el antes a la vista.',
+      'Este portafolio, FastQA, Magia Cafetera y el caso Marcela. Sitios que cargan y se entienden —y un rediseño en curso, con el antes y el después a la vista.',
     story: [
       {
         heading: 'Del portafolio al caso de cliente',
         paragraphs: [
-          'nicolasceballosbrito.com corre React 19, Vite, Tailwind 4 y prerender. No es una plantilla: es el sistema Ink & Steel, el dual theme y las páginas que estás leyendo. FastQA-HomePage muestra HTML/CSS/JS centrado en conversión. magiacafetera-ui es Angular + TypeScript para una experiencia de viaje en el Eje; el crédito del fork es de Uruena2603. Marcela Brito Avellaneda es el encargo familiar en curso: reconstruyo su web sin vender un después que todavía no existe.',
+          'nicolasceballosbrito.com corre React 19, Vite, Tailwind 4 y prerender. No es una plantilla: es el sistema Ink & Steel, el dual theme y las páginas que estás leyendo. FastQA-HomePage muestra HTML/CSS/JS centrado en conversión. magiacafetera-ui es Angular + TypeScript para una experiencia de viaje en el Eje; el crédito del fork es de Uruena2603. Marcela Brito Avellaneda es el encargo familiar en curso: la versión nueva separa psicología y Registros Akáshicos, y todavía tiene piezas abiertas.',
           'Si contratas desarrollo web, contratas a alguien que ya opera su propio dominio, que ya corrigió contraste y SEO, y que no inventa el stack del cliente.',
         ],
       },
@@ -199,7 +199,7 @@ export const catalogFamilies: CatalogFamily[] = [
       {
         question: '¿El caso Marcela ya muestra el rediseño?',
         answer:
-          'No. En /webs/marcela-brito-avellaneda está el sitio vivo (el antes). Los marcos del después quedan vacíos hasta que el cambio se pueda fotografiar.',
+          'Sí, como estado de hoy, no como cierre. En /webs/marcela-brito-avellaneda están el constructor de septiembre y la versión nueva: dos caminos, menú corto y contacto avisado. Siguen abiertos la hamaca, Integrarte y los niveles 3 y 4.',
       },
     ],
     projectSlugs: [
