@@ -58,7 +58,7 @@ export default function LinkedInFeed() {
           eyebrow="Actualizaciones"
           title="Desde"
           highlight="LinkedIn"
-          description="Actividad reciente de mi perfil en LinkedIn: publicaciones propias e interacciones."
+          description="Publicaciones de mi perfil en LinkedIn. Una ajena solo entra si el texto me menciona."
         />
 
         {featured && (

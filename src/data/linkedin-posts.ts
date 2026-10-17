@@ -1,8 +1,26 @@
 import type { LinkedInPost } from '../types'
 import { normalizeLinkedInUrl } from '../lib/normalize-linkedin-url'
-import { linkedInActivity } from './linkedin-profile'
+import { linkedInActivity, type LinkedInActivityEntry } from './linkedin-profile'
 
-export const linkedInPosts: LinkedInPost[] = linkedInActivity.map((item) => ({
+function mentionsNicolas(item: LinkedInActivityEntry): boolean {
+  const blob = `${item.title} ${item.excerpt} ${item.author ?? ''}`.toLowerCase()
+  return /nicol[aá]s|ceballos|nico_ceballos|nicolas-ceballos/.test(blob)
+}
+
+function isOwnPostOrMention(item: LinkedInActivityEntry): boolean {
+  switch (item.type) {
+    case 'post':
+      return true
+    case 'like':
+      return mentionsNicolas(item)
+    default: {
+      const _exhaustive: never = item.type
+      return _exhaustive
+    }
+  }
+}
+
+export const linkedInPosts: LinkedInPost[] = linkedInActivity.filter(isOwnPostOrMention).map((item) => ({
   id: item.id,
   title: item.type === 'like' && item.author ? `${item.title} — ${item.author}` : item.title,
   excerpt: item.excerpt,
