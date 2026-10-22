@@ -11,7 +11,7 @@ Ubicación: `.agents/skills/` (proyecto). Lockfile: `skills-lock.json`.
 
 Antes de cualquier acción, leer e invocar `using-superpowers`. Si aplica una skill del stack, **debes leer su SKILL.md** en `.agents/skills/<nombre>/` antes de implementar.
 
-No ejecutar las 32 skills en cada prompt. Clasifica la tarea y aplica **todas** las del bundle correspondiente.
+No ejecutar el catálogo entero en cada prompt. Clasifica la tarea y aplica **todas** las del bundle correspondiente. Contrato de UI: [`docs/ANTI-UI-SLOP.md`](../../../../docs/ANTI-UI-SLOP.md).
 
 ## Bundles por tipo de prompt
 
@@ -19,27 +19,29 @@ No ejecutar las 32 skills en cada prompt. Clasifica la tarea y aplica **todas** 
 |------|--------------------------------------------------|
 | **Cualquier tarea** | `using-superpowers` |
 | **Feature / cambio de comportamiento** | `brainstorming` → spec en `docs/superpowers/specs/` → `writing-plans` |
-| **UI nueva o rediseño visual** | `frontend-design`, `design-taste-frontend`, `brand-guidelines`, `tailwind-design-system`, `high-end-visual-design`, `ui-ux-pro-max` + `src/styles/tokens.css` |
+| **UI nueva o rediseño visual** | `antislop`, `antislop-ui`, `anti-ui-slop` (un playbook: `reference/polish.md`; pantalla nueva `reference/new-work.md`; auditoría `reference/audit.md`), `tailwind-design-system` + `DESIGN_SYSTEM.md` + `src/styles/tokens.css` |
+| **Copy** | `antislop-copywriting` |
 | **Animaciones / motion** | `motion-framer`, `emil-design-eng`, `design-motion-principles`, `design-dna`, `css-animations` |
-| **Estructura landing / portafolio / CTA** | `landing-page-design` |
-| **Mobile / responsive** | `sleek-design-mobile-apps` |
+| **Estructura landing / portafolio / CTA** | `landing-page-design`, dentro de Ink & Steel |
+| **Mobile / responsive** | `antislop-layoutmobile`, `sleek-design-mobile-apps` |
 | **Rediseño conservador** | `redesign-existing-projects` |
 | **Edición TSX / React** | `react-typescript`, `vercel-composition-patterns`, `vercel-react-best-practices` |
 | **SEO / meta** | `seo-optimizer` |
-| **Antes de cerrar tarea** | `web-design-guidelines`, `verification-before-completion` |
+| **Antes de cerrar tarea** | Delivery Gate de `antislop`, `web-design-guidelines`, `verification-before-completion` |
 | **QA visual** | `agent-browser` |
 | **Bug / error** | `systematic-debugging` (Fase 1 root cause antes de fix) |
 | **Mockups / layout exploratorio** | `canvas-design` |
 | **Referencias externas de diseño** | `extract-design-system` (nunca sobrescribir `tokens.css` sin OK) |
-| **Inspiración efectos** | `aceternity-ui` (adaptar a Vite, no Next.js) |
+| **Inspiración efectos** | `canvas-ui` (`@canvas-ui` Liquid, Bend). `aceternity-ui` no se carga como identidad |
 | **Canvas UI / html-in-canvas** | `canvas-ui` (`@canvas-ui` Liquid, Bend, … — no Lumen) |
-| **Variantes de tema** | `theme-factory` |
+| **Variantes de tema** | el tema de `DESIGN_SYSTEM.md`. `theme-factory` no se carga |
 | **Buscar capacidad nueva** | `find-skills` |
 | **Analytics / métricas** | `google-analytics-admin-api-basics`, `google-analytics-data-api-basics` |
 
 ## Restricciones de diseño
 
-- Fuente de verdad visual: `src/styles/tokens.css` (Raleway + Montserrat, paleta teal/azul)
+- Fuente de verdad visual: `DESIGN_SYSTEM.md` + `src/styles/tokens.css` (Ink & Steel: Plus Jakarta Sans + Fraunces)
+- No cargar como identidad: `high-end-visual-design`, `design-taste-frontend`, `ui-ux-pro-max`, `frontend-design` (el sistema ya existe)
 - Prohibido: Inter, Roboto, layouts template SaaS genéricos
 - Stack: React 19 + Vite + Tailwind v4 + Framer Motion + Lenis (no Next.js, no kit shadcn/ui)
 - Canvas UI (`@canvas-ui`) está permitido como efecto html-in-canvas, no como design system

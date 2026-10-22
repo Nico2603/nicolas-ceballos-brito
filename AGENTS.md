@@ -125,16 +125,18 @@ Inventario completo del workspace: [SKILLS.md](../SKILLS.md)
 
 | Alcance | Ruta | Estado |
 |---------|------|--------|
-| **Proyecto (definitivo)** | `nicolas-ceballos-brito/.agents/skills/` | 32 skills instaladas |
+| **Proyecto (definitivo)** | `nicolas-ceballos-brito/.agents/skills/` | 38 skills instaladas (32 web + 6 filtro) |
 | Lockfile reproducible | `skills-lock.json` | `npx skills experimental_install -y` |
 
 Verificar: `npx skills ls` (desde la raíz del repo).
 
 Regla Cursor always-on: [`.cursor/rules/skills-mandatory.mdc`](.cursor/rules/skills-mandatory.mdc)
 
-### Skills instaladas (32)
+### Skills instaladas (38)
 
 **Core (8):** brainstorming, systematic-debugging, using-superpowers, frontend-design, vercel-react-best-practices, web-design-guidelines, find-skills, agent-browser
+
+**Filtro (6):** antislop, antislop-ui, antislop-copywriting, antislop-human, antislop-layoutmobile, anti-ui-slop. Contrato: [`docs/ANTI-UI-SLOP.md`](../../docs/ANTI-UI-SLOP.md). `frontend-design`, `high-end-visual-design`, `design-taste-frontend`, `ui-ux-pro-max`, `aceternity-ui` y `theme-factory` no se cargan como identidad.
 
 **Complementarias (20):** motion-framer, tailwind-design-system, design-dna, design-taste-frontend, high-end-visual-design, emil-design-eng, ui-ux-pro-max, landing-page-design, css-animations, react-typescript, seo-optimizer, aceternity-ui, vercel-composition-patterns, canvas-design, theme-factory, brand-guidelines, sleek-design-mobile-apps, extract-design-system, redesign-existing-projects, design-motion-principles
 
@@ -148,11 +150,28 @@ Reinstalar desde lockfile: `npx skills experimental_install -y`
 
 - **Siempre:** `using-superpowers`
 - **Feature:** brainstorming → spec → writing-plans
-- **UI:** frontend-design + design-taste-frontend + brand-guidelines + tailwind-design-system + ui-ux-pro-max + high-end-visual-design
+- **UI:** `DESIGN_SYSTEM.md` + `antislop` + `antislop-ui` + un playbook de `anti-ui-slop` (`reference/polish.md`) + `tailwind-design-system`
 - **Motion:** motion-framer + emil-design-eng + design-motion-principles + design-dna + css-animations
 - **React/TSX:** react-typescript + vercel-composition-patterns + vercel-react-best-practices
-- **Cierre:** web-design-guidelines + verification-before-completion
+- **Cierre:** Delivery Gate de `antislop` + web-design-guidelines + verification-before-completion
 - **Bug:** systematic-debugging
 - **QA visual:** agent-browser
 
-Antes de UI o features nuevas, leer [`src/styles/tokens.css`](src/styles/tokens.css). No introducir Inter/Roboto ni layouts template SaaS.
+Antes de UI o features nuevas, leer [`DESIGN_SYSTEM.md`](DESIGN_SYSTEM.md) y [`src/styles/tokens.css`](src/styles/tokens.css). No introducir Inter/Roboto ni layouts template SaaS.
+
+<!-- antislop:start -->
+## antislop
+
+For UI, copy, people, or mobile layout, read `.agents/skills/antislop/SKILL.md` (core) and then the skill for the task:
+
+- UI / visual: `.agents/skills/antislop-ui/SKILL.md`
+- Copy & text: `.agents/skills/antislop-copywriting/SKILL.md`
+- People: `.agents/skills/antislop-human/SKILL.md`
+- Mobile / responsive: `.agents/skills/antislop-layoutmobile/SKILL.md`
+
+`antislop-code` is not installed. Product direction is `DESIGN_SYSTEM.md` plus `src/styles/tokens.css`, and it outranks this filter. House contract: `docs/ANTI-UI-SLOP.md` in the GitHub workspace. Load at most one playbook from `.agents/skills/anti-ui-slop/reference/`.
+
+Before starting, follow the core's "Two Usage Modes" in strict order: explicit session instruction first, then global preference, then ask. A session instruction always wins. Saved preference on this machine is `during` (`%APPDATA%\antislop\settings.json`). For a resolved mode, say `antislop active: during (global preference).` or `antislop active: <mode> (session override).` once before the first edit.
+
+To update: `npx skills update antislop antislop-ui antislop-copywriting antislop-human antislop-layoutmobile anti-ui-slop` from this repo.
+<!-- antislop:end -->
