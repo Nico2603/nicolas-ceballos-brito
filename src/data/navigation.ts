@@ -20,7 +20,7 @@ export const navLinks: NavLink[] = [
       { label: 'Mantenimiento predictivo', href: '/mantenimiento-predictivo' },
       { label: 'Productos clínicos', href: '/productos-clinicos' },
       { label: 'Webs', href: '/webs' },
-      { label: 'Landings', href: '/#landings' },
+      { label: 'Trabajo seleccionado', href: '/#trabajo' },
       { label: 'Caso Marcela', href: '/webs/marcela-brito-avellaneda' },
       { label: 'Aula', href: '/aula' },
       { label: 'Académicos', href: '/academicos' },
@@ -29,11 +29,10 @@ export const navLinks: NavLink[] = [
   },
   {
     label: 'Labores',
-    href: '#labores',
+    href: '#fuera',
     dropdown: [
-      { label: 'Maratón Nacional', href: '#proyecto1' },
       { label: 'Representante UCP', href: '#proyecto2' },
-      { label: 'ACIS/REDIS 2023', href: '#proyecto3' },
+      { label: 'Maratón ACIS/REDIS', href: '#proyecto3' },
       { label: 'Apoyo Comunitario', href: '#proyecto4' },
       { label: 'Visita Obispo', href: '#proyecto5' },
     ],

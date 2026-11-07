@@ -30,9 +30,7 @@ const errorStyle = { color: '#DC2626' } as const
 
 const formExit = {
   opacity: 0,
-  y: -16,
-  scale: 0.98,
-  transition: { duration: 0.28, ease: [0.22, 1, 0.36, 1] as const },
+  transition: { duration: 0.2, ease: [0.2, 0.8, 0.2, 1] as const },
 }
 
 const inputFocusClass =
@@ -52,22 +50,16 @@ export default function Contact() {
   } = useContactForm()
 
   return (
-    <SectionWrapper id="contacto" className="py-20 md:py-24 px-4 bg-[var(--color-bg-secondary)] section-mesh-bg relative">
+    <SectionWrapper id="contacto" className="py-20 md:py-24 px-4 bg-[var(--color-bg-secondary)] relative">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16">
           <div>
-            <p
-              className="font-semibold text-xs uppercase tracking-[0.2em] mb-3"
-              style={{ color: 'var(--color-accent-primary)' }}
-            >
+            <p className="font-display text-sm font-medium mb-3 text-[var(--color-text-secondary)]">
               {CONTACT_SECTION_LABEL}
             </p>
-            <h2
-              className="font-display text-3xl md:text-5xl font-semibold mb-6 tracking-tight"
-              style={{ color: 'var(--color-text-primary)' }}
-            >
+            <h2 className="font-display text-3xl md:text-5xl font-semibold mb-6 text-[var(--color-text-primary)]">
               {CONTACT_HEADING_START}
-              <span style={{ color: 'var(--color-accent-primary)' }}>{CONTACT_HEADING_ACCENT}</span>
+              {CONTACT_HEADING_ACCENT}
             </h2>
             <p
               className="text-lg leading-relaxed mb-8"
@@ -142,7 +134,7 @@ export default function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackContactClick('whatsapp', 'contacto_cta')}
-              className="group inline-flex items-center gap-3 mt-8 bg-[var(--color-accent-cta)] text-[var(--color-navy-deep)] font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-[var(--shadow-cta)] hover:scale-[1.02] hover:brightness-105"
+              className="group inline-flex items-center gap-3 mt-8 bg-[var(--color-accent-cta)] text-[var(--color-navy-deep)] font-medium px-8 py-4 rounded-sm transition-colors duration-200 hover:brightness-110"
             >
               <WhatsAppIcon className="w-5 h-5" variant="light" />
               <span>{WHATSAPP_CTA_TEXT}</span>
@@ -160,7 +152,7 @@ export default function Contact() {
               backgroundColor: 'var(--color-bg-card)',
               borderColor: 'var(--color-border-light)',
             }}
-            transition={{ layout: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } }}
+            transition={{ layout: { duration: 0.45, ease: [0.2, 0.8, 0.2, 1] } }}
           >
             <AnimatePresence mode="wait" initial={false}>
               {isSuccess ? (
@@ -175,7 +167,7 @@ export default function Contact() {
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={formExit}
-                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ duration: 0.35, ease: [0.2, 0.8, 0.2, 1] }}
                 >
                   <h3
                     className="text-xl font-semibold mb-6"

@@ -23,13 +23,13 @@ export default function LandingsCraft() {
   const reduceMotion = useReducedMotion()
   const motion = reduceMotion
     ? { initial: false, whileInView: undefined, transition: { duration: 0 } }
-    : { ...reveal, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as const } }
+    : { ...reveal, transition: { duration: 0.65, ease: [0.2, 0.8, 0.2, 1] as const } }
 
   return (
     <SectionWrapper className="py-20 px-4 bg-[var(--color-bg-secondary)] relative">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
-          align="left"
+          plain
           eyebrow="Oficio visible"
           title="Landings"
           highlight="desde cero"

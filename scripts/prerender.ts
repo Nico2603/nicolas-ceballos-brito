@@ -185,6 +185,9 @@ function stripHomeJsonLd(html: string): string {
   return html.replace(
     /<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/g,
     (block) => {
+      const keepsOwnArticle =
+        block.includes('"@type": "Article"') || block.includes('"@type":"Article"')
+      if (keepsOwnArticle) return block
       if (
         block.includes('#website') ||
         block.includes('#faq') ||

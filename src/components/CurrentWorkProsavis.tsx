@@ -33,22 +33,14 @@ export default function CurrentWorkProsavis() {
       id="ahora"
       className="scroll-mt-24 md:scroll-mt-28 py-16 sm:py-20 md:py-28 px-4 bg-[var(--color-bg-secondary)] relative overflow-hidden"
     >
-      <div
-        className="pointer-events-none absolute inset-0 opacity-30"
-        style={{ background: 'var(--gradient-hero-scrim)' }}
-        aria-hidden
-      />
-
       <div className="relative max-w-6xl mx-auto">
-        <header className="mb-10 md:mb-12 max-w-3xl">
+        <header className="mb-10 md:mb-12 max-w-3xl text-left">
           <ProsavisBrand size="lg" className="mb-6" />
-          <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-bold mb-3 text-[var(--color-accent-label)]">
-            <span className="w-6 h-px bg-[var(--color-accent-primary)]" aria-hidden />
+          <p className="font-display text-sm font-medium mb-3 text-[var(--color-text-secondary)]">
             Trabajo actual
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--color-text-primary)] mb-4 leading-tight text-balance">
-            Ahora:{' '}
-            <span className="text-gradient-accent">{PROSAVIS_NAME}</span>
+            Ahora: {PROSAVIS_NAME}
           </h2>
           <p className="text-base md:text-lg text-[var(--color-text-secondary)] leading-relaxed max-w-2xl">
             {PROSAVIS_TAGLINE}. {PROSAVIS_GROWTH_LINE}.
@@ -218,7 +210,7 @@ export default function CurrentWorkProsavis() {
                 className="h-10 w-10 rounded-full object-cover ring-1 ring-[var(--color-border-light)]"
                 aria-hidden
               />
-              <p className="text-xs uppercase tracking-[0.2em] font-semibold text-[var(--color-accent-label)]">
+              <p className="font-display text-sm font-medium text-[var(--color-text-secondary)]">
                 Suite de producto
               </p>
             </div>

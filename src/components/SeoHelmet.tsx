@@ -59,7 +59,7 @@ export default function SeoHelmet({
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
       <meta name="robots" content={robots} />
-      <meta name="theme-color" content="#2a5c82" />
+      <meta name="theme-color" content="#0B0E13" />
       <link rel="canonical" href={canonicalUrl} />
       <link rel="alternate" href={canonicalUrl} hrefLang="es-CO" />
       <meta property="og:type" content={ogType} />

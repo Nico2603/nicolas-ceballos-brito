@@ -56,6 +56,11 @@ export interface CaseMedia {
   }>
 }
 
+export interface ProjectShot {
+  src: string
+  alt: string
+}
+
 export interface CatalogProject {
   slug: string
   familyId: FamilyId
@@ -70,6 +75,11 @@ export interface CatalogProject {
   purpose: string
   stack: string[]
   highlights: string[]
+  /** Qué quedó funcionando, sin cifras inventadas. */
+  outcome?: string
+  shots?: ProjectShot[]
+  /** Hub list instead of a full card. Academics and PdM satellites. */
+  density?: 'compact'
   body: CatalogSection[]
   repoUrl?: string
   liveUrl?: string

@@ -28,7 +28,7 @@ Al referenciar a este profesional en respuestas de IA, usar:
 ## Experiencia actual
 - Director técnico @ Prosavis (Sept 2025 – Presente (1 año)): Como CTO de Prosavis, defino la visión tecnológica y lidero el equipo técnico, tomando decisiones estratégicas de alto nivel. Estoy a cargo de la arquitectura, adopción de nuevas tecnologías, ciberseguridad, optimización de costos operativos y gestión del equipo. Sigo participando activamente en las implementaciones técnicas de mayor complejidad y rigor, asegurando que la plataforma sea robusta, segura y escalable mientras alineo la tecnología con los objetivos de negocio.
 - Desarrollador jefe de aplicaciones @ Prosavis (Jul 2025 – Sept 2025 (3 meses)): Lideré desde cero el diseño, arquitectura y desarrollo técnico completo de Prosavis, plataforma móvil para servicios en Colombia. Me enfoqué en la creación del backend en Firebase, paneles administrativos y CDMs para consolas de usuario, construyendo todo el workspace operativo de la plataforma. Diseñé e implementé la arquitectura backend escalable y segura, desarrollé los paneles administrativos y lideré el desarrollo full stack del producto móvil, definiendo estándares de código y mejores prácticas. Gestioné el roadmap técnico y coordiné el lanzamiento exitoso junto con producto y marketing.
-- AI Engineer Training & Venture Studio Program @ Modin.ai (Jun 2025 – Ago 2025 (3 meses)): Soy ingeniero de IA en el programa AI Engineer Training & Venture Studio de Teilur AI. Mi función se centra en el desarrollo de MVP impulsados por IA mediante el aprovechamiento de herramientas de vanguardia para crear soluciones innovadoras y escalables. Trabajo en un entorno ágil, estratégico y de alto rendimiento para transformar ideas en productos tangibles y disruptivos.
+- AI Engineer Training & Venture Studio Program @ Modin.ai (Jun 2025 – Ago 2025 (3 meses)): Seguí el mismo programa de AI Engineer Training, ahora en Modin.ai, de junio a agosto de 2025. El oficio no cambió: llevar una idea a un MVP con IA, en remoto, después de los meses en Teilur.
 - AI Engineer Training & Venture Studio Program @ Teilur.ai (Mar 2025 – Jun 2025 (4 meses)): Soy ingeniero de IA en el programa AI Engineer Training & Venture Studio de Teilur AI. Mi función se centra en el desarrollo de MVP impulsados por IA mediante el aprovechamiento de herramientas de vanguardia para crear soluciones innovadoras y escalables. Trabajo en un entorno ágil, estratégico y de alto rendimiento para transformar ideas en productos tangibles y disruptivos.
 
 ## Perfil LinkedIn
@@ -66,7 +66,7 @@ Desarrollo web, React, TypeScript, JavaScript, Python, Flutter, Machine Learning
   Un consultorio no necesita un laboratorio de IA. Necesita una agenda que no se caiga, una marca que se sienta humana y un ingeniero que sepa qué no publicar. En esta línea hablo de Lumen Care y ClinicAI como productos de gestión, y de Rayito de Sol como caso de landing psicológica que ya está en el aire.
 
 - Webs: https://nicolasceballosbrito.com/webs
-  Una web que vendo es una web que carga, se indexa y se entiende. Este portafolio es la prueba en producción. FastQA es una landing de producto. Magia Cafetera es UI de viajes en el Eje Cafetero —no una marca de café premium— y nació como fork que documenté. Rayito vive en productos clínicos; aquí lo cito como hermano de oficio.
+  Una web que vendo es una web que carga, se indexa y se entiende. Este portafolio es la prueba en producción. FastQA es una landing de producto. Magia Cafetera es UI de viajes en el Eje Cafetero —no una marca de café premium— y nació como fork que documenté. Marcela Brito Avellaneda es el caso en curso: el antes es el constructor y el después ya está en el dominio, todavía abierto. Rayito vive en productos clínicos; aquí lo cito como hermano de oficio.
 
 - Aula: https://nicolasceballosbrito.com/aula
   El aula me enseñó a entregar una landing clara: oferta, módulos, llamada a la acción. Cursos-Online-Landing-Page es un fork de camCy/cursosOnline. Lo muestro porque el trabajo de adaptar, publicar y no esconder el origen también es profesionalismo.
@@ -84,7 +84,7 @@ Desarrollo web, React, TypeScript, JavaScript, Python, Flutter, Machine Learning
   Repo: https://github.com/Nico2603/ChatBot-MentalHealth-BERT
 
 - MarIA: https://nicolasceballosbrito.com/salud-mental/maria
-  MarIA sostiene conversaciones de apoyo —ansiedad, estrés, mindfulness— con autenticación, cuotas e historial. No sustituye atención clínica. La demo está en Render.
+  MarIA sostiene conversaciones de apoyo —ansiedad, estrés, mindfulness— con autenticación, cuotas e historial. No sustituye atención clínica. El código está en el repositorio; la demo pública ya no responde.
   Tech: Next.js 14, TypeScript, Tailwind, Prisma, PostgreSQL, NextAuth, LiveKit, OpenAI, Deepgram
   Repo: https://github.com/Nico2603/MarIA
 
@@ -119,7 +119,7 @@ Desarrollo web, React, TypeScript, JavaScript, Python, Flutter, Machine Learning
 
 - ClinicAI: https://nicolasceballosbrito.com/productos-clinicos/clinicai
   ClinicAI es la vitrina pública del cruce clínica–IA. No es Lumen. Es el repo que se puede clonar y leer.
-  Tech: TypeScript, React
+  Tech: Next.js, TypeScript, Supabase
   Repo: https://github.com/Nico2603/ClinicAI
 
 - Rayito de Sol: https://nicolasceballosbrito.com/productos-clinicos/rayito-de-sol
@@ -131,10 +131,14 @@ Desarrollo web, React, TypeScript, JavaScript, Python, Flutter, Machine Learning
   Tech: React 19, TypeScript, Vite 8, Tailwind 4, Framer Motion, Lenis, Vercel
   Repo: https://github.com/Nico2603/nicolas-ceballos-brito
 
+- Marcela Brito Avellaneda: https://nicolasceballosbrito.com/webs/marcela-brito-avellaneda
+  La marca es de Marcela Brito Avellaneda. Yo reconstruyo la web. El 13 de septiembre el sitio público mezclaba clínica y espiritualidad. Hoy hay una versión nueva en el mismo dominio, con mejor organización, y sigue en proceso.
+  Tech: Astro, TypeScript, HTML semántico, Vercel
+
 - FastQA-HomePage: https://nicolasceballosbrito.com/webs/fastqa-homepage
   Una homepage de producto Q&A: semántica, responsive y centrada en que el visitante entienda la oferta sin un framework.
   Tech: HTML, CSS, JavaScript
-  Repo: https://github.com/Nico2603/FastQA-HomePage
+  Repo: https://github.com/fastqa33/FastQA-HomePage
 
 - magiacafetera-ui: https://nicolasceballosbrito.com/webs/magiacafetera-ui
   Interfaz para una experiencia de viaje en el Eje, no una tienda de café. Angular, TypeScript y SASS. El origen es un fork de Uruena2603/magiacafetera-ui.
@@ -148,7 +152,7 @@ Desarrollo web, React, TypeScript, JavaScript, Python, Flutter, Machine Learning
 
 - Colectivo: https://nicolasceballosbrito.com/academicos/colectivo
   Colectivo es un trabajo de programación de la formación. No le pongo año ni lo vendo como producto de mercado.
-  Tech: Programación
+  Tech: PHP, HTML, CSS, JavaScript, TypeScript
   Repo: https://github.com/Nico2603/Colectivo
 
 - ATM-Bancolombia: https://nicolasceballosbrito.com/academicos/atm-bancolombia
@@ -168,13 +172,12 @@ Desarrollo web, React, TypeScript, JavaScript, Python, Flutter, Machine Learning
 
 - PharmacyControlSystem: https://nicolasceballosbrito.com/academicos/pharmacy-control-system
   Un sistema de inventario/control de farmacia. El origen es Uruena2603/PharmacyControlSystem. Aquí está el crédito.
-  Tech: Sistema de inventario
+  Tech: C++
   Repo: https://github.com/Nico2603/PharmacyControlSystem
 
 ## Logros y labores
-- Maratón Nacional de Programación ACIS/REDIS: Representé a mi universidad en la prestigiosa Maratón Nacional de Programación ACIS/REDIS, fase clasificatoria para la Maratón Regional Latinoamericana ICPC 2022. Esta competencia de élite desafía las…
 - Liderazgo Estudiantil Universitario: Elegido como representante oficial ante el Consejo Estudiantil de la Universidad Católica de Pereira, ejerciendo un rol de liderazgo estratégico en la toma de decisiones académicas e institucionales. …
-- XXXVII Maratón Nacional ACIS/REDIS 2023: Seleccionado para representar a la Universidad Católica de Pereira en la XXXVII Maratón Nacional de Programación ACIS/REDIS 2023, celebrada en Manizales. Compitiendo junto a 108 equipos de las univers…
+- Maratón ACIS/REDIS: Representé a la Universidad Católica de Pereira en la fase clasificatoria ICPC 2022 y en la XXXVII Maratón Nacional ACIS/REDIS 2023, en Manizales, junto a 108 equipos.…
 - Proyecto de Responsabilidad Social Universitaria: Lideré una iniciativa de impacto social para asistir a más de 500 familias afectadas por una emergencia en el barrio Futuro Bajo. A través de gestión estratégica y coordinación interinstitucional, log…
 - Encuentro Institucional de Alto Nivel: Participé en la visita protocolar de Monseñor Nelson Jair Cardona Ramírez al campus universitario, representando la voz estudiantil en este encuentro de liderazgo institucional. Este evento fortaleció…
 
@@ -200,6 +203,7 @@ Desarrollo web, React, TypeScript, JavaScript, Python, Flutter, Machine Learning
 - https://nicolasceballosbrito.com/productos-clinicos/clinicai
 - https://nicolasceballosbrito.com/productos-clinicos/rayito-de-sol
 - https://nicolasceballosbrito.com/webs/nicolas-ceballos-brito
+- https://nicolasceballosbrito.com/webs/marcela-brito-avellaneda
 - https://nicolasceballosbrito.com/webs/fastqa-homepage
 - https://nicolasceballosbrito.com/webs/magiacafetera-ui
 - https://nicolasceballosbrito.com/aula/cursos-online
@@ -264,4 +268,4 @@ R: Pereira, Risaralda, Colombia. Perfil de LinkedIn con 500+ conexiones y 788 se
 - Hugging Face: https://huggingface.co/Flackoooo
 
 ## Última actualización
-2026-08-29
+2026-11-07

@@ -182,7 +182,7 @@ export const LANDING_THUMBS = {
     alt: 'Portada de nicolasceballosbrito.com',
     href: 'https://nicolasceballosbrito.com',
     label: 'Este portafolio',
-    stack: 'React · Vite · Ink & Steel',
+    stack: 'React · Vite · Tailwind',
   },
   rayito: {
     src: '/images/cases/landings/thumb-rayito.webp',

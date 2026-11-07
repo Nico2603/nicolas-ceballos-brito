@@ -28,8 +28,8 @@
     "audit:perf:ci:desktop": "npm run build && npm run preview -- --port 4173 --strictPort --host 127.0.0.1 & npx wait-on http://127.0.0.1:4173 && npx @lhci/cli autorun --config=lighthouserc.desktop.json"
   },
   "dependencies": {
-    "@fontsource/fraunces": "^5.2.9",
-    "@fontsource/plus-jakarta-sans": "^5.2.8",
+    "@fontsource/geist": "^5.3.0",
+    "@fontsource/geist-mono": "^5.3.0",
     "@tailwindcss/vite": "^4.3.0",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",

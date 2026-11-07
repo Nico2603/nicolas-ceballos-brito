@@ -10,65 +10,25 @@ const ogPath = join(root, 'public/images/og-image.webp')
 const OG_WIDTH = 1200
 const OG_HEIGHT = 630
 
-const FULL_NAME = 'Nicolás Ceballos Brito'
-const EYEBROW = 'Full-Stack Developer · Ing. Sistemas'
+const ROLE = 'Ingeniero en Sistemas y Telecomunicaciones'
 const DOMAIN = 'nicolasceballosbrito.com'
 
+function ncb(x, y, scale) {
+  return `<g transform="translate(${x} ${y}) scale(${scale})">
+    <path d="M2 28V4L16 28V4" fill="none" stroke="#E85D4C" stroke-width="3.4" stroke-linecap="square" stroke-linejoin="miter"/>
+    <path d="M36 7.5H26.5V24.5H36" fill="none" stroke="#E85D4C" stroke-width="3.4" stroke-linecap="square" stroke-linejoin="miter"/>
+    <path fill="#E85D4C" fill-rule="evenodd" d="M44 4.2h10.4c4.7 0 7.6 2.7 7.6 6.2 0 2.8-2 4.8-5.4 5.2v.4c3.8.4 6 2.6 6 5.8 0 3.8-3.2 6-8.4 6H44V4.2zm3.6 3.8h6c2.6 0 4 1.2 4 2.8s-1.4 2.8-4.2 2.8h-5.8V8zm0 9.2h6.4c3 0 4.6 1.4 4.6 3.4s-1.6 3.6-4.8 3.6H47.6v-7z"/>
+  </g>`
+}
+
 function buildOgSvg() {
-  const gridLines = Array.from({ length: 26 }, (_, index) => {
-    const x = 48 * index
-    return `<line x1="${x}" y1="0" x2="${x}" y2="${OG_HEIGHT}" stroke="#1E293B" stroke-width="1" opacity="0.35" />`
-  }).join('')
-
-  const horizontalGrid = Array.from({ length: 14 }, (_, index) => {
-    const y = 48 * index
-    return `<line x1="0" y1="${y}" x2="${OG_WIDTH}" y2="${y}" stroke="#1E293B" stroke-width="1" opacity="0.35" />`
-  }).join('')
-
   return `<svg width="${OG_WIDTH}" height="${OG_HEIGHT}" viewBox="0 0 ${OG_WIDTH} ${OG_HEIGHT}" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0B1220"/>
-      <stop offset="55%" stop-color="#111827"/>
-      <stop offset="100%" stop-color="#0F172A"/>
-    </linearGradient>
-    <radialGradient id="glow-cyan" cx="78%" cy="28%" r="42%">
-      <stop offset="0%" stop-color="#7BA3C9" stop-opacity="0.16"/>
-      <stop offset="100%" stop-color="#7BA3C9" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="glow-amber" cx="18%" cy="82%" r="35%">
-      <stop offset="0%" stop-color="#C4A574" stop-opacity="0.12"/>
-      <stop offset="100%" stop-color="#C4A574" stop-opacity="0"/>
-    </radialGradient>
-    <linearGradient id="accent-bar" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#7BA3C9"/>
-      <stop offset="100%" stop-color="#3D5A80"/>
-    </linearGradient>
-  </defs>
-
-  <rect width="${OG_WIDTH}" height="${OG_HEIGHT}" fill="url(#bg)"/>
-  <g opacity="0.55">${gridLines}${horizontalGrid}</g>
-  <rect width="${OG_WIDTH}" height="${OG_HEIGHT}" fill="url(#glow-cyan)"/>
-  <rect width="${OG_WIDTH}" height="${OG_HEIGHT}" fill="url(#glow-amber)"/>
-
-  <rect x="72" y="72" width="88" height="88" rx="18" fill="#1A2332" stroke="#7BA3C9" stroke-width="2.5"/>
-  <text x="116" y="128" text-anchor="middle" fill="#F8FAFC" font-family="Segoe UI, system-ui, sans-serif" font-size="34" font-weight="700">NC</text>
-
-  <rect x="72" y="196" width="112" height="4" rx="2" fill="url(#accent-bar)"/>
-
-  <text x="72" y="248" fill="#C4A574" font-family="Segoe UI, system-ui, sans-serif" font-size="22" font-weight="700" letter-spacing="6">${EYEBROW.toUpperCase()}</text>
-
-  <text x="72" y="332" fill="#F8FAFC" font-family="Georgia, 'Times New Roman', serif" font-size="64" font-weight="700">Nicolás Ceballos</text>
-  <text x="72" y="408" fill="#F8FAFC" font-family="Georgia, 'Times New Roman', serif" font-size="64" font-weight="700">Brito</text>
-
-  <text x="72" y="472" fill="#7BA3C9" font-family="Segoe UI, system-ui, sans-serif" font-size="28" font-weight="600">React · TypeScript · Flutter · IA</text>
-
-  <text x="72" y="548" fill="#94A3B8" font-family="Segoe UI, system-ui, sans-serif" font-size="24" font-weight="500">${DOMAIN}</text>
-
-  <circle cx="1010" cy="120" r="72" fill="none" stroke="#7BA3C9" stroke-width="2" opacity="0.35"/>
-  <circle cx="1010" cy="120" r="48" fill="none" stroke="#C4A574" stroke-width="2" opacity="0.4"/>
-  <rect x="900" y="360" width="220" height="220" rx="28" fill="#1A2332" opacity="0.55" stroke="#1E293B" stroke-width="2"/>
-  <text x="1010" y="492" text-anchor="middle" fill="#64748B" font-family="Segoe UI, system-ui, sans-serif" font-size="96" font-weight="700" opacity="0.45">NC</text>
+  <rect width="${OG_WIDTH}" height="${OG_HEIGHT}" fill="#0B0E13"/>
+  ${ncb(72, 250, 4.2)}
+  <text x="380" y="290" fill="#ECE8E1" font-family="Segoe UI, system-ui, sans-serif" font-size="64" font-weight="600">Nicolás Ceballos</text>
+  <text x="380" y="368" fill="#ECE8E1" font-family="Segoe UI, system-ui, sans-serif" font-size="64" font-weight="600">Brito</text>
+  <text x="380" y="428" fill="#8AA0B8" font-family="Segoe UI, system-ui, sans-serif" font-size="26" font-weight="500">${ROLE}</text>
+  <text x="380" y="478" fill="#B7B1A8" font-family="Segoe UI, system-ui, sans-serif" font-size="22" font-weight="500">${DOMAIN}</text>
 </svg>`
 }
 

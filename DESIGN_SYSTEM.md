@@ -2,7 +2,7 @@
 
 > **Portafolio profesional full-stack.**
 > React 19 + TypeScript + Tailwind v4 + Framer Motion + Lenis + Vite 8.
-> **Tema dual:** Claro / Oscuro con persistencia en `localStorage`.
+> **Tema dual:** oscuro por defecto. El claro es hueso, no un blanco frío. Persistencia en `localStorage`.
 
 ---
 
@@ -11,11 +11,12 @@
 | Atributo | Valor |
 |---|---|
 | **Nombre** | Nicolás Ceballos Brito |
-| **Identidad** | Dev Premium — Ink & Steel (graphite + steel + bronze) |
-| **Tono** | Técnico, editorial, serio, confiable |
+| **Identidad** | El nombre es la marca: wordmark Nicolás (la á en coral) y sello NCB. No es el monograma de placa. |
+| **Tono** | Técnico, directo, de tarjeta de presentación. No comparte tipo, botón ni motion con Rayito de Sol. |
 | **Audiencia** | Reclutadores, clientes, colaboradores tech |
 | **Dominio producción** | `https://nicolasceballosbrito.com` |
-| **Paleta maestra** | Ink (`#070A0F`) + Steel (`#3D5A80` / `#7BA3C9`) + Chick-yellow CTA (`#FACC15` / `#FDE047`) |
+| **Paleta** | Noche `#0B0E13` · marfil `#ECE8E1` · hueso `#F3EFE7` · acero `#8AA0B8` (secundario) · coral `#E85D4C` (acción) |
+| **Tipo** | Geist para nombre y cuerpo. Geist Mono para etiquetas, fechas y stack. |
 
 ---
 
@@ -25,38 +26,35 @@
 
 | Token | Valor | Uso |
 |---|---|---|
-| `--color-navy-deep` | `#0F172A` | Footer, texto sobre CTA |
-| `--color-navy-mid` | `#0B1220` | Fondos oscuros profundos |
-| `--color-cyan` | `#3D5A80` | Steel acento (light) — nombre legacy |
-| `--color-cyan-bright` | `#7BA3C9` | Steel acento (dark) — nombre legacy |
-| `--color-amber` | `#EAB308` | Chick yellow (light) — nombre legacy |
-| `--color-amber-bright` | `#FACC15` | Chick yellow bright — nombre legacy |
+| `--color-navy-deep` | `#1A1612` en claro, `#12171E` en oscuro | Texto sobre el coral y pie |
+| `--color-navy-mid` | `#12171E` | Superficie oscura |
+| `--color-cyan` | `#8AA0B8` | Acero — nombre legacy, ya no es el acento |
+| `--color-cyan-bright` | `#B7C6D6` | Acero claro — nombre legacy |
+| `--color-amber` | `#E85D4C` | Coral — nombre legacy del token |
+| `--color-amber-bright` | `#E85D4C` | El mismo coral |
 
 ### 2.2 Variables de tema (cambian con `.dark`)
 
 | Token | Light (`:root`) | Dark (`.dark`) | Uso |
 |---|---|---|---|
-| `--color-bg-primary` | `#F4F6F8` | `#070A0F` | Fondo de página |
-| `--color-bg-secondary` | `#E8EDF2` | `#0E141C` | Secciones alternas |
-| `--color-bg-card` | `#FFFFFF` | `#141B24` | Superficies de tarjeta |
-| `--color-text-primary` | `#0B1220` | `#F1F4F8` | Texto principal |
-| `--color-text-secondary` | `#3F4B5A` | `#A8B3C2` | Texto secundario |
-| `--color-accent-primary` | `#2F4A6B` | `#7BA3C9` | Links, iconos, highlights |
-| `--color-accent-cta` | `#FACC15` | `#FDE047` | Botones primarios (chick yellow) |
-| `--color-border-light` | `#D5DCE5` | `#243041` | Bordes, inputs |
-| `--color-nav-bg` | `rgba(255,255,255,0.94)` | `rgba(7,10,15,0.92)` | Navbar / dock |
+| `--color-bg-primary` | `#F3EFE7` | `#0B0E13` | Fondo de página |
+| `--color-bg-secondary` | `#E7E1D6` | `#12171E` | Secciones alternas |
+| `--color-bg-card` | `#F7F4EE` | `#161B22` | Superficies de tarjeta |
+| `--color-text-primary` | `#1A1612` | `#ECE8E1` | Texto principal |
+| `--color-text-secondary` | `#4A433C` | `#B7B1A8` | Texto secundario |
+| `--color-accent-primary` | `#6E8298` | `#8AA0B8` | Acero, secundario |
+| `--color-accent-cta` | `#E85D4C` | `#E85D4C` | Botón y la á del nombre |
+| `--color-border-light` | `#D9D1C4` | `#2A313C` | Bordes, inputs |
+| `--color-nav-bg` | `rgba(243,239,231,0.94)` | `rgba(11,14,19,0.94)` | Navbar |
 
 ### 2.3 Sombras y gradientes
 
 | Token | Uso |
 |---|---|
-| `--shadow-card` | Elevación base de cards |
-| `--shadow-card-hover` | Hover con tinte cyan |
-| `--shadow-cta` | Glow de botón ámbar |
-| `--shadow-nav` | Isla flotante navbar / bottom dock |
-| `--gradient-hero` | Fondo hero y headers de página |
-| `--gradient-hero-scrim` | Scrim radial sobre hero |
-| `--gradient-hero-grid` | Grid mesh CSS (48px) |
+| `--shadow-card` | En claro, una línea. En oscuro, ninguna |
+| `--shadow-cta` | Ninguna. El botón no brilla |
+| `--shadow-nav` | En claro, una línea. En oscuro, ninguna |
+| `--gradient-hero` | Color plano: hueso o noche. Sin malla ni scrim |
 
 **Archivo fuente:** `src/styles/tokens.css`
 
@@ -66,28 +64,28 @@
 
 | Rol | Familia | Clase Tailwind | Pesos cargados |
 |---|---|---|---|
-| Display | Fraunces | `font-display` | 600, 700 |
-| Body | Plus Jakarta Sans | `font-sans` | 400, 500, 600, 700 |
+| Texto | Geist | `font-sans` y `font-display` | 400, 500, 600 |
+| Etiquetas, fechas, stack | Geist Mono | `font-mono` | 400, 500 |
 
-Autohospedadas con `@fontsource`: pesos críticos en `src/styles/fonts-critical.css` (Jakarta 400, Fraunces 700) y resto diferido vía `DeferredFonts`. Entrada principal en `src/index.css` (`@import fonts-critical`, tokens, animations, base). No usar Google Fonts en `index.html`. Evitar añadir pesos extra sin medir impacto en LCP.
+Autohospedadas con `@fontsource`. Críticas en `src/styles/fonts-critical.css` (Geist 400 y 500, Geist Mono 400). El 600 y la mono 500 van diferidos. No usar Google Fonts en `index.html`. `font-display` es la misma grotesca: no hay una serif de título.
 
 ### 3.1 Activos de marca y previews sociales
 
 | Activo | Archivo | Dimensiones | Notas |
 |---|---|---|---|
-| Favicon | `public/favicon.svg` | 32×32 | Monograma **NC**, fondo `#2a5c82` — pestaña del navegador |
-| Tarjeta Open Graph | `public/images/og-image.webp` | 1200×630 | Generada en `prebuild` por `scripts/generate-og-image.mjs`; paleta navy/cyan/ámbar, **sin foto** |
+| Favicon / sello | `public/favicon.svg` | 68×32 | **NCB** en coral, sin placa. El componente `Marca` usa los mismos trazos en `currentColor` |
+| Tarjeta Open Graph | `public/images/og-image.webp` | 1200×630 | Generada en `prebuild` por `scripts/generate-og-image.mjs`; noche, marfil y sello coral, **sin foto** |
 | Foto de perfil | `public/images/pic.webp` | 288×288 (Hero) | Variantes `pic-224.webp`, `pic-288.webp`, `pic-576.webp` en prebuild; Hero usa `<img>` con `srcSet`. **LCP lab = `<h1>` texto** (`hero-lcp-visible`), no la imagen. Preload solo en `/` |
 | Apple touch icon | `public/apple-touch-icon.png` | 180×180 | Recorte de la tarjeta OG (`normalize-seo-images.mjs`) |
 
-La tarjeta OG replica el eyebrow del hero (*Full-Stack Developer · Ing. Sistemas*), el nombre y un stack resumido. Los meta tags (`og:title`, `og:description`, `og:image`) los inyecta `SeoHelmet.tsx` y el prerender los deja en HTML estático para crawlers de WhatsApp/LinkedIn.
+La tarjeta OG lleva el sello NCB, el nombre y el rol. Los meta tags (`og:title`, `og:description`, `og:image`) los inyecta `SeoHelmet.tsx` y el prerender los deja en HTML estático para crawlers de WhatsApp/LinkedIn.
 
 Para cambiar copy o colores de la tarjeta: editar `scripts/generate-og-image.mjs` → `npm run build`.
 
 **Patrones:**
-- Eyebrow: `text-xs uppercase tracking-[0.2em] font-semibold text-[var(--color-accent-label)]`
-- H1 hero: `font-display text-4xl md:text-5xl lg:text-6xl font-bold`
-- H2 sección: `font-display text-3xl md:text-4xl font-bold`
+- Eyebrow: `font-mono`, sin mayúsculas rastreadas ni filetes laterales
+- H1 hero: `font-sans font-medium tracking-[-0.04em]`
+- H2 sección: `font-sans font-medium tracking-[-0.03em]`, con un filete coral antes del título
 
 ---
 
@@ -97,10 +95,10 @@ Para cambiar copy o colores de la tarjeta: editar `scripts/generate-og-image.mjs
 
 | Variante | Estilo | Uso |
 |---|---|---|
-| `primary` | Pill ámbar + `shadow-cta` | CTAs principales |
+| `primary` | Coral, `rounded-sm`, sin brillo ni `scale` | CTAs principales |
 | `secondary` | Outline navy, fill on hover | Acciones secundarias |
 | `ghost` | Borde sutil, fondo on hover | CTAs sobre hero oscuro |
-| `icon` | Circular compacto | Acciones icónicas |
+| `icon` | Cuadrado `rounded-sm` | Acciones icónicas |
 
 Soporta `to` (react-router), `href` (anchor/externo/mailto) y `trailingIcon` (patrón button-in-button).
 
@@ -120,9 +118,17 @@ Variantes: `default` (cyan tint), `accent` (ámbar), `muted` (gris).
 
 Sol/luna con stroke adaptativo según scroll y contexto hero (`onHero`).
 
-### Logo (`src/components/Logo.tsx`)
+### Marca (`src/components/Marca.tsx`)
 
-Monograma **NC** — variantes `default` y `onDark`.
+Dos signos. El wordmark es el nombre. El sello es NCB, sin placa y sin tick.
+
+| Variante | Dónde | Comportamiento |
+|---|---|---|
+| `header` | Barra | Wordmark Nicolás. La á va en coral |
+| `hero` | Encima del `<h1>` | El sello NCB se traza una vez (N y C) y la B entra en opacidad. Debajo, un filete |
+| `footer` | Pie oscuro | Sello en blanco + nombre completo |
+
+El trazo es CSS (`stroke-dashoffset`), no el bundle de Motion. Si el sistema pide menos movimiento, el sello aparece terminado. El `<h1>` no se anima. El archivo oficial del signo es `brands/nicolas/assets/logo/ncb.svg` en publicidad, copia del favicon.
 
 ---
 
@@ -144,7 +150,7 @@ LazyMotion (domAnimation)
 
 ### Navbar — floating island
 
-- `fixed top-0`, isla centrada `rounded-full backdrop-blur-xl`
+- `fixed top-0`, isla `rounded-sm`, sin blur. El overlay móvil sí usa blur |
 - Desktop (`md+`): links + CTA Contacto + theme toggle
 - Mobile: logo + toggle + hamburger morph (CSS: `.hamburger`, `.hamburger-open`)
 - Menú fullscreen con reveal escalonado vía CSS (`.mobile-menu-overlay`, `.mobile-nav-item` + `transition-delay`)
@@ -171,7 +177,7 @@ LazyMotion (domAnimation)
 
 | Sección | Patrón | Archivo |
 |---|---|---|
-| Hero | Grid 12: copy `col-span-7` + foto `col-span-5` (sin cards bajo la foto). Eyebrow Prosavis + CTAs freelance | `Hero.tsx` |
+| Hero | Sello NCB, nombre en texto, rol en frase, bio, botón coral y un enlace. Foto a la derecha, debajo en el teléfono | `Hero.tsx` |
 | Ahora: Prosavis | Grid 12: (1) cabecera marca, (2) media 7 + panel 5 con tarjeta de mensaje completa (no OG recortado) + foto relax, (3) copy/CTAs 7 + suite 5 | `CurrentWorkProsavis.tsx`, `data/prosavis.ts` |
 | Portafolio | Grid 2×2 uniforme, stats GitHub en una línea | `Portfolio.tsx` |
 | Experiencia | Banner graduación + roles LinkedIn **sin** Prosavis (ya destacado en `#ahora`) | `CurrentExperience.tsx` |
@@ -185,7 +191,7 @@ LazyMotion (domAnimation)
 ### Orden Home (`pages/Home.tsx`)
 
 ```
-Hero → CurrentWorkProsavis (lazy) → Portfolio → CurrentExperience (lazy) → LaboresCarousel (lazy) → LinkedInFeed (lazy) → RecursosSection → FaqSection (lazy) → Contact (lazy) → Footer
+Hero → Ahora (Prosavis, una vez) → Trabajo seleccionado → Hubs sin Prosavis → Trayectoria → Fuera del código (labores + LinkedIn) → FAQ corta → Contacto → Footer
 ```
 
 **Narrativa:** freelance-first + disponible para roles fuertes; señal #1 = Prosavis en producción (solo datos públicos: web, Play Store, LinkedIn).
@@ -207,14 +213,14 @@ Preload LCP (`pic-288.webp`) vía `Helmet` en `Home.tsx` — no en `index.html` 
 
 | Regla | Implementación |
 |---|---|
-| Easing | `--ease-smooth: cubic-bezier(0.22, 1, 0.36, 1)` |
-| Spring carousel | `stiffness: 300, damping: 30` |
-| Section reveal | `SectionWrapper` — `margin: '-100px'`, ease smooth |
-| GPU-safe | Solo `transform` + `opacity` en animaciones |
-| `prefers-reduced-motion` | Desactiva `HeroGrid` canvas; transiciones mínimas en CSS |
-| `backdrop-blur` | Solo en elementos `fixed` (navbar, dock, overlay) |
-| Lenis | Solo desktop (≥768px), diferido idle/primer scroll; clases `html.lenis lenis-smooth` en `App.tsx` |
-| LazyMotion | `domAnimation` en `App.tsx` — bundle de motion reducido |
+| Easing | `--ease-smooth: cubic-bezier(0.2, 0.8, 0.2, 1)`. No es la curva de Rayito |
+| Filete | Una línea coral (`scaleX`) antes del título de sección |
+| Enlaces | Subrayado que crece. Los botones no usan `scale` |
+| Formulario | La salida es solo opacidad. La confirmación es un filete, no un sol |
+| `prefers-reduced-motion` | El sello y el filete aparecen terminados |
+| `backdrop-blur` | Solo el overlay del menú móvil |
+| Lenis | Desktop, `duration: 0.85`, easing `1 - (1 - t) ** 3`, `wheelMultiplier: 0.9` |
+| LazyMotion | `domAnimation` en `App.tsx` |
 
 **Iconos:** Lucide React (sin Phosphor — bundle estable).
 
@@ -223,7 +229,7 @@ Preload LCP (`pic-288.webp`) vía `Helmet` en `Home.tsx` — no en `index.html` 
 ## 8. Tema (ThemeContext)
 
 - **Storage key:** `nicolas-portfolio-theme`
-- **Fallback:** `prefers-color-scheme`
+- **Fallback:** oscuro. Lo guardado en `localStorage` gana. El script de `index.html` pone `dark` salvo que el valor guardado sea `light`
 - **Toggle:** clase `.dark` en `<html>`
 - **Transiciones:** `src/styles/animations.css` (color 0.3s ease-smooth)
 
@@ -233,9 +239,9 @@ Preload LCP (`pic-288.webp`) vía `Helmet` en `Home.tsx` — no en `index.html` 
 
 - Grain overlay fijo (`body::before`, opacity 0.03)
 - Scrollbar themed (thin, `border-light`)
-- `::selection` con tinte cyan
-- `.hero-grid-bg` — grid mesh reutilizable (fallback CSS; canvas `HeroGrid` solo desktop)
+- `::selection` con coral al 28%
 - `.profile-image` — foto de perfil en About (`background-image`); Hero usa `<img>` nativo con `srcSet`
+- El hero no lleva grilla, aurora ni glow. El movimiento de marca es el trazo del sello y el filete
 
 ---
 
@@ -251,7 +257,11 @@ Preload LCP (`pic-288.webp`) vía `Helmet` en `Home.tsx` — no en `index.html` 
 | bento grid portafolio (primer card 2×2) | grid 2×2 uniforme, 4 proyectos reales |
 | bio/roles manuales en `content.ts` | `linkedin-profile.ts` + `profile.ts` |
 | gradient footer | `--color-navy-deep` sólido |
-| Montserrat / Raleway | Plus Jakarta Sans + Fraunces |
+| Montserrat / Raleway / Fraunces / Plus Jakarta | Geist + Geist Mono |
+| Placa NC y tick pollito | Sello NCB y wordmark Nicolás |
+| Botón pastilla amarillo, ceja dorada, degradado a dorado | Coral plano, ceja en mono, filete |
+| Aurora, grilla, glow y anillo de la foto | Campo del hero en el gradiente de tinta/papel |
+| Máquina de escribir del hero | Frase de rol estática |
 
 ---
 
@@ -259,13 +269,13 @@ Preload LCP (`pic-288.webp`) vía `Helmet` en `Home.tsx` — no en `index.html` 
 
 | Regla | Detalle |
 |---|---|
-| LCP (lab) | **`<h1>` texto Fraunces** — clase `hero-lcp-visible`; sin `motion` en `<h1>`. Imagen de perfil: `<img>` estático, no es LCP en Lighthouse móvil |
-| TypingAnimation | `DeferredTypingAnimation`: texto estático hasta `requestIdleCallback`, luego lazy de `TypingAnimation` |
-| Animación hero | `hero-entrance`, delays reducidos en mobile; `DeferredHeroDecor` (aurora/grid tras idle, off mobile) |
+| LCP (lab) | **`<h1>` en Geist** — clase `hero-lcp-visible`; sin `motion` en `<h1>`. Imagen de perfil: `<img>` estático, no es LCP en Lighthouse móvil |
+| Rol del hero | Frase estática. El `<h1>` no lleva motion |
+| Animación hero | Entrada CSS del texto secundario. El isotipo se traza una vez. Con menos movimiento, queda armado |
 | Below-fold Home | `ViewportLazy` — monta chunks lazy solo al entrar en viewport |
-| Framer Motion | Reservado para carrusel, contacto, `SectionHeader`, `Button`; `CurrentExperience`, `FaqAccordion`, `RepositoryCard` en CSS |
+| Framer Motion | Carrusel y contacto. `SectionHeader` y `Button` son CSS |
 | Imágenes carrusel | `carouselImageSources`: solo `-480.webp` / `-640.webp` (nunca original en `srcSet`) |
-| Fuentes | `fonts-critical.css` + `Fraunces Fallback` (metric overrides en `tokens.css`); critical inline incluye estilos `h1` LCP |
+| Fuentes | `fonts-critical.css` + `Geist Fallback` sobre Segoe UI; critical inline incluye estilos `h1` LCP |
 | GA / métricas | GA4 post-interacción (15s idle); `web-vitals` → GA4; Vercel Speed Insights tras `load` |
 | Lenis | Desktop: tras 2º scroll o `scrollY > 300` (sin idle RAF) |
 | Auditoría | `audit:perf:assert`, `audit:bundle`, `performance-budget.json`; CI mobile + desktop |
@@ -287,7 +297,7 @@ Checklist manual:
 - [ ] 1440px — island nav centrada
 - [ ] Toggle tema persiste tras refresh
 - [ ] Anchor cross-route (`/about` → `/#portafolio`)
-- [ ] `prefers-reduced-motion` — sin canvas hero
+- [ ] `prefers-reduced-motion` — isotipo quieto, sin trazo
 - [ ] Tras `npm run build`, `public/images/og-image.webp` muestra tarjeta de marca (no foto)
 - [ ] Tras `npm run build`, HTML prerenderizado sin `127.0.0.1`/`localhost` en `dist/guias/*/index.html`
 - [ ] Guías prerenderizadas sin JSON-LD de home (`#website`, `FAQPage`)

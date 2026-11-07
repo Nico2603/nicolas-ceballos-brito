@@ -1,9 +1,7 @@
 import type { Project, LaboresSlide, PortfolioStat, SkillCategory } from '../types'
-import { aboutIntro, heroBio, linkedInTypingLines } from './profile'
+import { aboutIntro, heroBio } from './profile'
 
 export { heroBio, aboutIntro }
-
-export const typingLines = [...linkedInTypingLines]
 
 export const portfolioStats: PortfolioStat[] = [
   { icon: 'code', value: '15+', label: 'Repositorios' },
@@ -68,16 +66,6 @@ export const featuredProjects: Project[] = [
 
 export const laboresSlides: LaboresSlide[] = [
   {
-    id: 'proyecto1',
-    title: 'Maratón Nacional de Programación ACIS/REDIS',
-    description:
-      'Representé a mi universidad en la prestigiosa Maratón Nacional de Programación ACIS/REDIS, fase clasificatoria para la Maratón Regional Latinoamericana ICPC 2022. Esta competencia de élite desafía las habilidades de resolución algorítmica y programación competitiva, desarrollando capacidades técnicas avanzadas bajo presión temporal.',
-    image: '/images/p1.webp',
-    detailUrl:
-      'https://www.linkedin.com/in/nicolas-ceballos-brito/overlay/1710808532744/single-media-viewer/?profileId=ACoAADm8YQABLNW25Vw1bl3FRj4BVItbsOYwHg4',
-    alt: 'Maratón Nacional de Programación UAM',
-  },
-  {
     id: 'proyecto2',
     title: 'Liderazgo Estudiantil Universitario',
     description:
@@ -89,9 +77,9 @@ export const laboresSlides: LaboresSlide[] = [
   },
   {
     id: 'proyecto3',
-    title: 'XXXVII Maratón Nacional ACIS/REDIS 2023',
+    title: 'Maratón ACIS/REDIS',
     description:
-      'Seleccionado para representar a la Universidad Católica de Pereira en la XXXVII Maratón Nacional de Programación ACIS/REDIS 2023, celebrada en Manizales. Compitiendo junto a 108 equipos de las universidades más prestigiosas de Colombia, esta experiencia consolidó mis competencias en algoritmos avanzados y trabajo colaborativo de alto rendimiento.',
+      'Representé a la Universidad Católica de Pereira en la fase clasificatoria ICPC 2022 y en la XXXVII Maratón Nacional ACIS/REDIS 2023, en Manizales, junto a 108 equipos.',
     image: '/images/p3.webp',
     detailUrl:
       'https://www.linkedin.com/in/nicolas-ceballos-brito/overlay/1635553820719/single-media-viewer/?type=LINK&profileId=ACoAADm8YQABLNW25Vw1bl3FRj4BVItbsOYwHg4',

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
-const HOME_SECTIONS = ['inicio', 'portafolio', 'labores', 'contacto'] as const
+const HOME_SECTIONS = ['inicio', 'ahora', 'trabajo', 'portafolio', 'fuera', 'contacto'] as const
 
 export type ActiveSection = (typeof HOME_SECTIONS)[number] | 'about' | 'repositories'
 

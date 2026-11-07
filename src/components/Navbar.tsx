@@ -1,7 +1,6 @@
 import { ChevronDown } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { useTheme } from '../context/ThemeContext'
-import Logo from './Logo'
+import Marca from './Marca'
 import Button from './ui/Button'
 import ThemeToggle from './ui/ThemeToggle'
 import { navLinks } from '../data/navigation'
@@ -10,12 +9,10 @@ import { useSmartNavigation } from '../hooks/useSmartNavigation'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
-  const { theme } = useTheme()
   const { menuOpen, toggleMenu, closeMenu } = useMobileMenu()
   const { handleNavClick, location } = useSmartNavigation()
   const isHome = location.pathname === '/'
   const onHero = isHome && !scrolled
-  const isDarkHero = theme === 'dark'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -29,15 +26,13 @@ export default function Navbar() {
   }
 
   const textCol = onHero ? 'var(--hero-text)' : 'var(--color-text-primary)'
-  const logoVariant = onHero && isDarkHero ? 'onDark' : 'default'
-  const heroCtaClasses =
-    '!rounded-full !px-4 !py-1.5 !text-xs !font-bold !justify-center !bg-[var(--color-accent-cta)] !text-[#0B1220] !shadow-[var(--shadow-cta)] hover:!brightness-105'
+  const heroCtaClasses = '!px-4 !py-1.5 !text-xs !justify-center'
 
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none pt-4 md:pt-6 px-4">
         <div
-          className={`pointer-events-auto mx-auto max-w-fit flex items-center gap-2 md:gap-4 rounded-full border backdrop-blur-xl px-3 md:px-5 py-2.5 transition-all duration-500 ${
+          className={`pointer-events-auto mx-auto max-w-fit flex items-center gap-2 md:gap-4 rounded-sm border px-3 md:px-5 py-2.5 transition-colors duration-200 ${
             scrolled || !isHome
               ? 'bg-[var(--color-nav-bg)] border-[var(--color-border-light)] shadow-[var(--shadow-nav)]'
               : 'bg-[var(--hero-nav-surface)] border-[var(--hero-nav-border)] shadow-[var(--shadow-nav)]'
@@ -48,7 +43,7 @@ export default function Navbar() {
             className="flex items-center shrink-0"
             aria-label="Nicolás Ceballos — inicio"
           >
-            <Logo variant={logoVariant} />
+            <Marca variant="header" />
           </button>
 
           <nav className="hidden md:flex items-center gap-1">
@@ -56,7 +51,7 @@ export default function Navbar() {
               <div key={link.label} className="relative group">
                 <button
                   onClick={() => onNavClick(link.href)}
-                  className="flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-colors hover:text-[var(--color-cyan-bright)]"
+                  className="flex items-center gap-1 px-3 py-1.5 rounded-sm text-sm font-medium transition-colors hover:text-[var(--color-accent-cta)]"
                   style={{ color: textCol }}
                 >
                   {link.label}
@@ -64,7 +59,7 @@ export default function Navbar() {
                 </button>
                 {link.dropdown && (
                   <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                    <div className="rounded-xl border border-[var(--color-border-light)] bg-[var(--color-bg-card)] shadow-[var(--shadow-card)] py-2 min-w-[200px]">
+                    <div className="rounded-sm border border-[var(--color-border-light)] bg-[var(--color-bg-card)] py-2 min-w-[200px]">
                       {link.dropdown.map((item) => (
                         <button
                           key={item.label}

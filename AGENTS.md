@@ -109,12 +109,11 @@ Si `VERCEL_TOKEN` sale `missing`, parar. Pegar en My Secrets scoped a `Nico2603/
 
 - Code splitting: rutas con `React.lazy()`, `CurrentExperience` y secciones below-fold lazy en Home, `manualChunks` en Vite (react, motion, lenis)
 - LCP: `<img>` estático en Hero (`fetchPriority="high"`, `srcSet`); preload de `pic-288.webp` solo en `/` (Helmet en `Home.tsx` + inyección en prerender)
-- Hero above-the-fold: animaciones CSS (`hero-entrance`, `hero-profile-float` en `animations.css`); framer-motion solo en CTAs del hero
+- Hero above-the-fold: el `<h1>` no se anima. El isotipo se traza una vez en CSS. Entrada corta del texto secundario
 - Framer Motion: `LazyMotion` + `domAnimation` en `App.tsx`; menú móvil del Navbar con CSS (sin `AnimatePresence`)
 - Fuentes: 6 pesos `@fontsource` en `index.css` (Jakarta 400–700, Fraunces 600–700); sin Google Fonts
 - Analytics/terceros: GA4 (`requestIdleCallback`) y Vercel metrics tras `load` — no bloquean FCP
 - Lenis: solo desktop (≥768px), diferido idle/primer scroll; desactivado en mobile y `prefers-reduced-motion`
-- `HeroGrid` canvas desactivado en mobile
 - Prerender: assets siempre con rutas relativas `/assets/...` (evita `ERR_CONNECTION_REFUSED` en producción)
 - Caché larga en `/assets/` e `/images/` vía `vercel.json`
 - Validar: Lighthouse mobile en `/` y guías; Speed Insights 48–72 h tras deploy

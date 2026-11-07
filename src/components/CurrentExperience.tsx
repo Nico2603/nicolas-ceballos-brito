@@ -12,6 +12,7 @@ export default function CurrentExperience() {
     <SectionWrapper id="experiencia" className="py-20 px-4 bg-[var(--color-bg-primary)] relative">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
+          plain
           eyebrow="Trayectoria"
           title="Más"
           highlight="experiencia"

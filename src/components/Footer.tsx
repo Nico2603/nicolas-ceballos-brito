@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { FULL_NAME, SOCIAL_LINKS } from '../constants/social'
+import Marca from './Marca'
 import { GUIDE_SLUGS } from '../constants/seo-routes'
 import { getGuiaBySlug } from '../data/guias/content'
 import SocialLinks from './SocialLinks'
@@ -41,16 +42,14 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           <div>
-            <p className="font-display text-lg font-bold mb-2">{FULL_NAME}</p>
+            <Marca variant="footer" />
             <p className="text-sm text-white/70 leading-relaxed">
-              Desarrollador full-stack apasionado por la innovación tecnológica y el impacto real.
+              Ingeniero en Sistemas y Telecomunicaciones (UCP 2025). Diseño y construyo productos web, móvil e IA. CTO en Prosavis.
             </p>
           </div>
 
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] font-semibold text-[var(--color-accent-cta)] mb-4">
-              Navegación
-            </p>
+            <p className="font-display text-sm font-semibold text-white mb-4">Navegación</p>
             <ul className="space-y-2">
               {footerLinks.map((link) => (
                 <li key={link.label}>
@@ -74,9 +73,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] font-semibold text-[var(--color-accent-cta)] mb-4">
-              Expertise
-            </p>
+            <p className="font-display text-sm font-semibold text-white mb-4">Expertise</p>
             <ul className="space-y-2 mb-6">
               {expertiseLinks.map((link) => (
                 <li key={link.label}>
@@ -89,9 +86,7 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-            <p className="text-xs uppercase tracking-[0.2em] font-semibold text-[var(--color-accent-cta)] mb-4">
-              Guías
-            </p>
+            <p className="font-display text-sm font-semibold text-white mb-4">Guías</p>
             <ul className="space-y-2">
               {guideLinks.map((link) => (
                 <li key={link.href}>
@@ -107,9 +102,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] font-semibold text-[var(--color-accent-cta)] mb-4">
-              Redes
-            </p>
+            <p className="font-display text-sm font-semibold text-white mb-4">Redes</p>
             <SocialLinks size="sm" variant="onDark" />
             <a
               href={SOCIAL_LINKS.huggingface}

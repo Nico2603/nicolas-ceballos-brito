@@ -13,7 +13,7 @@ html { scrollbar-width: thin; scrollbar-color: var(--color-border-light) transpa
 
 /* ── Selection ── */
 ::selection {
-  background-color: rgba(34, 211, 238, 0.3);
+  background-color: rgba(232, 93, 76, 0.28);
   color: var(--color-text-primary);
 }
 
@@ -37,16 +37,16 @@ html { scrollbar-width: thin; scrollbar-color: var(--color-border-light) transpa
   padding: 0 1.75rem;
   margin: 0;
   border: 0;
-  border-radius: 9999px;
-  background: #ffeb3b;
-  color: #0b1220;
+  border-radius: 2px;
+  background: #e85d4c;
+  color: #1a1612;
   font-family: var(--font-sans);
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1;
   text-decoration: none;
-  box-shadow: 0 8px 24px rgb(255 235 59 / 0.4);
-  transition: filter 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  box-shadow: none;
+  transition: filter 0.2s ease;
 }
 
 .hero-btn-primary span,
@@ -56,12 +56,11 @@ html { scrollbar-width: thin; scrollbar-color: var(--color-border-light) transpa
 }
 
 .hero-btn-primary:hover {
-  filter: brightness(1.05);
-  box-shadow: 0 10px 28px rgb(255 235 59 / 0.5);
+  filter: brightness(1.06);
 }
 
 .hero-btn-primary:focus-visible {
-  outline: 2px solid #0b1220;
+  outline: 2px solid var(--color-accent-cta);
   outline-offset: 3px;
 }
 
@@ -96,6 +95,34 @@ a.hero-btn-secondary,
 .dark .hero-btn-secondary:hover {
   background: rgb(255 255 255 / 0.18) !important;
   border-color: var(--color-cyan-bright) !important;
+}
+
+.hero-text-link {
+  color: var(--hero-subtitle);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0 1px;
+  transition: background-size 0.25s var(--ease-smooth), color 0.2s var(--ease-smooth);
+}
+
+.hero-text-link:hover {
+  color: var(--hero-text);
+  background-size: 100% 1px;
+}
+
+.hero-text-link:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 3px;
+}
+
+.marca-on-ink {
+  color: #ece8e1;
 }
 
 /* Hero social — contraste por tema documentado en html.dark */
@@ -170,124 +197,10 @@ textarea::placeholder {
   background-position: center;
 }
 
-.hero-grid-bg {
-  background-image: var(--gradient-hero-grid);
-  background-size: 48px 48px;
-}
-
-/* ── Hero atmosphere ── */
-/* Infinite animations gated under .hero-decor-active (set after load) so
-   Lighthouse Speed Index can settle during the lab trace. */
-.hero-aurora {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  pointer-events: none;
-}
-
-.hero-aurora-1 {
-  width: min(55vw, 480px);
-  height: min(55vw, 480px);
-  top: -8%;
-  right: -5%;
-  background: rgb(34 211 238 / 0.35);
-}
-
-.hero-aurora-2 {
-  width: min(45vw, 400px);
-  height: min(45vw, 400px);
-  bottom: -10%;
-  left: -8%;
-  background: rgb(245 158 11 / 0.28);
-}
-
-.hero-aurora-3 {
-  width: min(35vw, 320px);
-  height: min(35vw, 320px);
-  top: 40%;
-  left: 45%;
-  background: rgb(99 102 241 / 0.2);
-}
-
-.hero-decor-active .hero-aurora {
-  will-change: transform;
-}
-
-.hero-decor-active .hero-aurora-1 {
-  animation: aurora-drift-1 14s var(--ease-smooth) infinite;
-}
-
-.hero-decor-active .hero-aurora-2 {
-  animation: aurora-drift-2 18s var(--ease-smooth) infinite;
-}
-
-.hero-decor-active .hero-aurora-3 {
-  animation: aurora-drift-3 20s var(--ease-smooth) infinite;
-}
-
-.hero-headline-glow {
-  text-shadow: 0 2px 16px rgb(34 211 238 / 0.22);
-}
-
-.dark .hero-headline-glow {
-  text-shadow:
-    0 2px 24px rgb(34 211 238 / 0.35),
-    0 4px 48px rgb(3 7 18 / 0.8);
-}
-
-.hero-subcopy-glow {
-  text-shadow: 0 1px 8px rgb(255 255 255 / 0.6);
-}
-
-.dark .hero-subcopy-glow {
-  text-shadow: 0 2px 16px rgb(3 7 18 / 0.75);
-}
-
-.hero-eyebrow-glow {
-  text-shadow: 0 0 16px rgb(154 112 70 / 0.28);
-}
-
-.hero-profile-ring {
-  position: absolute;
-  inset: -3px;
-  border-radius: 18px;
-  background: conic-gradient(
-    from 0deg,
-    #3D5A80,
-    #FACC15,
-    #2F4A6B,
-    #7BA3C9,
-    #EAB308,
-    #3D5A80
-  );
-  opacity: 0.72;
-}
-
-.hero-decor-active .hero-profile-ring {
-  animation: spin-slow 8s linear infinite;
-}
-
-.hero-profile-glow {
-  box-shadow:
-    var(--shadow-glow-cyan),
-    0 24px 64px rgb(3 7 18 / 0.55);
-}
-
 .text-gradient-accent {
-  color: var(--color-accent-primary);
-  background: var(--gradient-text-accent);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero-decor-active .text-gradient-accent {
-  animation: gradient-shift 6s var(--ease-smooth) infinite;
+  color: var(--color-accent-cta);
 }
 
 .section-mesh-bg {
-  background-image:
-    radial-gradient(ellipse 80% 50% at 20% 0%, rgb(34 211 238 / 0.06) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 80% 100%, rgb(245 158 11 / 0.05) 0%, transparent 55%);
+  background-image: none;
 }

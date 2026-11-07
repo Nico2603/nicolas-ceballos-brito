@@ -16,7 +16,7 @@ export default function BottomNav() {
 
   return (
     <nav
-      className="md:hidden fixed bottom-5 inset-x-4 z-40 rounded-2xl border border-[var(--color-border-light)] bg-[var(--color-nav-bg)] backdrop-blur-xl shadow-[var(--shadow-nav)]"
+      className="md:hidden fixed bottom-5 inset-x-4 z-40 rounded-sm border border-[var(--color-border-light)] bg-[var(--color-nav-bg)]"
       style={{ paddingBottom: 'max(0.5rem, env(safe-area-inset-bottom))' }}
       aria-label="Navegación principal"
     >
@@ -27,7 +27,7 @@ export default function BottomNav() {
             <li key={id}>
               <button
                 onClick={() => handleNavClick(href)}
-                className={`flex flex-col items-center gap-0.5 px-2 py-1.5 rounded-xl transition-colors ${
+                className={`flex flex-col items-center gap-0.5 px-2 py-1.5 rounded-sm transition-colors ${
                   isActive
                     ? 'text-[var(--color-accent-primary)]'
                     : 'text-[var(--color-text-secondary)]'

@@ -45,28 +45,31 @@ function PostImage({ imageUrl, title }: { imageUrl?: string; title: string }) {
   )
 }
 
-export default function LinkedInFeed() {
+export default function LinkedInFeed({ embedded = false }: { embedded?: boolean }) {
   const featured = getFeaturedLinkedInPost()
   const secondary = getSecondaryLinkedInPosts()
 
   if (linkedInPosts.length === 0) return null
 
   return (
-    <SectionWrapper id="actualizaciones" className="py-20 px-4 bg-[var(--color-bg-primary)] section-mesh-bg relative">
+    <SectionWrapper id={embedded ? undefined : 'actualizaciones'} className={embedded ? 'mt-16' : 'py-20 px-4 bg-[var(--color-bg-primary)] relative'}>
       <div className="max-w-6xl mx-auto">
+        {!embedded && (
         <SectionHeader
+          plain
           eyebrow="Actualizaciones"
           title="Desde"
           highlight="LinkedIn"
           description="Publicaciones de mi perfil en LinkedIn. Una ajena solo entra si el texto me menciona."
         />
+        )}
 
         {featured && (
           <m.div
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1] }}
             className="mb-8"
           >
             <Card className="overflow-hidden">
@@ -121,7 +124,7 @@ export default function LinkedInFeed() {
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
-                transition={{ delay: index * 0.08, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ delay: index * 0.08, duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
               >
                 <Card className="h-full">
                   <article className="flex flex-col h-full">

@@ -372,8 +372,8 @@ export function buildArticleStructuredData(
   description: string,
   faq: TopicFaqItem[],
   breadcrumbs: BreadcrumbItem[],
-  datePublished: string,
-  dateModified: string,
+  datePublished?: string,
+  dateModified?: string,
 ) {
   const pageUrl = `${SITE_URL}${slug}`
 
@@ -389,8 +389,8 @@ export function buildArticleStructuredData(
         description,
         url: pageUrl,
         inLanguage: 'es-CO',
-        datePublished,
-        dateModified,
+        ...(datePublished ? { datePublished } : {}),
+        ...(dateModified ? { dateModified } : {}),
         author: { '@id': `${SITE_URL}/#person` },
         publisher: { '@id': `${SITE_URL}/#person` },
         image: SEO_OG_IMAGE,

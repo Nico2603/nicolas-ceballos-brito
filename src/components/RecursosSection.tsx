@@ -33,6 +33,7 @@ export default function RecursosSection() {
     <SectionWrapper id="recursos" className="py-20 px-4 bg-[var(--color-bg-primary)]">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
+          plain
           eyebrow="Recursos"
           title="Guías y"
           highlight="expertise"

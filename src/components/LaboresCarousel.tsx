@@ -11,7 +11,7 @@ import SectionHeader from './ui/SectionHeader'
 
 const SLIDE_DURATION = 8000
 
-export default function LaboresCarousel() {
+export default function LaboresCarousel({ embedded = false }: { embedded?: boolean }) {
   const [current, setCurrent] = useState(0)
   const [progress, setProgress] = useState(0)
 
@@ -57,24 +57,27 @@ export default function LaboresCarousel() {
   const slideImage = carouselImageSources(slide.image)
 
   return (
-    <SectionWrapper id="labores" className="py-20 px-4 bg-[var(--color-bg-primary)] section-mesh-bg relative">
+    <SectionWrapper id={embedded ? undefined : 'labores'} className={embedded ? '' : 'py-20 px-4 bg-[var(--color-bg-primary)] relative'}>
       <div className="max-w-5xl mx-auto">
+        {!embedded && (
         <SectionHeader
+          plain
           eyebrow="Experiencia"
           title="Labores"
           highlight="destacadas"
           description="Liderazgo, competencias y compromiso social fuera del código."
         />
+        )}
 
         <Card hover={false} className="relative overflow-visible">
           <AnimatePresence mode="wait">
             <m.article
               key={slide.id}
               id={slide.id}
-              initial={{ opacity: 0, x: 40 }}
+              initial={{ opacity: 0, x: 12 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -40 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              exit={{ opacity: 0, x: -12 }}
+              transition={{ duration: 0.35, ease: [0.2, 0.8, 0.2, 1] }}
               className="grid md:grid-cols-2 gap-0"
             >
               <div className="h-64 md:h-auto md:min-h-[320px] overflow-hidden rounded-t-[15px] md:rounded-tr-none md:rounded-l-[15px]">

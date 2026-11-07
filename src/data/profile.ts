@@ -4,7 +4,6 @@ import {
   linkedInExperience,
   linkedInHeadline,
   linkedInLocation,
-  linkedInTypingLines,
   type LinkedInExperienceEntry,
 } from './linkedin-profile'
 import { SOCIAL_LINKS } from '../constants/social'
@@ -60,5 +59,3 @@ export const PROFESSIONAL_WORKS_FOR = {
 } as const
 
 export const PROFESSIONAL_LOCATION = linkedInLocation
-
-export { linkedInTypingLines }

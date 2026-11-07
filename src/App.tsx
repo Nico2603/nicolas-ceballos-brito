@@ -45,11 +45,11 @@ export default function App() {
       document.documentElement.classList.add('lenis', 'lenis-smooth')
 
       lenis = new Lenis({
-        duration: 1.2,
-        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        duration: 0.85,
+        easing: (t: number) => 1 - Math.pow(1 - t, 3),
         orientation: 'vertical',
         smoothWheel: true,
-        wheelMultiplier: 1,
+        wheelMultiplier: 0.9,
       })
 
       const raf = (time: number) => {

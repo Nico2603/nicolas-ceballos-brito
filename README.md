@@ -150,7 +150,7 @@ Optimizaciones para RES, LCP, FCP, TTFB e INP (Vercel Speed Insights + Lighthous
 | **Prerender** | Post-proceso en `scripts/prerender.ts`: rutas relativas, preload LCP en `/`, CSS crítico inline (`critical-inline.css`), strip de `modulepreload` below-fold, link a `/schema/home.jsonld`; JSON-LD de home solo en home |
 | **HTML base** | `index.html` con link alterno al schema completo; preload global de imagen solo vía Helmet/prerender en `/` |
 | **LCP** | Elemento LCP lab = **`<h1>` texto Fraunces** (clase `hero-lcp-visible`); imagen de perfil con `fetchPriority="high"` y `srcSet`; preload `pic-288.webp` en `/` |
-| **Hero crítico** | `DeferredTypingAnimation` (idle + lazy); `DeferredHeroDecor` (aurora/grid tras idle, off en mobile); animaciones infinitas (`ring`, `aurora`, `float`, `scroll-hint`, `gradient-shift`) gated bajo `.hero-decor-active` tras `load`+idle (`useHeroDecorSettle`); entrada CSS con delays reducidos en mobile |
+| **Hero crítico** | Isotipo en trazos, una vez, encima del `<h1>` estático. Sin aurora, grilla ni glow. Entrada CSS del texto secundario, más corta en el teléfono |
 | **Below-fold** | `ViewportLazy` + `IntersectionObserver` en Home — monta secciones solo al acercarse al viewport |
 | **JS inicial** | `React.lazy()` en rutas y secciones Home; `manualChunks` en `vite.config.ts`; `CurrentExperience`, `FaqAccordion`, `RepositoryCard` sin Framer Motion |
 | **Framer Motion** | `LazyMotion` + `domAnimation`; reservado para carrusel, contacto y UI interactiva |

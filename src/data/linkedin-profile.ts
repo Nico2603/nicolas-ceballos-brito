@@ -70,7 +70,7 @@ export const linkedInExperience: LinkedInExperienceEntry[] = [
     period: 'Jun 2025 – Ago 2025 (3 meses)',
     location: 'Claymont, Delaware, Estados Unidos · En remoto',
     description:
-      'Soy ingeniero de IA en el programa AI Engineer Training & Venture Studio de Teilur AI. Mi función se centra en el desarrollo de MVP impulsados por IA mediante el aprovechamiento de herramientas de vanguardia para crear soluciones innovadoras y escalables. Trabajo en un entorno ágil, estratégico y de alto rendimiento para transformar ideas en productos tangibles y disruptivos.',
+      'Seguí el mismo programa de AI Engineer Training, ahora en Modin.ai, de junio a agosto de 2025. El oficio no cambió: llevar una idea a un MVP con IA, en remoto, después de los meses en Teilur.',
     current: false,
     initials: 'M',
   },

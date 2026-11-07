@@ -142,7 +142,7 @@ export const catalogFamilies: CatalogFamily[] = [
     offer: [
       'Landings clínicas con SEO y accesibilidad',
       'Plataformas de gestión de consulta (agenda, notas, recaudo — a nivel de producto)',
-      'Diseño Ink & Steel / sistemas de marca ajenos tratados con respeto',
+      'Sistemas de marca ajenos, tratados con respeto',
     ],
     faq: [
       {
@@ -176,7 +176,7 @@ export const catalogFamilies: CatalogFamily[] = [
       {
         heading: 'Del portafolio al caso de cliente',
         paragraphs: [
-          'nicolasceballosbrito.com corre React 19, Vite, Tailwind 4 y prerender. No es una plantilla: es el sistema Ink & Steel, el dual theme y las páginas que estás leyendo. FastQA-HomePage muestra HTML/CSS/JS centrado en conversión. magiacafetera-ui es Angular + TypeScript para una experiencia de viaje en el Eje; el crédito del fork es de Uruena2603. Marcela Brito Avellaneda es el encargo familiar en curso: la versión nueva separa psicología y Registros Akáshicos, y todavía tiene piezas abiertas.',
+          'nicolasceballosbrito.com corre React 19, Vite, Tailwind 4 y prerender. No es una plantilla: noche por defecto, claro en hueso, y las páginas que estás leyendo. FastQA-HomePage muestra HTML/CSS/JS centrado en conversión. magiacafetera-ui es Angular + TypeScript para una experiencia de viaje en el Eje; el crédito del fork es de Uruena2603. Marcela Brito Avellaneda es el encargo familiar en curso: la versión nueva separa psicología y Registros Akáshicos, y todavía tiene piezas abiertas.',
           'Si contratas desarrollo web, contratas a alguien que ya opera su propio dominio, que ya corrigió contraste y SEO, y que no inventa el stack del cliente.',
         ],
       },

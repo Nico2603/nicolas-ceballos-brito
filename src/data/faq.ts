@@ -7,6 +7,13 @@ const currentJobs = linkedInExperience
   .map((r) => `${r.title} en ${r.company}`)
   .join(' y ')
 
+const HOME_FAQ_SKIP = new Set([
+  '¿Quién es Nicolás Ceballos Brito?',
+  '¿Qué tecnologías domina Nicolás Ceballos Brito?',
+  '¿Dónde estudió y qué formación tiene?',
+  '¿Cuáles son sus proyectos destacados?',
+])
+
 export const faqItems: TopicFaqItem[] = [
   {
     question: '¿Quién es Nicolás Ceballos Brito?',
@@ -53,3 +60,5 @@ export const faqItems: TopicFaqItem[] = [
       'Pereira, Risaralda, Colombia. Perfil de LinkedIn con 500+ conexiones y 788 seguidores.',
   },
 ]
+
+export const homeFaqItems = faqItems.filter((item) => !HOME_FAQ_SKIP.has(item.question))

@@ -10,6 +10,16 @@ import SeoHelmet from '../SeoHelmet'
 import Badge from '../ui/Badge'
 import Button from '../ui/Button'
 
+function articleDates(period?: string): { datePublished?: string; dateModified?: string } {
+  if (!period) return {}
+  const years = period.match(/20\d{2}/g)
+  if (!years || years.length === 0) return {}
+  const datePublished = `${years[0]}-01-01`
+  const stillOpen = /presente/i.test(period) || years.length === 1
+  const dateModified = stillOpen ? '2026-11-06' : `${years[years.length - 1]}-12-31`
+  return { datePublished, dateModified }
+}
+
 interface ProjectArticleLayoutProps {
   family: CatalogFamily
   project: CatalogProject
@@ -40,8 +50,8 @@ export default function ProjectArticleLayout({
           project.pageDescription,
           project.faq,
           breadcrumbs,
-          '2024-10-01',
-          '2026-08-29',
+          articleDates(project.period).datePublished,
+          articleDates(project.period).dateModified,
         )}
       />
 
@@ -55,7 +65,7 @@ export default function ProjectArticleLayout({
               <ArrowLeft size={14} />
               {family.navLabel}
             </Link>
-            <p className="text-xs uppercase tracking-[0.2em] font-semibold mb-3 text-[var(--hero-eyebrow)]">
+            <p className="font-mono text-sm mb-3 text-[var(--hero-subtitle)]">
               {project.eyebrow}
             </p>
             <h1 className="font-display text-4xl md:text-5xl font-bold text-[var(--hero-text)] leading-tight">
@@ -98,6 +108,23 @@ export default function ProjectArticleLayout({
               El propósito
             </h2>
             <p className="leading-relaxed text-[var(--color-text-secondary)]">{project.purpose}</p>
+            {project.outcome && (
+              <>
+                <h2 className="font-sans text-2xl font-medium tracking-[-0.03em] mt-10 mb-3 text-[var(--color-text-primary)]">
+                  Qué quedó
+                </h2>
+                <p className="leading-relaxed text-[var(--color-text-secondary)]">{project.outcome}</p>
+              </>
+            )}
+            {project.shots && project.shots.length > 0 && (
+              <div className="mt-8 grid gap-4">
+                {project.shots.map((shot) => (
+                  <figure key={shot.src}>
+                    <img src={shot.src} alt={shot.alt} className="w-full border border-[var(--color-border-light)]" />
+                  </figure>
+                ))}
+              </div>
+            )}
             <div className="mt-6 flex flex-wrap gap-2">
               {project.stack.map((item) => (
                 <Badge key={item}>{item}</Badge>

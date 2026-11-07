@@ -20,13 +20,8 @@
   }
 }
 
-@keyframes hero-profile-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
 .hero-entrance {
-  animation: hero-fade-up 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: hero-fade-up 0.75s var(--ease-smooth) both;
 }
 
 .hero-entrance-delay-1 { animation-delay: 0.15s; }
@@ -66,7 +61,7 @@
 .faq-collapse {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: grid-template-rows 0.28s var(--ease-smooth);
 }
 
 .faq-collapse-open {
@@ -80,13 +75,13 @@
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
     .section-reveal {
-      animation: hero-fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation: hero-fade-up 0.5s var(--ease-smooth) both;
       animation-timeline: view();
       animation-range: entry 0% cover 25%;
     }
 
     .stagger-reveal > * {
-      animation: hero-fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation: hero-fade-up 0.5s var(--ease-smooth) both;
       animation-timeline: view();
       animation-range: entry 0% cover 20%;
     }
@@ -95,7 +90,7 @@
     .stagger-reveal > *:nth-child(3) { animation-range: entry 10% cover 30%; }
 
     .card-reveal {
-      animation: hero-fade-up 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation: hero-fade-up 0.4s var(--ease-smooth) both;
       animation-timeline: view();
       animation-range: entry 0% cover 20%;
     }
@@ -103,12 +98,12 @@
 }
 
 .hero-cta-entrance {
-  animation: hero-fade-up 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: hero-fade-up 0.75s var(--ease-smooth) both;
   animation-delay: 0.55s;
 }
 
 .hero-social-entrance {
-  animation: hero-fade-up 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: hero-fade-up 0.75s var(--ease-smooth) both;
   animation-delay: 0.66s;
 }
 
@@ -141,10 +136,6 @@
   to { opacity: 1; }
 }
 
-.hero-decor-active .hero-profile-float {
-  animation: hero-profile-float 5.5s ease-in-out infinite;
-}
-
 .hero-decor-active .hero-scroll-chevron {
   animation: scroll-hint 2s ease-in-out infinite;
 }
@@ -165,14 +156,6 @@
   .hero-stat-entrance-delay-1 { animation-delay: 0.45s; }
   .hero-stat-entrance-delay-2 { animation-delay: 0.5s; }
   .hero-scroll-hint-entrance { animation-delay: 0.7s; }
-
-  .hero-decor-active .hero-profile-float {
-    animation: none;
-  }
-
-  .hero-aurora {
-    display: none;
-  }
 }
 
 .hamburger {
@@ -220,10 +203,10 @@
 
 .mobile-nav-item {
   opacity: 0;
-  transform: translateY(48px);
+  transform: translateY(12px);
   transition:
-    opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.35s var(--ease-smooth),
+    transform 0.35s var(--ease-smooth);
 }
 
 .mobile-menu-open .mobile-nav-item {
@@ -231,21 +214,47 @@
   transform: translateY(0);
 }
 
-@keyframes aurora-drift-1 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(8%, -6%) scale(1.08); }
-  66% { transform: translate(-5%, 4%) scale(0.95); }
+@keyframes marca-draw {
+  to { stroke-dashoffset: 0; }
 }
 
-@keyframes aurora-drift-2 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  40% { transform: translate(-10%, 8%) scale(1.12); }
-  70% { transform: translate(6%, -5%) scale(0.92); }
+@keyframes marca-b-in {
+  to { opacity: 1; }
 }
 
-@keyframes aurora-drift-3 {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); }
-  50% { transform: translate(-48%, -52%) scale(1.15); }
+@keyframes filete-draw {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.filete {
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  margin-bottom: 0.85rem;
+  background: var(--color-accent-cta);
+  transform-origin: left center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .marca-ensamble .marca-n,
+  .marca-ensamble .marca-c {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: marca-draw 0.55s var(--ease-smooth) forwards;
+  }
+
+  .marca-ensamble .marca-n { animation-delay: 0.04s; }
+  .marca-ensamble .marca-c { animation-delay: 0.16s; }
+
+  .marca-ensamble .marca-b {
+    opacity: 0;
+    animation: marca-b-in 0.25s var(--ease-smooth) 0.42s forwards;
+  }
+
+  .filete {
+    animation: filete-draw 0.5s var(--ease-smooth) both;
+  }
 }
 
 @keyframes float-gentle {
@@ -286,20 +295,16 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-aurora,
-  .hero-profile-float,
-  .hero-profile-ring,
   .hero-scroll-chevron,
   .text-gradient-accent,
-  .hero-decor-active .hero-aurora,
-  .hero-decor-active .hero-aurora-1,
-  .hero-decor-active .hero-aurora-2,
-  .hero-decor-active .hero-aurora-3,
-  .hero-decor-active .hero-profile-float,
-  .hero-decor-active .hero-profile-ring,
-  .hero-decor-active .hero-scroll-chevron,
-  .hero-decor-active .text-gradient-accent {
+  .marca-ensamble .marca-n,
+  .marca-ensamble .marca-c,
+  .marca-ensamble .marca-b,
+  .filete {
     animation: none !important;
+    stroke-dashoffset: 0;
+    opacity: 1;
+    transform: none;
   }
 
   *,

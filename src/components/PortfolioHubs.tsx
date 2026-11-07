@@ -39,7 +39,7 @@ const HUB_GROUPS: readonly {
     id: 'encargo',
     label: 'Encargo',
     featured: false,
-    familyIds: ['productos-clinicos', 'webs', 'prosavis'],
+    familyIds: ['productos-clinicos', 'webs'],
   },
   {
     id: 'formacion',
@@ -53,7 +53,7 @@ const reveal = {
   initial: { opacity: 0, y: 22 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: '-50px' as const },
-  transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as const },
+  transition: { duration: 0.65, ease: [0.2, 0.8, 0.2, 1] as const },
 }
 
 function familiesIn(ids: readonly FamilyId[]): CatalogFamily[] {
@@ -163,10 +163,10 @@ const leftoverFamilies = catalogFamilies.filter((family) => !groupedIds.has(fami
 
 export default function PortfolioHubs() {
   return (
-    <SectionWrapper id="portafolio" className="py-20 px-4 bg-[var(--color-bg-primary)] section-mesh-bg relative">
+    <SectionWrapper id="portafolio" className="py-20 px-4 bg-[var(--color-bg-primary)] relative">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
-          align="left"
+          plain
           eyebrow="Oficio"
           title="Líneas de"
           highlight="trabajo"

@@ -20,6 +20,8 @@ export default function ConglomerateLayout({ family, projects }: ConglomerateLay
     { name: 'Inicio', path: '/' },
     { name: family.navLabel, path: family.path },
   ]
+  const featured = projects.filter((project) => project.density !== 'compact')
+  const compact = projects.filter((project) => project.density === 'compact')
 
   return (
     <>
@@ -82,14 +84,15 @@ export default function ConglomerateLayout({ family, projects }: ConglomerateLay
       {projects.length > 0 && (
         <section className="py-16 px-4 bg-[var(--color-bg-secondary)]">
           <div className="max-w-5xl mx-auto">
-            <h2 className="font-display text-3xl font-semibold mb-8 text-[var(--color-text-primary)]">
+            <h2 className="font-sans text-3xl font-medium tracking-[-0.03em] mb-8 text-[var(--color-text-primary)]">
               Proyectos de esta línea
             </h2>
+            {featured.length > 0 && (
             <div className="grid md:grid-cols-2 gap-6">
-              {projects.map((project) => (
+              {featured.map((project) => (
                 <Card key={project.slug}>
                   <div className="p-6 flex flex-col h-full">
-                    <p className="text-xs uppercase tracking-[0.2em] font-semibold mb-2 text-[var(--color-accent-label)]">
+                    <p className="font-mono text-sm mb-2 text-[var(--color-text-secondary)]">
                       {project.eyebrow}
                     </p>
                     <h3 className="font-display text-xl font-semibold mb-3 text-[var(--color-text-primary)]">
@@ -109,6 +112,24 @@ export default function ConglomerateLayout({ family, projects }: ConglomerateLay
                 </Card>
               ))}
             </div>
+            )}
+            {compact.length > 0 && (
+              <ul className={`${featured.length > 0 ? 'mt-8' : ''} divide-y divide-[var(--color-border-light)] border-y border-[var(--color-border-light)]`}>
+                {compact.map((project) => (
+                  <li key={project.slug}>
+                    <Link
+                      to={project.path}
+                      className="grid gap-1 py-4 md:grid-cols-[1fr_auto] md:items-baseline hover:text-[var(--color-accent-cta)]"
+                    >
+                      <span className="font-medium text-[var(--color-text-primary)]">{project.title}</span>
+                      <span className="font-mono text-sm text-[var(--color-text-secondary)]">
+                        {[project.period, project.stack.slice(0, 3).join(', ')].filter(Boolean).join(' · ')}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         </section>
       )}

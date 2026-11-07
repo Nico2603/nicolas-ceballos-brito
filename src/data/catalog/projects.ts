@@ -14,7 +14,7 @@ export const catalogProjects: CatalogProject[] = [
     eyebrow: 'Modelo propio',
     lead:
       'Un chat web de apoyo emocional cuyo modelo no genera la frase: predice una emoción y elige texto. Antes del ML, un override de crisis. Esa es la v1, y es mía de punta a punta.',
-    period: '2024 – presente',
+    period: '2025 – presente',
     role: 'Autor del modelo, el entrenamiento y la app Flask',
     purpose:
       'Demostrar que se puede hacer acompañamiento con un clasificador entrenado, no solo con un LLM de terceros. Quien contrata ve pesos, trainer y límites.',
@@ -24,6 +24,14 @@ export const catalogProjects: CatalogProject[] = [
       'CustomTrainer y pesos de clase',
       'Override por palabras de crisis antes del modelo',
       'STT en el navegador (webkitSpeechRecognition)',
+    ],
+    outcome:
+      'Quedó un chat en Flask que clasifica once emociones y elige una plantilla, con un override de crisis antes del modelo. La demo pública es el Space enlazado en el repositorio.',
+    shots: [
+      {
+        src: '/images/cases/bert/space.webp',
+        alt: 'Pantalla de bienvenida del Space de ChatBot-MentalHealth',
+      },
     ],
     body: [
       {
@@ -37,11 +45,13 @@ export const catalogProjects: CatalogProject[] = [
         heading: 'Qué hice y con qué',
         paragraphs: [
           'Entrenamiento con Transformers y PyTorch, métricas con scikit-learn, app en Flask. Inferencia con umbral de confianza. Conversaciones en JSON. La v2 —MarIA— usa APIs externas y voz; esta v1 es la prueba de que también construyo el modelo, no solo consumo uno.',
-          'No publico una URL de Space en Hugging Face hasta confirmarla. El perfil Flackoooo existe; el enlace del Space se añadirá cuando esté verificado.',
+          'La demo pública es el Space de Hugging Face que el repositorio declara como homepage. Esa portada no es el clasificador: el BERT y las plantillas están en el repositorio.',
         ],
       },
     ],
     repoUrl: 'https://github.com/Nico2603/ChatBot-MentalHealth-BERT',
+    liveUrl: 'https://huggingface.co/spaces/Flackoooo/ChatBot-MentalHealth',
+    liveUrlLabel: 'Abrir el Space',
     faq: [
       {
         question: '¿El BERT genera texto libre?',
@@ -57,10 +67,10 @@ export const catalogProjects: CatalogProject[] = [
     title: 'MarIA',
     pageTitle: `MarIA — ${FULL_NAME}`,
     pageDescription:
-      'Compañero de acompañamiento emocional con voz, texto e historial. Next.js, LiveKit, OpenAI y Deepgram. Demo en Render. Nicolás Ceballos Brito.',
+      'Compañero de acompañamiento emocional con voz, texto e historial. Next.js, LiveKit, OpenAI y Deepgram. Nicolás Ceballos Brito.',
     eyebrow: 'Producto v2',
     lead:
-      'MarIA sostiene conversaciones de apoyo —ansiedad, estrés, mindfulness— con autenticación, cuotas e historial. No sustituye atención clínica. La demo está en Render.',
+      'MarIA sostiene conversaciones de apoyo —ansiedad, estrés, mindfulness— con autenticación, cuotas e historial. No sustituye atención clínica. El código está en el repositorio; la demo pública ya no responde.',
     period: '2025 – presente',
     role: 'Producto web, API y orquestación con el agente de voz',
     purpose:
@@ -82,12 +92,14 @@ export const catalogProjects: CatalogProject[] = [
       'Auth Google y sesiones persistidas',
       'Páginas de recursos y crisis',
     ],
+    outcome:
+      'Quedó el producto en el repositorio: login, historial, recursos y voz. No es un consultorio. La URL de Render y mentalia.digital no responden hoy.',
     body: [
       {
         heading: 'De la v1 a un sitio que se puede abrir',
         paragraphs: [
-          'Si BERT es el laboratorio, MarIA es el mostrador. Next.js App Router, TypeScript, una API de salud para el host y un agente hermano que habla. El usuario no ve el pipeline: ve un compañero con historial. Yo sí veo el pipeline, y por eso puedo vender operación, no solo un mock.',
-          'La demo pública está en Render: ai-mental-health-zyb6.onrender.com. El código del frontend y la API está en Nico2603/MarIA. El proceso de voz es LiveKit_Agent_MarIA. Tres piezas, un relato.',
+          'Si BERT es el laboratorio, MarIA es el mostrador. Next.js App Router, TypeScript, una API de salud para el host y un agente hermano que habla. El usuario no ve el pipeline: ve un compañero con historial.',
+          'El código del frontend y la API está en Nico2603/MarIA. El proceso de voz es LiveKit_Agent_MarIA. La demo de Render y el dominio mentalia.digital, que el repositorio declara, no resuelven ahora. No dejo un enlace roto.',
         ],
       },
       {
@@ -98,8 +110,6 @@ export const catalogProjects: CatalogProject[] = [
       },
     ],
     repoUrl: 'https://github.com/Nico2603/MarIA',
-    liveUrl: 'https://ai-mental-health-zyb6.onrender.com',
-    liveUrlLabel: 'Abrir demo en Render',
     faq: [
       {
         question: '¿MarIA usa el BERT de la v1?',
@@ -130,6 +140,8 @@ export const catalogProjects: CatalogProject[] = [
       'Timeout ~30 min y cuotas',
       'Respuestas enriquecidas (enlaces, QR de cierre)',
     ],
+    outcome:
+      'Quedó un proceso Python aparte del sitio: entra a la sala LiveKit, transcribe, responde y sintetiza.',
     body: [
       {
         heading: 'Por qué el agente es un repo aparte',
@@ -159,7 +171,7 @@ export const catalogProjects: CatalogProject[] = [
     eyebrow: 'Núcleo PdM',
     lead:
       'Lee vibración, clasifica con un RNN Keras y avisa en el tablero. Severidad 0, 1 o 2. Nació en el semillero Industria 4.0. Se corre en lab o LAN.',
-    period: 'Semillero Industria 4.0 · UCP',
+    period: '2025 · Semillero Industria 4.0 · UCP',
     role: 'Backend, modelo y tablero',
     purpose:
       'Cerrar el ciclo sensor → dato → inferencia → alerta sin vender un SaaS que no existe.',
@@ -170,6 +182,8 @@ export const catalogProjects: CatalogProject[] = [
       'Alertas automáticas en severidad 2',
       'OpenAPI en /docs',
     ],
+    outcome:
+      'Quedó un núcleo local: vibración, un RNN Keras, tablero Chart.js y alerta en severidad 2. No está publicado como SaaS.',
     body: [
       {
         heading: 'Qué es (y qué no es)',
@@ -200,6 +214,7 @@ export const catalogProjects: CatalogProject[] = [
     lead:
       'La cara pública del sistema: para qué sirve el PdM, cómo se conectan sensor, modelo y tablero, y a quién le importa.',
     purpose: 'Traducir el laboratorio a un relato que un no-desarrollador pueda compartir.',
+    density: 'compact',
     stack: ['HTML', 'CSS', 'JavaScript'],
     highlights: ['Narrativa del producto PdM', 'Puente entre el semillero y el núcleo'],
     body: [
@@ -230,6 +245,7 @@ export const catalogProjects: CatalogProject[] = [
     lead:
       'Sin sensor no hay modelo. Este repo es la captura —típicamente ESP32 y MPU6050— que viaja por MQTT hacia el manager.',
     purpose: 'Cerrar el eslabón físico del piloto de mantenimiento predictivo.',
+    density: 'compact',
     stack: ['Arduino', 'ESP32', 'MPU6050', 'MQTT'],
     highlights: ['Ingesta real, no CSV sintético de demo'],
     body: [
@@ -260,6 +276,7 @@ export const catalogProjects: CatalogProject[] = [
     lead:
       'Antes de clavar un RNN en producción, el semillero discutió anomalía sin etiquetas. Este repo es esa conversación, en código.',
     purpose: 'Mostrar el criterio de modelos no supervisados que también aparece en mi perfil de LinkedIn.',
+    density: 'compact',
     stack: ['Python', 'scikit-learn', 'KMeans', 'Isolation Forest', 'CBLOF', 'DBSCAN'],
     highlights: ['Anomalía cuando el fallo es raro', 'Complemento del RNN Keras del manager'],
     body: [
@@ -321,12 +338,16 @@ export const catalogProjects: CatalogProject[] = [
     title: 'ClinicAI',
     pageTitle: `ClinicAI — ${FULL_NAME}`,
     pageDescription:
-      'Repositorio público ClinicAI de Nicolás Ceballos Brito: experimentación en la intersección clínica e IA, con identidad Ink & Steel.',
+      'Repositorio público ClinicAI de Nicolás Ceballos Brito: experimentación en la intersección clínica e IA.',
     eyebrow: 'Público',
     lead:
       'ClinicAI es la vitrina pública del cruce clínica–IA. No es Lumen. Es el repo que se puede clonar y leer.',
     purpose: 'Separar la experimentación pública de la operación privada de consulta.',
-    stack: ['TypeScript', 'React'],
+    role: 'Repositorio público del encargo Teilur',
+    period: '2025',
+    outcome:
+      'Quedó un repositorio público, separado de Lumen. El README lo describe como asistente de notas para Teilur.ai.',
+    stack: ['Next.js', 'TypeScript', 'Supabase'],
     highlights: ['Repo público', 'Identidad de Nicolás en el README'],
     body: [
       {
@@ -356,11 +377,19 @@ export const catalogProjects: CatalogProject[] = [
     lead:
       'Rayito de Sol es el consultorio y la marca de María Camila. Yo construyo y opero la web. El caso muestra cómo un ingeniero presta servicio a una profesional de la salud mental sin apropiarse de su voz.',
     purpose: 'Una presencia web rápida, clara y desplegada, al servicio de quien atiende.',
+    role: 'Ingeniería y mantenimiento de la web',
+    outcome: 'La web está en rayitodesolpsico.com. La atención es de María Camila; yo no ofrezco terapia ahí.',
     stack: ['React', 'TypeScript', 'Vite', 'Tailwind', 'Framer Motion', 'Vercel'],
     highlights: [
       'Dominio en producción',
       'Marca de Camila, ingeniería de Nicolás',
       'SEO y diseño de landing clínica',
+    ],
+    shots: [
+      {
+        src: '/images/cases/rayito/home.webp',
+        alt: 'Portada de rayitodesolpsico.com',
+      },
     ],
     body: [
       {
@@ -388,13 +417,22 @@ export const catalogProjects: CatalogProject[] = [
     title: 'nicolasceballosbrito.com',
     pageTitle: `Este portafolio — ${FULL_NAME}`,
     pageDescription:
-      'El sitio que estás leyendo: React 19, Vite, Tailwind 4, prerender, tema Ink & Steel. Producto y carta de presentación de Nicolás Ceballos Brito.',
+      'El sitio que estás leyendo: React 19, Vite, Tailwind 4, prerender, noche y hueso, Geist. Carta de presentación de Nicolás Ceballos Brito.',
     eyebrow: 'Este sitio',
     lead:
       'El portafolio es un producto. Tiene tema dual, prerender, FAQ, hubs y deploy en Vercel. Si quieres ver cómo trabajo un sitio mío, ya estás dentro.',
     purpose: 'Vender con evidencia: el propio dominio como caso.',
+    role: 'Autor del sitio',
+    period: '2025 – presente',
+    outcome: 'El dominio está en producción, con prerender, hubs y tema claro u oscuro. El repositorio es público.',
     stack: ['React 19', 'TypeScript', 'Vite 8', 'Tailwind 4', 'Framer Motion', 'Lenis', 'Vercel'],
-    highlights: ['Ink & Steel', 'Prerender y llms.txt', 'Hubs por familia de trabajo'],
+    highlights: ['Noche por defecto y claro en hueso', 'Prerender y llms.txt', 'Hubs por familia de trabajo'],
+    shots: [
+      {
+        src: '/images/cases/este-sitio/home.webp',
+        alt: 'Portada de nicolasceballosbrito.com en noche, con el sello NCB',
+      },
+    ],
     body: [
       {
         heading: 'Por qué el sitio es parte del portafolio',
@@ -410,7 +448,7 @@ export const catalogProjects: CatalogProject[] = [
       {
         question: '¿Puedo contratar el mismo stack para mi marca?',
         answer:
-          'Sí. React, TypeScript, Tailwind y Vercel son el oficio diario. El sistema visual se adapta a la marca del cliente, no se copia Ink & Steel a ciegas.',
+          'Sí. React, TypeScript, Tailwind y Vercel son el oficio diario. El sistema visual se adapta a la marca del cliente.',
       },
     ],
   },
@@ -435,6 +473,8 @@ export const catalogProjects: CatalogProject[] = [
       'Después: dos experiencias, menú corto y contacto avisado',
       'Sigue abierto: hamaca, Integrarte y niveles 3 y 4',
     ],
+    outcome:
+      'El constructor de septiembre ya no es el sitio. Hay una versión en Astro, en el mismo dominio, con psicología y Registros Akáshicos separados. Sigue en proceso.',
     body: [
       {
         heading: 'Qué documenta el antes',
@@ -479,17 +519,21 @@ export const catalogProjects: CatalogProject[] = [
     lead:
       'Una homepage de producto Q&A: semántica, responsive y centrada en que el visitante entienda la oferta sin un framework.',
     purpose: 'Demostrar frontend de conversión sin esconderse detrás de React.',
+    role: 'Frontend de la homepage',
+    period: '2025',
+    outcome:
+      'Quedó una homepage en HTML, CSS y JavaScript. El repositorio es fastqa33/FastQA-HomePage; Nicolás figura como contribuidor, no como dueño.',
     stack: ['HTML', 'CSS', 'JavaScript'],
     highlights: ['Estructura semántica', 'Microinteracciones en vanilla JS'],
     body: [
       {
         heading: 'Por qué sigue en el mapa',
         paragraphs: [
-          'Porque no todo cliente necesita un SPA. FastQA es la prueba de que entrego HTML limpio cuando el producto lo pide. El repo es Nico2603/FastQA-HomePage.',
+          'Porque no todo cliente necesita un SPA. FastQA es HTML limpio. El repo es fastqa33/FastQA-HomePage. Nicolás está entre los contribuidores, junto con Uruena2603. GitHub Pages de ese repo está en error, así que no hay captura.',
         ],
       },
     ],
-    repoUrl: 'https://github.com/Nico2603/FastQA-HomePage',
+    repoUrl: 'https://github.com/fastqa33/FastQA-HomePage',
     faq: [
       {
         question: '¿FastQA es un backend de preguntas?',
@@ -509,6 +553,16 @@ export const catalogProjects: CatalogProject[] = [
     lead:
       'Interfaz para una experiencia de viaje en el Eje, no una tienda de café. Angular, TypeScript y SASS. El origen es un fork de Uruena2603/magiacafetera-ui.',
     purpose: 'Mostrar UI de marca territorial con atribución honesta.',
+    role: 'Fork publicado en GitHub Pages',
+    period: '2025',
+    outcome:
+      'Quedó una interfaz en Angular para viajes en el Eje Cafetero, publicada en GitHub Pages. Es un fork de Uruena2603, no una tienda de café.',
+    shots: [
+      {
+        src: '/images/cases/magia/home.webp',
+        alt: 'Portada de Magia Cafetera: planificador de viajes en el Eje',
+      },
+    ],
     stack: ['Angular', 'TypeScript', 'SASS'],
     highlights: ['Componentes Angular', 'Relato de viaje, no de tostión'],
     body: [
@@ -520,6 +574,8 @@ export const catalogProjects: CatalogProject[] = [
       },
     ],
     repoUrl: 'https://github.com/Nico2603/magiacafetera-ui',
+    liveUrl: 'https://nico2603.github.io/magiacafetera-ui/',
+    liveUrlLabel: 'Abrir la interfaz',
     forkCredit: 'Fork de Uruena2603/magiacafetera-ui',
     faq: [
       {
@@ -571,7 +627,8 @@ export const catalogProjects: CatalogProject[] = [
     lead:
       'Colectivo es un trabajo de programación de la formación. No le pongo año ni lo vendo como producto de mercado.',
     purpose: 'Dejar constancia de la base de programación sin inflar el relato.',
-    stack: ['Programación'],
+    density: 'compact',
+    stack: ['PHP', 'HTML', 'CSS', 'JavaScript', 'TypeScript'],
     highlights: ['Alcance de asignatura', 'Sin ficha de curso inventada'],
     body: [
       {
@@ -601,6 +658,7 @@ export const catalogProjects: CatalogProject[] = [
     lead:
       'Una simulación de ATM para practicar flujos, estados e interfaz. No opera dinero ni se conecta a un banco.',
     purpose: 'Mostrar un sistema con estados y pantallas, con el límite bien puesto.',
+    density: 'compact',
     stack: ['C++', 'Interfaz de simulación'],
     highlights: ['Flujos de cajero', 'Alcance académico declarado'],
     body: [
@@ -631,6 +689,7 @@ export const catalogProjects: CatalogProject[] = [
     lead:
       'Detección de objetos con EfficientDet. Aquí “modelo propio” significa entrenar y aplicar un detector, no publicar un GPT.',
     purpose: 'Evidencia de computer vision en el recorrido de formación.',
+    density: 'compact',
     stack: ['Python', 'EfficientDet', 'Visión por computador'],
     highlights: ['Detector entrenado/aplicado', 'Complementa BERT y PdM en la tesis de modelos propios'],
     body: [
@@ -661,6 +720,7 @@ export const catalogProjects: CatalogProject[] = [
     lead:
       'Un experimento de interfaz y lenguaje para consultas legales de juguete. No es un abogado ni un producto certificado.',
     purpose: 'Explorar NLP aplicado a un dominio formal, con el disclaimer a la vista.',
+    density: 'compact',
     stack: ['JavaScript', 'IA aplicada (prototipo)'],
     highlights: ['Alcance de prototipo', 'No sustituye asesoría jurídica'],
     body: [
@@ -691,7 +751,8 @@ export const catalogProjects: CatalogProject[] = [
     lead:
       'Un sistema de inventario/control de farmacia. El origen es Uruena2603/PharmacyControlSystem. Aquí está el crédito.',
     purpose: 'Mostrar un dominio de inventario con atribución.',
-    stack: ['Sistema de inventario'],
+    density: 'compact',
+    stack: ['C++'],
     highlights: ['Crédito al fork', 'Dominio de farmacia'],
     body: [
       {

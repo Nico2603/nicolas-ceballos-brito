@@ -11,13 +11,11 @@ import {
 
 const CurrentWorkProsavis = lazy(() => import('../components/CurrentWorkProsavis'))
 const CurrentExperience = lazy(() => import('../components/CurrentExperience'))
-const LinkedInFeed = lazy(() => import('../components/LinkedInFeed'))
-const LaboresCarousel = lazy(() => import('../components/LaboresCarousel'))
 const FaqSection = lazy(() => import('../components/FaqSection'))
 const Contact = lazy(() => import('../components/Contact'))
 const PortfolioHubs = lazy(() => import('../components/PortfolioHubs'))
-const LandingsCraft = lazy(() => import('../components/LandingsCraft'))
-const RecursosSection = lazy(() => import('../components/RecursosSection'))
+const SelectedWork = lazy(() => import('../components/SelectedWork'))
+const FueraDelCodigo = lazy(() => import('../components/FueraDelCodigo'))
 const Footer = lazy(() => import('../components/Footer'))
 
 import { PROFILE_IMAGE_PRELOAD } from '../constants/lcp-image'
@@ -49,14 +47,14 @@ export default function Home() {
           <CurrentWorkProsavis />
         </Suspense>
       </ViewportLazy>
+      <ViewportLazy minHeight="36rem">
+        <Suspense fallback={null}>
+          <SelectedWork />
+        </Suspense>
+      </ViewportLazy>
       <ViewportLazy minHeight="42rem">
         <Suspense fallback={null}>
           <PortfolioHubs />
-        </Suspense>
-      </ViewportLazy>
-      <ViewportLazy id="landings" className="scroll-mt-24 md:scroll-mt-28" minHeight="52rem">
-        <Suspense fallback={null}>
-          <LandingsCraft />
         </Suspense>
       </ViewportLazy>
       <ViewportLazy minHeight="24rem">
@@ -64,19 +62,9 @@ export default function Home() {
           <CurrentExperience />
         </Suspense>
       </ViewportLazy>
-      <ViewportLazy minHeight="24rem">
+      <ViewportLazy minHeight="40rem">
         <Suspense fallback={null}>
-          <LaboresCarousel />
-        </Suspense>
-      </ViewportLazy>
-      <ViewportLazy minHeight="20rem">
-        <Suspense fallback={null}>
-          <LinkedInFeed />
-        </Suspense>
-      </ViewportLazy>
-      <ViewportLazy minHeight="16rem">
-        <Suspense fallback={null}>
-          <RecursosSection />
+          <FueraDelCodigo />
         </Suspense>
       </ViewportLazy>
       <ViewportLazy minHeight="20rem">
